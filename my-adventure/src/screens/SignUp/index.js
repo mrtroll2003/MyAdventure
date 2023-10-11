@@ -1,9 +1,16 @@
 import React from 'react'
-
-const index = () => {
-  return (
-    <div>index</div>
+import Header from '../../component/Header'
+import Tabbar from '../../component/Tabbar/Tabbar'
+import GlobeImg from '../../assets/images/globe.png'
+import './styles.css'
+const SignUp = () => {
+  return ( 
+    <>
+    <Header/>
+    <Tabbar/>
+    <img src={GlobeImg} alt='GlobeImg.png' className='globe'/>
+    </>
   )
 }
 
-export default index
+export default SignUp

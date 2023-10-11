@@ -1,9 +1,11 @@
 
 import './App.css';
-import Header from './components/Header';
-
+import SignUp from './screens/SignUp';
 function App() {
   return (
-    <Header></Header>
+    <>
+    <SignUp></SignUp>
+    </>
   );
+}
 export default App;
