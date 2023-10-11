@@ -1,4 +1,2 @@
-import React from 'react';
-export default function BookingScreen() {
-    
-}
+import React from "react";
+export default function BookingScreen() {}
