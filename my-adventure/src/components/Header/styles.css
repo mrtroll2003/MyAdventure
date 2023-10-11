@@ -3,14 +3,31 @@
     background-color: #49DEC3 ;
     height: 8vh;
     align-items: center;
+    box-sizing: content-box;
 }
 
 .phoneIcon {
-    padding-left: 8%;
+    margin-left: 8%;
     width: 1.5%;
+    opacity: 1;
 }
 .text {
     font-family: sans-serif;
     font-weight: semibold;
+    margin-left: 1%;
+}
+
+.mailIcon {
+    margin-left: 2.5%;
+    width: 1.5%;
+}
+
+.facebookIcon {
+    width: 1.5%;
+    margin-left: 15%;
+}
+
+.instagramIcon {
+    width: 1.5%;
     margin-left: 1%;
 }
