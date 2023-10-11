@@ -1,5 +1,6 @@
 import React from "react";
 import { MyLogo } from "../../assets/logos";
+import { motion } from "framer-motion";
 import Icon from "./icon.png";
 import "./styles.css";
 
@@ -8,17 +9,23 @@ class Tabbar extends React.Component {
     return (
       <div className="contentView">
         <img src={MyLogo} alt="LOGO" className="logo" />
-        <div className="homeOption contentText" style={{ marginLeft: "35em" }}>
+        <motion.div
+          className="homeOption contentText"
+          style={{ marginLeft: "35em", color: "#007b65" }}
+        >
           Home
-        </div>
-        <div className="contentText">
+        </motion.div>
+        <motion.div className="contentText">
           Travel
-          <img src={Icon} alt="icon" className="icon" />
-        </div>
-
-        <div className="contentText">Contacts</div>
-        <div className="contentText">Sign in</div>
-        <div className="contentText signUp">Sign up</div>
+          <motion.img src={Icon} alt="icon" className="icon" />
+        </motion.div>
+        <motion.div className="contentText">Contacts</motion.div>
+        <motion.div className="contentText" whileTap={{ scale: 1.5 }}>
+          Sign in
+        </motion.div>
+        <motion.div className="contentText signUp" whileTap={{ scale: 1.5 }}>
+          Sign up
+        </motion.div>
       </div>
     );
   }
