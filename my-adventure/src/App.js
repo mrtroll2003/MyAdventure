@@ -1,9 +1,7 @@
-
-import './App.css';
-import Header from './components/Header';
-
+import "./App.css";
+import BookingStepOne from "./screens/BookingStepOne";
+import HomePageNotSign from "./screens/HomePageNotSign";
 function App() {
-  return (
-    <Header></Header>
-  );
+  return <HomePageNotSign></HomePageNotSign>;
+}
 export default App;
