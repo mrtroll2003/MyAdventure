@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    background-color: #49DEC3 ;
+    height: 8vh;
+    align-items: center;
+}
+
+.phoneIcon {
+    padding-left: 8%;
+    width: 1.5%;
+}
+.text {
+    font-family: sans-serif;
+    font-weight: semibold;
+    margin-left: 1%;
+}
