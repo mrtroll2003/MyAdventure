@@ -9,6 +9,8 @@ const SignUp = () => {
     <Header/>
     <Tabbar/>
     <img src={GlobeImg} alt='GlobeImg.png' className='globe'/>
+    <p className='companyName'>MY ADVENTURE</p>
+    <p className=''>CREATE ACCOUNT</p>
     </>
   )
 }

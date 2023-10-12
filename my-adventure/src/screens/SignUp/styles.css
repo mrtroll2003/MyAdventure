@@ -1,4 +1,12 @@
 .globe {
     float: right;
     width: 50%;
+    margin-bottom: 10%;
+}
+
+.companyName {
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    font-family: "Nunito sans", sans-serif;
 }
