@@ -1,11 +1,7 @@
-
-import './App.css';
-import SignUp from './screens/SignUp';
+import "./App.css";
+import BookingStepOne from "./screens/BookingStepOne";
+import HomePageNotSign from "./screens/HomePageNotSign";
 function App() {
-  return (
-    <>
-    <SignUp></SignUp>
-    </>
-  );
+  return <HomePageNotSign></HomePageNotSign>;
 }
 export default App;
