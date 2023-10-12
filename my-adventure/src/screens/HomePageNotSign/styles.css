@@ -1,0 +1,12 @@
+#boldStatement {
+    margin-top: 1%;
+    border: solid red;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
+#normalText {
+    font-weight: bold;
+    border: solid red;
+    text-align: center;
+}
