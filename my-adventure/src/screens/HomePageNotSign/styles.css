@@ -1,12 +1,48 @@
+@font-face {
+    font-family: 'NunitoSans';
+    /* src: url('../../constant/fonts/NunitoSans-Italic-VariableFont_YTLC\,opsz\,wdth\,wght.ttf') format('truetype'); */
+    src: url('../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf') format('truetype');
+    /* src: url('../../constant/fonts/static/NunitoSans_10pt-ExtraBold.ttf') format('truetype'); */
+    /* src: url('../../constant/fonts/static/NunitoSans_10pt-Bold.ttf') format('truetype'); */
+    /* Add additional src lines if you have multiple font formats */
+    /* src: url('./fonts/YourFontFile.woff') format('woff'); */
+    /* src: url('./fonts/YourFontFile.woff2') format('woff2'); */
+  }
+
 #boldStatement {
     margin-top: 1%;
-    border: solid red;
     text-align: center;
-    font-size: 50px;
-    font-weight: bold;
+    font-family: 'NunitoSans';
+    font-size: 60px;
+    font-weight: bolder;
 }
 #normalText {
-    font-weight: bold;
-    border: solid red;
+    font-family: 'NunitoSans';
+    font-weight: bolder;
+    font-size: 20px;
     text-align: center;
+}
+
+#subContentView {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2em;
+}
+
+#subContent {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+}
+
+#subContentText {
+    font-family: "NunitoSans";
+    font-weight: bold;
+    font-size: 35px;
+}
+#subContentMainText {
+    font-family: "NunitoSans";
+    font-size: 20px;
+    font-weight: normal;
 }
