@@ -1,0 +1,1 @@
+export {default as IMG_BOOKINGBG} from './BookingBackground.png';
