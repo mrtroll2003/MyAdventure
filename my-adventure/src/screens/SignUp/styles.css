@@ -1,12 +1,81 @@
+@font-face {
+    font-family: "Nunito sans";
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf");
+}
+
 .globe {
     float: right;
     width: 50%;
-    margin-bottom: 10%;
 }
 
 .companyName {
     font-size: 40px;
-    font-weight: 600;
+    font-weight: 800;
     text-align: center;
     font-family: "Nunito sans", sans-serif;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.accountOption {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 60px;
+    text-align: center;
+    margin-top: 0%;
+    color: turquoise;
+}
+
+.subTitle {
+    font-family: "Nunito sans",sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    margin-left: 10%;
+}
+
+.enterInput {
+    margin-left: 10%;
+    width: 30vw;
+    height: 8vh;
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+
+}
+.enterInput:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+}
+.enterInput::placeholder {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    padding-left: 5%;
+}
+
+.enterInput[type='text'] {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.signUpButton {
+    width: 30%;
+    height: 8vh;
+    background-color:  #5CD6C0;
+    font-family: 'Nunito sans',sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+    margin-top: 5%;
+    margin-left: 10%;
+
+}
+
+.smallText {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    margin-left: 15%;
 }
