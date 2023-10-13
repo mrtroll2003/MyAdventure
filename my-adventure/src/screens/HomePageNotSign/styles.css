@@ -1,13 +1,14 @@
 @font-face {
     font-family: 'NunitoSans';
-    /* src: url('../../constant/fonts/NunitoSans-Italic-VariableFont_YTLC\,opsz\,wdth\,wght.ttf') format('truetype'); */
     src: url('../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf') format('truetype');
-    /* src: url('../../constant/fonts/static/NunitoSans_10pt-ExtraBold.ttf') format('truetype'); */
-    /* src: url('../../constant/fonts/static/NunitoSans_10pt-Bold.ttf') format('truetype'); */
     /* Add additional src lines if you have multiple font formats */
     /* src: url('./fonts/YourFontFile.woff') format('woff'); */
     /* src: url('./fonts/YourFontFile.woff2') format('woff2'); */
   }
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('../../constant/fonts/PlayfairDisplay/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+}
 
 #boldStatement {
     margin-top: 1%;
@@ -45,4 +46,73 @@
     font-family: "NunitoSans";
     font-size: 20px;
     font-weight: normal;
+}
+.packageBackground {
+    height: 55vh;
+    background-size: cover;
+    background-image: url('../../assets/images/background.png');
+    background-position: center;
+}
+.packageView {
+    display: flex;
+    flex-direction: column;
+    height: 55vh;
+    background-color: rgba(92, 214, 192, 0.9);
+}
+#packageIntroduction {
+    height: fit-content;
+    width: fit-content;
+    font-family: "NunitoSans";
+    font-weight: bold;
+    font-size: 40px;
+    color: #F6F893;
+    margin-left: 5%;
+    margin-top: 4%;
+    margin-bottom: 0%;
+}
+#packageMainText {
+    color: white;
+    margin-left: 5%;
+    width: fit-content;
+    height: fit-content;
+    font-family: "NunitoSans";
+    font-size: 18px;
+    font-weight: regular;
+}
+#detailsBtn {
+    width: 7.5%;
+    height: fit-content;
+    font-family: "NunitoSans";
+    font-weight: lighter;
+    font-size: 20px;
+    padding: 0.5%;
+    color: white;
+    border: 2px solid rgba(255, 0, 0, 0.8);
+    border-radius: 203px;
+    background-color: rgba(255, 0, 0, 0.8);
+    margin-left: 20%;
+}
+#packagePriceView {
+    border: 1px solid red;
+    width: fit-content;
+    height: fit-content;
+    margin-left: 5%;
+}
+#packagePriceText01 {
+    color: #F6F893;
+    font-family: "NunitoSans";
+    font-weight: lighter;
+    font-size: 35px;
+}
+#packagePrice {
+    font-family: 'PlayfairDisplay';
+    font-weight: bolder;
+    font-size: 60px;
+    color: white;
+}
+#packagePriceText02 {
+    color: white;
+    font-family: "NunitoSans";
+    font-weight: lighter;
+    font-size: 35px;
 }
