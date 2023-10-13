@@ -47,6 +47,7 @@
     font-size: 20px;
     font-weight: normal;
 }
+/* Package */
 .packageBackground {
     height: 55vh;
     background-size: cover;
@@ -115,4 +116,49 @@
     font-family: "NunitoSans";
     font-weight: lighter;
     font-size: 35px;
+}
+/* Recommended Trip */
+.recTripView {
+    display: flex;
+    justify-content: space-evenly;
+    height: 75%;
+    width: 100%;
+}
+.titleRowView {
+    display: flex;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 7.5%;
+    margin-right: 7.5%;
+}
+/* Happy Customer */
+.happyCustomerBackground {
+    height: 60vh;
+    margin-top: 5%;
+    background-image: url('../../assets/images/small_main_background.png');
+    background-size: cover;
+}
+.happyCustomerView {
+    display: flex;
+    height: 60vh;
+    background-color: rgba(61, 180, 159, 0.8);
+}
+.happyCustomerContentView {
+    margin-left: 1.5%;
+    width: 50%;
+}
+#whiteBoldStatement {
+    margin-top: 7.5%;
+    text-align: center;
+    font-family: 'NunitoSans';
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+}
+#whiteNormalText {
+    margin: 7.5%;
+    font-family: 'NunitoSans';
+    font-weight: bolder;
+    font-size: 20px;
+    color: white;
 }
