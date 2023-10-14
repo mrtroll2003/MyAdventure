@@ -4,11 +4,18 @@ import Header from "../../component/Header";
 import Tabbar from "../../component/Tabbar/Tabbar";
 import IntroBackground from "../../component/IntroBackground/IntroBackground";
 import RecommendedTripCard from "../../component/RecommendedTripCard/RecommendedTripCard";
+import HolidayTypeCircle from "../../component/HolidayTypeCircle/HolidayTypeCircle";
+import Footer from "../../component/Footer/Footer";
 
 import GreenGlobe from "../../assets/icons/green_globe.png";
 import MessageBubble from "../../assets/icons/message_bubble.png";
 import Flag from "../../assets/icons/flag.png";
 import ArrowRight from "../../assets/icons/arrowRight.png";
+import CityIcon from "../../assets/icons/city.png";
+import SafariIcon from "../../assets/icons/safari.png";
+import BeachIcon from "../../assets/icons/beach.png";
+import AdventureIcon from "../../assets/icons/adventure.png";
+import HoneymoonIcon from "../../assets/icons/honeymoon.png";
 
 import Place01 from "../../assets/images/card/Card/place01.png";
 import Place02 from "../../assets/images/card/Card/place02.png";
@@ -212,6 +219,21 @@ const HomePageNotSign = () => {
           can paste in the embed code for the video you want to add.
         </div>
         {/*  */}
+        <div className="holidayTypeView">
+          <HolidayTypeCircle image={CityIcon} holidayTypeName={"City"} />
+          <HolidayTypeCircle image={SafariIcon} holidayTypeName={"Safari"} />
+          <HolidayTypeCircle image={BeachIcon} holidayTypeName={"Beach"} />
+          <HolidayTypeCircle
+            image={AdventureIcon}
+            holidayTypeName={"Adventure"}
+          />
+          <HolidayTypeCircle
+            image={HoneymoonIcon}
+            holidayTypeName={"Honeymoon"}
+          />
+        </div>
+        {/* Footer */}
+        <Footer />
       </div>
     </div>
   );
