@@ -1,0 +1,15 @@
+#circleView {   
+    display: flex;
+    width: 150px;
+    height: 150px;
+    background-image: url('../../assets/icons/circle.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+}
+#circleImage {
+    width: 70%;
+    justify-self: center;
+    align-self: center;
+}

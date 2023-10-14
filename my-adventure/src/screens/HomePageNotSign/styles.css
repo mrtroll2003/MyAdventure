@@ -94,7 +94,6 @@
     margin-left: 20%;
 }
 #packagePriceView {
-    border: 1px solid red;
     width: fit-content;
     height: fit-content;
     margin-left: 5%;
@@ -161,4 +160,10 @@
     font-weight: bolder;
     font-size: 20px;
     color: white;
+}
+.holidayTypeView {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 5%;
 }
