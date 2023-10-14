@@ -32,8 +32,11 @@
 }
 
 #subContent {
+    display: flex;
+    flex-direction: column;
     width: fit-content;
     height: fit-content;
+    align-items: center;
     text-align: center;
 }
 
