@@ -3,6 +3,6 @@ import BookingStepOne from "./screens/BookingStepOne";
 import HomePageNotSign from "./screens/HomePageNotSign";
 import HomePageSignedIn from "./screens/HomePageSignedIn";
 function App() {
-  return <HomePageSignedIn></HomePageSignedIn>;
+  return <HomePageNotSign></HomePageNotSign>;
 }
 export default App;
