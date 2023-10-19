@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "../../component/Header";
-import Tabbar from "../../component/Tabbar/Tabbar";
+import MainTabbar from "../../component/MainTabbar/MainTabbar";
 import IntroBackground from "../../component/IntroBackground/IntroBackground";
 import RecommendedTripCard from "../../component/RecommendedTripCard/RecommendedTripCard";
 import HolidayTypeCircle from "../../component/HolidayTypeCircle/HolidayTypeCircle";
@@ -27,11 +27,11 @@ import HappyCustomer02 from "../../assets/images/happy_customer_02.png";
 import { motion } from "framer-motion";
 import "./styles.css";
 
-const HomePageNotSign = () => {
+const HomePageSignedIn = () => {
   return (
     <div>
       <Header></Header>
-      <Tabbar></Tabbar>
+      <MainTabbar option={"Your Booking"}></MainTabbar>
       <IntroBackground></IntroBackground>
       <div>
         <div id="boldStatement">WHY WE ARE THE BEST?</div>
@@ -239,4 +239,4 @@ const HomePageNotSign = () => {
   );
 };
 
-export default HomePageNotSign;
+export default HomePageSignedIn;
