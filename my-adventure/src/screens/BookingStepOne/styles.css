@@ -1,0 +1,38 @@
+
+.imagebox {
+    display:flex;
+}
+.polaroid {
+    margin-top: 20px;
+    width: 30%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    border-radius: 20px;
+    margin-left: 25px;
+    float: left;
+  }
+  .container {
+    text-align: left;
+    padding: 10px 20px;
+  }
+  a.allMenu {
+    float:right;
+    margin-right: 20px;
+    right:0px;
+    color:#49DEC3;
+    font-weight: bold;
+  }
+  .reviewContainer {
+    display:grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+    padding: 10px;
+  }
+  .reviewGrid {
+    text-align:left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    padding: 20px;
+    max-width: auto;
+  }

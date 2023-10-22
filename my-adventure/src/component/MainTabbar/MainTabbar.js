@@ -3,27 +3,52 @@ import { MyLogo } from "../../assets/logos";
 import Icon from "./icon.png";
 import User from "./userIcon.png";
 import "./styles.css";
+import { motion } from "framer-motion";
 
 class MainTabbar extends React.Component {
   render() {
     return (
-      <div className="contentView">
-        <img src={MyLogo} alt="LOGO" className="logo" />
-        <div className="homeOption contentText" style={{ marginLeft: "35em" }}>
+      <motion.div className="contentView">
+        <motion.img src={MyLogo} alt="LOGO" className="logo" />
+        <motion.div
+          className="homeOption contentText"
+          whileHover={{ color: "#5CD6C0" }}
+          style={{ marginLeft: "25em" }}
+        >
           Home
-        </div>
-        <div className="contentText">Booking</div>
-        <div className="contentText dropdown">
+        </motion.div>
+        <motion.div className="contentText" whileHover={{ color: "#5CD6C0" }}>
+          Booking
+        </motion.div>
+        <motion.div
+          className="contentText dropdown"
+          whileHover={{ color: "#5CD6C0" }}
+        >
           Travel
-            <img src={Icon} alt="icon" className="icon" />
-            <div className="dropdown-content">
-                <a href="#">?</a>
-            </div>
-        </div>
-        <div className="contentText">Travel Protection</div>
-        <div className="contentText">Contacts</div> 
-        <img src={User} alt="icon" className="icon" />  
-      </div>
+          <motion.img src={Icon} alt="icon" className="icon" />
+          <motion.div className="dropdown-content">
+            <motion.a
+              href="#"
+              whileHover={{ backgroundColor: "#FFF", color: "#5CD6C0" }}
+            >
+              ?
+            </motion.a>
+          </motion.div>
+        </motion.div>
+        <motion.div className="contentText" whileHover={{ color: "#5CD6C0" }}>
+          {this.props.option}
+        </motion.div>
+        <motion.div className="contentText" whileHover={{ color: "#5CD6C0" }}>
+          Contacts
+        </motion.div>
+        <motion.img
+          src={User}
+          alt="icon"
+          whileHover={{ scale: 1.5 }}
+          whileTap={{ scale: 1.0 }}
+          style={{ marginLeft: "5em" }}
+        />
+      </motion.div>
     );
   }
 }
