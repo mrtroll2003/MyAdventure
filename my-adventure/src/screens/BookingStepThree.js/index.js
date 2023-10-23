@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
-import './BookingScreen2.css'
+import './styles.css'
 import 'tailwindcss/tailwind.css';
-import CustomerBox from '../../components/CustomerBox/CustomerBox';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import CustomerTextBox from '../../components/CustomerTextBox';
+import Header from '../../component/Header';
+import MainTabbar from '../../component/MainTabbar/MainTabbar';
+import Footer from '../../component/Footer/Footer';
 
-export default function BookingScreen2() {
+export default function BookingStepThree() {
   const [transport, setTranspott] = useState("");
   const [hotel, setHotel] = useState("");
   const [tour, setTour] = useState("");
@@ -30,7 +33,8 @@ export default function BookingScreen2() {
 
   return (
     <div>
-      <div>Tab Bar</div>
+      <Header></Header>
+      <MainTabbar option = "Your Booking"/>
       <div className='content'>
         <div className='title'>
           <h2 className='welcome'><mark className='highlight'>Welcome To Our</mark></h2>
@@ -41,13 +45,13 @@ export default function BookingScreen2() {
           <img src={require("../../assets/icons/tick.png")} alt='tick'/>
           <div className='nameofprogress'>Your selection</div>
           <img src={require("../../assets/icons/line.png")} alt='line' className='marginleft' />
-          <img src={require("../../assets/icons/2inprogress.png")} alt='2inprogress' className='marginleft'/>
+          <img src={require("../../assets/icons/tick.png")} alt='tick' className='marginleft'/>
           <div className='nameofprogress'>Your information</div>
           <img src={require("../../assets/icons/line.png")} alt='line' className='marginleft'/>
-          <img src={require("../../assets/icons/3nextstage.png")} alt='3nextstage' className='marginleft'/>
+          <img src={require("../../assets/icons/3inprogress.png")} alt='3nextstage' className='marginleft'/>
           <div className='stage3color nameofprogress'>Review booking</div>
         </div>
-        <div className="yourSelectionContainer">
+        {/* <div className="yourSelectionContainer">
           <div className="yourSelection">
             <div>
               <div className="yourSelectionText">YOUR SELECTION</div>
@@ -80,9 +84,10 @@ export default function BookingScreen2() {
             </div>
             <img style={{marginLeft: "10vw"}} src={require("../../assets/images/world.png")} alt='world'/>
           </div>
-        </div>
+        </div> */}
         <div className="form">
-          <div style={{fontSize: "6vh", fontWeight: 'bold', marginTop: '5vh', color: '#5CD6C0'}}>FILL IN INFORMATION</div>
+          <div style={{fontSize: "6vh", fontWeight: 'bold', marginTop: '5vh', color: '#5CD6C0'}}>REVIEW YOUR BOOKING</div>
+          <div className = "text">This is the formation that you will receive all e - tickets/ mails/ notifications from this booking. Please check carefully not to miss any notifications from my agency! </div>
           <div className='accountBox'>
             <img src={require("../../assets/icons/account.png")} alt="account" style={{width: '2.5vw', height: '2.5vw', marginLeft: '2vw'}} ></img>
             <div className="signIn">
@@ -92,72 +97,80 @@ export default function BookingScreen2() {
           </div>
           <div className="text1" >
             <div style={{color: "#7C8DB0", fontSize: "3vh", marginTop: "2vh",}}>You will be received all e-confirmation mail/ tickets/ vouchers from this booking to contact</div>
-            <div style={{fontSize: "5.5vh", fontWeight: "600", marginTop: "6vh"}}>Enter Your Details</div>
+            <div style={{fontSize: "5.5vh", fontWeight: "600", marginTop: "6vh"}}>Your Detail Booking</div>
             <div className="note">
               <img src={require("../../assets/icons/note.png")} alt="note" style={{width: "2.3vw", height: "2.3vw", marginLeft: "2vw"}}></img>
-              <div style={{marginLeft: "2vw", fontSize: "2.5vh"}}>Almost done! Just fill in the * required info</div>
+              <div style={{marginLeft: "2vw", fontSize: "2.5vh"}}>You must check carefully to avoid the information errors</div>
             </div>
           </div>
           <div className="bookingForm">
             <div className="heading1">1. Customer's Information</div>
             <div className="heading2">a. Adult</div>
             <div className="infoTag">
-              <CustomerBox name="Adult 1" type="adult" />
-              <CustomerBox name="Adult 2" type="adult"/>
+              <CustomerTextBox name="Adult 1" type="adult" />
+              <CustomerTextBox name="Adult 2" type="adult"/>
             </div>
             <div className="heading2">b. Children</div>
             <div className="infoTag">
-              <CustomerBox name="Children 1"/>
-              <CustomerBox name="Children 2"/>
+              <CustomerTextBox name="Children 1"/>
+              <CustomerTextBox name="Children 2"/>
             </div>
             <div className="heading1" style={{marginTop: "6vh"}}>2. Travel's Information</div>
-            <div style={{display: "flex", flexDirection: "row", alignItems: "center",}}>
-              <div className="heading2">Kinds of transportation<span style={{color: "red"}}>*</span>:</div>
-              <div style={{fontSize: "3vh", marginTop: "2vh", marginLeft: "5vw"}}>
-                <input type="radio" name="option" value="Plane" checked={transport === "Plane"} onChange={handleTransportChange} /> Plane
-                <input type="radio" name="option" value="Coach" checked={transport === "Coach"} onChange={handleTransportChange} style={{marginLeft: "5vw"}}/> Coach
+            <div style={{display: "flex", flexDirection: "row", alignItems: "baseline",}}>
+              <div className="heading2">Departure-Destination:</div>
+              <div style={{fontSize: "3vh", marginLeft: "6vw"}}>
+                Sài Gòn - Sapa
               </div>
             </div>
 
-            <div style={{display: "flex", flexDirection: "row", alignItems: "center",}}>
-              <div className="heading2">Range of hotel<span style={{color: "red"}}>*</span>:</div>
-              <div style={{fontSize: "3vh", marginTop: "2vh", marginLeft: "10.5vw"}}>
-                <input type="radio" name="option1" value="3stars" checked={hotel === "3stars"} onChange={handleHotelChange} /> 3 stars
-                <input type="radio" name="option1" value="4stars" checked={hotel === "4stars"} onChange={handleHotelChange} style={{marginLeft: "5vw"}}/> 4 stars
-                <input type="radio" name="option1" value="5stars" checked={hotel === "5stars"} onChange={handleHotelChange} style={{marginLeft: "5vw"}}/> 5 stars
+            <div style={{display: "flex", flexDirection: "row", alignItems: "baseline",}}>
+              <div className="heading2">Kinds of transportation:</div>
+              <div style={{fontSize: "3vh", marginLeft: "5.6vw"}}>
+                Plane
               </div>
             </div>
 
-            <div style={{display: "flex", flexDirection: "row", alignItems: "center",}}>
-              <div className="heading2">Kinds of Tour<span style={{color: "red"}}>*</span>:</div>
-              <div style={{fontSize: "3vh", marginTop: "2vh", marginLeft: "11.5vw"}}>
-                <input type="radio" name="option2" value="VIP" checked={tour === "VIP"} onChange={handleTourChange} /> VIP
-                <input type="radio" name="option2" value="Economy" checked={tour === "Economy"} onChange={handleTourChange} style={{marginLeft: "5vw"}}/> Economy
+            <div style={{display: "flex", flexDirection: "row", alignItems: "baseline",}}>
+              <div className="heading2">Range of hotel:</div>
+              <div style={{fontSize: "3vh", marginLeft: "11vw"}}>
+                3 stars
               </div>
             </div>
 
-            <div style={{display: "flex", flexDirection: "row", alignItems: "center", marginTop: "5vh"}}>
-              <div className="heading2" style={{marginTop: "0"}}>Pickup Address<span style={{color: "red"}}>*</span>:</div>
-              <input
-                value ={address}
-                onChange={handleAddressChange}
-                type='text'
-                style={{width: "40vw", height: "6vh", borderRadius: "10vh", fontSize:"3vh", paddingLeft: "2vw", marginLeft: "10vw", border: "0.2vh solid black"}}
-              />
+            <div style={{display: "flex", flexDirection: "row", alignItems: "baseline",}}>
+              <div className="heading2">Kinds of tour:</div>
+              <div style={{fontSize: "3vh", marginLeft: "12.1vw"}}>
+                Economy
+              </div>
             </div>
 
-            <div style={{display: "flex", flexDirection: "row", alignItems: "center", marginTop: "5vh", paddingBottom: "3vh"}}>
-              <div className="heading2" style={{marginTop: "0"}}>Expected Departure Date<span style={{color: "red"}}>*</span>:</div>
-              <div style={{marginLeft: "3.8vw" }}>
-                <DatePicker popupStyle={{ zIndex: 9999, position: 'fixed' }}  selected={departuretDate} onChange={(date) => setDeparturetDate(date)} dateFormat={"dd/MM/yyyy"}  className="datePicker" />
+            <div style={{display: "flex", flexDirection: "row", alignItems: "baseline",}}>
+              <div className="heading2">Pickup Address:</div>
+              <div style={{fontSize: "3vh", marginLeft: "10.5vw"}}>
+                123 Dinh Bo Linh, ward 6, Binh Thanh Dis, HCM City
               </div>
-            </div>  
+            </div>
+
+            <div style={{display: "flex", flexDirection: "row", alignItems: "baseline",}}>
+              <div className="heading2">Expected departure date:</div>
+              <div style={{fontSize: "3vh", marginLeft: "4.5vw"}}>
+                10/10/2023
+              </div>
+            </div> 
           </div>
         </div>
 
-        <div>
-          <button style={{width: "8vw", height: "8vh", backgroundColor: "#5CD6C0", borderRadius: "5vh", color: "white", fontWeight: "600", marginTop: "5vh", position: "relative", left: "85vw", fontSize: "3vh"}}>Next Step</button>
+        <div style={{display: "flex", justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{width: "70vw", fontSize: "3vh", marginTop: "5vh"}}>
+          When you press “<span style={{color: "#5CD6C0" , fontWeight: "bold"}}>Submit</span>" button, your <span style={{fontWeight: 'bold'}}>request</span> about your booking will be <span style={{fontWeight: 'bold'}}>sent to my agency</span>. Then, we will <span style={{fontWeight: 'bold'}}>arrange the trip</span> that meet your requirements as much as possible. After we handle this booking, we will <span style={{fontWeight: "bold"}}>send confirmation email to your given account</span>. Please take note that! 
+          </div> 
         </div>
+
+        <div>
+          <button style={{width: "8vw", height: "8vh", backgroundColor: "#5CD6C0", borderRadius: "5vh", color: "white", fontWeight: "600", marginTop: "5vh", position: "relative", left: "85vw", fontSize: "3vh"}}>Submit</button>
+        </div>
+
+        <Footer/>
       </div>
     </div>
   )
