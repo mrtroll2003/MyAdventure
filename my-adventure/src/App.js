@@ -10,6 +10,4 @@ import TourSearch from "./component/TourSearch/TourSearch";
 import MainTabbar from "./component/MainTabbar/MainTabbar";
 function App() {
   return <BookingStepOne  />
-}
-
 export default App;
