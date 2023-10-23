@@ -1,33 +1,64 @@
+.content {
+  background-image: url('../../assets/images/BookingBackground.png');
+  background-size: 'cover';
+  background-repeat: no-repeat;
+}
 
-.imagebox {
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 8%;
+  padding-left: 10%;
+}
+
+.welcome {
+  font-size: 5vh;
+  margin: 0;
+  font-weight: 300;
+}
+
+.myadventure {
+  font-size: 10vh;
+  margin-top: 0.7vh;
+  margin-bottom: 0;
+}
+
+.imageBox {
     display:flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .polaroid {
-    margin-top: 20px;
     width: 30%;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: 25px;
     border-radius: 20px;
-    margin-left: 25px;
     float: left;
+    margin-top: -6vh;
   }
   .container {
     text-align: left;
     padding: 10px 20px;
   }
-  a.allMenu {
-    float:right;
-    margin-right: 20px;
-    right:0px;
-    color:#49DEC3;
-    font-weight: bold;
+  .allMenu {
+    float: right;
+    right:0;
+    color:#A1B0CC;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .allMenu:active {
+    transform: scale(0.85); /* The button will slightly shrink when clicked */
   }
   .reviewContainer {
     display:grid;
     grid-template-columns: auto auto auto;
-    grid-gap: 20px;
-    padding: 10px;
+    grid-column-gap: 10vw;
+    grid-row-gap: 5vh;
+    margin-top: -5vh;
+    padding-bottom: 6vh;
   }
   .reviewGrid {
     text-align:left;

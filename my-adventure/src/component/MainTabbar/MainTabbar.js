@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 class MainTabbar extends React.Component {
   render() {
     return (
-      <motion.div className="contentView">
+      <motion.div className="contentView1">
         <motion.img src={MyLogo} alt="LOGO" className="logo" />
         <motion.div
           className="homeOption contentText"

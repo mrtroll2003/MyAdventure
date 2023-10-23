@@ -11,6 +11,7 @@ const CustomerBox = ({ type, name  }) => {
   const [email, setEmail] = useState("");
   const [citizenID, setCitizenID] = useState("");
   const [phone, setPhone] = useState("");
+  const [displayName, setDisplayName] =useState("");
 
   const [selectedFile, setSelectedFile] = useState();
 
@@ -18,18 +19,6 @@ const CustomerBox = ({ type, name  }) => {
     setSelectedFile(event.target.files[0]);
   };
 
-  // const handleUploadClick = () => {
-  //   const formData = new FormData();
-  //   formData.append('file', selectedFile);
-
-  //   fetch('YOUR_UPLOAD_URL', {
-  //     method: 'POST',
-  //     body: formData,
-  //   })
-  //   .then((response) => response.json())
-  //   .then((data) => console.log(data))
-  //   .catch((error) => console.error(error));
-  // };
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
@@ -37,6 +26,7 @@ const CustomerBox = ({ type, name  }) => {
 
   const handleNameChange = (event) => {
     setFullName(event.target.value);
+    setDisplayName(event.target.value);
   };
 
   const handleEmailChange = (event) => {
@@ -60,7 +50,7 @@ const CustomerBox = ({ type, name  }) => {
       <div className="box-container" onClick={toggleDropdown} style={{display: "flex", justifyContent: "space-between"}}>
         <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
           <img src={(type==="adult" ? require("../../assets/icons/adult2.png") : require("../../assets/icons/child.png"))} alt="adult2" style={{width: "1.5vw", height: "1.5vw"}}></img>
-          <div style={{marginLeft: "2vw", fontSize: "3vh"}}>{name}</div>
+          <div style={{marginLeft: "2vw", fontSize: "3vh"}}>{displayName}</div>
         </div>
           <button onClick={() => setIsOpen(!isOpen)} style={{marginRight: "2vw", justifyContent: "center", alignItems: "center"}}>
             {
