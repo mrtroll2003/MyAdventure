@@ -1,4 +1,4 @@
-.customer-box {
+.customerBox {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,15 +10,15 @@
     margin-top: 2vh;
 }
 
-.customer-box.open {
+.customerBox.open {
     overflow: hidden; /* Hide the overflow when the details are hidden */
   }
   
-  .customer-box.open .details {
+  .customerBox.open .details {
     margin-top: 2vh; /* Add margin-top when the details are shown */
   }
 
-.box-container {
+.boxContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
