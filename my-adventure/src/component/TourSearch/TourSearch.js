@@ -1,70 +1,44 @@
-import React from "react";
+import React from 'react'
 import { motion } from "framer-motion";
-import "./styles.css";
+import './styles.css'
 
-export class TourSearch extends React.Component {
-    render() {
-      return (
-        <div className="contentView">
-          <motion.form>
-            <motion.label
-                for="depart"
-                className="contentText"
-                //style="display:block;"
-            >
-                Depart from-Arrive to
-            </motion.label>
-            <motion.select id="depart" name="depart" className="box">
-                <motion.option value="au">Australia</motion.option>
-            </motion.select>
-          </motion.form>
-          
-          <motion.form>
-            <motion.label
-                for="dtime"
-                className="contentText"
-                //style="display:block;"
-            >
-                Departing
-            </motion.label>
-            <motion.input type="text" id="dtime" name="dtime" placeholder="dd/mm/yyyy" className="box"/>
-          </motion.form>
-          <motion.form>
-            <motion.label
-                for="rtime"
-                className="contentText"
-                //style="display:block;"
-            >
-                Returning
-            </motion.label>
-            <motion.input type="text" id="rtime" name="rtime" placeholder="dd/mm/yyyy" className="box"/>
-          </motion.form>
-          <motion.form>
-            <motion.label
-                for="numAdult"
-                className="contentText"
-                //style="display:block;"
-            >
-                Adult
-            </motion.label>
-            <motion.input type="number" id="numAdult" name="numAdult" className="box" min="0"/>
-          </motion.form>
-          <motion.form>
-            <motion.label
-                for="numChild"
-                className="contentText"
-                //style="display:block;"
-            >
-                Child (under 16)
-            </motion.label>
-            <motion.input type="number" id="numChild" name="numChild" className="box" min="0"/>
-          </motion.form>
-          <motion.div className="contentText signUp" whileTap={{ scale: 1.5 }}>
-            Next Step
-          </motion.div>
-        </div>
-      );
-    }
-  }
+const TourSearch = ()  =>{
+  return (
+    <div className='contentView'>
+      <div>
+        <div style={{color: "#5CD6C0"}}>Depart From -Arrive To</div>
+        <motion.select id="depart" name="depart" className="box">
+          <motion.option value="" disabled selected>Choose your tour</motion.option>
+          <motion.option value="au">Australia</motion.option>
+        </motion.select>
+      </div>
 
-  
+      <div style={{marginLeft: "2vw"}}>
+        <div style={{color: "#5CD6C0"}}>Departing</div>
+        <motion.input type="date" id="dtime" name="dtime" placeholder="dd/mm/yyyy" className="box"/>
+      </div>
+
+      <div style={{marginLeft: "2vw"}}>
+        <div style={{color: "#5CD6C0"}}>Returning</div>
+        <motion.input type="date" id="dtime" name="dtime" placeholder="dd/mm/yyyy" className="box"/>
+      </div>
+
+      <div style={{marginLeft: "2vw"}}>
+        <div style={{color: "#5CD6C0"}}>Adult</div>
+        <motion.input type="number" id="numAdult" name="numAdult" className="box" min="0" style={{width: "5vw"}}/>
+      </div>
+
+      <div style={{marginLeft: "2vw"}}>
+        <div style={{color: "#5CD6C0"}}>Children (under 16)</div>
+        <motion.input type="number" id="numAdult" name="numAdult" className="box" min="0" style={{width: "5vw"}}/>
+      </div>
+
+      <motion.div className="contentText signUp" whileTap={{ scale: 1.5 }}>
+        Next Step
+      </motion.div>
+      
+    </div>
+  )
+}
+
+export default TourSearch;
