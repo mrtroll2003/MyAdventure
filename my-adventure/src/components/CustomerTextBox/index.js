@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles.css'
+import styles from './styles.module.css'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -43,20 +43,20 @@ const CustomerTextBox = ({ type, name  }) => {
   };
 
   return (
-    <div className={`customer-box ${isOpen ? 'open' : ''}`}>
-      <div className="box-container" onClick={toggleDropdown} style={{display: "flex", justifyContent: "space-between"}}>
+    <div className={`${styles.customerBox} ${isOpen ? 'open' : ''}`}>
+      <div className={styles.boxContainer} onClick={toggleDropdown} style={{display: "flex", justifyContent: "space-between"}}>
         <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
           <img src={(type==="adult" ? require("../../assets/icons/adult2.png") : require("../../assets/icons/child.png"))} alt="adult2" style={{width: "1.5vw", height: "1.5vw"}}></img>
           <div style={{marginLeft: "2vw", fontSize: "3vh"}}>{name}</div>
         </div>
           <button onClick={() => setIsOpen(!isOpen)} style={{marginRight: "2vw", justifyContent: "center", alignItems: "center"}}>
             {
-              isOpen ? <img src={require("../../assets/icons/dropdownOpen.png")} alt="open" className="button"/> : <img src={require("../../assets/icons/dropdownClose.png")} alt="close" className="button"  />
+              isOpen ? <img src={require("../../assets/icons/dropdownOpen.png")} alt="open" className={styles.button}/> : <img src={require("../../assets/icons/dropdownClose.png")} alt="close" className={styles.button}  />
             }
           </button>
       </div>
       {isOpen && (
-        <div className="details">
+        <div className={styles.details}>
           <div style={{marginTop: "2vh", display: "flex", flexDirection: "row", alignItems: "center", fontSize: "2.5vh"}}>
             <div>Full Name:</div>
             <div style = {{marginLeft: "10.3vw"}}>Lê Thị Bích Hằng</div>
@@ -80,7 +80,7 @@ const CustomerTextBox = ({ type, name  }) => {
                     <div style = {{marginLeft: "10.5vw"}}>12345678</div>
                 </div>
             ) : (
-              <div className="row" style={{marginTop: "3vh", marginBottom: "1vh", justifyContent: 'flex-start'}}>
+              <div className={styles.row} style={{marginTop: "3vh", marginBottom: "1vh", justifyContent: 'flex-start'}}>
                 <div style={{fontSize: "2.5vh",}}>Birth Certificate:</div>
                 <img src= {require("../../assets/images/birthcert.png")} alt="birthcert" style={{width:"5vw", height: "auto" , marginLeft: "7vw"}}></img>
                 <span style={{marginLeft: "2vw"}}>birthcert.png</span>
