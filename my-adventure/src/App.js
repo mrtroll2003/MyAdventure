@@ -11,6 +11,7 @@ import MainTabbar from "./component/MainTabbar/MainTabbar";
 import InternationalTourScreen from "./screens/InternationalTourScreen";
 import VietNamTourScreen from "./screens/VietNamTourScreen";
 import YourBooking from "./screens/YourBooking";
+import BookingManagement from "./screens/BookingManagement";
 import BookingDetailedManagement from "./screens/BookingDetailedManagement";
 function App() {
   return <BookingDetailedManagement/>
