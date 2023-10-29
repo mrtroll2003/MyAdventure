@@ -19,8 +19,10 @@
   margin-left: 2em;
 }
 
-.icon {
+.tabbarIcon {
   margin-left: 0.5em;
+  width: 50%;
+  height: 10%;
 }
 .dropdown {
   position: relative;
