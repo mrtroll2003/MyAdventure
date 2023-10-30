@@ -10,10 +10,11 @@ import MainTabbar from "./component/MainTabbar/MainTabbar";
 import InternationalTourScreen from "./screens/InternationalTourScreen";
 import YourBooking from "./screens/YourBooking";
 import BookingDetailedManagement from "./screens/BookingDetailedManagement";
+import TourDetail from "./screens/TourDetail";
 function App() {
   return (
     <div>
-      <DetailBookingScreen />
+      <TourDetail />
     </div>
   );
 }
