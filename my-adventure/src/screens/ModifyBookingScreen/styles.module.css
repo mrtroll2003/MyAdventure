@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'NunitoSans';
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf") format("truetype");
+}
+.detailBookingBackground {
+    display: flex;
+    flex-direction: column;
+    background-image: url("../../assets/images/MyBookingBG.png");
+    font-family: "NunitoSans";
+    padding-bottom: 20%;
+}
+.greetings {
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+.text {
+    font-size: 25px;
+    font-weight: 400;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.mainContentContainer {
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
+                0 4px 8px rgba(0, 0, 0, 0.25), 
+                0 8px 16px rgba(0, 0, 0, 0.25), 
+                0 16px 32px rgba(0, 0, 0, 0.25),
+                0 32px 64px rgba(0, 0, 0, 0.25),
+                0 64px 128px rgba(0, 0, 0, 0.2),
+                0 128px 256px rgba(0, 0, 0, 0.2),
+                0 256px 512px rgba(0, 0, 0, 0.2);
+    background-color: #87F4E0;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2%;
+}
+.title {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 50px;
+}
+.statusContainer {
+    align-self: center;
+    text-align: center;
+    width: 30%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 25px;
+}
+.accountBox {
+    width: 70vw;
+    height: 15vh;
+    background-color: white;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    border: 0.2vh solid black;
+}
+.signIn {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+    margin-left: 3vw;
+    font-size: 2.5vh;
+}
+.accountBoxContent {
+    border: 2px solid black;
+    text-indent: 10%;
+    border-radius: 100px;
+    width: 150%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+}
+.bookingForm {
+    width: 70vw;
+    height: 200vh;
+    margin-top: 2vh;
+    height: auto;
+}
+.heading1 {
+    font-size: 4vh;
+    margin-top: 3vh;
+    margin-left: 3vw;
+    font-weight: 500;
+}
+.heading2 {
+    font-size: 3vh;
+    margin-top: 5vh;
+    margin-left: 6vw;
+    font-weight: 500;
+}
+.infoTag {
+    margin-left: 3vw;
+}
