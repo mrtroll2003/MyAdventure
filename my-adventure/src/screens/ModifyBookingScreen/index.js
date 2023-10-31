@@ -1,13 +1,16 @@
 import React from "react";
+import { motion } from "framer-motion";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import Header from "../../component/Header";
 import MainTabbar from "../../component/MainTabbar/MainTabbar";
 import CustomerBox from "../../components/CustomerBox/CustomerBox";
+import JourneyOptionBox from "../../component/JourneyOptionBox/JourneyOptionBox";
 
-import { motion } from "framer-motion";
 import styles from "./styles.module.css";
 
-class DetailBookingScreen extends React.Component {
+class ModifyBookingScreen extends React.Component {
   render() {
     let form = {
       transport: "",
@@ -15,9 +18,11 @@ class DetailBookingScreen extends React.Component {
       tour: "",
       address: "",
       departuretDate: "",
+      journeyOptions: ["Sài Gòn - Sapa", "Option 1", "Option 2"],
     };
     let user = {
       name: "Lê Thị Bích Hằng",
+      email: "21522041@gm.uit.edu.vn",
     };
     let tour = {
       id: "1234",
@@ -96,32 +101,7 @@ class DetailBookingScreen extends React.Component {
             >
               {tour.status[tour.status_code]}
             </div>
-            {/* Modify & Cancel Buttons */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row-reverse",
-                marginTop: "5%",
-              }}
-            >
-              <motion.button
-                className={styles.optionBtn}
-                style={{ backgroundColor: "#FF8139" }}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9, rotate: "25deg" }}
-              >
-                Cancel
-              </motion.button>
-              <motion.button
-                className={styles.optionBtn}
-                style={{ backgroundColor: "#66F235" }}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9, rotate: "-25deg" }}
-              >
-                Modify
-              </motion.button>
-            </div>
-            {/* Account Box */}
+            {/* Account box */}
             <p className={styles.text} style={{ marginTop: "5%" }}>
               We will contact or send notifications to you via this contact:
             </p>
@@ -135,8 +115,19 @@ class DetailBookingScreen extends React.Component {
                 style={{ width: "2.5vw", height: "2.5vw", marginLeft: "2vw" }}
               />
               <div className={styles.signIn}>
-                <div style={{ fontWeight: "600" }}>You signed in as</div>
-                <div style={{ marginTop: "2vh" }}>21522041@gm.uit.edu.vn</div>
+                <motion.div
+                  className={styles.accountBoxContent}
+                  style={{ fontWeight: 900 }}
+                  whileTap={{ backgroundColor: "#87F4E0" }}
+                >
+                  {user.name}
+                </motion.div>
+                <motion.div
+                  className={styles.accountBoxContent}
+                  whileTap={{ backgroundColor: "#87F4E0" }}
+                >
+                  {user.email}
+                </motion.div>
               </div>
             </motion.div>
             {/* Your Detail Booking */}
@@ -150,17 +141,7 @@ class DetailBookingScreen extends React.Component {
             >
               Your detail booking
             </div>
-            <div className={styles.note}>
-              <img
-                src={require("../../assets/icons/note.png")}
-                alt="note"
-                style={{ width: "2.3vw", height: "2.3vw", marginLeft: "2vw" }}
-              ></img>
-              <div style={{ marginLeft: "2vw", fontSize: "2.5vh" }}>
-                You must check carefully to avoid the information errors
-              </div>
-            </div>
-            {/* Booking Form */}
+            {/* Booking form */}
             <div className={styles.bookingForm} style={{ alignSelf: "center" }}>
               {/* 1. Customer's Information */}
               <div className={styles.heading1}>1. Customer's Information</div>
@@ -185,74 +166,173 @@ class DetailBookingScreen extends React.Component {
                   alignItems: "baseline",
                 }}
               >
-                <div className="heading2">Departure-Destination:</div>
-                <div style={{ fontSize: "3vh", marginLeft: "6vw" }}>
-                  Sài Gòn - Sapa
+                <div className="heading2" style={{ marginRight: "10%" }}>
+                  Departure-Destination:
                 </div>
+                <JourneyOptionBox options={form.journeyOptions} />
               </div>
 
               <div
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  alignItems: "baseline",
-                }}
-              >
-                <div className="heading2">Kinds of transportation:</div>
-                <div style={{ fontSize: "3vh", marginLeft: "5.6vw" }}>
-                  Plane
-                </div>
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "baseline",
+                  alignItems: "center",
+                  //   border: "2px solid red",
                 }}
               >
                 <div className="heading2">Range of hotel:</div>
-                <div style={{ fontSize: "3vh", marginLeft: "11vw" }}>
+                <div
+                  style={{
+                    fontSize: "3vh",
+                    marginTop: "2vh",
+                    marginLeft: "10.5vw",
+                  }}
+                >
+                  <input
+                    type="radio"
+                    name="option1"
+                    value="3stars"
+                    checked={form.hotel === "3stars"}
+                    onChange={handleHotelChange}
+                  />{" "}
                   3 stars
+                  <input
+                    type="radio"
+                    name="option1"
+                    value="4stars"
+                    checked={form.hotel === "4stars"}
+                    onChange={handleHotelChange}
+                    style={{ marginLeft: "5vw" }}
+                  />{" "}
+                  4 stars
+                  <input
+                    type="radio"
+                    name="option1"
+                    value="5stars"
+                    checked={form.hotel === "5stars"}
+                    onChange={handleHotelChange}
+                    style={{ marginLeft: "5vw" }}
+                  />{" "}
+                  5 stars
                 </div>
               </div>
-
               <div
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  alignItems: "baseline",
+                  alignItems: "center",
                 }}
               >
-                <div className="heading2">Kinds of tour:</div>
-                <div style={{ fontSize: "3vh", marginLeft: "12.1vw" }}>
+                <div className="heading2">Kinds of transportation :</div>
+                <div
+                  style={{
+                    fontSize: "3vh",
+                    marginTop: "2vh",
+                    marginLeft: "5vw",
+                  }}
+                >
+                  <input
+                    type="radio"
+                    name="option"
+                    value="Plane"
+                    checked={form.transport === "Plane"}
+                    onChange={handleTransportChange}
+                  />{" "}
+                  Plane
+                  <input
+                    type="radio"
+                    name="option"
+                    value="Coach"
+                    checked={form.transport === "Coach"}
+                    onChange={handleTransportChange}
+                    style={{ marginLeft: "5vw" }}
+                  />{" "}
+                  Coach
+                </div>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <div className="heading2">
+                  Kinds of Tour<span style={{ color: "red" }}>*</span>:
+                </div>
+                <div
+                  style={{
+                    fontSize: "3vh",
+                    marginTop: "2vh",
+                    marginLeft: "11.5vw",
+                  }}
+                >
+                  <input
+                    type="radio"
+                    name="option2"
+                    value="VIP"
+                    checked={tour === "VIP"}
+                    onChange={handleTourChange}
+                  />{" "}
+                  VIP
+                  <input
+                    type="radio"
+                    name="option2"
+                    value="Economy"
+                    checked={tour === "Economy"}
+                    onChange={handleTourChange}
+                    style={{ marginLeft: "5vw" }}
+                  />{" "}
                   Economy
                 </div>
               </div>
-
               <div
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  alignItems: "baseline",
+                  alignItems: "center",
+                  marginTop: "5vh",
                 }}
               >
-                <div className="heading2">Pickup Address:</div>
-                <div style={{ fontSize: "3vh", marginLeft: "10.5vw" }}>
-                  123 Dinh Bo Linh, ward 6, Binh Thanh Dis, HCM City
+                <div className="heading2" style={{ marginTop: "0" }}>
+                  Pickup Address<span style={{ color: "red" }}>*</span>:
                 </div>
+                <input
+                  value={form.address}
+                  onChange={handleAddressChange}
+                  type="text"
+                  style={{
+                    width: "40vw",
+                    height: "6vh",
+                    borderRadius: "10vh",
+                    fontSize: "3vh",
+                    paddingLeft: "2vw",
+                    marginLeft: "10vw",
+                    border: "0.2vh solid black",
+                  }}
+                />
               </div>
-
               <div
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  alignItems: "baseline",
+                  alignItems: "center",
+                  marginTop: "5vh",
+                  paddingBottom: "3vh",
                 }}
               >
-                <div className="heading2">Expected departure date:</div>
-                <div style={{ fontSize: "3vh", marginLeft: "4.5vw" }}>
-                  10/10/2023
+                <div className="heading2" style={{ marginTop: "0" }}>
+                  Expected Departure Date<span style={{ color: "red" }}>*</span>
+                  :
+                </div>
+                <div style={{ marginLeft: "3.8vw" }}>
+                  <DatePicker
+                    popupStyle={{ zIndex: 9999, position: "fixed" }}
+                    selected={form.departuretDate}
+                    onChange={(date) => setDeparturetDate(date)}
+                    dateFormat={"dd/MM/yyyy"}
+                    className="datePicker"
+                  />
                 </div>
               </div>
             </div>
@@ -263,4 +343,4 @@ class DetailBookingScreen extends React.Component {
   }
 }
 
-export default DetailBookingScreen;
+export default ModifyBookingScreen;

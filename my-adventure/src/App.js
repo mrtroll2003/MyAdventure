@@ -1,6 +1,7 @@
 import "./App.css";
 import VietNamTourScreen from "./screens/VietNamTourScreen";
 import DetailBookingScreen from "./screens/DetailBookingScreen";
+import ModifyBookingScreen from "./screens/ModifyBookingScreen";
 import BookingStepTwo from "./screens/BookingStepTwo";
 import BookingStepThree from "./screens/BookingStepThree.js";
 import CustomerTextBox from "./components/CustomerTextBox";
@@ -14,7 +15,7 @@ import TourDetail from "./screens/TourDetail";
 function App() {
   return (
     <div>
-      <TourDetail />
+      <ModifyBookingScreen />
     </div>
   );
 }
