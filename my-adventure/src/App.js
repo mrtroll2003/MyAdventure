@@ -13,7 +13,8 @@ import VietNamTourScreen from "./screens/VietNamTourScreen";
 import YourBooking from "./screens/YourBooking";
 import BookingManagement from "./screens/BookingManagement";
 import BookingDetailedManagement from "./screens/BookingDetailedManagement";
+import { MakingArrangement } from "./screens/MakingArrangement";
 function App() {
-  return <BookingDetailedManagement/>
+  return <MakingArrangement></MakingArrangement>
 }
 export default App;
