@@ -2,6 +2,8 @@ import React from "react";
 import DestinationSection from "../../component/DestinationSection/DestinationSection";
 import Footer from "../../component/Footer/Footer";
 
+import Header from "../../component/Header";
+import MainTabbar from "../../component/MainTabbar/MainTabbar";
 import Illustration01 from "../../assets/images/illustration/illustration01.png";
 import Illustration02 from "../../assets/images/illustration/illustration02.png";
 import Illustration03 from "../../assets/images/illustration/illustration03.png";

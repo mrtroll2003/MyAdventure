@@ -25,7 +25,9 @@ class InternationalTourScreen extends React.Component {
         {/* International Tour Intro */}
         <div className={styles.internationalTourIntroBackground}>
           <div className={styles.internationalTourIntroLayer}>
-            <h1 className={styles.internationalTourIntroText}>INTERNATIONAL TOURS</h1>
+            <h1 className={styles.internationalTourIntroText}>
+              INTERNATIONAL TOURS
+            </h1>
           </div>
         </div>
         {/* DESTINATIONS IN ASIA */}

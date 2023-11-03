@@ -175,7 +175,7 @@ class DetailBookingScreen extends React.Component {
                 <CustomerBox name="Children 2" />
               </div>
               {/* 2. Travel's Information */}
-              <div className="heading1" style={{ marginTop: "6vh" }}>
+              <div className={styles.heading1} style={{ marginTop: "6vh" }}>
                 2. Travel's Information
               </div>
               <div
@@ -185,7 +185,7 @@ class DetailBookingScreen extends React.Component {
                   alignItems: "baseline",
                 }}
               >
-                <div className="heading2">Departure-Destination:</div>
+                <div className={styles.heading2}>Departure-Destination:</div>
                 <div style={{ fontSize: "3vh", marginLeft: "6vw" }}>
                   Sài Gòn - Sapa
                 </div>
@@ -198,7 +198,7 @@ class DetailBookingScreen extends React.Component {
                   alignItems: "baseline",
                 }}
               >
-                <div className="heading2">Kinds of transportation:</div>
+                <div className={styles.heading2}>Kinds of transportation:</div>
                 <div style={{ fontSize: "3vh", marginLeft: "5.6vw" }}>
                   Plane
                 </div>
@@ -211,7 +211,7 @@ class DetailBookingScreen extends React.Component {
                   alignItems: "baseline",
                 }}
               >
-                <div className="heading2">Range of hotel:</div>
+                <div className={styles.heading2}>Range of hotel:</div>
                 <div style={{ fontSize: "3vh", marginLeft: "11vw" }}>
                   3 stars
                 </div>
@@ -224,7 +224,7 @@ class DetailBookingScreen extends React.Component {
                   alignItems: "baseline",
                 }}
               >
-                <div className="heading2">Kinds of tour:</div>
+                <div className={styles.heading2}>Kinds of tour:</div>
                 <div style={{ fontSize: "3vh", marginLeft: "12.1vw" }}>
                   Economy
                 </div>
@@ -237,7 +237,7 @@ class DetailBookingScreen extends React.Component {
                   alignItems: "baseline",
                 }}
               >
-                <div className="heading2">Pickup Address:</div>
+                <div className={styles.heading2}>Pickup Address:</div>
                 <div style={{ fontSize: "3vh", marginLeft: "10.5vw" }}>
                   123 Dinh Bo Linh, ward 6, Binh Thanh Dis, HCM City
                 </div>
@@ -250,7 +250,7 @@ class DetailBookingScreen extends React.Component {
                   alignItems: "baseline",
                 }}
               >
-                <div className="heading2">Expected departure date:</div>
+                <div className={styles.heading2}>Expected departure date:</div>
                 <div style={{ fontSize: "3vh", marginLeft: "4.5vw" }}>
                   10/10/2023
                 </div>
