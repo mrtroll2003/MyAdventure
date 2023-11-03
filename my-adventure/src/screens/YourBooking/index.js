@@ -21,8 +21,8 @@ const YourBooking = () => {
           tourStatus={booking.tourStatus}
         />
       ))}
-      </div>
-    );
-  };
-  
-  export default YourBooking;
+    </div>
+  );
+};
+
+export default YourBooking;

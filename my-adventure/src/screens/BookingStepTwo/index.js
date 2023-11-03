@@ -4,9 +4,9 @@ import 'tailwindcss/tailwind.css';
 import CustomerBox from '../../components/CustomerBox/CustomerBox';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Header from '../../component/Header';
-import Tabbar from '../../component/Tabbar/Tabbar';
-import Footer from '../../component/Footer/Footer';
+import Header from "../../component/Header";
+import Tabbar from "../../component/Tabbar/Tabbar";
+import Footer from "../../component/Footer/Footer";
 
 export default function BookingStepTwo() {
   const [transport, setTranspott] = useState("");
@@ -15,21 +15,21 @@ export default function BookingStepTwo() {
   const [address, setAddress] = useState("");
   const [departuretDate, setDeparturetDate] = useState("");
 
-  const handleTransportChange  = (event) => {
-    setTranspott(event.target.value)
-  }
+  const handleTransportChange = (event) => {
+    setTranspott(event.target.value);
+  };
 
-  const handleHotelChange  = (event) => {
-    setHotel(event.target.value)
-  }
+  const handleHotelChange = (event) => {
+    setHotel(event.target.value);
+  };
 
-  const handleTourChange  = (event) => {
-    setTour(event.target.value)
-  }
+  const handleTourChange = (event) => {
+    setTour(event.target.value);
+  };
 
-  const handleAddressChange  = (event) => {
-    setAddress(event.target.value)
-  }
+  const handleAddressChange = (event) => {
+    setAddress(event.target.value);
+  };
 
   return (
     <div>
@@ -80,7 +80,11 @@ export default function BookingStepTwo() {
                 </div>
               </div>
             </div>
-            <img style={{marginLeft: "10vw"}} src={require("../../assets/images/world.png")} alt='world'/>
+            <img
+              style={{ marginLeft: "10vw" }}
+              src={require("../../assets/images/world.png")}
+              alt="world"
+            />
           </div>
         </div>
         <div className={styles.form}>
@@ -105,7 +109,7 @@ export default function BookingStepTwo() {
             <div className={styles.heading2} style={{marginTop: "2vh"}}>a. Adult</div>
             <div className={styles.infoTag}>
               <CustomerBox name="Adult 1" type="adult" />
-              <CustomerBox name="Adult 2" type="adult"/>
+              <CustomerBox name="Adult 2" type="adult" />
             </div>
             <div className={styles.heading2} style={{marginTop: "2vh"}}>b. Children</div>
             <div className={styles.infoTag}>
@@ -142,7 +146,7 @@ export default function BookingStepTwo() {
             <div style={{display: "flex", flexDirection: "row", alignItems: "center", marginTop: "4vh"}}>
               <div className={styles.heading2} style={{marginTop: "0"}}>Pickup Address<span style={{color: "red"}}>*</span>:</div>
               <input
-                value ={address}
+                value={address}
                 onChange={handleAddressChange}
                 type='text'
                 style={{width: "40vw", height: "6vh", borderRadius: "10vh", fontSize:"3vh", paddingLeft: "2vw", border: "0.2vh solid black"}}
@@ -160,11 +164,25 @@ export default function BookingStepTwo() {
         </div>
 
         <div>
-          <button style={{width: "8vw", height: "8vh", backgroundColor: "#5CD6C0", borderRadius: "5vh", color: "white", fontWeight: "600", marginTop: "5vh", position: "relative", left: "85vw", fontSize: "3vh"}}>Next Step</button>
+          <button
+            style={{
+              width: "8vw",
+              height: "8vh",
+              backgroundColor: "#5CD6C0",
+              borderRadius: "5vh",
+              color: "white",
+              fontWeight: "600",
+              marginTop: "5vh",
+              position: "relative",
+              left: "85vw",
+              fontSize: "3vh",
+            }}
+          >
+            Next Step
+          </button>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
-  )
+  );
 }
-

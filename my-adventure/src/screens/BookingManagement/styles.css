@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'NunitoSans';
+    src: url('../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf') format('truetype');
+}
+
+#bookingManagementBoldStatement {
+    margin-top: 1%;
+    text-align: center;
+    font-family: 'NunitoSans';
+    font-size: 60px;
+    font-weight: bolder;
+}
+
+.bookingManagementFilterContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: 2px solid red;
+    align-items: center;
+    justify-items: center;
+}
+
+.bookingManagementNormalFont {
+    width: 150px;
+    font-family: 'NunitoSans';
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.bookingManagementDropDownContainer {
+    display: flex;
+    font-family: 'NunitoSans';
+    font-weight: bolder;
+    font-size: 20px;
+    border: 2px solid black;
+    width: 30%;
+    border-radius: 50px;
+    padding: 0.5%;
+    text-align: left;
+    padding-left: 3%;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+#bookingManagementDropDownIcon {
+    position: relative;
+    padding-top: 5px;
+    width: 20px;
+    height: 25px;
+    float: right;
+    left: 55%;
+    top: 0%;
+}
+
+.bookingManagementDropDownMenu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    margin-top: 40px;
+    left: -33%;
+}
+
+.bookingManagementDropDownMenu li{
+    border: 2px solid black;
+
+}
+
+.bookingManagementUpDownIcon {
+    width: 10%;
+    height: 10px;
+}

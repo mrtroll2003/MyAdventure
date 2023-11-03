@@ -3,10 +3,10 @@ import styles from './styles.module.css'
 import 'tailwindcss/tailwind.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import CustomerTextBox from '../../components/CustomerTextBox';
-import Header from '../../component/Header';
-import MainTabbar from '../../component/MainTabbar/MainTabbar';
-import Footer from '../../component/Footer/Footer';
+import CustomerTextBox from "../../components/CustomerTextBox";
+import Header from "../../component/Header";
+import MainTabbar from "../../component/MainTabbar/MainTabbar";
+import Footer from "../../component/Footer/Footer";
 
 export default function BookingStepThree() {
   const [transport, setTranspott] = useState("");
@@ -15,21 +15,21 @@ export default function BookingStepThree() {
   const [address, setAddress] = useState("");
   const [departuretDate, setDeparturetDate] = useState("");
 
-  const handleTransportChange  = (event) => {
-    setTranspott(event.target.value)
-  }
+  const handleTransportChange = (event) => {
+    setTranspott(event.target.value);
+  };
 
-  const handleHotelChange  = (event) => {
-    setHotel(event.target.value)
-  }
+  const handleHotelChange = (event) => {
+    setHotel(event.target.value);
+  };
 
-  const handleTourChange  = (event) => {
-    setTour(event.target.value)
-  }
+  const handleTourChange = (event) => {
+    setTour(event.target.value);
+  };
 
-  const handleAddressChange  = (event) => {
-    setAddress(event.target.value)
-  }
+  const handleAddressChange = (event) => {
+    setAddress(event.target.value);
+  };
 
   return (
     <div>
@@ -72,7 +72,7 @@ export default function BookingStepThree() {
             <div className={styles.heading2} style={{marginTop: "2vh"}}>a. Adult</div>
             <div className={styles.infoTag}>
               <CustomerTextBox name="Adult 1" type="adult" />
-              <CustomerTextBox name="Adult 2" type="adult"/>
+              <CustomerTextBox name="Adult 2" type="adult" />
             </div>
             <div className={styles.heading2} style={{marginTop: "2vh"}}>b. Children</div>
             <div className={styles.infoTag}>
@@ -126,19 +126,50 @@ export default function BookingStepThree() {
           </div>
         </div>
 
-        <div style={{display: "flex", justifyContent: 'center', alignItems: 'center'}}>
-          <div style={{width: "70vw", fontSize: "3vh", marginTop: "5vh"}}>
-          When you press “<span style={{color: "#5CD6C0" , fontWeight: "bold"}}>Submit</span>" button, your <span style={{fontWeight: 'bold'}}>request</span> about your booking will be <span style={{fontWeight: 'bold'}}>sent to my agency</span>. Then, we will <span style={{fontWeight: 'bold'}}>arrange the trip</span> that meet your requirements as much as possible. After we handle this booking, we will <span style={{fontWeight: "bold"}}>send confirmation email to your given account</span>. Please take note that! 
-          </div> 
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ width: "70vw", fontSize: "3vh", marginTop: "5vh" }}>
+            When you press “
+            <span style={{ color: "#5CD6C0", fontWeight: "bold" }}>Submit</span>
+            " button, your <span style={{ fontWeight: "bold" }}>request</span>{" "}
+            about your booking will be{" "}
+            <span style={{ fontWeight: "bold" }}>sent to my agency</span>. Then,
+            we will <span style={{ fontWeight: "bold" }}>arrange the trip</span>{" "}
+            that meet your requirements as much as possible. After we handle
+            this booking, we will{" "}
+            <span style={{ fontWeight: "bold" }}>
+              send confirmation email to your given account
+            </span>
+            . Please take note that!
+          </div>
         </div>
 
         <div>
-          <button style={{width: "8vw", height: "8vh", backgroundColor: "#5CD6C0", borderRadius: "5vh", color: "white", fontWeight: "600", marginTop: "5vh", position: "relative", left: "85vw", fontSize: "3vh"}}>Submit</button>
+          <button
+            style={{
+              width: "8vw",
+              height: "8vh",
+              backgroundColor: "#5CD6C0",
+              borderRadius: "5vh",
+              color: "white",
+              fontWeight: "600",
+              marginTop: "5vh",
+              position: "relative",
+              left: "85vw",
+              fontSize: "3vh",
+            }}
+          >
+            Submit
+          </button>
         </div>
 
-        <Footer/>
+        <Footer />
       </div>
     </div>
-  )
+  );
 }
-
