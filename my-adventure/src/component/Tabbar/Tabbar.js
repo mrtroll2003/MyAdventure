@@ -1,52 +1,51 @@
 import React from "react";
 import { MyLogo } from "../../assets/logos";
+import styles from "./styles.module.css";
 import { motion } from "framer-motion";
-import Icon from "./icon.png";
-import "./styles.css";
 
 class Tabbar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // isOpen: false, // This is the state of the dropdown on the tabbar
-    };
-  }
-
-  toggleDropDown = () => {
-    this.setState((prevState) => ({
-      isOpen: !prevState.isOpen,
-    }));
-  };
-
   render() {
     return (
-      <div className="contentView">
-        <img src={MyLogo} alt="LOGO" className="logo" />
-        <motion.div
-          className="homeOption contentText"
-          whileTap={{ scale: 1.5 }}
-          style={{ marginLeft: "35em", color: "#007b65" }}
-        >
-          Home
-        </motion.div>
-        <motion.div
-          className="contentText dropdown"
-          whileHover={{ scale: 1.1 }}
-        >
-          Travel
-          <img src={Icon} alt="icon" className="icon" />
-          <div className="dropdown-content">
-            <a href="#">Option 1</a>
-          </div>
-        </motion.div>
-        <motion.div className="contentText" whileTap={{ scale: 1.5 }}>
-          Contacts
-        </motion.div>
-        <motion.div className="contentText" whileTap={{ scale: 1.5 }}>
-          Sign in
-        </motion.div>
-        <motion.div className="contentText signUp" whileTap={{ scale: 1.5 }}>
-          Sign up
+      <div className={styles.contentView1}>
+        <img src={MyLogo} alt="LOGO" className={styles.logo}/>
+        <motion.div className={styles.container}>
+          <motion.div
+            className={styles.contentText}
+            whileHover={{ color: "#5CD6C0" }}
+            style={{ marginLeft: "25em" }}
+            >
+            Home
+          </motion.div>
+
+          <motion.div
+            className={styles.contentText}
+            whileHover={{ color: "#5CD6C0" }}
+            >
+            Travel
+          </motion.div>
+
+          <motion.div
+            className={styles.contentText}
+            whileHover={{ color: "#5CD6C0" }}
+            >
+            Contacts
+          </motion.div>
+
+          <motion.div
+            className={styles.contentText}
+            whileHover={{ color: "#5CD6C0" }}
+            >
+            Sign In
+          </motion.div>
+
+          <motion.button
+            className={styles.button}
+            whileHover={{scale: "1.1"}}
+            >
+            Sign Up
+          </motion.button>
+
+          {/* <motion.img src={User} alt="icon" className={styles.icon} whileHover={{ scale: 1.5 }}/> */}
         </motion.div>
       </div>
     );

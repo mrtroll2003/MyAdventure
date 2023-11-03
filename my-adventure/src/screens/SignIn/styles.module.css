@@ -3,35 +3,39 @@
     src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf");
 }
 
-.globe {
-    float: right;
+.mainView {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 50%;
 }
 
+.globe {
+    float: right;
+    width: 38%;
+}
+
 .companyName {
-    font-size: 40px;
+    font-size: 3.5vh;
     font-weight: 800;
     text-align: center;
     font-family: "Nunito sans", sans-serif;
-    margin-top: 0%;
-    margin-bottom: 0%;
 }
 
 .accountOption {
     font-family: 'Nunito sans', sans-serif;
     font-weight: 800;
-    font-size: 60px;
+    font-size: 7vh;
     text-align: center;
-    margin-top: 0%;
     color: turquoise;
 }
 
 .googleOption {
     background-color: white;
-    box-shadow: 0px 24px 24px rgba(27, 59, 119, 0.3);
-    margin-left: 10%;
-    width: 30%;
-    height: 10vh;
+    box-shadow: 0px 0.5vh 0.5vh rgba(27, 59, 119, 0.3);
+    width: 50%;
+    height: 8vh;
     text-align: center;
     display: flex;  
     align-items: center;
@@ -44,7 +48,7 @@
 .googleOptionFont {
     position: relative;
     font-family: "Nunito sans", sans-serif;
-    font-size: 20px;
+    font-size: 2.5vh;
     font-weight: 800;
     margin-left: 15%;
 }
@@ -52,28 +56,31 @@
 .alternateText {
     color: grey;
     text-align: center;
-    font-size: 18px;
+    font-size: 2vh;
     font-family: "Nunito sans", sans-serif;
-    font-weight: 800;
-    margin-top: 3%;
+    font-weight: bold;
+    margin-top: 3vh;
 }
 
 .subTitle {
     font-family: "Nunito sans",sans-serif;
-    font-weight: 800;
-    font-size: 20px;
+    font-weight: bold;
+    font-size: 2.5vh;
     margin-left: 10%;
+    margin-top: 3vh;
 }
 
 .enterInput {
     margin-left: 10%;
-    width: 30vw;
-    height: 8vh;
-    font-family: 'Nunito sans', sans-serif;
-    font-weight: 800;
-    font-size: 20px;
+    width: 75%;
+    height: 7vh;
+    font-weight: normal;
+    font-size: 2.5vh;
+    margin-top: 1vh;
+    border: 1px solid black;
 
 }
+
 .enterInput:focus {
     outline: none;
     border-color: #66afe9;
@@ -81,34 +88,39 @@
 }
 .enterInput::placeholder {
     font-family: 'Nunito sans', sans-serif;
-    font-weight: 800;
-    font-size: 20px;
-    padding-left: 5%;
+    font-weight: normal;
+    font-size: 2.5vh;
 }
 
 .enterInput[type='text'] {
     font-family: 'Nunito sans', sans-serif;
-    font-weight: 800;
-    font-size: 20px;
+    font-weight: normal;
+    font-size: 2.5vh;
+    padding-left: 5%;
 }
 
 .signInButton {
-    width: 30%;
+    width: 50%;
     height: 8vh;
     background-color:  #5CD6C0;
     font-family: 'Nunito sans',sans-serif;
     font-size: 25px;
     font-weight: 700;
     color: white;
-    margin-top: 5%;
-    margin-left: 10%;
-
+    margin-top: 4vh;
 }
 
 .smallText {
     font-family: 'Nunito sans', sans-serif;
     font-weight: 800;
-    font-size: 20px;
-    margin-left: 15%;
-    
+    font-size: 2vh;
+    margin-top: 2vh;
+}
+
+.forgotText {
+    margin-left: 50%;
+    margin-top: 2vh;
+    font-size: 2vh;
+    color:#5CD6C0;
+    font-weight: 500;
 }

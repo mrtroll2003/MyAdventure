@@ -1,15 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import "./styles.css";
+import styles from "./styles.module.css";
 
 class DestinationSection extends React.Component {
   render() {
     return (
-      <div className="destinationSectionView">
-        <h1 className="destinationSectionTitle">{this.props.children}</h1>
-        <p className="destinationSectionText">{this.props.text}</p>
-        <div className="illustrationView">
+      <div className={styles.destinationSectionView}>
+        <h1 className={styles.destinationSectionTitle}>{this.props.children}</h1>
+        <p className={styles.destinationSectionText}>{this.props.text}</p>
+        <div className={styles.illustrationView}>
           <motion.img
             alt="illus01"
             src={this.props.img[0]}

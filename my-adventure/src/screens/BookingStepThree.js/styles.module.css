@@ -153,6 +153,7 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+    margin-left: 5vw;
 }
 
 .note {
@@ -184,9 +185,9 @@
 
 .heading2 {
     font-size: 3vh;
-    margin-top: 5vh;
     margin-left: 6vw;
     font-weight: 500;
+    width: 30%;
 }
 
 .infoTag {
@@ -201,4 +202,11 @@
     height: 6vh;
     font-size: 3vh;
     padding-left: 2vw;
+  }
+
+  .text {
+    width: 70vw;
+    font-size: 3vh;
+    margin-top: 2vh;
+    font-weight: 500;
   }

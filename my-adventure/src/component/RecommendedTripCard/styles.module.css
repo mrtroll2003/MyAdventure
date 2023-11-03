@@ -9,6 +9,7 @@
     width: 22em;
     height: 32em;
     box-shadow: 5px 10px 20px gray;
+    background-color: white;
 }
 .recTCImage {
     width: 100%;
@@ -20,6 +21,7 @@
     font-family: "NunitoSans";
     font-weight: bold;
     color: rgb(110, 116, 145);
+    margin-top: 3vh;
 }
 .recTCContentText {
     margin-left: 5%;

@@ -1,7 +1,7 @@
 #circleView {   
     display: flex;
-    width: 150px;
-    height: 150px;
+    width: 7vw;
+    height: 7vw;
     background-image: url('../../assets/icons/circle.png');
     background-size: cover;
     background-repeat: no-repeat;

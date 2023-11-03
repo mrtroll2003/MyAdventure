@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import "./styles.css";
+import styles from "./styles.module.css";
 class RecommendedTripCard extends React.Component {
   state = {
     image: "",
@@ -12,16 +12,16 @@ class RecommendedTripCard extends React.Component {
   render() {
     return (
       <motion.div
-        class="recTCView"
+        class={styles.recTCView}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <img src={this.props.image} alt="Place01" className="recTCImage" />
-        <p className="recTCTitleRow">
+        <img src={this.props.image} alt="Place01" className={styles.recTCImage} />
+        <p className={styles.recTCTitleRow}>
           {this.props.titleRow}{" "}
           <span style={{ color: "#5C90D6" }}>{this.props.titleRowPlace}</span>
         </p>
-        <p className="recTCContentText">{this.props.text}</p>
+        <p className={styles.recTCContentText}>{this.props.text}</p>
       </motion.div>
     );
   }
