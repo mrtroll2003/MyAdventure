@@ -23,9 +23,14 @@ class MainTabbar extends React.Component {
         <motion.div
           className="contentText dropdown"
           whileHover={{ color: "#5CD6C0" }}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
           Travel
-          <motion.img src={Icon} alt="icon" className="icon" />
+          <motion.img src={Icon} alt="icon" className="tabbarIcon" />
           <motion.div className="dropdown-content">
             <motion.a
               href="#"

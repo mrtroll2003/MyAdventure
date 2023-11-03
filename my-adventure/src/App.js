@@ -1,20 +1,28 @@
 import "./App.css";
-import BookingStepOne from "./screens/BookingStepOne";
-import HomePageNotSign from "./screens/HomePageNotSign";
+import VietNamTourScreen from "./screens/VietNamTourScreen";
+import DetailBookingScreen from "./screens/DetailBookingScreen";
+import ModifyBookingScreen from "./screens/ModifyBookingScreen";
 import BookingStepTwo from "./screens/BookingStepTwo";
-import HomePageSignedIn from "./screens/HomePageSignedIn";
 import BookingStepThree from "./screens/BookingStepThree.js";
 import CustomerTextBox from "./components/CustomerTextBox";
 import CustomerBox from "./components/CustomerBox/CustomerBox";
 import TourSearch from "./component/TourSearch/TourSearch";
 import MainTabbar from "./component/MainTabbar/MainTabbar";
 import InternationalTourScreen from "./screens/InternationalTourScreen";
-import VietNamTourScreen from "./screens/VietNamTourScreen";
 import YourBooking from "./screens/YourBooking";
-import BookingManagement from "./screens/BookingManagement";
 import BookingDetailedManagement from "./screens/BookingDetailedManagement";
+<<<<<<< HEAD
 import { MakingArrangement } from "./screens/MakingArrangement";
 function App() {
   return <MakingArrangement></MakingArrangement>
+=======
+import TourDetail from "./screens/TourDetail";
+function App() {
+  return (
+    <div>
+      <ModifyBookingScreen />
+    </div>
+  );
+>>>>>>> 8597fa8d3ab0e94caa6dedc48e989c37f2a36426
 }
 export default App;
