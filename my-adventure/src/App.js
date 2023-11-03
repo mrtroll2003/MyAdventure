@@ -2,6 +2,8 @@ import "./App.css";
 import VietNamTourScreen from "./screens/VietNamTourScreen";
 import DetailBookingScreen from "./screens/DetailBookingScreen";
 import ModifyBookingScreen from "./screens/ModifyBookingScreen";
+import HomePageSignedIn from "./screens/HomePageSignedIn";
+import BookingStepOne from "./screens/BookingStepOne";
 import BookingStepTwo from "./screens/BookingStepTwo";
 import BookingStepThree from "./screens/BookingStepThree.js";
 import CustomerTextBox from "./components/CustomerTextBox";
@@ -20,22 +22,27 @@ import ForgotPassword from "./screens/ForgotPassword/index.js";
 
 export default function App() {
   return (
-    // <BrowserRouter>
-    //   <Header/>
-    //   <MainTabbar/>
-    //   <Routes>
-    //     <Route>
-    //       <Route path="/" element={<HomePageSignedIn/>} />
-    //       <Route path="booking" element={<BookingStepOne />} />
-    //       <Route path="vietnam-tours" element={<VietNamTourScreen />} />
-    //       <Route path="international-tours" element={<InternationalTourScreen />} />
-    //       <Route path="yourbooking" element={<YourBooking />} />
-    //     </Route>
-    //   </Routes>
-    // </BrowserRouter>
-    <ForgotPassword/>
+    <BrowserRouter>
+      {/* <Header /> */}
+      {/* <MainTabbar /> */}
+      <Routes>
+        <Route>
+          <Route path="/" element={<HomePageSignedIn />} />
+          <Route path="/booking" element={<BookingStepOne />} />
+          <Route path="/vietnam-tours" element={<VietNamTourScreen />} />
+          <Route
+            path="/international-tours"
+            element={<InternationalTourScreen />}
+          />
+          <Route path="/yourbooking" element={<YourBooking />} />
+          <Route path="/detailbooking" element={<DetailBookingScreen />} />
+          <Route path="/modifybooking" element={<ModifyBookingScreen />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+    // <ForgotPassword/>
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
