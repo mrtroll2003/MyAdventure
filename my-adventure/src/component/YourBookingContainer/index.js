@@ -36,7 +36,7 @@ function TourContainer (props) {
                 <ul>{ChildList}</ul>
             </div>
             <div className="column" style={{display:"flex",}}>
-                { BUTTON_STATUS[tourStatus] }
+                { BUTTON_STATUS[1] }
             </div>
           </div>
     );

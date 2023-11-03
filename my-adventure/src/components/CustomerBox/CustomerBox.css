@@ -8,6 +8,7 @@
     padding-bottom: 2vh;
     width: 50vw;
     margin-top: 2vh;
+    background-color: white;
 }
 
 .customer-box.open {
@@ -24,7 +25,7 @@
     align-items: center;
 }
 
-.button {
+.button1 {
     width: 1vw;
     height: 1vw;
 }
