@@ -1,15 +1,14 @@
 import React from "react";
-import Header from "../../component/Header";
-import MainTabbar from "../../component/MainTabbar/MainTabbar";
 import data from "./fillData"
 import TourContainer from "../../component/YourBookingContainer";
-import "./styles.css"
+import styles from  "./styles.module.css"
 
 const YourBooking = () => {
     return (
-      <div className="container">
-        <Header></Header>
-        <MainTabbar option={"Your Booking"}></MainTabbar>
+      <div className={styles.container}>
+        <div className={styles.hi}>Hi, <span className={styles.mark}>Lê Thị Bích Hằng</span></div>
+        <div className={styles.welcome}>We are happy that you have chosen our company for your upcoming trips. We thank you very much and wish you a rewarding experience at MyAdventure!</div>
+        <div className={styles.welcome} style={{marginBottom: "5vh"}}>Here are all your booking and its status!</div>
         {data.map(booking => (
         <TourContainer
           key={booking.id}

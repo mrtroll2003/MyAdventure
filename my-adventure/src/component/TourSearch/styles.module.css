@@ -1,10 +1,12 @@
 .contentView {
     background-color: white;
     width: 80vw;
-    height: 20vh;
+    height: fit-content;
     flex-direction: row;
     border-bottom: 3px solid #5CD6C0;
     padding: 2vh;
+    display: flex;
+    align-items: center;
 }
 
 .dropdown {
@@ -35,6 +37,7 @@
     padding: 0.5em;
     background-color: #49DEC3;
     border-radius: 1.5em;
+    height: fit-content;
 }
 .box {
     border: 1px solid black;

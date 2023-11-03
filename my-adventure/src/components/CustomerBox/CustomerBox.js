@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './CustomerBox.css'
+import styles from './CustomerBox.module.css'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -46,22 +46,22 @@ const CustomerBox = ({ type, name  }) => {
   };
 
   return (
-    <div className={`customer-box ${isOpen ? 'open' : ''}`}>
-      <div className="box-container" onClick={toggleDropdown} style={{display: "flex", justifyContent: "space-between"}}>
+    <div className={`${styles.customerBox} ${isOpen ? 'open' : ''}`}>
+      <div className={styles.boxContainer} onClick={toggleDropdown} style={{display: "flex", justifyContent: "space-between"}}>
         <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
           <img src={(type==="adult" ? require("../../assets/icons/adult2.png") : require("../../assets/icons/child.png"))} alt="adult2" style={{width: "1.5vw", height: "1.5vw"}}></img>
           <div style={{marginLeft: "2vw", fontSize: "3vh"}}>{displayName}</div>
         </div>
           <button onClick={() => setIsOpen(!isOpen)} style={{marginRight: "2vw", justifyContent: "center", alignItems: "center"}}>
             {
-              isOpen ? <img src={require("../../assets/icons/dropdownOpen.png")} alt="open" className="button"/> : <img src={require("../../assets/icons/dropdownClose.png")} alt="close" className="button"  />
+              isOpen ? <img src={require("../../assets/icons/dropdownOpen.png")} alt="open" className={styles.button}/> : <img src={require("../../assets/icons/dropdownClose.png")} alt="close" className={styles.button}  />
             }
           </button>
       </div>
       {isOpen && (
-        <div className="details">
-          <div className="row">
-            <div style={{fontSize: "2.5vh"}}>Full Name<span style={{color: "red"}}>*</span>:</div>
+        <div className={styles.detailes}>
+          <div className={styles.row} style={{marginTop: "3vh"}}>
+            <div className={styles.label}>Full Name<span style={{color: "red"}}>*</span>:</div>
             <input
               value ={fullName}
               onChange={handleNameChange}
@@ -70,24 +70,24 @@ const CustomerBox = ({ type, name  }) => {
             />
           </div>
           <div style={{marginTop: "2vh", display: "flex", flexDirection: "row", alignItems: "center"}}>
-            <div style={{fontSize: "2.5vh", }}>Sex<span style={{color: "red"}}>*</span>:</div>
-            <div style={{fontSize: "2.5vh", marginLeft: "13.5vw" }}>
+            <div className={styles.label}>Sex<span style={{color: "red"}}>*</span>:</div>
+            <div style={{fontSize: "2.5vh"}}>
               <input type="radio" name="option" value="Male" checked={selectedOption === "Male"} onChange={handleChange} /> Male
               <input type="radio" name="option" value="Female" checked={selectedOption === "Female"} onChange={handleChange} style={{marginLeft: "5vw"}}/> Female
             </div>
           </div>
-          <div className="row" style={{marginTop: "2vh", overflow: "visible",}}>
-            <div style={{fontSize: "2.5vh"}}>Date of Birthday<span style={{color: "red"}}>*</span>:</div>
+          <div className={styles.row} style={{marginTop: "2vh", overflow: "visible",}}>
+            <div className={styles.label}>Date of Birthday<span style={{color: "red"}}>*</span>:</div>
             <div>
-              <DatePicker popupStyle={{ zIndex: 9999, position: 'fixed' }}  selected={startDate} onChange={(date) => setStartDate(date)} dateFormat={"dd/MM/yyyy"}  className="datePicker"/>
+              <DatePicker popupStyle={{ zIndex: 9999, position: 'fixed' }}  selected={startDate} onChange={(date) => setStartDate(date)} dateFormat={"dd/MM/yyyy"}  className={styles.datePicker}/>
             </div>
           </div>
 
             {
             type === "adult" ? 
             (
-              <div className="row" style={{marginTop: "2vh"}}>
-                <div style={{fontSize: "2.5vh",}}>Citizen ID<span style={{color: "red"}}>*</span>:</div>
+              <div className={styles.row} style={{marginTop: "2vh"}}>
+                <div className={styles.label}>Citizen ID<span style={{color: "red"}}>*</span>:</div>
                 <input
                   type='text'
                   value={citizenID}
@@ -96,16 +96,16 @@ const CustomerBox = ({ type, name  }) => {
                 />
               </div>
             ) : (
-              <div className="row" style={{marginTop: "3vh", marginBottom: "1vh", justifyContent: 'flex-start'}}>
-                <div style={{fontSize: "2.5vh",}}>Birth Certificate<span style={{color: "red"}}>*</span>:</div>
-                <input type="file" onChange={handleFileChange} style={{marginLeft: "7.5vw"}}/>
+              <div className={styles.row} style={{marginTop: "3vh", marginBottom: "1vh", justifyContent: 'flex-start'}}>
+                <div className={styles.label}>Birth Certificate<span style={{color: "red"}}>*</span>:</div>
+                <input type="file" onChange={handleFileChange}/>
                 {/* <button onClick={handleUploadClick}>Upload</button> */}
               </div>
             )}
           
 
-          <div className="row" style={{marginTop: "2vh"}}>
-            <div style={{fontSize: "2.5vh",}}>Phone Number<span style={{color: "red"}}>*</span>:</div>
+          <div className={styles.row} style={{marginTop: "2vh"}}>
+            <div className={styles.label}>Phone Number <span style={{color: "red"}}>*</span>:</div>
             <input
               type='text'
               value={phone}
@@ -114,8 +114,8 @@ const CustomerBox = ({ type, name  }) => {
             />
           </div>
 
-          <div className="row" style={{marginTop: "2vh"}}>
-            <div style={{fontSize: "2.5vh",}}>Email:</div>
+          <div className={styles.row} style={{marginTop: "2vh"}}>
+            <div className={styles.label}>Email:</div>
             <input
               type='text'
               value={email}

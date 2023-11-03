@@ -2,21 +2,30 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 0.5vh 0.5vh rgba(0,0,0,0.3);
+    box-shadow: 0.5vh 0.5vh 1vh rgba(0,0,0,0.3);
     padding-left: 2vw;
     padding-top: 2vh;
     padding-bottom: 2vh;
     width: 50vw;
     margin-top: 2vh;
 }
-
+.customerBox .details{
+  overflow-y: hidden;
+	max-height: 0px; /* approximate max height */
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: fadeIn;
+}
 .customerBox.open {
     overflow: hidden; /* Hide the overflow when the details are hidden */
   }
+.customerBox.open .details {
+  margin-top: 2vh; /* Add margin-top when the details are shown */
+  max-height: 300px;
+  overflow-y: hidden;
   
-  .customerBox.open .details {
-    margin-top: 2vh; /* Add margin-top when the details are shown */
-  }
+}
+
 
 .boxContainer {
     display: flex;
@@ -27,12 +36,17 @@
 .button {
     width: 1vw;
     height: 1vw;
-}
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: fadeIn;}
 
+.customerBox.open .button{
+    rotate: 90deg ;
+}
 .details {
     display: flex; /* Hide the details by default */
     flex-direction: column;
-    height: "auto";
+    height: auto;
     overflow: visible;
   }
 

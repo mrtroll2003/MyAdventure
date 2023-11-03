@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './styles.css'
+import styles from './styles.module.css'
 import 'tailwindcss/tailwind.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -33,130 +33,96 @@ export default function BookingStepThree() {
 
   return (
     <div>
-      <Header></Header>
-      <MainTabbar option = "Your Booking"/>
-      <div className='content'>
-        <div className='title'>
-          <h2 className='welcome'><mark className='highlight'>Welcome To Our</mark></h2>
-          <h2 className='myadventure'><mark className='highlight'>My Adventure</mark></h2>
-          <h2 className='booking'><mark className='highlight'>Booking your favorite tour to discover amazing places!</mark></h2>
+      <div className={styles.content}>
+        <div className={styles.title}>
+          <h2 className={styles.welcome}><mark className={styles.highlight}>Welcome To Our</mark></h2>
+          <h2 className={styles.myadventure}><mark className={styles.highlight}>My Adventure</mark></h2>
+        <h2 className={styles.booking}><mark className={styles.highlight}>Booking your favorite tour to discover amazing places!</mark></h2>
         </div>
-        <div className='bookingprogress'>
+        <div className={styles.bookingprogress}>
           <img src={require("../../assets/icons/tick.png")} alt='tick'/>
-          <div className='nameofprogress'>Your selection</div>
-          <img src={require("../../assets/icons/line.png")} alt='line' className='marginleft' />
-          <img src={require("../../assets/icons/tick.png")} alt='tick' className='marginleft'/>
-          <div className='nameofprogress'>Your information</div>
-          <img src={require("../../assets/icons/line.png")} alt='line' className='marginleft'/>
-          <img src={require("../../assets/icons/3inprogress.png")} alt='3nextstage' className='marginleft'/>
-          <div className='stage3color nameofprogress'>Review booking</div>
+          <div className={styles.nameofprogress}>Your selection</div>
+          <img src={require("../../assets/icons/line.png")} alt='line' className={styles.marginleft}/>
+          <img src={require("../../assets/icons/tick.png")} alt='tick' className={styles.marginleft}/>
+          <div className={styles.nameofprogress}>Your information</div>
+          <img src={require("../../assets/icons/line.png")} alt='line' className={styles.marginleft}/>
+          <img src={require("../../assets/icons/3inprogress.png")} alt='3nextstage' className={styles.marginleft}/>
+          <div  className={`${styles.stage3color} ${styles.nameofprogress}`}>Review booking</div>
         </div>
-        {/* <div className="yourSelectionContainer">
-          <div className="yourSelection">
-            <div>
-              <div className="yourSelectionText">YOUR SELECTION</div>
-              <div className="yourSelectionTable">
-                <div className="columnDirection">
-                  <div className='infoContainer'>
-                    <img src={require("../../assets/icons/fly.png")} alt='tick'/>
-                    <div className="infoText">Time can start:</div>
-                  </div>
-                  <div className='infoContainer'>
-                    <img src={require("../../assets/icons/address.png")} alt='address'/>
-                    <div className="infoText">Departure and Destination:</div>
-                  </div>
-                  <div className='infoContainer'>
-                    <img src={require("../../assets/icons/adult.png")} alt='adult'/>
-                    <div className="infoText">Number of adults:</div>
-                  </div>
-                  <div className='infoContainer'>
-                    <img src={require("../../assets/icons/child.png")} alt='child'/>
-                    <div className="infoText">Number of children:</div>
-                  </div>
-                </div>
-                <div className='columnDirection'>
-                  <div className='infoContainer infoText1'>30/09/2023 - 15/10/2023</div>
-                  <div className='infoContainer infoText1'>Sài Gòn - Sapa</div>
-                  <div className='infoContainer infoText1'>2 persons</div>
-                  <div className='infoContainer infoText1'>2 persons</div>
-                </div>
-              </div>
-            </div>
-            <img style={{marginLeft: "10vw"}} src={require("../../assets/images/world.png")} alt='world'/>
-          </div>
-        </div> */}
-        <div className="form">
+        <div className={styles.form}>
           <div style={{fontSize: "6vh", fontWeight: 'bold', marginTop: '5vh', color: '#5CD6C0'}}>REVIEW YOUR BOOKING</div>
-          <div className = "text">This is the formation that you will receive all e - tickets/ mails/ notifications from this booking. Please check carefully not to miss any notifications from my agency! </div>
-          <div className='accountBox'>
+          <div className={styles.text}>This is the formation that you will receive all e - tickets/ mails/ notifications from this booking. Please check carefully not to miss any notifications from my agency! </div>
+          <div className={styles.accountBox}>
             <img src={require("../../assets/icons/account.png")} alt="account" style={{width: '2.5vw', height: '2.5vw', marginLeft: '2vw'}} ></img>
-            <div className="signIn">
+            <div className={styles.signIn}>
               <div style={{fontWeight: '600'}}>You signed in as</div>
               <div style={{marginTop: '2vh'}}>21522041@gm.uit.edu.vn</div>
             </div>
           </div>
-          <div className="text1" >
+          <div className={styles.text1}>
             <div style={{color: "#7C8DB0", fontSize: "3vh", marginTop: "2vh",}}>You will be received all e-confirmation mail/ tickets/ vouchers from this booking to contact</div>
             <div style={{fontSize: "5.5vh", fontWeight: "600", marginTop: "6vh"}}>Your Detail Booking</div>
-            <div className="note">
+            <div className={styles.note}>
               <img src={require("../../assets/icons/note.png")} alt="note" style={{width: "2.3vw", height: "2.3vw", marginLeft: "2vw"}}></img>
               <div style={{marginLeft: "2vw", fontSize: "2.5vh"}}>You must check carefully to avoid the information errors</div>
             </div>
           </div>
-          <div className="bookingForm">
-            <div className="heading1">1. Customer's Information</div>
-            <div className="heading2">a. Adult</div>
-            <div className="infoTag">
+          <div className={styles.bookingForm}>
+            <div className={styles.heading1}>1. Customer's Information</div>
+            <div className={styles.heading2} style={{marginTop: "2vh"}}>a. Adult</div>
+            <div className={styles.infoTag}>
               <CustomerTextBox name="Adult 1" type="adult" />
               <CustomerTextBox name="Adult 2" type="adult"/>
             </div>
-            <div className="heading2">b. Children</div>
-            <div className="infoTag">
+            <div className={styles.heading2} style={{marginTop: "2vh"}}>b. Children</div>
+            <div className={styles.infoTag}>
               <CustomerTextBox name="Children 1"/>
               <CustomerTextBox name="Children 2"/>
             </div>
-            <div className="heading1" style={{marginTop: "6vh"}}>2. Travel's Information</div>
-            <div style={{display: "flex", flexDirection: "row", alignItems: "baseline",}}>
-              <div className="heading2">Departure-Destination:</div>
-              <div style={{fontSize: "3vh", marginLeft: "6vw"}}>
-                Sài Gòn - Sapa
-              </div>
-            </div>
+            <div className={styles.heading1} style={{marginTop: "6vh"}}>2. Travel's Information</div>
+                <div style={{height: "50%", display: 'flex', flexDirection: 'column', paddingBottom: "5vh"}}>
+                <div style={{display: "flex", flexDirection: "row", alignItems: "center", marginTop: "4vh"}}>
+                  <div className={styles.heading2}>Departure-Destination:</div>
+                  <div style={{fontSize: "3vh"}}>
+                    Sài Gòn - Sapa
+                  </div>
+                </div>
 
-            <div style={{display: "flex", flexDirection: "row", alignItems: "baseline",}}>
-              <div className="heading2">Kinds of transportation:</div>
-              <div style={{fontSize: "3vh", marginLeft: "5.6vw"}}>
-                Plane
-              </div>
-            </div>
+                <div style={{display: "flex", flexDirection: "row",  alignItems: "center", marginTop: "4vh"}}>
+                  <div className={styles.heading2}>Kinds of transportation:</div>
+                  <div style={{fontSize: "3vh"}}>
+                    Plane
+                  </div>
+                </div>
 
-            <div style={{display: "flex", flexDirection: "row", alignItems: "baseline",}}>
-              <div className="heading2">Range of hotel:</div>
-              <div style={{fontSize: "3vh", marginLeft: "11vw"}}>
+            <div style={{display: "flex", flexDirection: "row",  alignItems: "center", marginTop: "4vh"}}>
+              <div className={styles.heading2}>Range of hotel:</div>
+              <div style={{fontSize: "3vh"}}>
                 3 stars
               </div>
             </div>
 
-            <div style={{display: "flex", flexDirection: "row", alignItems: "baseline",}}>
-              <div className="heading2">Kinds of tour:</div>
-              <div style={{fontSize: "3vh", marginLeft: "12.1vw"}}>
+            <div style={{display: "flex", flexDirection: "row",  alignItems: "center", marginTop: "4vh"}}>
+              <div className={styles.heading2}>Kinds of tour:</div>
+              <div style={{fontSize: "3vh"}}>
                 Economy
               </div>
             </div>
 
-            <div style={{display: "flex", flexDirection: "row", alignItems: "baseline",}}>
-              <div className="heading2">Pickup Address:</div>
-              <div style={{fontSize: "3vh", marginLeft: "10.5vw"}}>
+            <div style={{display: "flex", flexDirection: "row",  alignItems: "center", marginTop: "4vh"}}>
+              <div className={styles.heading2}>Pickup Address:</div>
+              <div style={{fontSize: "3vh"}}>
                 123 Dinh Bo Linh, ward 6, Binh Thanh Dis, HCM City
               </div>
             </div>
 
-            <div style={{display: "flex", flexDirection: "row", alignItems: "baseline",}}>
-              <div className="heading2">Expected departure date:</div>
-              <div style={{fontSize: "3vh", marginLeft: "4.5vw"}}>
+            <div style={{display: "flex", flexDirection: "row",  alignItems: "center", marginTop: "4vh"}}>
+              <div className={styles.heading2}>Expected departure date:</div>
+              <div style={{fontSize: "3vh"}}>
                 10/10/2023
               </div>
             </div> 
+                </div>
           </div>
         </div>
 

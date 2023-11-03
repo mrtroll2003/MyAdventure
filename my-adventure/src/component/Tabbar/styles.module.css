@@ -3,6 +3,14 @@
   align-items: center;
 }
 
+.container {
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .logo {
   margin-left: 5em;
   margin-top: 0em;
@@ -14,20 +22,19 @@
 
 .contentText {
   color: gray;
-  font-weight: 400;
-  font-size: 20px;
+  font-size: 2.5vh;
   margin-left: 2em;
 }
 
 .icon {
-  margin-left: 0.5em;
+  width: 2vw;
 }
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
-.dropdown-content {
+.dropdownContent {
   display: none;
   position: absolute;
   background-color: #5CD6C0;
@@ -44,4 +51,14 @@
 }
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.button {
+  color: black;
+  background-color: #5CD6C0;
+  padding: 2vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  border-radius: 10vh;
+  font-size: 2.5vh;
 }
