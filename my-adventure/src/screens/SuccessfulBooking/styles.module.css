@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "Nunito sans";
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf");
+}
+
+.mainView {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 50%;
+    padding-left: 5vw;
+
+}
+
+.globe {
+    float: right;
+    width: 38%;
+}
+
+.text {
+    color: #EB5757;
+    font-weight: bold;
+    text-shadow: 4px 4px rgba(0,0,0,0.1);
+    font-size: 7vh;
+    margin-top: 15vh;
+}
+
+.subText {
+    color: #7C8DB0;
+    font-size: 3vh;
+    margin-top: 3vh;
+}
+
+.buttonContainer {
+    background-color: #5CD6C0;
+    padding: 2vh 2vw;
+    width: fit-content;
+    margin-top: 3vh;
+    margin-left: 3vw;
+    border-radius: 2vw;
+}
+
+.button {
+    color: white;
+    font-size: 3vh;
+    font-weight: 500;
+}
