@@ -2,6 +2,8 @@ import "./App.css";
 import VietNamTourScreen from "./screens/VietNamTourScreen";
 import DetailBookingScreen from "./screens/DetailBookingScreen";
 import ModifyBookingScreen from "./screens/ModifyBookingScreen";
+import HomePageSignedIn from "./screens/HomePageSignedIn";
+import BookingStepOne from "./screens/BookingStepOne";
 import BookingStepTwo from "./screens/BookingStepTwo";
 import BookingStepThree from "./screens/BookingStepThree";
 import CustomerTextBox from "./components/CustomerTextBox";
