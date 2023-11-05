@@ -65,3 +65,136 @@
     margin-top: 10vh;
     font-weight: 500;
 }
+
+.makingArrangementRecommendContainer {
+    display: flex;
+    margin-top: 5vh;
+    height: 15vh;
+    background-color: #49DEC3;
+    font-family: "Nunito sans";
+    font-size: 55px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.makingArrangementRecommendCriteriaContainer {
+    font-family: "Nunito sans";
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    margin-left: 5%;
+}
+
+.makingArrangementRecommendCriteriaInformation {
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    margin-top: 3vh;
+    align-items: center;
+    font-size: 3vh;
+}
+
+.makingArrangementRecommendCriteriaInformationLabel {
+    font-weight: 600;
+    width: 30vw;
+    justify-self: center;
+}
+
+.makingArrangementRecommendCriteriaInformationInput {
+    width: 30vw;
+    height: 8vh;
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 30px;
+    padding-right: 20px;
+}
+
+.makingArrangementRecommendCriteriaInformationInput:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+}
+
+.makingArrangementRecommendCriteriaInformationInput::placeholder {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.makingArrangementRecommendCriteriaInformationInput[type='text'] {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    text-indent: 10%;
+}
+
+.makingArrangementRecommendCriteriaInformationInput[type='number'] {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    text-align: center;
+}
+
+select.makingArrangementRecommendCriteriaInformationInput {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    text-align: center;
+}
+
+.makingArrangementRecommendSchedule {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 25px;
+    border: 2px solid black;
+    border-radius: 30px;
+    padding-right: 20px;
+    text-align: start;
+}
+.makingArrangementRecommendSchedule::placeholder {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 25px;
+}
+
+.makingArrangementRecommendSchedule:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+}
+
+.makingArrangementRecommendSchedule[type='text'] {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 25px;
+    text-indent: 20px;
+    text-align: left;    
+}
+
+.makingArrangementRecommendNoteText {
+    margin-top: 5vh;
+    margin-left: 10%;
+    font-family: "Nunito sans";
+    font-size: 20px;
+    color: grey;
+    font-weight: 700;
+
+}
+
+.makingArrangementRecommendButton {
+    position: relative;
+    left: 80%;
+    width: 15vw;
+    height: 10vh;
+    margin-bottom: 40px;
+    background-color:#49DEC3;
+    margin-top: 5vh;
+    position: relative;
+    font-family: "Nunito sans";
+    font-size: 25px;
+    font-weight: 700;
+    box-shadow: 2px 2px gray;
+}

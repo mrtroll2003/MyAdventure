@@ -11,18 +11,9 @@ import MainTabbar from "./component/MainTabbar/MainTabbar";
 import InternationalTourScreen from "./screens/InternationalTourScreen";
 import YourBooking from "./screens/YourBooking";
 import BookingDetailedManagement from "./screens/BookingDetailedManagement";
-<<<<<<< HEAD
+
 import { MakingArrangement } from "./screens/MakingArrangement";
 function App() {
   return <MakingArrangement></MakingArrangement>
-=======
-import TourDetail from "./screens/TourDetail";
-function App() {
-  return (
-    <div>
-      <ModifyBookingScreen />
-    </div>
-  );
->>>>>>> 8597fa8d3ab0e94caa6dedc48e989c37f2a36426
 }
 export default App;
