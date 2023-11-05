@@ -1,15 +1,15 @@
 import React from "react";
-import MainTabbar from "../../component/MainTabbar/MainTabbar";
-import Header from "../../component/Header";
 import DestinationSection from "../../component/DestinationSection/DestinationSection";
 import Footer from "../../component/Footer/Footer";
 
+import Header from "../../component/Header";
+import MainTabbar from "../../component/MainTabbar/MainTabbar";
 import Illustration01 from "../../assets/images/illustration/illustration01.png";
 import Illustration02 from "../../assets/images/illustration/illustration02.png";
 import Illustration03 from "../../assets/images/illustration/illustration03.png";
 import Illustration04 from "../../assets/images/illustration/illustration04.png";
 
-import "./styles.css";
+import styles from "./styles.module.css";
 
 class VietNamTourScreen extends React.Component {
   render() {
@@ -21,12 +21,10 @@ class VietNamTourScreen extends React.Component {
     ];
     return (
       <div>
-        <Header />
-        <MainTabbar option={"Your Booking"} />
         {/* Viet Nam Tour Intro */}
-        <div className="vnTourIntroBackground">
-          <div className="vnTourIntroLayer">
-            <h1 className="vnTourIntroText">OUR VIETNAM TOURS</h1>
+        <div className={styles.vnTourIntroBackground}>
+          <div className={styles.vnTourIntroLayer}>
+            <h1 className={styles.vnTourIntroText}>OUR VIETNAM TOURS</h1>
           </div>
         </div>
         {/* DESTINATIONS IN NORTHERN VIETNAM */}

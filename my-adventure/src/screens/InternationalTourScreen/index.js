@@ -10,7 +10,7 @@ import Illustration02 from "../../assets/images/illustration/illustration02.png"
 import Illustration03 from "../../assets/images/illustration/illustration03.png";
 import Illustration04 from "../../assets/images/illustration/illustration04.png";
 
-import "./styles.css";
+import styles from "./styles.module.css";
 
 class InternationalTourScreen extends React.Component {
   render() {
@@ -22,12 +22,12 @@ class InternationalTourScreen extends React.Component {
     ];
     return (
       <div>
-        <Header />
-        <MainTabbar option={"Your Booking"} />
         {/* International Tour Intro */}
-        <div className="internationalTourIntroBackground">
-          <div className="internationalTourIntroLayer">
-            <h1 className="internationalTourIntroText">INTERNATIONAL TOURS</h1>
+        <div className={styles.internationalTourIntroBackground}>
+          <div className={styles.internationalTourIntroLayer}>
+            <h1 className={styles.internationalTourIntroText}>
+              INTERNATIONAL TOURS
+            </h1>
           </div>
         </div>
         {/* DESTINATIONS IN ASIA */}

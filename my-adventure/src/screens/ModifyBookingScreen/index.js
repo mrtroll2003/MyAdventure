@@ -156,7 +156,7 @@ class ModifyBookingScreen extends React.Component {
                 <CustomerBox name="Children 2" />
               </div>
               {/* 2. Travel's Information */}
-              <div className="heading1" style={{ marginTop: "6vh" }}>
+              <div className={styles.heading1} style={{ marginTop: "6vh" }}>
                 2. Travel's Information
               </div>
               <div
@@ -166,7 +166,7 @@ class ModifyBookingScreen extends React.Component {
                   alignItems: "baseline",
                 }}
               >
-                <div className="heading2" style={{ marginRight: "10%" }}>
+                <div className={styles.heading2} style={{ marginRight: "10%" }}>
                   Departure-Destination:
                 </div>
                 <JourneyOptionBox options={form.journeyOptions} />
@@ -180,7 +180,7 @@ class ModifyBookingScreen extends React.Component {
                   //   border: "2px solid red",
                 }}
               >
-                <div className="heading2">Range of hotel:</div>
+                <div className={styles.heading2}>Range of hotel:</div>
                 <div
                   style={{
                     fontSize: "3vh",
@@ -223,7 +223,7 @@ class ModifyBookingScreen extends React.Component {
                   alignItems: "center",
                 }}
               >
-                <div className="heading2">Kinds of transportation :</div>
+                <div className={styles.heading2}>Kinds of transportation :</div>
                 <div
                   style={{
                     fontSize: "3vh",
@@ -257,7 +257,7 @@ class ModifyBookingScreen extends React.Component {
                   alignItems: "center",
                 }}
               >
-                <div className="heading2">
+                <div className={styles.heading2}>
                   Kinds of Tour<span style={{ color: "red" }}>*</span>:
                 </div>
                 <div
@@ -294,7 +294,7 @@ class ModifyBookingScreen extends React.Component {
                   marginTop: "5vh",
                 }}
               >
-                <div className="heading2" style={{ marginTop: "0" }}>
+                <div className={styles.heading2} style={{ marginTop: "0" }}>
                   Pickup Address<span style={{ color: "red" }}>*</span>:
                 </div>
                 <input
@@ -321,7 +321,7 @@ class ModifyBookingScreen extends React.Component {
                   paddingBottom: "3vh",
                 }}
               >
-                <div className="heading2" style={{ marginTop: "0" }}>
+                <div className={styles.heading2} style={{ marginTop: "0" }}>
                   Expected Departure Date<span style={{ color: "red" }}>*</span>
                   :
                 </div>

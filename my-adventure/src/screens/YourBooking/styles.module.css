@@ -1,0 +1,23 @@
+.container {
+    background-image: url(../../assets/images/YourBookingBg.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    padding: 10vh;
+}
+
+.hi {
+    font-size: 5vh;
+    color: black;
+    font-weight: bold;
+}
+
+.mark {
+    color: #5CD6C0;
+}
+
+.welcome {
+    font-size: 3vh;
+    margin-top: 3vh;
+}

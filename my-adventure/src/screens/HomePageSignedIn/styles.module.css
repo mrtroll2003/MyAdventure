@@ -10,114 +10,156 @@
     src: url('../../constant/fonts/PlayfairDisplay/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
 }
 
-#boldStatement {
-    margin-top: 1%;
-    text-align: center;
-    font-family: 'NunitoSans';
-    font-size: 60px;
-    font-weight: bolder;
-}
-#normalText {
-    font-family: 'NunitoSans';
-    font-weight: bolder;
-    font-size: 20px;
-    text-align: center;
+.content {
+    background-image: url('../../assets/images/BookingBackground.png');
+    width: 100vw;
+    height: 100vh;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-#subContentView {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 2em;
-}
-
-#subContent {
+.title {
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    justify-content: center;
+    padding-top: 8%;
+    padding-left: 10%;
+}
+
+.welcome {
+    font-size: 5vh;
+    margin: 0;
+    font-weight: 300;
+}
+
+.myadventure {
+    font-size: 10vh;
+    margin-top: 0.7vh;
+    margin-bottom: 0;
+}
+
+
+.highlight {
+    background-color: rgba(92,214,192,0.7);
+    color: white;
+}
+
+.booking {
+    font-size: 3.5vh;
+    margin-top: 0.7vh;
+    font-weight: 300;
+}
+
+.boldStatement {
+    text-align: center;
+    font-family: 'NunitoSans';
+    font-size: 5vh;
+    font-weight: bolder;
+}
+.normalText {
+    font-weight: light;
+    font-size: 2.5vh;
+    text-align: center;
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+.subContentView {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.icon {
+    height: 5vw;
+}
+
+.subContent {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
     height: fit-content;
     align-items: center;
     text-align: center;
+    justify-content: center;
 }
 
-#subContentText {
-    font-family: "NunitoSans";
+.subContentText {
     font-weight: bold;
-    font-size: 35px;
+    font-size: 3vh;
+    margin-top: 2vh;
 }
-#subContentMainText {
-    font-family: "NunitoSans";
-    font-size: 20px;
+.subContentMainText {
+    font-size: 2.5vh;
     font-weight: normal;
 }
 /* Package */
 .packageBackground {
-    height: 55vh;
+    margin-top: 10vh;
+    height: fit-content;
     background-size: cover;
     background-image: url('../../assets/images/background.png');
     background-position: center;
 }
 .packageView {
+    padding-right: 10vw;
+    padding-left: 5vw;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
     display: flex;
-    flex-direction: column;
-    height: 55vh;
+    flex-direction: 'row';
+    align-items: center;
+    height: 100%;
     background-color: rgba(92, 214, 192, 0.9);
 }
 #packageIntroduction {
-    height: fit-content;
-    width: fit-content;
     font-family: "NunitoSans";
     font-weight: bold;
-    font-size: 40px;
+    font-size: 5vh;
     color: #F6F893;
-    margin-left: 5%;
-    margin-top: 4%;
-    margin-bottom: 0%;
 }
 #packageMainText {
     color: white;
-    margin-left: 5%;
     width: fit-content;
     height: fit-content;
-    font-family: "NunitoSans";
-    font-size: 18px;
+    font-size: 2.5vh;
     font-weight: regular;
 }
 #detailsBtn {
-    width: 7.5%;
-    height: fit-content;
+    width: auto;
+    height: auto;
     font-family: "NunitoSans";
     font-weight: lighter;
-    font-size: 20px;
-    padding: 0.5%;
+    font-size: 2vh;
+    margin-left: 10vw;
+    padding: 0.5vw;
     color: white;
     border: 2px solid rgba(255, 0, 0, 0.8);
     border-radius: 203px;
     background-color: rgba(255, 0, 0, 0.8);
-    margin-left: 20%;
 }
 #packagePriceView {
     width: fit-content;
     height: fit-content;
-    margin-left: 5%;
+    margin-top: 5vh;
 }
 #packagePriceText01 {
     color: #F6F893;
-    font-family: "NunitoSans";
     font-weight: lighter;
-    font-size: 35px;
+    font-size: 4vh;
 }
 #packagePrice {
     font-family: 'PlayfairDisplay';
     font-weight: bolder;
-    font-size: 60px;
+    font-size: 5vh;
     color: white;
 }
 #packagePriceText02 {
     color: white;
-    font-family: "NunitoSans";
     font-weight: lighter;
-    font-size: 35px;
+    font-size: 4vh;
 }
 /* Recommended Trip */
 .recTripView {
@@ -128,41 +170,45 @@
 }
 .titleRowView {
     display: flex;
-    margin-top: 1%;
+    margin-top: 5vh;
     margin-bottom: 1%;
-    margin-left: 7.5%;
-    margin-right: 7.5%;
+    padding-left: 7vw;
+    padding-right: 7vw;
+    justify-content: space-between;
 }
 /* Happy Customer */
 .happyCustomerBackground {
     height: 60vh;
-    margin-top: 5%;
+    margin-top: 10vh;
     background-image: url('../../assets/images/small_main_background.png');
     background-size: cover;
 }
 .happyCustomerView {
     display: flex;
     height: 60vh;
+    flex-direction: row;
     background-color: rgba(61, 180, 159, 0.8);
 }
 .happyCustomerContentView {
     margin-left: 1.5%;
     width: 50%;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
 }
 #whiteBoldStatement {
-    margin-top: 7.5%;
     text-align: center;
     font-family: 'NunitoSans';
-    font-size: 60px;
+    font-size: 5vh;
     font-weight: bold;
     color: white;
 }
 #whiteNormalText {
-    margin: 7.5%;
-    font-family: 'NunitoSans';
-    font-weight: bolder;
-    font-size: 20px;
+    font-weight: normal;
+    font-size: 2.5vh;
     color: white;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    margin-top: 3vh;
 }
 .holidayTypeView {
     display: flex;
