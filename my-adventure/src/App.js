@@ -31,7 +31,7 @@ export default function App() {
       <Routes>
         <Route>
           <Route path="/" element={<HomePageSignedIn/>} />
-          <Route path="booking" element={<BookingManagement/>} />
+          <Route path="booking" element={<BookingStepOne/>} />
           <Route path="booking-step-two" element={<BookingStepTwo/>} />
           <Route path="booking-step-three" element={<BookingStepThree/>} />
           <Route path="vietnam-tours" element={<VietNamTourScreen />} />
@@ -44,6 +44,7 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
