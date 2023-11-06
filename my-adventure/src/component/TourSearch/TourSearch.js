@@ -1,8 +1,11 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import styles from './styles.module.css'
+import { useNavigate } from 'react-router-dom';
+
 
 const TourSearch = ()  =>{
+  const navigate = useNavigate();
   return (
     <div className={styles.contentView}>
       <div>
@@ -33,9 +36,12 @@ const TourSearch = ()  =>{
         <motion.input type="number" id="numAdult" name="numAdult" className={styles.box} min="0" style={{width: "5vw"}}/>
       </div>
 
-      <motion.div className={styles.signUp} whileTap={{ scale: 1.5 }}>
+      <motion.button className={styles.signUp} whileTap={{ scale: 1.5 }}
+      onClick={() => {
+        navigate('/booking-step-two');
+      }}>
         Next Step
-      </motion.div>
+      </motion.button>
       
     </div>
   )

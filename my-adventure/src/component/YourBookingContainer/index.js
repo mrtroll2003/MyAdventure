@@ -4,8 +4,11 @@ import Departure from "../../assets/icons/departure.png";
 import Location from "../../assets/icons/location.png";
 import AdultNum from "../../assets/icons/adultNum.png";
 import ChildNum from "../../assets/icons/childNum.png";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function TourContainer (props) {
+  const navigate = useNavigate();
     const { expectedTime, route, numAdult, nameA, numChild, nameC, tourStatus } = props;
     const BUTTON_STATUS = {
         WaitingForHandling: <div className={styles.button} style={{backgroundColor:'#FFED8C',}}><div className={styles.buttonText}>Waiting for handling</div></div>,
@@ -16,7 +19,7 @@ function TourContainer (props) {
     var AdultList = nameA.map((name) => <li>{name}</li>)
     var ChildList = nameC.map((name) => <li>{name}</li>)
         return (
-          <div className={styles.mainView}>
+          <motion.button className={styles.mainView} whileTap={{scale: 0.8}} onClick={() => navigate('/detail-booking')}>
             <div className={styles.column}>
               <div className={styles.horizon}>
                 <div className={styles.horizon1}>
@@ -41,7 +44,7 @@ function TourContainer (props) {
                 </div>
                 <div className={styles.column1}>
                   <div className={styles.content} style={{fontWeight: "bold"}}>{numAdult} adults</div>
-                  <ul className={styles.content}>{AdultList}</ul>
+                  <ul className={styles.content} style={{width: "20vw", textAlign: "left"}}>{AdultList}</ul>
                 </div>
               </div>
 
@@ -61,7 +64,7 @@ function TourContainer (props) {
               { BUTTON_STATUS[tourStatus] }
             </button>
 
-          </div>
+          </motion.button>
     );
 }
 export default TourContainer;

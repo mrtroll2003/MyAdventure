@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
 import styles from './styles.module.css'
 import 'tailwindcss/tailwind.css';
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CustomerTextBox from "../../components/CustomerTextBox";
-import Header from "../../component/Header";
-import MainTabbar from "../../component/MainTabbar/MainTabbar";
 import Footer from "../../component/Footer/Footer";
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default function BookingStepThree() {
+  const navigate = useNavigate();
   const [transport, setTranspott] = useState("");
   const [hotel, setHotel] = useState("");
   const [tour, setTour] = useState("");
@@ -122,6 +122,13 @@ export default function BookingStepThree() {
                 10/10/2023
               </div>
             </div> 
+
+            <div style={{display: "flex", flexDirection: "row",  alignItems: "center", marginTop: "4vh"}}>
+              <div className={styles.heading2}>Expected duration:</div>
+              <div style={{fontSize: "3vh"}}>
+                5 days
+              </div>
+            </div>
                 </div>
           </div>
         </div>
@@ -150,7 +157,7 @@ export default function BookingStepThree() {
         </div>
 
         <div>
-          <button
+          <motion.button
             style={{
               width: "8vw",
               height: "8vh",
@@ -163,9 +170,12 @@ export default function BookingStepThree() {
               left: "85vw",
               fontSize: "3vh",
             }}
+            whileTap={{scale: 0.8}}
+            onClick = {() => navigate('/successful-booking')}
+            
           >
             Submit
-          </button>
+          </motion.button>
         </div>
 
         <Footer />

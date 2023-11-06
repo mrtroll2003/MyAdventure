@@ -14,7 +14,7 @@ export default [
         expectedTime:['30/09/2023', '15/10/2023'],
         route: ['Sài Gòn', 'Sapa'],
         numAdult: 2,
-        nameA: ['Lê Thị Bích Hằng', 'Nguyễn Văn A'],
+        nameA: ['Nguyễn Văn B', 'Nguyễn Văn C'],
         numChild: 2,
         nameC: ['Nguyễn Văn B', 'Nguyễn Văn C'],
         tourStatus: 'Confirmed',

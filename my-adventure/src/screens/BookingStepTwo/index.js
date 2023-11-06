@@ -1,14 +1,16 @@
 import React, {useState} from 'react'
 import styles from './styles.module.css';
 import 'tailwindcss/tailwind.css';
-import CustomerBox from '../../components/CustomerBox/CustomerBox';
+import CustomerBox from '../../components/CustomerBox';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Header from "../../component/Header";
 import Tabbar from "../../component/Tabbar/Tabbar";
 import Footer from "../../component/Footer/Footer";
+import { useNavigate } from 'react-router-dom';
 
 export default function BookingStepTwo() {
+  const navigate = useNavigate();
   const [transport, setTranspott] = useState("");
   const [hotel, setHotel] = useState("");
   const [tour, setTour] = useState("");
@@ -177,6 +179,7 @@ export default function BookingStepTwo() {
               left: "85vw",
               fontSize: "3vh",
             }}
+            onClick={() => navigate('/booking-step-three')}
           >
             Next Step
           </button>

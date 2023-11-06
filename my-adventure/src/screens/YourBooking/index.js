@@ -9,6 +9,7 @@ const YourBooking = () => {
         <div className={styles.hi}>Hi, <span className={styles.mark}>Lê Thị Bích Hằng</span></div>
         <div className={styles.welcome}>We are happy that you have chosen our company for your upcoming trips. We thank you very much and wish you a rewarding experience at MyAdventure!</div>
         <div className={styles.welcome} style={{marginBottom: "5vh"}}>Here are all your booking and its status!</div>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
         {data.map(booking => (
         <TourContainer
           key={booking.id}
@@ -21,6 +22,7 @@ const YourBooking = () => {
           tourStatus={booking.tourStatus}
         />
       ))}
+        </div>
     </div>
   );
 };
