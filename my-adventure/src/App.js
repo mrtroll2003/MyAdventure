@@ -18,8 +18,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "./screens/SignIn/index.js";
 import SignUp from "./screens/SignUp/index.js";
 import ForgotPassword from "./screens/ForgotPassword/index.js";
-import HomePageSignedIn from "./screens/HomePageSignedIn/index.js";
-import BookingStepOne from "./screens/BookingStepOne/index.js";
 import BookingManagement from "./screens/BookingManagement/index.js";
 import TourDetail from "./screens/TourDetail/index.js";
 import SuccessfulBooking from "./screens/SuccessfulBooking/index.js";
@@ -32,7 +30,7 @@ export default function App() {
       <Routes>
         <Route>
           <Route path="/" element={<HomePageSignedIn/>} />
-          <Route path="booking" element={<BookingStepOne/>} />
+          <Route path="booking" element={<BookingManagement/>} />
           <Route path="booking-step-two" element={<BookingStepTwo/>} />
           <Route path="booking-step-three" element={<BookingStepThree/>} />
           <Route path="vietnam-tours" element={<VietNamTourScreen />} />
@@ -45,6 +43,7 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    // <BookingManagement/>
   );
 }
 
