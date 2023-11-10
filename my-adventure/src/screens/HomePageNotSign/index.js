@@ -28,12 +28,11 @@ import styles from "./styles.module.css";
 const HomePageNotSign = () => {
   return (
     <div>
-      <Tabbar/>
       <div className={styles.content}>
         <div className={styles.title}>
-          <h2 className={styles.welcome}><mark className='highlight'>Welcome To Our</mark></h2>
-          <h2 className={styles.myadventure}><mark className='highlight'>My Adventure</mark></h2>
-          <h2 className={styles.booking}><mark className='highlight'>Enjoy your dream vacation, discover amazing places at exclusive details</mark></h2>
+          <h2 className={styles.welcome}><mark className={styles.highlight}>Welcome To Our</mark></h2>
+          <h2 className={styles.myadventure}><mark className={styles.highlight}>My Adventure</mark></h2>
+          <h2 className={styles.booking}><mark className={styles.highlight}>Enjoy your dream vacation, discover amazing places at exclusive details</mark></h2>
         </div>
         <div style={{marginTop: "20vh"}}>
           <div className={styles.boldStatement}>WHY WE ARE THE BEST?</div>

@@ -22,15 +22,29 @@ import ForgotPassword from "./screens/ForgotPassword/index.js";
 import BookingManagement from "./screens/BookingManagement/index.js";
 import TourDetail from "./screens/TourDetail/index.js";
 import SuccessfulBooking from "./screens/SuccessfulBooking/index.js";
+import HomePageCompany from "./screens/HomePageCompany/index.js";
+import { MakingArrangement } from "./screens/MakingArrangement/index.js";
+import { useState } from "react";
+import Tabbar from "./component/Tabbar/Tabbar.js";
+import HomePageNotSign from "./screens/HomePageNotSign/index.js";
 
 export default function App() {
+
+  const [isLogin, setIsLogin] = useState();
+  const handleLogin = (login) => {
+    setIsLogin(login)
+  }
   return (
     <BrowserRouter>
       <Header/>
-      <MainTabbar/>
+      {isLogin ? <MainTabbar/> : <Tabbar/>}
       <Routes>
         <Route>
-          <Route path="/" element={<HomePageSignedIn/>} />
+          <Route path="/" element={<HomePageNotSign/>} />
+          <Route path="sign-in" element={<SignIn onLogin={handleLogin}/>} />
+          <Route path="sign-up" element={<SignUp/>} />
+          <Route path="forgot-password" element={<ForgotPassword/>} />
+          <Route path="home" element={<HomePageSignedIn/>} />
           <Route path="booking" element={<BookingStepOne/>} />
           <Route path="booking-step-two" element={<BookingStepTwo/>} />
           <Route path="booking-step-three" element={<BookingStepThree/>} />
@@ -44,6 +58,7 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    // <SignIn/>
     )
 }
 

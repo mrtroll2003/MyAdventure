@@ -7,7 +7,9 @@ export default [
       nameA: ['Lê Thị Bích Hằng', 'Nguyễn Văn A'],
       numChild: 2,
       nameC: ['Nguyễn Văn B', 'Nguyễn Văn C'],
-      tourStatus: 'Waiting for handling',
+      tourStatus: 'WaitingForHandling',
+      bookingID: '1234',
+      bookingDate: '01/09/2023',
     },
     {
         id: 2,
@@ -17,7 +19,9 @@ export default [
         nameA: ['Lê Thị Bích Hằng', 'Nguyễn Văn A'],
         numChild: 2,
         nameC: ['Nguyễn Văn B', 'Nguyễn Văn C'],
-        tourStatus: 'Waiting for handling',
+        tourStatus: 'Confirmed',
+        bookingID: '1234',
+        bookingDate: '01/09/2023',
       },
       {
         id: 3,
@@ -27,6 +31,8 @@ export default [
         nameA: ['Lê Thị Bích Hằng', 'Nguyễn Văn A'],
         numChild: 2,
         nameC: ['Nguyễn Văn B', 'Nguyễn Văn C'],
-        tourStatus: 'Waiting for handling',
+        tourStatus: 'Paid',
+        bookingID: '1234',
+        bookingDate: '01/09/2023',
       },
   ]
