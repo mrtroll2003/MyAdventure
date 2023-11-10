@@ -2,39 +2,67 @@ import React from "react";
 import { MyLogo } from "../../assets/logos";
 import Icon from "./icon.png";
 import User from "./userIcon.png";
-import "./styles.css";
+import styles from "./styles.module.css";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 class SignedInTabbar extends React.Component {
   render() {
     return (
-    <div className="signedInTabbarContentView">
-        <img src={MyLogo} alt="LOGO" className="logo" />
-        <motion.div
-          className="homeOption contentText"
-          whileTap={{ scale: 1.5 }}
-          whileHover={{color:"#007b65"}}
-          style={{ marginLeft: "30em"}}
-        >
-          Home
-        </motion.div>
+      <div className={styles.contentView1}>
+        <img src={MyLogo} alt="LOGO" className={styles.logo} />
+        <motion.div className={styles.container}>
+          <motion.div
+            className={styles.contentText}
+            whileHover={{ color: "#5CD6C0" }}
+            style={{ marginLeft: "25em" }}
+            >
+            <Link to="/">Home</Link>
+          </motion.div>
 
-        <motion.div 
-          className="contentText" 
-          whileTap={{ scale: 1.5 }} 
-          whileHover={{color:"#007b65"}}>
-          Booking Management
+          <motion.div
+            className={styles.contentText}
+            whileHover={{ color: "#5CD6C0" }}
+            >
+            <Link to="/booking">Booking Management</Link>
+          </motion.div>
+
+          {/* <motion.div
+            className={styles.contentText}
+            whileHover={{ color: "#5CD6C0" }}
+            >
+            <motion.label>Travel
+              <select>
+                <option value="vietnam">Vietnam Tour</option>
+                <option value="international">International Tour</option>
+              </select>
+            </motion.label>
+          </motion.div> */}
+
+          {/* <motion.div className={styles.dropdown}>
+            <motion.button className={styles.contentText}>Travel</motion.button>
+            <motion.div className={styles.dropdownContent}>
+              <a href="/vietnam-tours">Vietnam Tours</a>
+              <a href="/international-tours">International Tours</a>
+            </motion.div>
+          </motion.div> */}
+
+          <motion.div
+            className={styles.contentText}
+            whileHover={{ color: "#5CD6C0" }}
+            >
+            <Link to="/yourbooking">Report</Link>
+          </motion.div>
+
+          {/* <motion.div
+            className={styles.contentText}
+            whileHover={{ color: "#5CD6C0" }}
+            >
+            Contacts
+          </motion.div> */}
+
+          <motion.img src={User} alt="icon" className={styles.icon} whileHover={{ scale: 1.5 }}/>
         </motion.div>
-        <motion.div className="contentText" whileTap={{ scale: 1.5 }} whileHover={{color:"#007b65"}}>
-          Report
-        </motion.div>
-        <motion.img
-          src={User}
-          alt="icon"
-          whileHover={{ scale: 1.5 }}
-          whileTap={{ scale: 1.0 }}
-          style={{ marginLeft: "10em" }}
-        />
       </div>
     );
   }
