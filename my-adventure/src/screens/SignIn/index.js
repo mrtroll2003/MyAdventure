@@ -30,7 +30,7 @@ const SignIn = ({onLogin}) => {
 
     console.log("hello")
   
-    fetch('/api/login', {
+    fetch('http://localhost:3001/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
