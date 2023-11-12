@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url("../../../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf") format("truetype");
+}
+
+.companyCardContainer{
+    background-color: rgba(217, 217, 217, 0.5);
+    width: 25vw;
+    height: 75vh;
+}
+.companyCardName {
+    font-family: "NunitoSans";
+    font-weight: 900;
+    font-size: 25px;
+}
+.companyCardRole {
+    font-family: "NunitoSans";
+    font-weight: 400;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.54);
+}
+.companyCardDetails::before {
+    content: "\00B7";
+}
