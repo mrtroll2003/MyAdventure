@@ -139,12 +139,17 @@ const AboutUsScreen = () => {
           justifyContent: "center",
           alignItems: "center",
           marginTop: "5%",
-          paddingBottom: "5%",
         }}
       >
         <h1 className={styles.aboutUsGreenText}>Meet Our Team</h1>
       </div>
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          marginTop: "5%",
+        }}
+      >
         <CompanyCard
           avatar={CompanyInfo.avatar}
           name={CompanyInfo.name[0]}
@@ -161,6 +166,32 @@ const AboutUsScreen = () => {
           avatar={CompanyInfo.avatar}
           name={CompanyInfo.name[2]}
           role={CompanyInfo.role[2]}
+          details={CompanyInfo.details}
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          marginTop: "2.5%",
+        }}
+      >
+        <CompanyCard
+          avatar={CompanyInfo.avatar}
+          name={CompanyInfo.name[3]}
+          role={CompanyInfo.role[3]}
+          details={CompanyInfo.details}
+        />
+        <CompanyCard
+          avatar={CompanyInfo.avatar}
+          name={CompanyInfo.name[4]}
+          role={CompanyInfo.role[4]}
+          details={CompanyInfo.details}
+        />
+        <CompanyCard
+          avatar={CompanyInfo.avatar}
+          name={CompanyInfo.name[5]}
+          role={CompanyInfo.role[5]}
           details={CompanyInfo.details}
         />
       </div>

@@ -21,4 +21,12 @@
 }
 .companyCardDetails::before {
     content: "\00B7";
+    font-weight: 900;
+    font-size: 25px;
+    margin-right: 5px;
+    line-height: 1;
+}
+.companyCardDetails {
+    display: flex;
+    font-size: 17px;
 }
