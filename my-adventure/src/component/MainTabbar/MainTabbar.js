@@ -10,14 +10,14 @@ class MainTabbar extends React.Component {
   render() {
     return (
       <div className={styles.contentView1}>
-        <img src={MyLogo} alt="LOGO" className={styles.logo} />
+        <Link to='/home'><img src={MyLogo} alt="LOGO" className={styles.logo} /></Link>
         <motion.div className={styles.container}>
           <motion.div
             className={styles.contentText}
             whileHover={{ color: "#5CD6C0" }}
             style={{ marginLeft: "25em" }}
             >
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
           </motion.div>
 
           <motion.div
@@ -27,23 +27,11 @@ class MainTabbar extends React.Component {
             <Link to="/booking">Booking</Link>
           </motion.div>
 
-          {/* <motion.div
-            className={styles.contentText}
-            whileHover={{ color: "#5CD6C0" }}
-            >
-            <motion.label>Travel
-              <select>
-                <option value="vietnam">Vietnam Tour</option>
-                <option value="international">International Tour</option>
-              </select>
-            </motion.label>
-          </motion.div> */}
-
           <motion.div className={styles.dropdown}>
             <motion.button className={styles.contentText}>Travel</motion.button>
             <motion.div className={styles.dropdownContent}>
-              <a href="/vietnam-tours">Vietnam Tours</a>
-              <a href="/international-tours">International Tours</a>
+              <Link to="/vietnam-tours">Vietnam Tours</Link>
+              <Link to="/international-tours">International Tours</Link>
             </motion.div>
           </motion.div>
 

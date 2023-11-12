@@ -124,3 +124,9 @@
     color:#5CD6C0;
     font-weight: 500;
 }
+
+.errorText {
+    color: red;
+    font-size: 14px;
+    margin-left: 10%;
+  }

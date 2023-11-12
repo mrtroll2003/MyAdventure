@@ -11,3 +11,5 @@ export {default as IMG_BOOKINGBG} from './BookingBackground.png';
 
 export {default as HEADER_HALONG} from './HaLong_Header.png';
 
+export {default as HLBg} from './HaLongBayBg.png';
+

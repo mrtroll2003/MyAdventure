@@ -1,7 +1,5 @@
 .mainView {
     background-color: rgba(135, 244, 224, 0.8);
-    margin-left: 15vw;
-    margin-right: 15vw;
     margin-top: 8vh;
     box-shadow: 0.5vh 0.5vh rgba(0,0,0,0.3);
     padding: 3vw;
@@ -9,6 +7,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 70vw;
 }
 
 .mainView::after {
@@ -44,6 +43,7 @@
 .column1 {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 

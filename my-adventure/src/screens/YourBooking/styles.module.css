@@ -11,6 +11,7 @@
     font-size: 5vh;
     color: black;
     font-weight: bold;
+    text-align: left;
 }
 
 .mark {
@@ -20,4 +21,5 @@
 .welcome {
     font-size: 3vh;
     margin-top: 3vh;
+    text-align: left;
 }
