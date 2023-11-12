@@ -27,6 +27,8 @@ const CompanyCard = ({ avatar, name, role, details }) => {
           style={{
             display: "flex",
             flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
             marginLeft: "10%",
             marginRight: "10%",
             marginTop: "2.5vh",
