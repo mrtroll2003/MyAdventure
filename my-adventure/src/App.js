@@ -12,6 +12,7 @@ import MainTabbar from "./component/MainTabbar/MainTabbar";
 import InternationalTourScreen from "./screens/InternationalTourScreen";
 import YourBooking from "./screens/YourBooking";
 import BookingDetailedManagement from "./screens/BookingDetailedManagement";
+import ConfirmedDetailBookingScreen from "./screens/ConfirmedDetailBooking/index.js";
 
 import Header from "./component/Header";
 import ReactDOM from "react-dom/client";
@@ -63,6 +64,10 @@ export default function App() {
           <Route path="successful-booking" element={<SuccessfulBooking />} />
         </Route>
         <Route path="about-us" element={<AboutUsScreen />} />
+        <Route
+          path="confirmed-detail-booking"
+          element={<ConfirmedDetailBookingScreen />}
+        />
       </Routes>
     </BrowserRouter>
     // <SignIn/>
