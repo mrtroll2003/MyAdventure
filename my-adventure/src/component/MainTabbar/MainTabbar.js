@@ -2,6 +2,7 @@ import React from "react";
 import { MyLogo } from "../../assets/logos";
 import Icon from "./icon.png";
 import User from "./userIcon.png";
+import Logout from "../../assets/icons/logout.png";
 import styles from "./styles.module.css";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -49,7 +50,15 @@ class MainTabbar extends React.Component {
             Contacts
           </motion.div>
 
-          <motion.img src={User} alt="icon" className={styles.icon} whileHover={{ scale: 1.5 }}/>
+          <motion.div className={styles.dropdown}>
+            <motion.img src={User} alt="icon" className={styles.icon} whileHover={{ scale: 0.8 }}/>
+            <motion.div className={styles.dropdownContent}>
+              <motion.button className={styles.horizon}>
+                <motion.img src={Logout} alt="icon" className={styles.logoutIc}/>
+                <motion.span className={styles.logout}>Log out</motion.span>
+              </motion.button>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
     );
