@@ -39,9 +39,13 @@ const AboutUsScreen = () => {
     ],
   };
   return (
-    <div>
+    <div className={styles.content}>
       {/* Intro Background */}
-      <IntroBackground />
+      <div className={styles.title}>
+          <h2 className={styles.welcome}><mark className={styles.highlight}>Welcome To Our</mark></h2>
+          <h2 className={styles.myadventure}><mark className={styles.highlight}>My Adventure</mark></h2>
+          <h2 className={styles.booking}><mark className={styles.highlight}>Enjoy your dream vacation, discover amazing places at exclusive details</mark></h2>
+        </div>
       {/* About my Adventure */}
       <div
         style={{
@@ -51,7 +55,7 @@ const AboutUsScreen = () => {
           alignItems: "center",
         }}
       >
-        <h1 className={styles.aboutUsGreenText} style={{ marginTop: "5%" }}>
+        <h1 className={styles.aboutUsGreenText} style={{ marginTop: "10%" }}>
           About My Adventure
         </h1>
       </div>

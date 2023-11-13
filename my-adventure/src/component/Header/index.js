@@ -5,6 +5,7 @@ import MailIcon from '../../assets/icons/mail.png'
 import FacebookIcon from '../../assets/icons/facebook.png'
 import InstagramIcon from '../../assets/icons/instagram.png'
 import {motion} from "framer-motion"
+import { Link, useNavigate } from 'react-router-dom';
 export default class Header extends Component {
   render() {
     return (
@@ -17,7 +18,7 @@ export default class Header extends Component {
           <motion.img src={MailIcon} className={styles.mailIcon} alt='MailIcon.png' whileHover={{scale: 1.5}} whileTap={{opacity: 0.5, transition:{duration: 0.1}}}/>
           <motion.p className= {styles.text}  whileHover={{color: 'blue'}} whileTap={{opacity: 0.5, transition:{duration: 0.1}}}>myadvanture@gmail.com</motion.p>
         </div>
-        <motion.p className={styles.text} style={{marginLeft: "20vw"}}  whileHover={{color: 'blue'}} whileTap={{opacity: 0.5, transition:{duration: 0.1}}}>Get to know us</motion.p>
+        <Link to="/about-us"><motion.p className={styles.text} style={{marginLeft: "20vw"}}  whileHover={{color: 'blue'}} whileTap={{opacity: 0.5, transition:{duration: 0.1}}}>Get to know us</motion.p></Link>
         <motion.img src={FacebookIcon} className={styles.facebookIcon} alt='FacebookIcon.png' whileHover={{scale: 1.5}} whileTap={{opacity: 0.5, transition:{duration: 0.1}}}/>
         <motion.img src={InstagramIcon} className={styles.instagramIcon} alt='InstagramIcon.png' whileHover={{scale: 1.5}} whileTap={{opacity: 0.5, transition:{duration: 0.1}}}/>
       </div>

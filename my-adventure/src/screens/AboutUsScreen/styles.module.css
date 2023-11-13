@@ -2,6 +2,39 @@
     font-family: "NunitoSans";
     src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf");
 }
+.content {
+    background-image: url('../../assets/images/BookingBackground.png');
+    width: 100vw;
+    height: 100vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 8%;
+    padding-left: 10%;
+}
+
+.welcome {
+    font-size: 5vh;
+    margin: 0;
+    font-weight: 300;
+}
+
+.myadventure {
+    font-size: 10vh;
+    margin-top: 0.7vh;
+    margin-bottom: 0;
+}
+
+
+.highlight {
+    background-color: rgba(92,214,192,0.7);
+    color: white;
+}
 .aboutUsGreenText{
     font-family: "NunitoSans";
     font-size: 50px;

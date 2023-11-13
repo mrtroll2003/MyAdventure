@@ -23,7 +23,7 @@ const SignUp = () => {
         <input type='password' placeholder='Confirm Password' className={styles.enterInput} style={{padding: "0 5%"}}></input>
       </div>
       <motion.button className={styles.signInButton} whileTap={{opacity: 0.5, transition:{duration: 0.1}}} onClick={() => navigate('/home')}>Sign up</motion.button>
-      <p className={styles.smallText}>Already have an account?<motion.button style={{color:'turquoise'}} whileTap={{opacity: 0.5, transition:{duration: 0.1}}} onClick={() => navigate('/sign-in')}> Sign in</motion.button></p>
+      <p className={styles.smallText}>Already have an account? <motion.button style={{color:'turquoise'}} whileTap={{opacity: 0.5, transition:{duration: 0.1}}} onClick={() => navigate('/sign-in')}> Sign in</motion.button></p>
     </div>
     </>
   )

@@ -30,7 +30,7 @@ import Tabbar from "./component/Tabbar/Tabbar.js";
 import HomePageNotSign from "./screens/HomePageNotSign/index.js";
 
 export default function App() {
-  const [isLogin, setIsLogin] = useState(1);
+  const [isLogin, setIsLogin] = useState(false);
   const handleLogin = (login) => {
     setIsLogin(login);
   };
