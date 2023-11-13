@@ -2,9 +2,11 @@ import React from "react";
 import styles from "./styles.module.css";
 import { motion } from "framer-motion";
 import CustomerTextBox from "../../components/CustomerTextBox";
+import CancelPopUp from "../../component/CancelPopUp";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const DetailBookingScreen = () => {
+const ConfirmedDetailBookingScreen = () => {
   const navigate = useNavigate();
   let form = {
     transport: "",
@@ -21,7 +23,7 @@ const DetailBookingScreen = () => {
     departure: "Sài Gòn",
     destination: "Sapa",
     date: "05/10/2003",
-    status_code: 1,
+    status_code: 3,
     status: ["Cancelled", "Waiting for handling", "Paid", "Confirmed"],
   };
   let statusBackgroundColor;
@@ -35,6 +37,7 @@ const DetailBookingScreen = () => {
     statusBackgroundColor = "#F5AE45";
   }
 
+  const [openCancelPopUp, setOpenCancelPopUp] = useState(false);
   // method:
   const handleTransportChange = (event) => {};
 
@@ -96,9 +99,17 @@ const DetailBookingScreen = () => {
             style={{ backgroundColor: "#FF8139" }}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9, rotate: "25deg" }}
+            onClick={() => {
+              setOpenCancelPopUp(true);
+            }}
           >
             Cancel
           </motion.button>
+          {openCancelPopUp == true ? (
+            <CancelPopUp chooseClose={setOpenCancelPopUp}></CancelPopUp>
+          ) : (
+            <></>
+          )}
           {tour.status_code == 1 ? (
             <motion.button
               className={styles.optionBtn}
@@ -365,9 +376,195 @@ const DetailBookingScreen = () => {
             <div style={{ fontSize: "3vh" }}>3:00 p.m</div>
           </div>
         </div>
+
+        {/*Accommodation Information*/}
+        <div
+          style={{
+            height: "50%",
+            display: "flex",
+            flexDirection: "column",
+            paddingBottom: "5vh",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: "4vh",
+            }}
+          >
+            <div
+              className={styles.heading2}
+              style={{ fontSize: "4vh", fontWeight: "bold" }}
+            >
+              Accommodation:
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: "4vh",
+            }}
+          >
+            <div className={styles.heading2}>Accommodation’s name: </div>
+            <div style={{ fontSize: "3vh" }}>Intercoin Hotel</div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: "4vh",
+            }}
+          >
+            <div className={styles.heading2}>Checkin Date: </div>
+            <div style={{ fontSize: "3vh" }}>10/10/2023</div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: "4vh",
+            }}
+          >
+            <div className={styles.heading2}>Checkin Time:</div>
+            <div style={{ fontSize: "3vh" }}>11:00 a.m</div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: "4vh",
+            }}
+          >
+            <div className={styles.heading2}>Checkout Date: </div>
+            <div style={{ fontSize: "3vh" }}>15/10/2023</div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: "4vh",
+            }}
+          >
+            <div className={styles.heading2}>Checkout Time: </div>
+            <div style={{ fontSize: "3vh" }}>11:00 a.m</div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: "4vh",
+            }}
+          >
+            <div className={styles.heading2}>Type and quantity of room: </div>
+            <div style={{ fontSize: "3vh" }}>1 Double Room</div>
+          </div>
+        </div>
+
+        {/*Schedule Details */}
+        <div
+          style={{
+            height: "50%",
+            display: "flex",
+            flexDirection: "column",
+            paddingBottom: "5vh",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: "4vh",
+            }}
+          >
+            <div
+              className={styles.heading2}
+              style={{ fontSize: "4vh", fontWeight: "bold" }}
+            >
+              Schedule Details
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              marginTop: "4vh",
+            }}
+          >
+            <div
+              className={styles.heading2}
+              style={{ width: "80%", marginLeft: "0px" }}
+            >
+              Day 1: Video provides a powerful way to help you prove your point.
+              When you click Online Video, you can paste in the embed code for
+              the video you want to add.
+            </div>
+
+            <div
+              className={styles.heading2}
+              style={{ width: "80%", marginLeft: "0px" }}
+            >
+              Day 2: You can also type a keyword to search online for the video
+              that best fits your document. To make your document look
+              professionally produced, Word provides header, footer, cover page,
+              and text box designs that complement each other. For example, you
+              can add a matching cover page, header, and sidebar.
+            </div>
+
+            <div
+              className={styles.heading2}
+              style={{ width: "80%", marginLeft: "0px" }}
+            >
+              Day 3: Click Insert and then choose the elements you want from the
+              different galleries. Themes and styles also help keep your
+              document coordinated. When you click Design and choose a new
+              Theme, the pictures, charts, and SmartArt graphics change to match
+              your new theme. When you apply styles, your headings change to
+              match the new theme.
+            </div>
+
+            <div
+              className={styles.heading2}
+              style={{ width: "80%", marginLeft: "0px" }}
+            >
+              Day 4: Save time in Word with new buttons that show up where you
+              need them. To change the way a picture fits in your document,
+              click it and a button for layout options appears next to it. When
+              you work on a table, click where you want to add a row or a
+              column, and then click the plus sign.
+            </div>
+
+            <div
+              className={styles.heading2}
+              style={{ width: "80%", marginLeft: "0px" }}
+            >
+              Day 5: Reading is easier, too, in the new Reading view. You can
+              collapse parts of the document and focus on the text you want. If
+              you need to stop reading before you reach the end, Word remembers
+              where you left off - even on another device.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default DetailBookingScreen;
+export default ConfirmedDetailBookingScreen;
