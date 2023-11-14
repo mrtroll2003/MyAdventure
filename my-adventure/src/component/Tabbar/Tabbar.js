@@ -30,7 +30,7 @@ class Tabbar extends React.Component {
             className={styles.contentText}
             whileHover={{ color: "#5CD6C0" }}
             >
-            Contacts
+            <Link to="/contact">Contacts</Link>
           </motion.div>
 
           <motion.div

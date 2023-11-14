@@ -13,6 +13,7 @@ import InternationalTourScreen from "./screens/InternationalTourScreen";
 import YourBooking from "./screens/YourBooking";
 import BookingDetailedManagement from "./screens/BookingDetailedManagement";
 import ConfirmedDetailBookingScreen from "./screens/ConfirmedDetailBooking/index.js";
+import Contacts from "./screens/Contacts";
 
 import Header from "./component/Header";
 import ReactDOM from "react-dom/client";
@@ -68,6 +69,7 @@ export default function App() {
           path="confirmed-detail-booking"
           element={<ConfirmedDetailBookingScreen />}
         />
+        <Route path="contact" element={<Contacts />} />
       </Routes>
     </BrowserRouter>
     // <SignIn/>
