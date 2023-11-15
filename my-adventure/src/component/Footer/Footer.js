@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+import { Link, useHistory } from "react-router-dom";
 import { MyLogo } from "../../assets/logos";
 import WhiteFacebookIcon from "../../assets/icons/white_facebook.png";
 import WhiteMailIcon from "../../assets/icons/white_mail.png";
@@ -55,7 +56,7 @@ class Footer extends React.Component {
         <div className={styles.footerOtherView}>
           <h2 id={styles.footerBoldText}>ALL PRODUCTS</h2>
           <p id={styles.footerNormalText}>Travel</p>
-          <p id={styles.footerNormalText}>Travel Protection</p>
+          <p id={styles.footerNormalText}>Travel Protection</p> 
         </div>
         <div className={styles.footerOtherView}>
           <h2 id={styles.footerBoldText}>LET'S CONTACT</h2>
