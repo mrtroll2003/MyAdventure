@@ -37,7 +37,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Header />
-      {isLogin ? <MainTabbar /> : <Tabbar />}
+      {isLogin ? <MainTabbar onLogin={handleLogin} /> : <Tabbar />}
       <Routes>
         <Route>
           <Route path="/" element={<HomePageNotSign />} />

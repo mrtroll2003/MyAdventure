@@ -24,7 +24,7 @@ const SignIn = ({ onLogin }) => {
 
   const loginUser = async (data) => {
     try {
-      const response = await fetch('http://localhost:3001/api/login', {
+      const response = await fetch('http://localhost:3001/auth/sign_in', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,9 +32,15 @@ const SignIn = ({ onLogin }) => {
         body: JSON.stringify(data),
       });
   
-      const responseData = await response.json();
+      if (response.ok) {
+        const { token } = await response.json();
+        localStorage.setItem("token", token);
+        return token;
+      } else {
+        // Xử lý lỗi đăng nhập
+        
+      }
   
-      return responseData;
     } catch (error) {
       console.error(error);
       throw error;
@@ -52,11 +58,11 @@ const SignIn = ({ onLogin }) => {
     setIsLoading(true);
   
     try {
-      const responseData = await loginUser(data);
+      const token = await loginUser(data);
   
       setIsLoading(false);
   
-      if (responseData.message === 'Login successful') {
+      if (token) {
         onLogin(true);
         navigate('/home');
       } else {
