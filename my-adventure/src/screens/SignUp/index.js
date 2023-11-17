@@ -13,6 +13,7 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false); 
   const [showMessage, setShowMessage] = useState(false); 
+  const [message, setMessage] = useState('');
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -47,6 +48,21 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if(email === "" || password === "" || confirmPassword === "" )
+    {
+      setMessage("Please fill in all information to Sign up")
+      setShowMessage(true);
+      return;
+    }
+
+    if(confirmPassword !== password)
+    {
+      setMessage("Password and Confirm Password does not match")
+      setShowMessage(true);
+      return;
+    }
+    
+
   
     const data = {
       email: email,
@@ -63,6 +79,7 @@ const SignUp = () => {
       if (response === 202) {
         navigate('/sign-in');
       } else if (response === 409) {
+        setMessage("Email is already in use")
         setShowMessage(true);
       }
     } catch (error) {
@@ -77,7 +94,7 @@ const SignUp = () => {
       <p className={styles.companyName}>MY ADVENTURE</p>
       <p className={styles.accountOption}>CREATE ACCOUNT</p>
       <div style={{width: "100%"}}>
-        {showMessage && <p className={styles.errorText}>Email is already in use</p>}
+        {showMessage && <p className={styles.errorText}>{message}</p>}
         <p className={styles.subTitle}>Email Address</p>
         <input type='text' placeholder='Email Address' className={styles.enterInput} value={email} onChange={handleEmailChange}></input>
         <p className={styles.subTitle}>Password</p>
