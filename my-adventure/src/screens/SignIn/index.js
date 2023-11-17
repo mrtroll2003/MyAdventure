@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SignIn = ({ onLogin }) => {
   const navigate = useNavigate();
+  const [message, setMessage] = useState('');
   const [showMessage, setShowMessage] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -49,6 +50,26 @@ const SignIn = ({ onLogin }) => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+
+    if(email === "" && password === "")
+    {
+      console.log("hello")
+      setMessage("Please fill in Email and Password to Sign in")
+      setShowMessage(true);
+      return;
+    }
+    else if (email === "") {
+      setMessage("Please fill in Email to Sign in")
+      setShowMessage(true);
+      return;
+    }
+    else if (password === "") {
+      setMessage("Please fill in Password to Sign in")
+      setShowMessage(true);
+      return;
+    }
+
   
     const data = {
       email: email,
@@ -66,6 +87,7 @@ const SignIn = ({ onLogin }) => {
         onLogin(true);
         navigate('/home');
       } else {
+        setMessage ("Invalid account");
         setShowMessage(true);
       }
     } catch (error) {
@@ -79,13 +101,13 @@ const SignIn = ({ onLogin }) => {
       <div className={styles.mainView}>
         <p className={styles.companyName}>MY ADVENTURE</p>
         <p className={styles.accountOption}>WELCOME BACK</p>
-        <motion.button className={styles.googleOption} whileTap={{ scale: 0.8 }}>
+        {/* <motion.button className={styles.googleOption} whileTap={{ scale: 0.8 }}>
           <img src={GoogleIcon} alt="GoogleIcon.png" className={styles.googleIcon} />
           <p className={styles.googleOptionFont}>Sign in with Google</p>
         </motion.button>
-        <p className={styles.alternateText}>OR SIGN IN WITH EMAIL</p>
+        <p className={styles.alternateText}>OR SIGN IN WITH EMAIL</p> */}
         <div style={{ width: '100%' }}>
-          {showMessage && <p className={styles.errorText}>Invalid account</p>}
+          {showMessage && <p className={styles.errorText}>{message}</p>}
           <p className={styles.subTitle}>Email Address</p>
           <input type="text" placeholder="Email Address" value={email} onChange={handleEmailChange} className={styles.enterInput}></input>
           <p className={styles.subTitle}>Password</p>
