@@ -30,12 +30,12 @@ const MainTabbar = ({onLogin}) => {
           <Link to="/home">Home</Link>
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           className={styles.contentText}
           whileHover={{ color: "#5CD6C0" }}
           >
           <Link to="/booking">Booking</Link>
-        </motion.div>
+        </motion.div> */}
 
         <motion.div className={styles.dropdown}>
           <motion.button className={styles.contentText}>Travel</motion.button>
