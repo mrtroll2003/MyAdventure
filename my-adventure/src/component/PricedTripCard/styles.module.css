@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url('../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf') format('truetype');
+}
+
+.recTCView {
+    border: 2px solid white;
+    border-radius: 12px;
+    width: 22em;
+    height: 32em;
+    box-shadow: 5px 10px 20px gray;
+    background-color: white;
+    margin:25px 50px;
+}
+.recTCImage {
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.recTCTitleRow {
+    margin-left: 5%;
+    font-family: "NunitoSans";
+    font-weight: bold;
+    color: black;
+    margin-top: 3vh;
+    display: inline-block;
+}
+.recTCPrice {
+    margin-left: 5%;
+    font-family: "NunitoSans";
+    font-weight:bold;
+    color: black;
+}
+.recTCDate {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-family: "NunitoSans";
+    color: rgb(124, 141, 176);
+    font-size: 14px;
+    font-weight: normal;
+}
+.recTCRating {
+    font-size:15px;
+    float:right;
+    margin-right: 5%;
+    margin-top: 3vh;
+}
