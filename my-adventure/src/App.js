@@ -15,6 +15,7 @@ import BookingDetailedManagement from "./screens/BookingDetailedManagement";
 import ConfirmedDetailBookingScreen from "./screens/ConfirmedDetailBooking/index.js";
 import Contacts from "./screens/Contacts";
 import CancelSuccessfulBooking from "./screens/CancelSuccessfulBooking";
+import DestinationDetail from "./UpdatedScreens/DestinationDetail/DestinationDetail";
 
 import Header from "./component/Header";
 import ReactDOM from "react-dom/client";
@@ -71,9 +72,9 @@ export default function App() {
           element={<ConfirmedDetailBookingScreen />}
         />
         <Route path="contact" element={<Contacts />} />
-        <Route
-          path="cancel" element={<CancelSuccessfulBooking />}
-        />
+        <Route path="cancel" element={<CancelSuccessfulBooking />} />
+        <Route path="/booking-management" element={<BookingManagement />} />
+        <Route path="/phuclam" element={<DestinationDetail />} />
       </Routes>
     </BrowserRouter>
     // <SignIn/>

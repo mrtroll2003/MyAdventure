@@ -7,7 +7,7 @@
     border: 2px solid white;
     border-radius: 12px;
     width: 22em;
-    height: 32em;
+    height: 30em;
     box-shadow: 5px 10px 20px gray;
     background-color: white;
 }
@@ -18,9 +18,10 @@
 }
 .recTCTitleRow {
     margin-left: 5%;
+    font-size: 18px;
     font-family: "NunitoSans";
     font-weight: bold;
-    color: rgb(110, 116, 145);
+    color: black;
     margin-top: 3vh;
 }
 .recTCContentText {

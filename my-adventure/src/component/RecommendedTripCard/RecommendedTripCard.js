@@ -1,29 +1,58 @@
 import React from "react";
+
+import Star from "../../assets/icons/star.png";
 import { motion } from "framer-motion";
 
 import styles from "./styles.module.css";
-class RecommendedTripCard extends React.Component {
-  state = {
-    image: "",
-    titleRow: "",
-    titleRowPlace: "",
-    text: "",
-  };
-  render() {
-    return (
-      <motion.div
-        class={styles.recTCView}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+const RecommendedTripCard = (props) => {
+  return (
+    <motion.div
+      class={styles.recTCView}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <img src={props.image} alt="Place01" className={styles.recTCImage} />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "flex-end",
+          justifyContent: "space-between",
+        }}
       >
-        <img src={this.props.image} alt="Place01" className={styles.recTCImage} />
         <p className={styles.recTCTitleRow}>
-          {this.props.titleRow}{" "}
-          <span style={{ color: "#5C90D6" }}>{this.props.titleRowPlace}</span>
+          {props.departure}
+          {" - "}
+          {props.destination}
         </p>
-        <p className={styles.recTCContentText}>{this.props.text}</p>
-      </motion.div>
-    );
-  }
-}
+        <div
+          className={styles.recTCTitleRow}
+          style={{ display: "flex", flexDirection: "row", marginRight: "5%" }}
+        >
+          <img
+            src={Star}
+            style={{ width: "15px", height: "15px", marginRight: "5px" }}
+            alt=""
+          />
+          <div>{props.rating}</div>
+        </div>
+      </div>
+      <p
+        className={styles.recTCTitleRow}
+        style={{
+          marginTop: "1vh",
+          fontWeight: "400",
+          color: "rgba(0,0,0,0.47)",
+        }}
+      >
+        {props.departure_date}
+        {" - "}
+        {props.return_date}
+      </p>
+      <p className={styles.recTCTitleRow} style={{ marginTop: "1vh" }}>
+        {props.price}
+      </p>
+    </motion.div>
+  );
+};
 export default RecommendedTripCard;
