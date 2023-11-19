@@ -15,6 +15,8 @@ import BookingDetailedManagement from "./screens/BookingDetailedManagement";
 import ConfirmedDetailBookingScreen from "./screens/ConfirmedDetailBooking/index.js";
 import Contacts from "./screens/Contacts";
 import CancelSuccessfulBooking from "./screens/CancelSuccessfulBooking";
+import VietNamTourScreenCompany from "./UpdatedScreens/VietNamTourScreenV2";
+import InternationalTourScreenCompany from "./UpdatedScreens/InternationalTourScreenV2";
 import DestinationDetail from "./UpdatedScreens/DestinationDetail/DestinationDetail";
 
 import Header from "./component/Header";
@@ -53,6 +55,14 @@ export default function App() {
           <Route path="booking-step-two" element={<BookingStepTwo />} />
           <Route path="booking-step-three" element={<BookingStepThree />} />
           <Route path="vietnam-tours" element={<VietNamTourScreen />} />
+          <Route
+            path="vietnam-tours-company"
+            element={<VietNamTourScreenCompany />}
+          />
+          <Route
+            path="intl-tours-company"
+            element={<InternationalTourScreenCompany />}
+          />
           <Route
             path="international-tours"
             element={<InternationalTourScreen />}
