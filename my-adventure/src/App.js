@@ -17,6 +17,7 @@ import Contacts from "./screens/Contacts";
 import CancelSuccessfulBooking from "./screens/CancelSuccessfulBooking";
 import VietNamTourScreenCompany from "./UpdatedScreens/VietNamTourScreenV2";
 import InternationalTourScreenCompany from "./UpdatedScreens/InternationalTourScreenV2";
+import DestinationDetail from "./UpdatedScreens/DestinationDetail/DestinationDetail";
 
 import Header from "./component/Header";
 import ReactDOM from "react-dom/client";
@@ -54,8 +55,14 @@ export default function App() {
           <Route path="booking-step-two" element={<BookingStepTwo />} />
           <Route path="booking-step-three" element={<BookingStepThree />} />
           <Route path="vietnam-tours" element={<VietNamTourScreen />} />
-          <Route path="vietnam-tours-company" element={<VietNamTourScreenCompany />} />
-          <Route path="intl-tours-company" element={<InternationalTourScreenCompany />} />
+          <Route
+            path="vietnam-tours-company"
+            element={<VietNamTourScreenCompany />}
+          />
+          <Route
+            path="intl-tours-company"
+            element={<InternationalTourScreenCompany />}
+          />
           <Route
             path="international-tours"
             element={<InternationalTourScreen />}
@@ -75,9 +82,9 @@ export default function App() {
           element={<ConfirmedDetailBookingScreen />}
         />
         <Route path="contact" element={<Contacts />} />
-        <Route
-          path="cancel" element={<CancelSuccessfulBooking />}
-        />
+        <Route path="cancel" element={<CancelSuccessfulBooking />} />
+        <Route path="/booking-management" element={<BookingManagement />} />
+        <Route path="/phuclam" element={<DestinationDetail />} />
       </Routes>
     </BrowserRouter>
     // <SignIn/>
