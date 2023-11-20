@@ -18,6 +18,7 @@ import CancelSuccessfulBooking from "./screens/CancelSuccessfulBooking";
 import VietNamTourScreenCompany from "./UpdatedScreens/VietNamTourScreenV2";
 import InternationalTourScreenCompany from "./UpdatedScreens/InternationalTourScreenV2";
 import DestinationDetail from "./UpdatedScreens/DestinationDetail/DestinationDetail";
+import TourDetail from "./UpdatedScreens/TourDetail/TourDetail";
 
 import Header from "./component/Header";
 import ReactDOM from "react-dom/client";
@@ -26,7 +27,7 @@ import SignIn from "./screens/SignIn/index.js";
 import SignUp from "./screens/SignUp/index.js";
 import ForgotPassword from "./screens/ForgotPassword/index.js";
 import BookingManagement from "./screens/BookingManagement/index.js";
-import TourDetail from "./screens/TourDetail/index.js";
+// import TourDetail from "./screens/TourDetail/index.js"; // old version of tour detail
 import SuccessfulBooking from "./screens/SuccessfulBooking/index.js";
 import HomePageCompany from "./screens/HomePageCompany/index.js";
 import AboutUsScreen from "./screens/AboutUsScreen";
