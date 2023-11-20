@@ -1,7 +1,19 @@
 import React from "react";
+import styles from "./styles.module.css";
 import { motion } from "framer-motion";
 
+import HalfDaNang from "../../assets/images/half_danang.png";
+import HalfHaLong from "../../assets/images/half_halong.png";
+
+import Footer from "../../component/Footer/Footer";
+
 const TourDetail = (props) => {
+  let tour_title = {
+    departure: "Da Nang",
+    destination: "Ha Long Bay",
+    departure_date: "15/11/2023",
+    return_date: "20/10/2023",
+  };
   let transportation = {
     brand: "Viet Nam Airlines",
     departure_date: "10/10/2023",
@@ -14,7 +26,7 @@ const TourDetail = (props) => {
     checkin_date: "10/10/2023",
     checkin_time: "11:00 am",
     checkout_date: "20/11/2023",
-    checkin_time: "11:00 am",
+    checkout_time: "11:00 am",
   };
   let content_day1 = [
     "Arrive in Ha Long Bay and check-in to your accommodation.",
@@ -48,10 +60,184 @@ const TourDetail = (props) => {
     day2: ["Ha Long Bay Cruise - Lan Ha Bay", content_day2],
     day3: ["Ha Long Bay - Cat Ba Island", content_day3],
     day4: ["Ha Long Bay - Floating Village - Departure", content_day4],
+    price: "5.000.000",
   };
   return (
     <div>
-      <div>Tour Detail</div>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        {/* Left background */}
+        <div
+          className={styles.halfIntroBackground}
+          style={{ backgroundImage: `url(${HalfDaNang})` }}
+        >
+          <div className={styles.halfIntroBackgroundLayer}>Da Nang</div>
+        </div>
+        {/* Right background */}
+        <div
+          className={styles.halfIntroBackground}
+          style={{ backgroundImage: `url(${HalfHaLong})` }}
+        >
+          <div className={styles.halfIntroBackgroundLayer}>Ha Long Bay</div>
+        </div>
+      </div>
+      {/* Title */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1
+          className={styles.titleText}
+          style={{ fontSize: "70px", marginTop: "2.5%", fontWeight: "800" }}
+        >
+          Tour details
+        </h1>
+        <h2
+          className={styles.titleText}
+          style={{ fontSize: "45px", margin: "0px", fontWeight: "600" }}
+        >
+          {tour_title.departure}
+          {" - "}
+          {tour_title.destination}
+        </h2>
+        <h3
+          className={styles.titleText}
+          style={{ fontSize: "35px", margin: "0px", fontWeight: "400" }}
+        >
+          {tour_title.departure_date}
+          {" - "}
+          {tour_title.return_date}
+        </h3>
+      </div>
+      {/* Transportation */}
+      <div
+        className={styles.text}
+        style={{ marginLeft: "5%", marginTop: "5%" }}
+      >
+        Transportation:
+      </div>
+      <div className={styles.horizontal}>
+        <div className={styles.firstHalf}>
+          <p className={styles.leftText}>Transportation's brand: </p>
+          <p className={styles.leftText}>Departure Date: </p>
+          <p className={styles.leftText}>Departure Time: </p>
+          <p className={styles.leftText}>Return Date: </p>
+          <p className={styles.leftText}>Return Time: </p>
+        </div>
+        <div className={styles.secondHalf}>
+          <p className={styles.rightText}>{transportation.brand}</p>
+          <p className={styles.rightText}>{transportation.departure_date}</p>
+          <p className={styles.rightText}>{transportation.departure_time}</p>
+          <p className={styles.rightText}>{transportation.return_date}</p>
+          <p className={styles.rightText}>{transportation.return_time}</p>
+        </div>
+      </div>
+      {/* Accommodation */}
+      <div
+        className={styles.text}
+        style={{ marginLeft: "5%", marginTop: "1.5%" }}
+      >
+        Accommodation:
+      </div>
+      <div className={styles.horizontal}>
+        <div className={styles.firstHalf}>
+          <p className={styles.leftText}>Accommodation's name: </p>
+          <p className={styles.leftText}>Checkin Date: </p>
+          <p className={styles.leftText}>Checkin Time: </p>
+          <p className={styles.leftText}>Checkout Date: </p>
+          <p className={styles.leftText}>Checkout Time: </p>
+        </div>
+        <div className={styles.secondHalf}>
+          <p className={styles.rightText}>{accommodation.accommodation_name}</p>
+          <p className={styles.rightText}>{accommodation.checkin_date}</p>
+          <p className={styles.rightText}>{accommodation.checkin_time}</p>
+          <p className={styles.rightText}>{accommodation.checkout_date}</p>
+          <p className={styles.rightText}>{accommodation.checkout_time}</p>
+        </div>
+      </div>
+      {/* Schedule Details */}
+      <div
+        className={styles.text}
+        style={{ marginLeft: "5%", marginTop: "1.5%" }}
+      >
+        Schedule Details:
+      </div>
+      <div
+        className={styles.text}
+        style={{ marginLeft: "6%", marginTop: "1%" }}
+      >
+        Day 1: {details.day1[0]}
+      </div>
+      {details.day1[1].map((item, index) => (
+        <div key={index} className={styles.detailsText}>
+          {item}
+        </div>
+      ))}
+
+      <div
+        className={styles.text}
+        style={{ marginLeft: "6%", marginTop: "2%" }}
+      >
+        Day 2: {details.day2[0]}
+      </div>
+      {details.day2[1].map((item, index) => (
+        <div key={index} className={styles.detailsText}>
+          {item}
+        </div>
+      ))}
+      <div
+        className={styles.text}
+        style={{ marginLeft: "6%", marginTop: "2%" }}
+      >
+        Day 3: {details.day3[0]}
+      </div>
+      {details.day3[1].map((item, index) => (
+        <div key={index} className={styles.detailsText}>
+          {item}
+        </div>
+      ))}
+
+      <div
+        className={styles.text}
+        style={{ marginLeft: "6%", marginTop: "2%" }}
+      >
+        Day 4: {details.day4[0]}
+      </div>
+      {content_day4.map((item, index) => (
+        <div key={index} className={styles.detailsText}>
+          {item}
+        </div>
+      ))}
+      {/* Price */}
+      <div
+        className={styles.price}
+        style={{ marginTop: "2.5%", marginLeft: "6%" }}
+      >
+        Price: {details.price} VND
+      </div>
+      {/* Book this tour button  */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          marginTop: "2.5%",
+        }}
+      >
+        <motion.div
+          className={styles.bookTourBtn}
+          style={{ marginRight: "5%" }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          Booking this tour
+        </motion.div>
+      </div>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
