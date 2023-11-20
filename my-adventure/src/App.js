@@ -18,6 +18,8 @@ import CancelSuccessfulBooking from "./screens/CancelSuccessfulBooking";
 import VietNamTourScreenCompany from "./UpdatedScreens/VietNamTourScreenV2";
 import InternationalTourScreenCompany from "./UpdatedScreens/InternationalTourScreenV2";
 
+import MakeBookingScreen from "./UpdatedScreens/MakeBooking/index.js";
+
 import Header from "./component/Header";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -54,8 +56,14 @@ export default function App() {
           <Route path="booking-step-two" element={<BookingStepTwo />} />
           <Route path="booking-step-three" element={<BookingStepThree />} />
           <Route path="vietnam-tours" element={<VietNamTourScreen />} />
-          <Route path="vietnam-tours-company" element={<VietNamTourScreenCompany />} />
-          <Route path="intl-tours-company" element={<InternationalTourScreenCompany />} />
+          <Route
+            path="vietnam-tours-company"
+            element={<VietNamTourScreenCompany />}
+          />
+          <Route
+            path="intl-tours-company"
+            element={<InternationalTourScreenCompany />}
+          />
           <Route
             path="international-tours"
             element={<InternationalTourScreen />}
@@ -75,9 +83,8 @@ export default function App() {
           element={<ConfirmedDetailBookingScreen />}
         />
         <Route path="contact" element={<Contacts />} />
-        <Route
-          path="cancel" element={<CancelSuccessfulBooking />}
-        />
+        <Route path="cancel" element={<CancelSuccessfulBooking />} />
+        <Route path="phucthinh" element={<MakeBookingScreen />} />
       </Routes>
     </BrowserRouter>
     // <SignIn/>

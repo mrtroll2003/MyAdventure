@@ -1,0 +1,164 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url(../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf);
+}
+
+.title {
+    margin-top: 2vh;
+    font-family: "NunitoSans";
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.globe {
+    position: relative;
+    left: 25%;
+    width: auto;
+}
+
+.timeAndPlaceContainer {
+    width: 50%;
+    height: 20vh;
+    background-color: #5CD6C0;
+    position: relative;
+    margin-left: 5%;
+    align-self: center;
+    box-shadow: 2px 3px gray ;
+    display: flex;
+    flex-direction: column;
+}
+
+.timeContainer {
+    display: flex;
+    flex-direction: row;
+    font-family: "NunitoSans";
+    font-weight: bold;
+    margin-top: 3vh;
+    font-size: 20px;
+}
+
+.timeContainer::before {
+    content: url(../../assets/icons/fly.png);
+    margin-left: 3%;
+    margin-right: 2%;
+}
+
+.spaceContainer {
+    display: flex;
+    flex-direction: row;
+    font-family: "NunitoSans";
+    font-weight: bold;
+    margin-top: 3vh;
+    font-size: 20px;
+}
+
+.spaceContainer::before {
+    content: url(../../assets/icons/location.png);
+    margin-left: 3%;
+    margin-right: 2%;
+}
+
+.accountBox {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70vw;
+    height: 15vh;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 0.2vh solid black;
+}
+
+.signIn {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3vw;
+    font-size: 2.5vh;
+}
+
+.text1 {
+    width: 70vw;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.note {
+    background-color: rgba(124,141,176,0.2);
+    display:flex;
+    flex-direction: row;
+    width: 50vw;
+    height: 8vh;
+    border: 0.2vh solid black;
+    border-radius: 2vh;
+    margin-top: 2vh;
+    align-items: center;
+}
+
+.bookingForm {
+    width: 70vw;
+    border: 0.2vh solid black;
+    height: 200vh;
+    margin-top: 2vh;
+    height: auto;
+}
+
+.heading1 {
+    font-size: 4vh;
+    margin-top: 3vh;
+    margin-left: 3vw;
+    font-weight: 500;
+}
+
+.redStar {
+    color: red;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.horizontalInfo {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    align-items: start;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+}
+
+.verticalInfoTitle {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    font-family: "NunitoSans";
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+p.verticalInfoStyling {
+    margin-top: 2.5vh;
+}
+p.verticalInfoStyling::after {
+    content: " * ";
+    color: red;
+    font-size: 2vh;
+    font-weight: bold;
+}
+
+.verticalInfoInput {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+.datePicker {
+    border: 0.2vh solid #000;
+    padding: 10px;
+    border-radius: 10vh;
+    width: 20vw;
+    height: 6vh;
+    font-size: 3vh;
+    padding-left: 2vw;
+  }
