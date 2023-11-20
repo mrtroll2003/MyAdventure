@@ -60,6 +60,7 @@ const TourDetail = (props) => {
     day2: ["Ha Long Bay Cruise - Lan Ha Bay", content_day2],
     day3: ["Ha Long Bay - Cat Ba Island", content_day3],
     day4: ["Ha Long Bay - Floating Village - Departure", content_day4],
+    price: "5.000.000",
   };
   return (
     <div>
@@ -164,7 +165,77 @@ const TourDetail = (props) => {
       >
         Schedule Details:
       </div>
-      <div className={styles.text}></div>
+      <div
+        className={styles.text}
+        style={{ marginLeft: "6%", marginTop: "1%" }}
+      >
+        Day 1: {details.day1[0]}
+      </div>
+      {details.day1[1].map((item, index) => (
+        <div key={index} className={styles.detailsText}>
+          {item}
+        </div>
+      ))}
+
+      <div
+        className={styles.text}
+        style={{ marginLeft: "6%", marginTop: "2%" }}
+      >
+        Day 2: {details.day2[0]}
+      </div>
+      {details.day2[1].map((item, index) => (
+        <div key={index} className={styles.detailsText}>
+          {item}
+        </div>
+      ))}
+      <div
+        className={styles.text}
+        style={{ marginLeft: "6%", marginTop: "2%" }}
+      >
+        Day 3: {details.day3[0]}
+      </div>
+      {details.day3[1].map((item, index) => (
+        <div key={index} className={styles.detailsText}>
+          {item}
+        </div>
+      ))}
+
+      <div
+        className={styles.text}
+        style={{ marginLeft: "6%", marginTop: "2%" }}
+      >
+        Day 4: {details.day4[0]}
+      </div>
+      {content_day4.map((item, index) => (
+        <div key={index} className={styles.detailsText}>
+          {item}
+        </div>
+      ))}
+      {/* Price */}
+      <div
+        className={styles.price}
+        style={{ marginTop: "2.5%", marginLeft: "6%" }}
+      >
+        Price: {details.price} VND
+      </div>
+      {/* Book this tour button  */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          marginTop: "2.5%",
+        }}
+      >
+        <motion.div
+          className={styles.bookTourBtn}
+          style={{ marginRight: "5%" }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          Booking this tour
+        </motion.div>
+      </div>
       {/* Footer */}
       <Footer />
     </div>
