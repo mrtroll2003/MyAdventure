@@ -162,3 +162,46 @@ p.verticalInfoStyling::after {
     font-size: 3vh;
     padding-left: 2vw;
   }
+
+.addButton {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3vh;
+    width:4%;
+}
+
+.notionSectionContainer {
+    font-family: "NunitoSans";
+    font-size: 3vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    margin-top: 12vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.textBox {
+    height: 30vh;
+    border-radius: 10px;
+    margin-top: 5vh;
+    border: 0.2vh solid black;
+    font-family: "NunitoSans";
+    font-size: 3vh;
+    padding: 4vh 2vw;
+    margin-bottom: 5vh;
+}
+
+.submitButton {
+    width: 70vw;
+    height: 8vh;
+    margin-top: 5vh;
+    text-align: center;
+    color: white;
+    font-family: "NunitoSans";
+    font-weight: bold;
+    font-size: 3vh;
+    background-color: #5CD6C0;
+    border-radius: 10px;
+    box-shadow: 1px 1px gray;
+}

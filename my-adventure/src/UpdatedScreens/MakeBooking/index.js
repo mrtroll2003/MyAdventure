@@ -5,6 +5,10 @@ import DatePicker from "react-datepicker";
 import CustomerBox from "../../components/CustomerBox";
 
 import GlobeIMG from "../../assets/images/globe.png";
+import AddButtonIC from "../../assets/icons/add.png";
+import DeleteIC from "../../assets/icons/trash.png";
+
+import { motion } from "framer-motion";
 
 const MakeBookingScreen = () => {
   let timeStart = "30/09/2023 - 15/10/2023";
@@ -185,8 +189,57 @@ const MakeBookingScreen = () => {
           <div className={styles.heading1} style={{ marginTop: "6vh" }}>
             2. Customer Information
           </div>
-          <CustomerBox type={"adult"}></CustomerBox>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <CustomerBox type={"adult"}></CustomerBox>
+            <motion.img
+              src={DeleteIC}
+              alt="DeleteIcon.png"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.8, opacity: 0.5 }}
+              style={{
+                marginLeft: "4vw",
+                width: "2%",
+              }}
+            ></motion.img>
+          </div>
+          <motion.img
+            src={AddButtonIC}
+            alt="Add.png"
+            className={styles.addButton}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8, opacity: 0.5 }}
+          ></motion.img>
+          <div className={styles.notionSectionContainer}>
+            <div>
+              If you have any notion for this booking, please do not hesitate to
+              fill in this notion box:
+            </div>
+            <textarea className={styles.textBox}></textarea>
+          </div>
         </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <motion.button
+          className={styles.submitButton}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95, opacity: 0.5 }}
+        >
+          Submit
+        </motion.button>
       </div>
     </div>
   );
