@@ -19,6 +19,7 @@ import VietNamTourScreenCompany from "./UpdatedScreens/VietNamTourScreenV2";
 import InternationalTourScreenCompany from "./UpdatedScreens/InternationalTourScreenV2";
 import DestinationDetail from "./UpdatedScreens/DestinationDetail/DestinationDetail";
 import TourDetail from "./UpdatedScreens/TourDetail/TourDetail";
+import BookingStatusScreen from "./UpdatedScreens/BookingStatusScreen/BookingStatusScreen";
 
 import Header from "./component/Header";
 import ReactDOM from "react-dom/client";
@@ -86,6 +87,7 @@ export default function App() {
         <Route path="cancel" element={<CancelSuccessfulBooking />} />
         <Route path="/booking-management" element={<BookingManagement />} />
         <Route path="/phuclam" element={<DestinationDetail />} />
+        <Route path="/phuclam2" element={<BookingStatusScreen />} />
       </Routes>
     </BrowserRouter>
     // <SignIn/>
