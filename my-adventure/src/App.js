@@ -20,6 +20,8 @@ import InternationalTourScreenCompany from "./UpdatedScreens/InternationalTourSc
 import DestinationDetail from "./UpdatedScreens/DestinationDetail/DestinationDetail";
 import TourDetail from "./UpdatedScreens/TourDetail/TourDetail";
 
+import MakeBookingScreen from "./UpdatedScreens/MakeBooking/index.js";
+
 import Header from "./component/Header";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -84,8 +86,12 @@ export default function App() {
         />
         <Route path="contact" element={<Contacts />} />
         <Route path="cancel" element={<CancelSuccessfulBooking />} />
+
+        <Route path="phucthinh" element={<MakeBookingScreen />} />
+
         <Route path="/booking-management" element={<BookingManagement />} />
         <Route path="/phuclam" element={<DestinationDetail />} />
+
       </Routes>
     </BrowserRouter>
     // <SignIn/>
