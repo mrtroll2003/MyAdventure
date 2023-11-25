@@ -10,13 +10,14 @@ const RecommendedTripCard = (props) => {
       class={styles.recTCView}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
+      onClick={props.onClick}
     >
       <img src={props.image} alt="Place01" className={styles.recTCImage} />
       <div
         style={{
           display: "flex",
           flexDirection: "row",
-          alignItems: "flex-end",
+          alignItems: "baseline",
           justifyContent: "space-between",
         }}
       >
@@ -27,7 +28,7 @@ const RecommendedTripCard = (props) => {
         </p>
         <div
           className={styles.recTCTitleRow}
-          style={{ display: "flex", flexDirection: "row", marginRight: "5%" }}
+          style={{ display: "flex", flexDirection: "row", marginRight: "5%" , alignItems: "baseline"}}
         >
           <img
             src={Star}
@@ -50,7 +51,7 @@ const RecommendedTripCard = (props) => {
         {props.return_date}
       </p>
       <p className={styles.recTCTitleRow} style={{ marginTop: "1vh" }}>
-        {props.price}
+        {props.price}$
       </p>
     </motion.div>
   );

@@ -1,9 +1,7 @@
-import React from "react";
-
+import React, {useEffect, useState} from "react";
 import RecommendedTripCard from "../../component/RecommendedTripCard/RecommendedTripCard";
 import HolidayTypeCircle from "../../component/HolidayTypeCircle/HolidayTypeCircle";
 import Footer from "../../component/Footer/Footer";
-
 import GreenGlobe from "../../assets/icons/green_globe.png";
 import MessageBubble from "../../assets/icons/message_bubble.png";
 import Flag from "../../assets/icons/flag.png";
@@ -13,19 +11,96 @@ import SafariIcon from "../../assets/icons/safari.png";
 import BeachIcon from "../../assets/icons/beach.png";
 import AdventureIcon from "../../assets/icons/adventure.png";
 import HoneymoonIcon from "../../assets/icons/honeymoon.png";
-
-import Place01 from "../../assets/images/card/Card/place01.png";
-import Place02 from "../../assets/images/card/Card/place02.png";
-import Place03 from "../../assets/images/card/Card/place03.png";
 import HappyCustomer01 from "../../assets/images/happy_customer_01.png";
 import HappyCustomer02 from "../../assets/images/happy_customer_02.png";
-import Tabbar from "../../component/Tabbar/Tabbar";
-
-// import SmallMainBackground from "../../assets/images/small_main_background.png";
 import { motion } from "framer-motion";
 import styles from "./styles.module.css";
+import { formatDate } from "../../constant/formatDate";
+import { useNavigate } from "react-router-dom";
 
-const HomePageNotSign = () => {
+const HomePage = () => {
+  const navigate = useNavigate()
+  const [data, setData] = useState([])
+  const [tours, setTours] = useState([])
+  const [images, setImages] = useState([])
+  const [ratings, setRatings] = useState([])
+  const [loading1, setLoading1] = useState(true);
+  const [loading2, setLoading2] = useState(true);
+  const [loading3, setLoading3] = useState(true);
+
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+  
+    fetch("http://localhost:3001/image", requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        setImages(data)
+        setLoading1(false)
+      })
+      .catch(error => console.log('error', error));
+  
+    fetch("http://localhost:3001/rating", requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        setRatings(data)
+        setLoading2(false)
+      })
+      .catch(error => console.log('error', error));
+  
+    fetch("http://localhost:3001/tour", requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        setTours(data);
+        // setLoading(false)
+        setLoading3(false)
+      })
+      .catch(error => console.log('error', error));
+  }, []);
+  
+  useEffect(() => {
+    const sortedData = tours.sort((a, b) => getRating(b) - getRating(a));
+    const top3Trips = sortedData.slice(0, 3);
+    setData(top3Trips);
+  }, [tours]);
+  
+  const renderImage = (trip) => {
+    const image = images.find(image => image.name === trip.destination);
+    if (image && image.images && image.images.length > 0) {
+      const imageLink = image.images[0];
+      return imageLink;
+    }
+    return null; 
+  };
+  
+  const getRating = (trip) => {
+    const rating = ratings.find(rating => rating.name === trip.destination);
+    if (rating) {
+      return rating.rating;
+    }
+    return 0; // Default rating if 'rating' object is undefined
+  };
+
+  // const handleClick = () => {
+  //   navigate(`tour-detail?departure=Da Nang&destination=Sapa`)
+  //   }
+
+  const handleClick = (id) => {
+    console.log('Clicked:', id);
+    const url = `/tour-detail?id=${encodeURIComponent(id)}`;
+    navigate(url);
+  };
+  const numRows = Math.ceil(data.length / 3);
+  const rows = Array.from({ length: numRows }, (_, index) =>
+    data.slice(index * 3, (index + 1) * 3)
+  );
+
+  // if (loading1 || loading2 || loading3) {
+  //   return <p>Loading...</p>;
+  // }
+
   return (
     <div>
       <div className={styles.content}>
@@ -128,7 +203,8 @@ const HomePageNotSign = () => {
                 Explore unique{" "}
                 <span style={{ color: "#5CD6C0" }}>places to stay</span>
               </p>
-                <div style={{display: "flex", flexDirection: 'row'}}>
+                <motion.button style={{display: "flex", flexDirection: 'row'}} whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}>
                   <p
                     style={{
                       fontSize: "18px",
@@ -142,37 +218,35 @@ const HomePageNotSign = () => {
                     src={ArrowRight}
                     alt="arrow right"
                     style={{ alignSelf: "center", width: '1.5vw' }}
-                    whileHover={{ scale: 1.5 }}
-                    whileTap={{ scale: 0.9 }}
+
                   />
+              </motion.button>
+            </div>
+            {rows.map((row, rowIndex) => (
+              <div
+                key={rowIndex}
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-evenly",
+                  marginTop: "2%",
+                }}
+              >
+                {row.map((item) => (
+                  <RecommendedTripCard
+                    key={item._id}
+                    image={renderImage(item)}
+                    departure={item.departure}
+                    destination={item.destination}
+                    departure_date={formatDate(item.departureDate)}
+                    return_date={formatDate(item.departureDate)}
+                    rating={getRating(item)}
+                    price={item.price}
+                    onClick={() => handleClick(item._id)}
+                  />
+                ))}
               </div>
-            </div>
-            <div className={styles.recTripView}>
-              <RecommendedTripCard
-                image={Place01}
-                titleRow={"Stay among the atolls in"}
-                titleRowPlace={"Maldives"}
-                text={
-                  "From the 2nd century AD, the islands were known as the 'Money Isles' due to the abundance of cowry shells, a currency of the early ages."
-                }
-              />
-              <RecommendedTripCard
-                image={Place02}
-                titleRow={"Experience the Ourika Valley in "}
-                titleRowPlace={"Morocco"}
-                text={
-                  "Morocco’s Hispano-Moorish architecture blends influences from Berber culture, Spain, and contemporary artistic currents in the Middle East."
-                }
-              />
-              <RecommendedTripCard
-                image={Place03}
-                titleRow={"Live traditionally in "}
-                titleRowPlace={"Mongolia"}
-                text={
-                  "Traditional Mongolian yurts consists of an angled latticework of wood or bamboo for walls, ribs, and a wheel."
-                }
-              />
-            </div>
+            ))}
           </div>
           {/* Happy Customer */}
           <div className={styles.happyCustomerBackground}>
@@ -236,4 +310,4 @@ const HomePageNotSign = () => {
   );
 };
 
-export default HomePageNotSign;
+export default HomePage;

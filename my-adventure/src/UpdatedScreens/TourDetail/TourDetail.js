@@ -1,83 +1,84 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styles from "./styles.module.css";
 import { motion } from "framer-motion";
-
 import HalfDaNang from "../../assets/images/half_danang.png";
 import HalfHaLong from "../../assets/images/half_halong.png";
-
 import Footer from "../../component/Footer/Footer";
+import { useLocation } from "react-router-dom";
+import { formatDate, formatHour } from "../../constant/formatDate";
 
 const TourDetail = (props) => {
-  let tour_title = {
-    departure: "Da Nang",
-    destination: "Ha Long Bay",
-    departure_date: "15/11/2023",
-    return_date: "20/10/2023",
+  const location  = useLocation()
+  const searchParams = new URLSearchParams(location.search);
+  const id = searchParams.get('id');
+  console.log("id",id)
+
+  const [loading, setLoading] = useState(true);
+  
+  const [tour, setTour] = useState()
+  const [images, setImages] = useState([])
+
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch(`http://localhost:3001/image`, requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      setImages(data);
+      console.log(tour);
+    })
+    .catch(error => console.log('error', error));
+  
+    fetch(`http://localhost:3001/tour/place?id=${id}`, requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      setTour(data);
+      setLoading(false);
+      console.log(tour);
+    })
+    .catch(error => console.log('error', error));
+
+
+
+  }, [id, tour, images]);
+
+  const renderImage = (name) => {
+    const image = images.find(image => image.name === name);
+    if (image && image.images && image.images.length > 0) {
+      const imageLink = image.images[0];
+      return imageLink;
+    }
+    return null; 
   };
-  let transportation = {
-    brand: "Viet Nam Airlines",
-    departure_date: "10/10/2023",
-    departure_time: "8:00 am",
-    return_date: "15/11/2023",
-    return_time: "3:00 pm",
-  };
-  let accommodation = {
-    accommodation_name: "Intercoin Hotel",
-    checkin_date: "10/10/2023",
-    checkin_time: "11:00 am",
-    checkout_date: "20/11/2023",
-    checkout_time: "11:00 am",
-  };
-  let content_day1 = [
-    "Arrive in Ha Long Bay and check-in to your accommodation.",
-    "Settle in and take some time to relax and enjoy the beautiful surroundings.",
-    "In the evening, you can explore the local area, dine at a local restaurant, or simply unwind at your accommodation.",
-  ];
-  let content_day2 = [
-    "Board a cruise ship and start your exploration of Ha Long Bay.",
-    "Cruise through the stunning limestone karsts and emerald waters.",
-    "Visit Lan Ha Bay, a less crowded area known for its pristine beauty.",
-    "Enjoy various activities such as swimming, kayaking, or simply relaxing on the deck.",
-    "Explore Dark and Bright Cave, where you can kayak through the cave and witness its unique rock formations.",
-    "Overnight stay on the cruise ship.",
-  ];
-  let content_day3 = [
-    "Continue your cruise through Ha Long Bay, taking in the breathtaking scenery.",
-    "Visit Cat Ba Island, the largest island in the bay.",
-    "Explore Cat Ba National Park, known for its diverse flora and fauna.",
-    "Take a hike or bike ride through the park to enjoy the lush greenery and panoramic views.",
-    "Optional: Relax on one of the pristine beaches on Cat Ba Island.",
-    "Overnight stay on the cruise ship.",
-  ];
-  let content_day4 = [
-    "Visit a floating village to get a glimpse of the local way of life on the bay.",
-    "Take a traditional rowing boat or kayak to explore the village and interact with the locals.",
-    "Enjoy a seafood lunch on the cruise ship while taking in the final views of Ha Long Bay.",
-    "Disembark from the cruise ship and transfer back to Hanoi or your next destination.",
-  ];
-  let details = {
-    day1: ["Arrival in Ha Long Bay", content_day1],
-    day2: ["Ha Long Bay Cruise - Lan Ha Bay", content_day2],
-    day3: ["Ha Long Bay - Cat Ba Island", content_day3],
-    day4: ["Ha Long Bay - Floating Village - Departure", content_day4],
-    price: "5.000.000",
-  };
+
+  const getCity = (name) => {
+    const location =name;
+    const city = location.split(",")[0].trim();
+    return city;
+  }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
       <div style={{ display: "flex", flexDirection: "row" }}>
         {/* Left background */}
         <div
           className={styles.halfIntroBackground}
-          style={{ backgroundImage: `url(${HalfDaNang})` }}
+          style={{ backgroundImage: `url(${renderImage(tour.departure)})` }}
         >
-          <div className={styles.halfIntroBackgroundLayer}>Da Nang</div>
+          <div className={styles.halfIntroBackgroundLayer}>{tour.departure}</div>
         </div>
         {/* Right background */}
         <div
           className={styles.halfIntroBackground}
-          style={{ backgroundImage: `url(${HalfHaLong})` }}
+          style={{ backgroundImage: `url(${renderImage(tour.destination)})` }}
         >
-          <div className={styles.halfIntroBackgroundLayer}>Ha Long Bay</div>
+          <div className={styles.halfIntroBackgroundLayer}>{getCity(tour.destination)}</div>
         </div>
       </div>
       {/* Title */}
@@ -91,31 +92,31 @@ const TourDetail = (props) => {
       >
         <h1
           className={styles.titleText}
-          style={{ fontSize: "70px", marginTop: "2.5%", fontWeight: "800" }}
+          style={{ fontSize: "3.5vw", marginTop: "2.5%", fontWeight: "800" }}
         >
           Tour details
         </h1>
         <h2
           className={styles.titleText}
-          style={{ fontSize: "45px", margin: "0px", fontWeight: "600" }}
+          style={{ fontSize: "2vw", margin: "0px", fontWeight: "600" }}
         >
-          {tour_title.departure}
+          {tour.departure}
           {" - "}
-          {tour_title.destination}
+          {tour.destination}
         </h2>
         <h3
           className={styles.titleText}
-          style={{ fontSize: "35px", margin: "0px", fontWeight: "400" }}
+          style={{ fontSize: "1.5vw", margin: "0px", fontWeight: "400" }}
         >
-          {tour_title.departure_date}
+          {formatDate(tour.departureDate)}
           {" - "}
-          {tour_title.return_date}
+          {formatDate(tour.returnDate)}
         </h3>
       </div>
       {/* Transportation */}
       <div
         className={styles.text}
-        style={{ marginLeft: "5%", marginTop: "5%" }}
+        style={{ marginLeft: "5%", marginTop: "2.5%" }}
       >
         Transportation:
       </div>
@@ -128,11 +129,11 @@ const TourDetail = (props) => {
           <p className={styles.leftText}>Return Time: </p>
         </div>
         <div className={styles.secondHalf}>
-          <p className={styles.rightText}>{transportation.brand}</p>
-          <p className={styles.rightText}>{transportation.departure_date}</p>
-          <p className={styles.rightText}>{transportation.departure_time}</p>
-          <p className={styles.rightText}>{transportation.return_date}</p>
-          <p className={styles.rightText}>{transportation.return_time}</p>
+          <p className={styles.rightText}>{tour.transport}</p>
+          <p className={styles.rightText}>{formatDate(tour.departureDate)}</p>
+          <p className={styles.rightText}>{formatHour(tour.departureDate)}</p>
+          <p className={styles.rightText}>{formatDate(tour.returnDate)}</p>
+          <p className={styles.rightText}>{formatHour(tour.returnDate)}</p>
         </div>
       </div>
       {/* Accommodation */}
@@ -151,11 +152,11 @@ const TourDetail = (props) => {
           <p className={styles.leftText}>Checkout Time: </p>
         </div>
         <div className={styles.secondHalf}>
-          <p className={styles.rightText}>{accommodation.accommodation_name}</p>
-          <p className={styles.rightText}>{accommodation.checkin_date}</p>
-          <p className={styles.rightText}>{accommodation.checkin_time}</p>
-          <p className={styles.rightText}>{accommodation.checkout_date}</p>
-          <p className={styles.rightText}>{accommodation.checkout_time}</p>
+          <p className={styles.rightText}>{tour.hotel}</p>
+          <p className={styles.rightText}>{formatDate(tour.checkin)}</p>
+          <p className={styles.rightText}>{formatHour(tour.checkin)}</p>
+          <p className={styles.rightText}>{formatDate(tour.checkout)}</p>
+          <p className={styles.rightText}>{formatHour(tour.checkout)}</p>
         </div>
       </div>
       {/* Schedule Details */}
@@ -166,17 +167,17 @@ const TourDetail = (props) => {
         Schedule Details:
       </div>
       <div
-        className={styles.text}
-        style={{ marginLeft: "6%", marginTop: "1%" }}
+        className={styles.text1}
+        style={{ marginLeft: "7.8%", marginTop: "1%", marginRight: "6%" }}
       >
-        Day 1: {details.day1[0]}
+        {tour.details}
       </div>
-      {details.day1[1].map((item, index) => (
+      {/* {details.day1[1].map((item, index) => (
         <div key={index} className={styles.detailsText}>
           {item}
         </div>
-      ))}
-
+      ))} */}
+{/* 
       <div
         className={styles.text}
         style={{ marginLeft: "6%", marginTop: "2%" }}
@@ -210,13 +211,13 @@ const TourDetail = (props) => {
         <div key={index} className={styles.detailsText}>
           {item}
         </div>
-      ))}
+      ))} */}
       {/* Price */}
       <div
         className={styles.price}
         style={{ marginTop: "2.5%", marginLeft: "6%" }}
       >
-        Price: {details.price} VND
+        Price: ${tour.price}
       </div>
       {/* Book this tour button  */}
       <div
