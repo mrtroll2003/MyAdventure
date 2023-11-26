@@ -19,6 +19,8 @@ import VietNamTourScreenCompany from "./UpdatedScreens/VietNamTourScreenV2";
 import InternationalTourScreenCompany from "./UpdatedScreens/InternationalTourScreenV2";
 import DestinationDetail from "./UpdatedScreens/DestinationDetail/DestinationDetail";
 import TourDetail from "./UpdatedScreens/TourDetail/TourDetail";
+import CreateInternationalTourScreen from "./UpdatedScreens/CreateINTours";
+import CreateVietNamTourScreen from "./UpdatedScreens/CreateVNTours";
 
 import MakeBookingScreen from "./UpdatedScreens/MakeBooking/index.js";
 
@@ -67,6 +69,14 @@ export default function App() {
             element={<InternationalTourScreenCompany />}
           />
           <Route
+            path="create-vietnam-tours"
+            element={<CreateVietNamTourScreen />}
+          />
+          <Route
+            path="create-intl-tours"
+            element={<CreateInternationalTourScreen />}
+          />
+          <Route
             path="international-tours"
             element={<InternationalTourScreen />}
           />
@@ -91,7 +101,6 @@ export default function App() {
 
         <Route path="/booking-management" element={<BookingManagement />} />
         <Route path="/phuclam" element={<DestinationDetail />} />
-
       </Routes>
     </BrowserRouter>
     // <SignIn/>
