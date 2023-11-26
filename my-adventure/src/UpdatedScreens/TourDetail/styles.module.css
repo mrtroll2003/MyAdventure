@@ -4,12 +4,11 @@
 }
 .halfIntroBackground {
     flex: 1;
-    height: 65vh;
+    height: 50vh;
     border: 1px solid white;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
 }
 .halfIntroBackgroundLayer {
     width: 100%;
@@ -20,7 +19,7 @@
     align-items: center;
     font-family: "NunitoSans";
     font-weight: 800;
-    font-size: 80px;
+    font-size: 3.5vw;
     text-transform: uppercase;
     color: white;
     background-color: rgba(0, 0, 0, 0.3);
@@ -31,19 +30,26 @@
 }
 .text {
     font-family: "NunitoSans";
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.5vw; 
+}
+
+.text1 {
+    font-family: "NunitoSans";
     font-weight: 600;
-    font-size: 24px; 
+    font-size: 1.2vw; 
 }
 .leftText {
     font-family: "NunitoSans";
     font-weight: 600;
-    font-size: 24px;
+    font-size: 1.2vw;
     margin-top: 1.5vh;
 }
 .rightText {
     font-family: "NunitoSans";
     font-weight: 400;
-    font-size: 24px;
+    font-size: 1.2vw;
     margin-top: 1.5vh;
 }
 .horizontal {
@@ -66,7 +72,7 @@
 .detailsText {
     font-family: "NunitoSans";
     font-weight: 600;
-    font-size: 24px; 
+    font-size: 1.5vw; 
 }
 .detailsText::before {
     margin-left: 7%;
@@ -80,19 +86,18 @@
     background-color: black;
 }
 .price {
-    font-size: 40px;
+    font-size: 1.8vw;
     font-family: "NunitoSans";
     font-weight: 900;
     text-transform: uppercase;
 }
 .bookTourBtn {
-    width: 20%;
-    height: 10vh;
+    padding: 1% 1%;
     display: flex;
     color: white;
     font-family: "NunitoSans";
     font-weight: 600;
-    font-size: 30px;
+    font-size: 1.2vw;
     justify-content: center;
     align-items: center;
     background-color: #5CD6C0;
