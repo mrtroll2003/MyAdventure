@@ -241,6 +241,22 @@ const MakeBookingScreen = () => {
           Submit
         </motion.button>
       </div>
+      <div
+        style={{
+          textAlign: "center",
+          fontFamily: "NunitoSans",
+          fontSize: "2.5vh",
+          width: "70vw",
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginTop: "5vh",
+        }}
+      >
+        Thank you for choosing Ha Long Bay as your destination! <br></br>
+        Thank you for your kind trust in MyAdventure! With many years of
+        experience, My Adventure travel expert team will contact you soonest for
+        best trips and Advice
+      </div>
     </div>
   );
 };

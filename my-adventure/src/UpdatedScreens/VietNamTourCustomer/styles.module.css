@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url('../../constant/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf') format('truetype');
+    src: url('../../constant/fonts/static/NunitoSans_10pt-ExtraBold.ttf') format('truetype');
+}
+.vnTourIntroBackground {
+    height: 50vh;
+    background-image: url('../../assets/images/viet_nam_tour_background.png');
+    background-position: center;
+    background-size: cover;
+}
+.vnTourIntroLayer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+}
+.vnTourIntroText {
+    color: white;
+    font-family: "NunitoSans";
+    font-size: 80px;
+    font-weight: bolder;
+}
