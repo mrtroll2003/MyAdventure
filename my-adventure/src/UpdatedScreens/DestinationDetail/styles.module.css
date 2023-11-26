@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf") format("truetype");
+}
+.screenFont {
+    font-family: "NunitoSans";
+}
+.introBackground {
+    background-image: url("../../assets/images/HaLongBayBg.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 65vh;
+}
+.introBackgroundLayer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+}
+.introBackgroundText {
+    color: white;
+    font-size: 80px;
+    font-family: "NunitoSans";
+    font-weight: 900;
+    text-transform: capitalize;
+}
+.displayHorizon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0px;
+}
+.filterBox {
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 20%;
+    height: 10%;
+    font-size: 21px;
+    font-weight: 600;
+    text-indent: 5%;
+}
