@@ -2,6 +2,9 @@ import React from "react";
 import DestinationSection from "../../component/DestinationSection/DestinationSection";
 import Footer from "../../component/Footer/Footer";
 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 import Header from "../../component/Header";
 import MainTabbar from "../../component/MainTabbar/MainTabbar";
 import Illustration01 from "../../assets/images/illustration/illustration01.png";

@@ -37,7 +37,7 @@ import AboutUsScreen from "./screens/AboutUsScreen";
 import { MakingArrangement } from "./screens/MakingArrangement/index.js";
 import { useState } from "react";
 import Tabbar from "./component/Tabbar/Tabbar.js";
-import "./index.css"
+import "./index.css";
 import HomePage from "./screens/HomePage/index.js";
 
 export default function App() {
@@ -48,7 +48,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="fixed-header">
-        <Header/>
+        <Header />
         {isLogin ? <MainTabbar onLogin={handleLogin} /> : <Tabbar />}
       </div>
       <div className="content"></div>
@@ -61,9 +61,6 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="tour-detail" element={<TourDetail />} />
 
-
-
-          
           <Route path="booking" element={<BookingStepOne />} />
           <Route path="booking-step-two" element={<BookingStepTwo />} />
           <Route path="booking-step-three" element={<BookingStepThree />} />
@@ -96,17 +93,14 @@ export default function App() {
         />
         <Route path="contact" element={<Contacts />} />
         <Route path="cancel" element={<CancelSuccessfulBooking />} />
-<<<<<<< HEAD
         <Route path="make-booking" element={<MakeBookingScreen />} />
         <Route path="vietnam-tour-customer" element={<VietNamTourCustomer />} />
-=======
 
         <Route path="phucthinh" element={<MakeBookingScreen />} />
 
         <Route path="/booking-management" element={<BookingManagement />} />
         <Route path="/phuclam" element={<DestinationDetail />} />
         <Route path="/phuclam2" element={<BookingStatusScreen />} />
->>>>>>> 1750677a82cbd45d4028a3dbc78be2957da12eb9
       </Routes>
     </BrowserRouter>
     // <SignIn/>

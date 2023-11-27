@@ -22,6 +22,12 @@
     font-weight: 100;
     text-align: center;
 }
+
+.carouselContainer {
+    
+    border: 2px solid red;
+}
+
 .illustrationView {
     margin-top: 6vh;
     width: 100%;
@@ -30,6 +36,49 @@
     justify-content: center;
 }
 #illusImage {
+    display: block;
     width: 25%;
 }
 
+.illustContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.illustOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0;
+    font-family:"NunitoSans";
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: beige;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.illustContainer:hover .illustOverlay {
+    height: 103%;
+    width: 100%;
+}
+
+.illustOverlayText {
+    margin-top: 35%;
+    text-align: center;
+}
+
+.illustOverlayButton {
+    margin-top: 5%;
+    font-size: 25px;
+    padding: 5px;
+    border: 2px solid;
+    background-color: #5cd6c0;
+    border-radius: 50px;
+}
