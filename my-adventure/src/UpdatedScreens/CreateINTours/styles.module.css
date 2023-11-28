@@ -1,0 +1,104 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url('../../constant/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf') format('truetype');
+    src: url('../../constant/fonts/static/NunitoSans_10pt-ExtraBold.ttf') format('truetype');
+}
+.vnTourIntroBackground {
+    height: 50vh;
+    background-image: url('../../assets/images/international_tour_background.png');
+    background-position: center;
+    background-size: cover;
+}
+.vnTourIntroLayer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+}
+.vnTourIntroText {
+    color: white;
+    font-family: "NunitoSans";
+    font-size: 80px;
+    font-weight: bolder;
+}
+.tourContainer {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    padding: 30px;
+    margin-left:15%;
+    width: 70%;
+  }
+  .displayHorizon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+.button {
+    margin-left: 5%;
+    width: 90%;
+    height: 8vh;
+    background-color:  #5CD6C0;
+    font-family: 'Nunito sans',sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+    margin-top: 10vh;
+}
+.enterInput {
+    margin-left: 10%;
+    width: 75%;
+    height: 7vh;
+    font-weight: normal;
+    font-size: 2.5vh;
+    margin-top: 1vh;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding-left: 10px;
+}
+.bigInput {
+    margin-left: 10%;
+    width: 80%;
+    font-weight: normal;
+    font-size: 2.5vh;
+    margin-top: 1vh;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding-left: 10px;
+    grid-column: 1 / span 2;
+    height:55vh;
+}
+.enterInput:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+}
+.enterInput[type='text'] {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: normal;
+    font-size: 2.5vh;
+    width: 35vw;
+    padding-left: 5%;
+}
+.vnHeadText {
+    margin-top: 20px;
+    margin-left: 40%;
+    font-family: "NunitoSans";
+    font-size: 40px;
+    font-weight: bolder;
+}
+.gridText {
+    font-weight: 500;
+    text-align: right;
+    padding: 30px;
+
+}
+.accordion {
+    grid-column: 1 / span 2;
+    padding: 18px;
+    font-weight: 500;
+    padding-top: 20px;
+    font-size: 2em;
+}

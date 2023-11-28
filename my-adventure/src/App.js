@@ -18,6 +18,8 @@ import VietNamTourScreenCompany from "./UpdatedScreens/VietNamTourScreenV2";
 import InternationalTourScreenCompany from "./UpdatedScreens/InternationalTourScreenV2";
 import DestinationDetail from "./UpdatedScreens/DestinationDetail/DestinationDetail";
 import TourDetail from "./UpdatedScreens/TourDetail/TourDetail";
+import CreateInternationalTourScreen from "./UpdatedScreens/CreateINTours";
+import CreateVietNamTourScreen from "./UpdatedScreens/CreateVNTours";
 import BookingStatusScreen from "./UpdatedScreens/BookingStatusScreen/BookingStatusScreen";
 
 import MakeBookingScreen from "./UpdatedScreens/MakeBooking/index.js";
@@ -88,7 +90,18 @@ export default function App() {
             path="intl-tours-company"
             element={<InternationalTourScreenCompany />}
           />
-
+          <Route
+            path="create-vietnam-tours"
+            element={<CreateVietNamTourScreen />}
+          />
+          <Route
+            path="create-intl-tours"
+            element={<CreateInternationalTourScreen />}
+          />
+          <Route
+            path="international-tours"
+            element={<InternationalTourScreen />}
+          />
 
           <Route path="yourbooking" element={<YourBooking />} />
           <Route path="detail-booking" element={<DetailBookingScreen />} />
