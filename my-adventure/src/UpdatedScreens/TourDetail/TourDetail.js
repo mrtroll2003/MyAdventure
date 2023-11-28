@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from "react";
 import styles from "./styles.module.css";
 import { motion } from "framer-motion";
-import HalfDaNang from "../../assets/images/half_danang.png";
-import HalfHaLong from "../../assets/images/half_halong.png";
 import Footer from "../../component/Footer/Footer";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { formatDate, formatHour } from "../../constant/formatDate";
 
 const TourDetail = (props) => {
+  console.log("hello")
+  const navigate = useNavigate()
   const location  = useLocation()
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get('id');
@@ -28,7 +28,6 @@ const TourDetail = (props) => {
     .then(response => response.json())
     .then(data => {
       setImages(data);
-      console.log(tour);
     })
     .catch(error => console.log('error', error));
   
@@ -37,13 +36,21 @@ const TourDetail = (props) => {
     .then(data => {
       setTour(data);
       setLoading(false);
-      console.log(tour);
+      console.log("place")
     })
     .catch(error => console.log('error', error));
+  }, [id]);
 
-
-
-  }, [id, tour, images]);
+  const handleBookTour = () => {
+    console.log('token',localStorage.getItem('token') )
+    if (localStorage.getItem('token') === undefined || localStorage.getItem('token') === null) {
+      navigate('/sign-in')
+      return;
+    }
+    const url = `/booking?id=${encodeURIComponent(tour._id)}`;
+    navigate(url);
+    return;
+  }
 
   const renderImage = (name) => {
     const image = images.find(image => image.name === name);
@@ -172,46 +179,7 @@ const TourDetail = (props) => {
       >
         {tour.details}
       </div>
-      {/* {details.day1[1].map((item, index) => (
-        <div key={index} className={styles.detailsText}>
-          {item}
-        </div>
-      ))} */}
-{/* 
-      <div
-        className={styles.text}
-        style={{ marginLeft: "6%", marginTop: "2%" }}
-      >
-        Day 2: {details.day2[0]}
-      </div>
-      {details.day2[1].map((item, index) => (
-        <div key={index} className={styles.detailsText}>
-          {item}
-        </div>
-      ))}
-      <div
-        className={styles.text}
-        style={{ marginLeft: "6%", marginTop: "2%" }}
-      >
-        Day 3: {details.day3[0]}
-      </div>
-      {details.day3[1].map((item, index) => (
-        <div key={index} className={styles.detailsText}>
-          {item}
-        </div>
-      ))}
-
-      <div
-        className={styles.text}
-        style={{ marginLeft: "6%", marginTop: "2%" }}
-      >
-        Day 4: {details.day4[0]}
-      </div>
-      {content_day4.map((item, index) => (
-        <div key={index} className={styles.detailsText}>
-          {item}
-        </div>
-      ))} */}
+   
       {/* Price */}
       <div
         className={styles.price}
@@ -233,6 +201,7 @@ const TourDetail = (props) => {
           style={{ marginRight: "5%" }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
+          onClick={handleBookTour}
         >
           Booking this tour
         </motion.div>

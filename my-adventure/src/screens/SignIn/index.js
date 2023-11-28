@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import Header from '../../component/Header';
-import Tabbar from '../../component/Tabbar/Tabbar';
+import React, { useState, useEffect } from 'react';
 import GlobeImg from '../../assets/images/globe.png';
-import GoogleIcon from '../../assets/icons/google.png';
 import styles from './styles.module.css';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const SignIn = ({ onLogin }) => {
   const navigate = useNavigate();
@@ -23,6 +21,7 @@ const SignIn = ({ onLogin }) => {
     setPassword(e.target.value);
   };
 
+
   const loginUser = async (data) => {
     try {
       const response = await fetch('http://localhost:3001/auth/sign_in', {
@@ -36,10 +35,11 @@ const SignIn = ({ onLogin }) => {
       if (response.ok) {
         const { token } = await response.json();
         localStorage.setItem("token", token);
+        localStorage.setItem("email", email);
+        Cookies.set('signedIn', true, { expires: 365 });  
         return token;
       } else {
-        // Xử lý lỗi đăng nhập
-        
+        <div>Sorry</div>   
       }
   
     } catch (error) {
@@ -47,10 +47,9 @@ const SignIn = ({ onLogin }) => {
       throw error;
     }
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
 
     if(email === "" && password === "")
     {
