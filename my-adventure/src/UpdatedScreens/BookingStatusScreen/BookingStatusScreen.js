@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
-import { FaStar } from "react-icons/fa";
+// import { FaStar } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 import BirthCert from "../../assets/images/birthcert.png";
@@ -36,13 +36,13 @@ const BookingStatusScreen = (props) => {
     status: ["Successful", "Waiting for handling", "Confirmed", "Paid"],
   };
   let statusBackgroundColor;
-  if (tour.status_code == 0) {
+  if (tour.status_code === 0) {
     statusBackgroundColor = "#30E742";
-  } else if (tour.status_code == 1) {
+  } else if (tour.status_code === 1) {
     statusBackgroundColor = "#FFED8C";
-  } else if (tour.status_code == 2) {
+  } else if (tour.status_code === 2) {
     statusBackgroundColor = "#F5AE45";
-  } else if (tour.status_code == 3) {
+  } else if (tour.status_code === 3) {
     statusBackgroundColor = "#2CF594";
   }
   // display different screen based on status code:
@@ -51,7 +51,7 @@ const BookingStatusScreen = (props) => {
     image: BirthCert,
     name: "giaykhaisinh.jpg",
   };
-  if (tour.status_code == 0) {
+  if (tour.status_code === 0) {
     // Successful
     different1 = (
       <div>
@@ -72,17 +72,6 @@ const BookingStatusScreen = (props) => {
                   name="rating"
                   value={currentRating}
                   onClick={() => setRating(currentRating)}
-                />
-                <FaStar
-                  className={styles.star}
-                  size={50}
-                  color={
-                    currentRating <= (starHover || rating)
-                      ? "#FFFF00"
-                      : "#e4e5e9"
-                  }
-                  onMouseEnter={() => setStarHover(currentRating)}
-                  onMouseLeave={() => setStarHover(null)}
                 />
               </label>
             );

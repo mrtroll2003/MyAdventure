@@ -97,9 +97,9 @@ const HomePage = () => {
     data.slice(index * 3, (index + 1) * 3)
   );
 
-  // if (loading1 || loading2 || loading3) {
-  //   return <p>Loading...</p>;
-  // }
+    // if (loading1) {
+    //   return <p>Loading...</p>;
+    // }
 
   return (
     <div>
@@ -204,7 +204,7 @@ const HomePage = () => {
                 <span style={{ color: "#5CD6C0" }}>places to stay</span>
               </p>
                 <motion.button style={{display: "flex", flexDirection: 'row'}} whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}>
+                    whileTap={{ scale: 0.9 }} onClick={() => navigate('/vietnam-tours')}>
                   <p
                     style={{
                       fontSize: "18px",

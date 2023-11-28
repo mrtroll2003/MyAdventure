@@ -34,16 +34,26 @@ import SuccessfulBooking from "./screens/SuccessfulBooking/index.js";
 import HomePageCompany from "./screens/HomePageCompany/index.js";
 import AboutUsScreen from "./screens/AboutUsScreen";
 import { MakingArrangement } from "./screens/MakingArrangement/index.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Tabbar from "./component/Tabbar/Tabbar.js";
 import "./index.css"
 import HomePage from "./screens/HomePage/index.js";
+import Cookies from 'js-cookie';
+
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
   const handleLogin = (login) => {
     setIsLogin(login);
+    Cookies.set('signedIn', login.toString(), { expires: 365 });
   };
+
+  useEffect(() => {
+    const signedInStatus = Cookies.get('signedIn');
+    if (signedInStatus === 'true') {
+      setIsLogin(true);
+    }
+  }, []);
   return (
     <BrowserRouter>
       <div className="fixed-header">
@@ -60,13 +70,16 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="tour-detail" element={<TourDetail />} />
 
-
+          
+          <Route path="vietnam-tours" element={<VietNamTourScreen />} />
+          <Route path="international-tours" element={<InternationalTourScreen />}
+          />
 
           
-          <Route path="booking" element={<BookingStepOne />} />
+          <Route path="booking" element={<MakeBookingScreen />} />
           <Route path="booking-step-two" element={<BookingStepTwo />} />
           <Route path="booking-step-three" element={<BookingStepThree />} />
-          <Route path="vietnam-tours" element={<VietNamTourScreen />} />
+
           <Route
             path="vietnam-tours-company"
             element={<VietNamTourScreenCompany />}
@@ -75,10 +88,7 @@ export default function App() {
             path="intl-tours-company"
             element={<InternationalTourScreenCompany />}
           />
-          <Route
-            path="international-tours"
-            element={<InternationalTourScreen />}
-          />
+
 
           <Route path="yourbooking" element={<YourBooking />} />
           <Route path="detail-booking" element={<DetailBookingScreen />} />

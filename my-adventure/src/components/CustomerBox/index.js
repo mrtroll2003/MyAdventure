@@ -2,26 +2,52 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { motion } from "framer-motion";
+import DeleteIC from "../../assets/icons/trash.png"
 
-const CustomerBox = ({ type, name, data }) => {
+const CustomerBox = ({ type, onDataChange, index, data, onDelete}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(data?.sex);
-  // const [startDate, setStartDate] = useState(new Date(data?.startDate));
-  const [fullName, setFullName] = useState(data?.fullName);
-  const [email, setEmail] = useState(data?.email);
-  const [citizenID, setCitizenID] = useState(data?.citizenID);
-  const [phone, setPhone] = useState(data?.phone);
-  const validDate = data?.startDate && !isNaN(new Date(data.startDate));
-  const [startDate, setStartDate] = useState(validDate ? new Date(data.startDate) : new Date());
+  const [sex, setSex] = useState("Male");
+  // const [fullName, setFullName] = useState(data?.fullName);
+  // const [email, setEmail] = useState(data?.email);
+  // const [citizenID, setCitizenID] = useState(data?.citizenID);
+  // const [phone, setPhone] = useState(data?.phone);
+  // const validDate = data?.birthDate && !isNaN(new Date(data.birthDate));
+  // const [birthDate, setBirthDate] = useState(validDate ? new Date(data.birthDate) : new Date());
 
-  const [selectedFile, setSelectedFile] = useState();
+  // const [selectedFile, setSelectedFile] = useState();
+
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [citizenID, setCitizenID] = useState('');
+  const [phone, setPhone] = useState('');
+  const [birthDate, setBirthDate] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  console.log("index", index)
+
+  const handleDataChange = () => {
+    // Gather the customer information
+    const customerInfo = {
+      fullName,
+      sex,
+      isChild,
+      email,
+      citizenID,
+      phone,
+      birthDate,
+      selectedFile
+    };
+    // Invoke the callback function passed from the booking screen
+    onDataChange(index, customerInfo);
+  };
+
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
 
   const handleChange = (event) => {
-    setSelectedOption(event.target.value);
+    setSex(event.target.value);
   };
 
   const handleNameChange = (event) => {
@@ -44,8 +70,15 @@ const CustomerBox = ({ type, name, data }) => {
     setIsOpen(!isOpen);
   };
 
+  const [isChild, setIsChild] = useState(false);
+
+  const handleCheckBox = () => {
+    setIsChild(!isChild);
+  };
+
   return (
-    <div className={`${styles.customerBox} ${isOpen ? styles.open : ""}`}>
+    <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
+          <div className={`${styles.customerBox} ${isOpen ? styles.open : ""}`}>
       <div
         className={styles.boxContainer}
         onClick={toggleDropdown}
@@ -60,14 +93,14 @@ const CustomerBox = ({ type, name, data }) => {
         >
           <img
             src={
-              type === "adult"
-                ? require("../../assets/icons/adult2.png")
-                : require("../../assets/icons/child.png")
+              type === "child"
+                ? require("../../assets/icons/child.png")
+                : require("../../assets/icons/adult2.png")
             }
             alt="adult2"
             style={{ width: "1.5vw", height: "1.5vw" }}
           ></img>
-          <div style={{ marginLeft: "2vw", fontSize: "3vh" }}>{name}</div>
+          <div style={{ marginLeft: "2vw", fontSize: "1.2vw" }}>{fullName}</div>
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -91,15 +124,16 @@ const CustomerBox = ({ type, name, data }) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            fontSize: "2.5vh",
+            fontSize: "1.2vw",
           }}
         >
-          <div style={{width: "30%"}}>Full Name:</div>
+          <div style={{width: "30%"}}>Full Name<span style={{color: "red"}}>*</span>:</div>
           <input
               value ={fullName}
               onChange={handleNameChange}
+              onBlur={handleDataChange}
               type='text'
-              style={{width: "30vw", height: "6vh", borderRadius: "10vh", fontSize:"2.3vh", paddingLeft: "2vw", border: "0.2vh solid black"}}
+              style={{width: "30vw", height: "6vh", borderRadius: "0.5vw", fontSize:"1.2vw", paddingLeft: "2vw", border: "0.2vh solid black"}}
           />
         </div>
         <div
@@ -110,41 +144,88 @@ const CustomerBox = ({ type, name, data }) => {
             alignItems: "center",
           }}
         >
-          <div style={{ fontSize: "2.5vh" , width: "30%"}}>Sex:</div>
-          <div style={{fontSize: "2.5vh"}}>
-              <input type="radio" name="option" value="Male" checked={selectedOption === "Male"} onChange={handleChange} /> Male
-              <input type="radio" name="option" value="Female" checked={selectedOption === "Female"} onChange={handleChange} style={{marginLeft: "5vw"}}/> Female
-            </div>
+          <div style={{ fontSize: "1.2vw" , width: "30%"}}>Sex<span style={{color: "red"}}>*</span>:</div>
+          <div style={{ fontSize: "1.2vw" }}>
+              <label>
+                <input
+                  disabled= {false}
+                  type="radio"
+                  name={`radio-${index}`}
+                  value="Male"
+                  checked={sex === "Male"}
+                  onChange={handleChange}
+                  onBlur={handleDataChange}
+                /> Male
+              </label>
+              <label>
+                <input
+                  disabled= {false}
+                  type="radio"
+                  name={`radio-${index}`}
+                  value="Female"
+                  checked={sex === "Female"}
+                  onChange={handleChange}
+                  onBlur={handleDataChange}
+                  style={{ marginLeft: "2vw" }}
+                /> Female
+              </label>
+          </div>
+
+          
         </div>
+
+          { type === "both" ? (
+            <div
+          style={{
+            marginTop: "2vh",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            fontSize: "1.2vw",
+          }}
+        >
+          <div style={{width:"30%"}}>Is Children:</div>
+          <label>
+            <input
+              type="checkbox"
+              checked={isChild}
+              onChange={handleCheckBox}
+              onBlur={handleDataChange}
+            />
+          </label>
+        </div>
+          ): null}
+
         <div
           style={{
             marginTop: "2vh",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            fontSize: "2.5vh",
+            fontSize: "1.2vw",
           }}
         >
-          <div style={{width:"30%"}}>Date of Birthday:</div>
-          <DatePicker popupStyle={{ zIndex: 9999, position: 'fixed' }}  selected={startDate} onChange={(date) => setStartDate(date)} dateFormat={"dd/MM/yyyy"}  className={styles.datePicker}/>
+          <div style={{width:"30%"}}>Date of Birthday<span style={{color: "red"}}>*</span>:</div>
+          <DatePicker popupStyle={{ zIndex: 9999, position: 'fixed' }}  selected={birthDate} onChange={(date) => setBirthDate(date)} dateFormat={"dd/MM/yyyy"}  className={styles.datePicker}/>
         </div>
 
-        {type === "adult" ? (
+        {type !== "children"  && isChild !== true? (
           <div
             style={{
               marginTop: "2vh",
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              fontSize: "2.5vh",
+              fontSize: "1.2vw",
             }}
           >
-            <div style={{width: "30%"}}>Citizen ID:</div>
+            <div style={{width: "30%"}}>Citizen ID<span style={{color: "red"}}>*</span>:</div>
             <input
                   type='text'
                   value={citizenID}
                   onChange={handleCitizenIDChange}
-                  style={{width: "30vw", height: "6vh", borderRadius: "10vh", fontSize:"2.3vh", paddingLeft: "2vw", border: "0.2vh solid black"}}
+                  onBlur={handleDataChange}
+                  style={{width: "30vw", height: "6vh", borderRadius: "0.5vw", fontSize:"1.2vw", paddingLeft: "2vw", border: "0.2vh solid black"}}
                 />
           </div>
         ) : (
@@ -156,26 +237,30 @@ const CustomerBox = ({ type, name, data }) => {
               justifyContent: "flex-start",
             }}
           >
-            <div style={{ fontSize: "2.5vh" , width: "30%"}}>Birth Certificate:</div>
-            <input style={{marginLeft: "2vw"}} type="file" onChange={handleFileChange}/>
+            <div style={{ fontSize: "1.2vw" , width: "30%"}}>Birth Certificate<span style={{color: "red"}}>*</span>:</div>
+            <input style={{marginLeft: "2vw"}} type="file" onChange={handleFileChange}         onBlur={handleDataChange}/>
           </div>
         )}
 
-        <div
+          {
+            type === "children" || isChild === true ? null : (
+              <div>
+              <div
           style={{
             marginTop: "2vh",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            fontSize: "2.5vh",
+            fontSize: "1.2vw",
           }}
         >
-          <div style={{width: "30%"}}>Phone Number:</div>
+          <div style={{width: "30%"}}>Phone Number<span style={{color: "red"}}>*</span>:</div>
           <input
               type='text'
               value={phone}
               onChange={handlePhoneChange}
-              style={{width: "30vw", height: "6vh", borderRadius: "10vh", fontSize:"2.3vh", paddingLeft: "2vw", border: "0.2vh solid black"}}
+              onBlur={handleDataChange}
+              style={{width: "30vw", height: "6vh", borderRadius: "0.5vw", fontSize:"1.2vw", paddingLeft: "2vw", border: "0.2vh solid black"}}
             />
         </div>
 
@@ -193,10 +278,34 @@ const CustomerBox = ({ type, name, data }) => {
               type='text'
               value={email}
               onChange={handleEmailChange}
-              style={{width: "30vw", height: "6vh", borderRadius: "10vh", fontSize:"2.3vh", paddingLeft: "2vw", border: "0.2vh solid black"}}
+              onBlur={handleDataChange}
+              style={{width: "30vw", height: "6vh", borderRadius: "0.5vw", fontSize:"1.2vw", paddingLeft: "2vw", border: "0.2vh solid black"}}
             />
         </div>
+              </div>
+            )
+          }
       </div>
+    </div>
+
+          <>
+          {
+            type === "both" ? (
+              <motion.img
+              src={DeleteIC}
+              alt="DeleteIcon.png"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.8, opacity: 0.5 }}
+              style={{
+                marginLeft: "4vw",
+                width: "auto",
+                height: "3vh",
+              }}
+              onClick = {onDelete}
+            ></motion.img>
+            ) :null
+          }
+          </>
     </div>
   );
 };

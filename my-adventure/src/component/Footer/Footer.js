@@ -12,7 +12,8 @@ import styles from "./styles.module.css";
 class Footer extends React.Component {
   render() {
     return (
-      <div className={styles.footerView}>
+      <>
+              <div className={styles.footerView}>
         <div className={styles.footerLogoView}>
           <img src={MyLogo} alt="My Logo" width={"100%"} />
           <h2
@@ -86,6 +87,7 @@ class Footer extends React.Component {
           </motion.div>
         </div>
       </div>
+      </>
     );
   }
 }
