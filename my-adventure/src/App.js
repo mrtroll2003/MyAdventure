@@ -71,6 +71,9 @@ export default function App() {
           <Route path="home" element={<HomePage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="tour-detail" element={<TourDetail />} />
+          <Route path="successful-booking" element={<SuccessfulBooking />} />
+          <Route path="yourbooking" element={<YourBooking />} />
+          <Route path="contact" element={<Contacts />} />
 
           
           <Route path="vietnam-tours" element={<VietNamTourScreen />} />
@@ -103,20 +106,19 @@ export default function App() {
             element={<InternationalTourScreen />}
           />
 
-          <Route path="yourbooking" element={<YourBooking />} />
           <Route path="detail-booking" element={<DetailBookingScreen />} />
           <Route
             path="detail-booking-modify"
             element={<ModifyBookingScreen />}
           />
-          <Route path="successful-booking" element={<SuccessfulBooking />} />
+
         </Route>
         <Route path="about-us" element={<AboutUsScreen />} />
         <Route
           path="confirmed-detail-booking"
           element={<ConfirmedDetailBookingScreen />}
         />
-        <Route path="contact" element={<Contacts />} />
+
         <Route path="cancel" element={<CancelSuccessfulBooking />} />
 
         <Route path="phucthinh" element={<MakeBookingScreen />} />

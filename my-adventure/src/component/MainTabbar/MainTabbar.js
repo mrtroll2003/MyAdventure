@@ -59,7 +59,7 @@ const MainTabbar = ({onLogin}) => {
           className={styles.contentText}
           whileHover={{ color: "#5CD6C0" }}
           >
-          Contacts
+          <Link to="/contact">Contact</Link>
         </motion.div>
 
         <motion.div className={styles.dropdown}>

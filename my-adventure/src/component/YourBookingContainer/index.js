@@ -6,18 +6,19 @@ import AdultNum from "../../assets/icons/adultNum.png";
 import ChildNum from "../../assets/icons/childNum.png";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { formatDate } from "../../constant/formatDate";
 
 function TourContainer (props) {
   const navigate = useNavigate();
-    const { expectedTime, route, numAdult, nameA, numChild, nameC, tourStatus } = props;
+    const { departureDate, returnDate, departure, destination, numAdult, nameA, numChild, nameC, tourStatus } = props;
     const BUTTON_STATUS = {
         WaitingForHandling: <div className={styles.button} style={{backgroundColor:'#FFED8C',}}><div className={styles.buttonText}>Waiting for handling</div></div>,
         Confirmed: <div className={styles.button} style={{backgroundColor:"#F5AE45",}}><div className={styles.buttonText}>Confirmed</div></div>,
         Paid: <div className={styles.button} style={{backgroundColor:"#2CF594",}}><div className={styles.buttonText}>Paid</div></div>,
         Successful: <div className={styles.button} style={{backgroundColor:"#30E742",}}><div className={styles.buttonText}>Successful</div></div>,
       }
-    var AdultList = nameA.map((name) => <li>{name}</li>)
-    var ChildList = nameC.map((name) => <li>{name}</li>)
+    var AdultList = nameA?.map((adult) => <li>{adult.name}</li>)
+    var ChildList = nameC?.map((child) => <li>{child.name}</li>)
         return (
           <motion.button className={styles.mainView} whileTap={{scale: 0.8}} onClick={() => navigate('/detail-booking')}>
             <div className={styles.column}>
@@ -26,7 +27,7 @@ function TourContainer (props) {
                   <img className={styles.img} src={Departure} alt="departure"></img>
                   <div className={styles.label}>Expected time:</div>
                 </div>
-                <div className={styles.content}>{expectedTime.join(' - ')}</div>
+                <div className={styles.content}>{formatDate(departureDate)} - {formatDate(returnDate)}</div>
               </div>
 
               <div className={styles.horizon} style={{marginTop: "3vh"}}>
@@ -34,7 +35,7 @@ function TourContainer (props) {
                   <img className={styles.img} src={Location} alt="location"></img>
                   <div className={styles.label}>Departure and Destination:</div>
                 </div>
-                <div className={styles.content}>{route.join(' - ')}</div>
+                <div className={styles.content}>{departure} - {destination}</div>
               </div>
 
               <div className={styles.horizon} style={{marginTop: "3vh"}}>
@@ -43,7 +44,7 @@ function TourContainer (props) {
                   <div className={styles.label}>Number of adults:</div>
                 </div>
                 <div className={styles.column1}>
-                  <div className={styles.content} style={{fontWeight: "bold"}}>{numAdult} adults</div>
+                  <div className={styles.content} style={{fontWeight: "bold"}}>{numAdult}</div>
                   <ul className={styles.content} style={{width: "20vw", textAlign: "left"}}>{AdultList}</ul>
                 </div>
               </div>
@@ -54,7 +55,7 @@ function TourContainer (props) {
                   <div className={styles.label}>Number of children:</div>
                 </div>
                 <div className={styles.column1}>
-                  <div className={styles.content} style={{fontWeight: "bold"}}>{numChild} children</div>
+                  <div className={styles.content} style={{fontWeight: "bold"}}>{numChild}</div>
                   <ul className={styles.content}>{ChildList}</ul>
                 </div>
               </div>

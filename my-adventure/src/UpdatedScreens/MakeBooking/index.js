@@ -169,6 +169,9 @@ const MakeBookingScreen = () => {
     }
     console.log("hello")
     addAll();
+    
+    navigate('/successful-booking')
+    
   
   };
 
