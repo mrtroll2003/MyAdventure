@@ -15,7 +15,7 @@ const DestinationSection = (props) => {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
+      items: 4,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -28,16 +28,12 @@ const DestinationSection = (props) => {
   };
   const navigate = useNavigate();
   return (
-    <div className={styles.destinationSectionView}>
-      <h1 className={styles.destinationSectionTitle}>{props.children}</h1>
-      <p className={styles.destinationSectionText}>{props.text}</p>
+    <div>
+      <div className={styles.destinationSectionView}>
+        <h1 className={styles.destinationSectionTitle}>{props.children}</h1>
+        <p className={styles.destinationSectionText}>{props.text}</p>
+      </div>
       <Carousel className={styles.carouselContainer} responsive={responsive}>
-        <div>Item 1</div>
-        <div>Item 2</div>
-        <div>Item 3</div>
-        <div>Item 4</div>
-      </Carousel>
-      <div className={styles.illustrationView}>
         <div className={styles.illustContainer}>
           <motion.img
             alt="illus01"
@@ -61,7 +57,6 @@ const DestinationSection = (props) => {
             </motion.button>
           </motion.div>
         </div>
-
         <div className={styles.illustContainer}>
           <motion.img
             alt="illus02"
@@ -85,7 +80,29 @@ const DestinationSection = (props) => {
             </motion.button>
           </motion.div>
         </div>
-
+        <div className={styles.illustContainer}>
+          <motion.img
+            alt="illus02"
+            src={props.img[1]}
+            id="illusImage"
+            whileHover={{
+              scale: 0.95,
+              transition: { duration: 0.1 },
+            }}
+            whileTap={{ opacity: 0.75 }}
+            onClick={() => navigate("/tour-detail")}
+          />
+          <motion.div className={styles.illustOverlay}>
+            <p className={styles.illustOverlayText}>Ha Long Bay</p>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ opacity: 0.5, scale: 0.9 }}
+              className={styles.illustOverlayButton}
+            >
+              Detail
+            </motion.button>
+          </motion.div>
+        </div>
         <div className={styles.illustContainer}>
           <motion.img
             alt="illus03"
@@ -109,7 +126,6 @@ const DestinationSection = (props) => {
             </motion.button>
           </motion.div>
         </div>
-
         <div className={styles.illustContainer}>
           <motion.img
             alt="illus04"
@@ -133,7 +149,7 @@ const DestinationSection = (props) => {
             </motion.button>
           </motion.div>
         </div>
-      </div>
+      </Carousel>
     </div>
   );
 };
