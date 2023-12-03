@@ -1,158 +1,188 @@
-import React from "react";
-import DestinationSection from "../../component/DestinationSection/DestinationSection";
-import Footer from "../../component/Footer/Footer";
-import PricedTripCard from "../../component/PricedTripCard/PricedTripCard";
+import React, { useState, useEffect} from "react";
 import { motion } from "framer-motion";
-
-import Header from "../../component/Header";
-import MainTabbar from "../../component/MainTabbar/MainTabbar";
-import { Maldives } from "../../assets/images";
+import Footer from "../../component/Footer/Footer";
 import FilterIC from "../../assets/icons/filter.png";
 
-import styles from "./styles.module.css";
 
-class InternationalTourScreenCompany extends React.Component {
-  render() {
+import styles from "./styles.module.css";
+import { useNavigate } from "react-router-dom";
+import RecommendedTripCard from "../../component/RecommendedTripCard/RecommendedTripCard";
+import { formatDate } from "../../constant/formatDate";
+
+const  VietNamTourScreenCompany = () =>{
+
+  const navigate = useNavigate();
+  // const [departures, setDepartures] = useState([]);
+  const [destinations, setDestinations] = useState([]);
+  const [tours, setTours] = useState([]);
+  const [images, setImages] = useState([])
+  const [ratings, setRatings] = useState([])
+  const [selectedDestination, setSelectedDestination] = useState("all destination")
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:3001/tour/international-tours", requestOptions)
+      .then(response => response.json())
+      .then(result => setTours(result))
+      .catch(error => console.log('error', error));
+  }, [tours]);
+
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:3001/tour/international-tours/destinations", requestOptions)
+    .then(response => response.json())
+    .then(result => setDestinations(result))
+    .catch(error => console.log('error', error));
+  }, [destinations]);
+
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:3001/image", requestOptions)
+      .then(response => response.json())
+      .then(result => setImages(result))
+      .catch(error => console.log('error', error));
+  }, [images]);
+
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:3001/rating", requestOptions)
+      .then(response => response.json())
+      .then(result => setRatings(result))
+      .catch(error => console.log('error', error));
+  }, [ratings]);
+
+
+  const renderImage = (trip) => {
+    const image = images.find(image => image.name === trip.destination);
+    if (image && image.images && image.images.length > 0) {
+      const imageLink = image.images[0];
+      return imageLink;
+    }
+    return null; 
+  };
+  
+  const getRating = (trip) => {
+    const rating = ratings.find(rating => rating.name === trip.destination);
+    if (rating) {
+      return rating.rating;
+    }
+    return 0;
+  };
+
+  const handleClick = (id) => {
+    console.log('Clicked:', id);
+    const url = `/tour-detail?id=${encodeURIComponent(id)}`;
+    navigate(url);
+  };
+
+  const handleSortOrderChange = () => {
+    const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+    setSortOrder(newSortOrder);
+  };
+
+  const sortedTours = tours
+    .filter((item) => selectedDestination === 'all destination' || item.destination === selectedDestination)
+    .sort((a, b) => {
+      if (sortOrder === 'asc') {
+        return a.departureDate.localeCompare(b.departureDate);
+      } else {
+        return b.departureDate.localeCompare(a.departureDate);
+      }
+    });
+
+
     return (
-      <div>
+      <div style={{flexDirection: "column", display: "flex"}}>
         {/* Viet Nam Tour Intro */}
         <div className={styles.vnTourIntroBackground}>
           <div className={styles.vnTourIntroLayer}>
             <h1 className={styles.vnTourIntroText}>INTERNATIONAL TOURS</h1>
           </div>
         </div>
-        <div style={{display:"flex",flexDirection:"row"}}>
-        <div
-        style={{
-          marginLeft: "5%",
-          marginTop: "2.5%",
-          fontSize: "18px",
-        }}
-      >
-        Your departure
-      </div>
-      <div
-        style={{
-          marginLeft: "28vh",
-          marginTop: "2.5%",
-          fontSize: "18px",
-        }}
-      >
-        Destination
-      </div>
-        </div>
-        
-        <div
-        className={styles.displayHorizon}
-        style={{
-          padding: "0 5%",
-          justifyContent: "space-between",
-        }}
-        >
-          <div style={{display:"flex",flexDirection:"row"}}>
-            <motion.select className={styles.filterBox} name="departure">
-              <motion.option value="all departure">All departure</motion.option>
-              <motion.option value="option 2">Option 2</motion.option>
-              <motion.option value="option 3">Option 3</motion.option>
-              <motion.option value="option 4">Option 4</motion.option>
-              <motion.option value="option 5">Option 5</motion.option>
-            </motion.select>
-            <motion.select className={styles.filterBox} name="destination">
-              <motion.option value="all destination">All destination</motion.option>
-              <motion.option value="option 2">Option 2</motion.option>
-              <motion.option value="option 3">Option 3</motion.option>
-              <motion.option value="option 4">Option 4</motion.option>
-              <motion.option value="option 5">Option 5</motion.option>
-            </motion.select>
+
+
+
+        <div style={{display:"flex",flexDirection:"row", alignItems: "center", justifyContent: "space-between", padding: "2vw 5vw"}}>
+          <div className={styles.displayHorizon}>
+            <div className={styles.comboboxContainer}>
+                <div>Destination</div>
+                <motion.select className={styles.filterBox}  name="destination" onChange={(e) => setSelectedDestination(e.target.value)}>
+                  <motion.option key="all" value="all destination">All destination</motion.option>
+                  {
+                    destinations?.map((destination, index) => <motion.option key={index} value={destination}>{destination}</motion.option>)
+                  }
+                </motion.select>
+            </div>
           </div>
+
           <motion.button
-          className={styles.displayHorizon}
-          whileTap={{ scale: 0.9 }}
-        >
-          <div style={{ fontSize: "20px" }}>Filter Date</div>
-          <img
-            style={{ height: "3vh", marginLeft: "1vw" }}
-            src={FilterIC}
-            alt="tick"
-          />
-        </motion.button>
+              className={styles.displayHorizon}
+              whileTap={{ scale: 0.9 }}
+              onClick={handleSortOrderChange}
+            >
+              <div style={{ fontSize: "1.2vw", fontWeight: "500"}}>Filter Date</div>
+              <img
+                style={{ height: "1.2vw", marginLeft: "1vw" }}
+                src={FilterIC}
+                alt="tick"
+              />
+            </motion.button>
         </div>
+      
         <div
         style={{
-          marginLeft: "5%",
-          marginTop: "2.5%",
-          fontSize: "18px",
+          padding: "0 5vw",
+          margin: "0.8vw 0",
+          fontSize: "1.2vw",
         }}
       >
         If you want to make a new tour in the future please click below button!
       </div>
+
       <motion.button className={styles.button} whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }}>
           + Create a new tour
       </motion.button>
-        <div className={styles.tourContainer}>
-          <PricedTripCard 
-          image={Maldives}
-          titleRow={"Ho Chi Minh - Ha Long Bay"}
-          rating= {"4.9"}
-          price={"5,000,000 VND"}
-          date={"15/11/2023 - 20/11/2023"}
-          >
-          </PricedTripCard>
-          <PricedTripCard 
-          image={Maldives}
-          titleRow={"Ho Chi Minh - Ha Long Bay"}
-          rating= {"4.9"}
-          price={"5,000,000 VND"}
-          date={"15/11/2023 - 20/11/2023"}
-          >
-          </PricedTripCard>
-          <PricedTripCard 
-          image={Maldives}
-          titleRow={"Ho Chi Minh - Ha Long Bay"}
-          rating= {"4.9"}
-          price={"5,000,000 VND"}
-          date={"15/11/2023 - 20/11/2023"}
-          >
-          </PricedTripCard>
-          <PricedTripCard 
-          image={Maldives}
-          titleRow={"Ho Chi Minh - Ha Long Bay"}
-          rating= {"4.9"}
-          price={"5,000,000 VND"}
-          date={"15/11/2023 - 20/11/2023"}
-          >
-          </PricedTripCard>
-          <PricedTripCard 
-          image={Maldives}
-          titleRow={"Ho Chi Minh - Ha Long Bay"}
-          rating= {"4.9"}
-          price={"5,000,000 VND"}
-          date={"15/11/2023 - 20/11/2023"}
-          >
-          </PricedTripCard>
-          <PricedTripCard 
-          image={Maldives}
-          titleRow={"Ho Chi Minh - Ha Long Bay"}
-          rating= {"4.9"}
-          price={"5,000,000 VND"}
-          date={"15/11/2023 - 20/11/2023"}
-          >
-          </PricedTripCard>
-          <PricedTripCard 
-          image={Maldives}
-          titleRow={"Ho Chi Minh - Ha Long Bay"}
-          rating= {"4.9"}
-          price={"5,000,000 VND"}
-          date={"15/11/2023 - 20/11/2023"}
-          >
-          </PricedTripCard>
-        </div>
-        
-        {/* Footer */}
+
+
+      <div className={styles.tourContainer}>
+        {sortedTours
+        .map((item) => (
+          <>
+          <div className={styles.tourCard} key={item._id}>
+            <RecommendedTripCard
+              image={renderImage(item)}
+              departure={item.departure}
+              destination={item.destination}
+              departure_date={formatDate(item.departureDate)}
+              return_date={formatDate(item.departureDate)}
+              rating={getRating(item)}
+              price={item.price}
+              onClick={() => handleClick(item._id)}
+            />
+          </div>
+          </>
+        ))}
+      </div>
         <Footer />
       </div>
     );
   }
-}
 
-export default InternationalTourScreenCompany;
+export default VietNamTourScreenCompany;

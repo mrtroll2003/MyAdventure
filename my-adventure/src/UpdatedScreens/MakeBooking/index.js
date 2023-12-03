@@ -50,10 +50,7 @@ const MakeBookingScreen = () => {
       "nationality": nationality,
       "address": address,
       "note": note,
-      "departure": tour.departure,
-      "destination": tour.destination,
-      "departureDate": tour.departureDate,
-      "returnDate": tour.returnDate,
+      "tourID": id,
       "status": "Waiting for Handling",
       "date": date,
     });
@@ -79,6 +76,7 @@ const MakeBookingScreen = () => {
       var raw = JSON.stringify({
         "bookingEmail": email,
         "bookingDate": date,
+        "tourID" : id,
         "name": data.fullName,
         "sex": data.sex,
         "dob": data.birthDate,
@@ -107,6 +105,7 @@ const MakeBookingScreen = () => {
     var raw = JSON.stringify({
       "bookingEmail": email,
       "bookingDate": date,
+      "tourID" : id,
       "name": data.fullName,
       "sex": data.sex,
       "dob": data.birthDate,

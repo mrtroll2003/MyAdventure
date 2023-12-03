@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-const SignIn = ({ onLogin }) => {
+const SignIn = ({ onLogin}) => {
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
   const [showMessage, setShowMessage] = useState(false);
@@ -33,15 +33,16 @@ const SignIn = ({ onLogin }) => {
       });
   
       if (response.ok) {
-        const { token } = await response.json();
+        const { token, isAdmin } = await response.json();
         localStorage.setItem("token", token);
         localStorage.setItem("email", email);
+        localStorage.setItem("isAdmin", isAdmin);
         Cookies.set('signedIn', true, { expires: 365 });  
-        return token;
-      } else {
-        <div>Sorry</div>   
-      }
-  
+        return {token, isAdmin};
+      } else if(response.status === 401) {
+        setMessage ("Invalid account");
+        setShowMessage(true);
+      } 
     } catch (error) {
       console.error(error);
       throw error;
@@ -53,7 +54,6 @@ const SignIn = ({ onLogin }) => {
 
     if(email === "" && password === "")
     {
-      console.log("hello")
       setMessage("Please fill in Email and Password to Sign in")
       setShowMessage(true);
       return;
@@ -78,13 +78,17 @@ const SignIn = ({ onLogin }) => {
     setIsLoading(true);
   
     try {
-      const token = await loginUser(data);
+      const {token, isAdmin} = await loginUser(data);
   
       setIsLoading(false);
+      console.log ("token: " + token);
   
       if (token) {
-        onLogin(true);
-        navigate('/home');
+        onLogin(true, isAdmin);
+        if(isAdmin) 
+          navigate('/company/home');
+        else 
+          navigate('/home');
       } else {
         setMessage ("Invalid account");
         setShowMessage(true);
