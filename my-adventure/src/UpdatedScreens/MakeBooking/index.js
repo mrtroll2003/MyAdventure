@@ -450,7 +450,6 @@ const MakeBookingScreen = () => {
           Submit
         </motion.button>
       </div>
-
       <Footer/>
     </div>
   );
