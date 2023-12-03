@@ -17,6 +17,8 @@ const TourDetail = (props) => {
   
   const [tour, setTour] = useState()
   const [images, setImages] = useState([])
+  const [adult, setAdult] = useState([])
+  const [children, setChildren] = useState([])
 
   useEffect(() => {
     var requestOptions = {
@@ -38,8 +40,31 @@ const TourDetail = (props) => {
       setLoading(false);
       console.log("place")
     })
+  
+
     .catch(error => console.log('error', error));
   }, [id]);
+
+  useEffect (() => {
+    console.log("tour", tour)
+    if (tour && tour._id) {
+      var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+  
+      fetch(`http://localhost:3001/children/tour?tourID=${tour._id}`, requestOptions)
+        .then(response => response.json())
+        .then(result => setChildren(result))
+        .catch(error => console.log('error', error));
+  
+      fetch(`http://localhost:3001/adult/tour?tourID=${tour._id}`, requestOptions)
+        .then(response => response.json())
+        .then(result => setAdult(result))
+        .catch(error => console.log('error', error));
+    }
+  }, [tour])
+
 
   const handleBookTour = () => {
     console.log('token',localStorage.getItem('token') )
@@ -187,8 +212,28 @@ const TourDetail = (props) => {
       >
         Price: ${tour.price}
       </div>
+
+
+      {/* Number of customers */}
+      {
+        localStorage.getItem("isAdmin") ? (
+          <div style={{padding: "1vw 5vw", fontSize: "1.8vw"}}>
+            <div style={{fontStyle: "italic"}}>Number of customers booking this tour: <span style={{fontWeight: "bold"}}>{(adult?.length || 0)}</span> adults <span style={{fontWeight: "bold"}}>{(children?.length || 0)}</span> children</div>
+            <div style={{fontSize: "1.2vw"}}>Click <motion.button whileTap={{scale: 0.9}} style={{fontWeight: "500", fontStyle: "italic", textDecoration: "underline"}} onClick={() => {}}>here</motion.button> to see the customer list for this tour</div>
+          </div>
+        ) : null
+      }
+      
+
+
       {/* Book this tour button  */}
-      <div
+        {localStorage.getItem("isAdmin") ? (
+          <div className={styles.displayHorizon}> 
+            <motion.button className={styles.companyBtn} whileHover={{scale: 0.9}}>Modify</motion.button>
+            <motion.button className={styles.companyBtn} style={{backgroundColor: "#FF8139"}}  whileHover={{scale: 0.9}}>Cancel</motion.button>
+          </div>
+        ) : (
+          <div
         style={{
           display: "flex",
           flexDirection: "row",
@@ -206,6 +251,7 @@ const TourDetail = (props) => {
           Booking this tour
         </motion.div>
       </div>
+        )}
       {/* Footer */}
       <Footer />
     </div>

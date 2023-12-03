@@ -41,26 +41,31 @@ import Tabbar from "./component/Tabbar/Tabbar.js";
 import "./index.css"
 import HomePage from "./screens/HomePage/index.js";
 import Cookies from 'js-cookie';
+import SignedInTabbar from "./component/SignedInTabbar/index.js";
 
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
-  const handleLogin = (login) => {
+  const [isAdmin, setIsAdmin] = useState(false);
+  const handleLogin = (login, user) => {
     setIsLogin(login);
+    setIsAdmin(user);
     Cookies.set('signedIn', login.toString(), { expires: 365 });
   };
+
 
   useEffect(() => {
     const signedInStatus = Cookies.get('signedIn');
     if (signedInStatus === 'true') {
       setIsLogin(true);
+      setIsAdmin(localStorage.getItem('isAdmin'));
     }
   }, []);
   return (
     <BrowserRouter>
       <div className="fixed-header">
         <Header/>
-        {isLogin ? <MainTabbar onLogin={handleLogin} /> : <Tabbar />}
+        {isLogin ?  (isAdmin ?  <SignedInTabbar onLogin={handleLogin}/> :  <MainTabbar onLogin={handleLogin}/>) : <Tabbar />}
       </div>
       <div className="content"></div>
       <Routes>
@@ -71,28 +76,25 @@ export default function App() {
           <Route path="home" element={<HomePage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="tour-detail" element={<TourDetail />} />
+           <Route path="booking" element={<MakeBookingScreen />} />
           <Route path="successful-booking" element={<SuccessfulBooking />} />
           <Route path="yourbooking" element={<YourBooking />} />
           <Route path="contact" element={<Contacts />} />
-
-          
           <Route path="vietnam-tours" element={<VietNamTourScreen />} />
-          <Route path="international-tours" element={<InternationalTourScreen />}
-          />
+          <Route path="international-tours" element={<InternationalTourScreen />}/>
+
+          <Route path="company/home" element={<HomePageCompany />} />
+          <Route path="company/vietnam-tours" element={<VietNamTourScreenCompany />}/>
+          <Route path="company/international-tours" element={<InternationalTourScreenCompany />}/>
+
+
 
           
-          <Route path="booking" element={<MakeBookingScreen />} />
+
           <Route path="booking-step-two" element={<BookingStepTwo />} />
           <Route path="booking-step-three" element={<BookingStepThree />} />
 
-          <Route
-            path="vietnam-tours-company"
-            element={<VietNamTourScreenCompany />}
-          />
-          <Route
-            path="intl-tours-company"
-            element={<InternationalTourScreenCompany />}
-          />
+
           <Route
             path="create-vietnam-tours"
             element={<CreateVietNamTourScreen />}

@@ -10,14 +10,14 @@ import Cookies from 'js-cookie';
 const MainTabbar = ({onLogin}) => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    console.log("hello");
     if(localStorage.getItem("token"))
     {
-      console.log("hello");
       Cookies.remove('signedIn'); 
-      onLogin(false);
+      onLogin(false, false);
       navigate('/');
       localStorage.removeItem("token");
+      localStorage.removeItem("isAdmin");
+      localStorage.removeItem("email");
     }
   }
 
@@ -32,14 +32,7 @@ const MainTabbar = ({onLogin}) => {
           >
           <Link to="/home">Home</Link>
         </motion.div>
-
-        {/* <motion.div
-          className={styles.contentText}
-          whileHover={{ color: "#5CD6C0" }}
-          >
-          <Link to="/booking">Booking</Link>
-        </motion.div> */}
-
+        
         <motion.div className={styles.dropdown}>
           <motion.button className={styles.contentText}>Travel</motion.button>
           <motion.div className={styles.dropdownContent}>
