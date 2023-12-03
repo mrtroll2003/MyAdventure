@@ -1,17 +1,20 @@
 import React from "react";
 import { MyLogo } from "../../assets/logos";
-import Icon from "./icon.png";
 import User from "./userIcon.png";
 import Logout from "../../assets/icons/logout.png";
 import styles from "./styles.module.css";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 const MainTabbar = ({onLogin}) => {
   const navigate = useNavigate();
   const handleLogout = () => {
+    console.log("hello");
     if(localStorage.getItem("token"))
     {
+      console.log("hello");
+      Cookies.remove('signedIn'); 
       onLogin(false);
       navigate('/');
       localStorage.removeItem("token");
@@ -56,13 +59,13 @@ const MainTabbar = ({onLogin}) => {
           className={styles.contentText}
           whileHover={{ color: "#5CD6C0" }}
           >
-          Contacts
+          <Link to="/contact">Contact</Link>
         </motion.div>
 
         <motion.div className={styles.dropdown}>
           <motion.img src={User} alt="icon" className={styles.icon} whileHover={{ scale: 0.8 }}/>
           <motion.div className={styles.dropdownContent}>
-            <motion.button className={styles.horizon} onClick={handleLogout}>
+            <motion.button className={styles.horizon} onClick={handleLogout} onHover={{scale: 0.8}}>
               <motion.img src={Logout} alt="icon" className={styles.logoutIc}/>
               <motion.span className={styles.logout}>Log out</motion.span>
             </motion.button>

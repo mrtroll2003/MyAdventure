@@ -1,24 +1,247 @@
 import React from "react";
 import styles from "./styles.module.css";
-import { useState } from "react";
-import DatePicker from "react-datepicker";
+import { useState, useEffect } from "react";
 import CustomerBox from "../../components/CustomerBox";
-
 import GlobeIMG from "../../assets/images/globe.png";
 import AddButtonIC from "../../assets/icons/add.png";
-import DeleteIC from "../../assets/icons/trash.png";
 
 import { motion } from "framer-motion";
+import { useLocation, useNavigate } from "react-router-dom";
+import { formatDate } from "../../constant/formatDate";
+import Footer from "../../component/Footer/Footer";
 
 const MakeBookingScreen = () => {
-  let timeStart = "30/09/2023 - 15/10/2023";
-  let destination = "Sài Gòn";
-  let departure = "Sapa";
+  const navigate = useNavigate();
+  const location  = useLocation()
+  const searchParams = new URLSearchParams(location.search);
+  const id = searchParams.get('id');
+  console.log("id", id)
 
+  const [loading, setLoading] = useState(true)
   const [name, setName] = useState("");
   const [nationality, setNationality] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
+  const [note, setNote] = useState("");
+
+  const [isShow, setIsShow] = useState(false);
+
+  const [tour, setTour] = useState("");
+
+  const [customerInfo, setCustomerInfo] = useState({});
+
+  const email = localStorage.getItem('email')
+
+  const handleCustomerInfoChange = (index, info) => {
+    setCustomerInfo((prevCustomerInfo) => ({
+      ...prevCustomerInfo,
+      [index]: info
+    }));
+  };
+
+  const addBooking = (date) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      "email":email,
+      "name": name,
+      "phone": phoneNumber,
+      "nationality": nationality,
+      "address": address,
+      "note": note,
+      "departure": tour.departure,
+      "destination": tour.destination,
+      "departureDate": tour.departureDate,
+      "returnDate": tour.returnDate,
+      "status": "Waiting for Handling",
+      "date": date,
+    });
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:3001/booking/add", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+
+
+    const addAdult = (data, date) => {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        "bookingEmail": email,
+        "bookingDate": date,
+        "name": data.fullName,
+        "sex": data.sex,
+        "dob": data.birthDate,
+        "id": data.citizenID,
+        "phone": data.phone,
+        "email": data.email,
+      });
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+      fetch("http://localhost:3001/adult/add", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+  }
+
+  const addChildren = (data, date) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      "bookingEmail": email,
+      "bookingDate": date,
+      "name": data.fullName,
+      "sex": data.sex,
+      "dob": data.birthDate,
+      "birthCert": data.selectedFile,
+    });
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:3001/children/add", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+
+  const addAll = () => {
+    const date = new Date();
+    addBooking(date);
+    for (const key in customerInfo) {
+      const info = customerInfo[key];
+      if(info.isChild === true) {
+        addChildren(info, date);
+      } else {
+        addAdult (info, date);
+      }
+    }
+    console.log('Add all customers successfully!');
+  }
+
+  const handleSubmit = () => {
+    if (name==="" || nationality === "" || phoneNumber === "" ||address === "")
+    {
+      setIsShow(true);
+      return;
+    }  
+
+      console.log('Customer Information:', customerInfo);
+  
+    for (const key in customerInfo)
+    {
+      const info = customerInfo[key];
+      if (info.isChild === true) {
+        if (info.fullName === ''  || info.birthDate === null || info.selectedFile === null)
+          {
+            setIsShow(true);
+            return;
+          }
+      }
+      else {
+        if (info.fullName === ''  || !info.citizenID === ""|| info.phone === "" || !info.birthDate === null)
+        {
+          setIsShow(true);
+          return;
+        }
+      }
+    }
+    console.log("hello")
+    addAll();
+    
+    navigate('/successful-booking')
+    
+  
+  };
+
+  // window.onpopstate = function (event) {
+  //   navigate(`/tour-detail?id=${encodeURIComponent(id)}`);
+  //   console.log("idne", id);
+  //   console.log("Back button pressed");
+  // };
+
+  const [customerBoxes, setCustomerBoxes] = useState([ { key: 0, type: "both" }]);
+
+  const handleDelete = (index) => {
+    if (index >= 0 && index < customerBoxes.length) {
+      setCustomerBoxes((prevBoxes) => {
+        const updatedBoxes = [...prevBoxes];
+        updatedBoxes.splice(index, 1);
+        for(let i = index; i < updatedBoxes.length; i++) {
+          updatedBoxes[i].key = updatedBoxes[i].key - 1;
+        }
+        return updatedBoxes;
+      });
+    }
+  };
+
+  const renderCustomerBoxes = () => {
+    return (
+      <>
+        {customerBoxes.map((box, index) => (
+          <CustomerBox
+            key={index}
+            type="both"
+            data={box.data}
+            onDelete={() => handleDelete(index)}
+            index={index}
+            onDataChange={handleCustomerInfoChange}
+          />
+        ))}
+      </>
+    );
+  };
+  
+
+  const handleAddBtn = () => {
+    setCustomerBoxes((prevBoxes) => [
+      ...prevBoxes,
+      { key: prevBoxes.length, type: "both" }
+    ]);
+
+  };
+
+  useEffect(() => {
+    console.log("CustomerBoxes", customerBoxes)
+  }, [customerBoxes])
+
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+  
+    fetch(`http://localhost:3001/tour/place?id=${id}`, requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      setTour(data);
+      console.log(tour);
+      setLoading(false)
+    })
+    .catch(error => console.log('error', error));
+
+  }, [id]);
 
   const handleAddressChange = (event) => {
     setAddress(event.target.value);
@@ -32,6 +255,12 @@ const MakeBookingScreen = () => {
   const handleNationalityChange = (event) => {
     setNationality(event.target.value);
   };
+
+  if(loading) {
+    return <div>...Loading</div>
+  }
+
+
   return (
     <div>
       <div className={styles.title}>BOOKING TOUR</div>
@@ -39,10 +268,12 @@ const MakeBookingScreen = () => {
         style={{
           display: "flex",
           flexDirection: "row",
-          width: "90%",
+          width: "80vw",
           height: "40vh",
-          marginLeft: "auto",
-          marginRight: "auto",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginTop: "2vh",
+          marginLeft: "10vw",
         }}
       >
         <div className={styles.timeAndPlaceContainer}>
@@ -51,11 +282,11 @@ const MakeBookingScreen = () => {
             <span
               style={{
                 fontWeight: "normal",
-                fontSize: "20px",
+                fontSize: "1.4vw",
                 paddingLeft: "25%",
               }}
             >
-              {timeStart}
+              {formatDate(tour.departureDate)} - {formatDate(tour.returnDate)}
             </span>
           </div>
 
@@ -64,11 +295,11 @@ const MakeBookingScreen = () => {
             <span
               style={{
                 fontWeight: "normal",
-                fontSize: "20px",
+                fontSize: "1.4vw",
                 paddingLeft: "3%",
               }}
             >
-              {destination + " - " + departure}
+              {tour.departure + " - " + tour.destination}
             </span>
           </div>
         </div>
@@ -92,16 +323,16 @@ const MakeBookingScreen = () => {
             <div className={styles.text1} style={{ fontWeight: "bold" }}>
               You're signed in as
             </div>
-            <div style={{ marginTop: "2vh" }}>21522041@gm.uit.edu.vn</div>
+            <div style={{ marginTop: "2vh" }}>{email}</div>
           </div>
         </div>
         <div className={styles.text1}>
-          <div style={{ color: "#7C8DB0", fontSize: "3vh", marginTop: "2vh" }}>
+          <div style={{ color: "#7C8DB0", fontSize: "1.2vw", marginTop: "2vh" }}>
             You will be received all e-confirmation mail/ tickets/ vouchers from
             this booking to contact
           </div>
           <div
-            style={{ fontSize: "5.5vh", fontWeight: "600", marginTop: "6vh" }}
+            style={{ fontSize: "2.5vw", fontWeight: "600", marginTop: "6vh" }}
           >
             Enter Your Details
           </div>
@@ -109,9 +340,9 @@ const MakeBookingScreen = () => {
             <img
               src={require("../../assets/icons/note.png")}
               alt="note"
-              style={{ width: "2.3vw", height: "2.3vw", marginLeft: "2vw" }}
+              style={{ width: "1.5vw", height: "auto", marginLeft: "2vw" }}
             ></img>
-            <div style={{ marginLeft: "2vw", fontSize: "2.5vh" }}>
+            <div style={{ marginLeft: "2vw", fontSize: "1.2vw" }}>
               Almost done! Just fill in the
               <span className={styles.redStar}> * </span>
               required info
@@ -121,71 +352,45 @@ const MakeBookingScreen = () => {
         <div className={styles.bookingForm}>
           <div className={styles.heading1}>1. Contact Information</div>
           <div className={styles.horizontalInfo}>
-            <div className={styles.verticalInfoTitle}>
-              <p className={styles.verticalInfoStyling}>Your good name: </p>
-              <p className={styles.verticalInfoStyling}>Phone Number: </p>
-              <p className={styles.verticalInfoStyling}>Your Nationality: </p>
-              <p className={styles.verticalInfoStyling}>Your Address: </p>
-            </div>
-            <div className={styles.verticalInfoInput}>
-              <input
+            <div style={{width: "20%"}}>Your good name<span style={{color:"red"}}>*</span>:</div>
+            <input
                 value={name}
                 onChange={handleNameChange}
                 type="text"
-                style={{
-                  width: "40vw",
-                  height: "6vh",
-                  borderRadius: "5px",
-                  fontSize: "3vh",
-                  paddingLeft: "2vw",
-                  border: "0.2vh solid black",
-                  marginTop: "1vh",
-                }}
+                className={styles.inputStyle}
               />
-              <input
-                value={address}
+          </div>
+
+          <div className={styles.horizontalInfo}>
+            <div style={{width: "20%"}}>Phone number<span style={{color:"red"}}>*</span>:</div>
+            <input
+                value={phoneNumber}
                 onChange={handlePhoneNumberChange}
                 type="text"
-                style={{
-                  width: "40vw",
-                  height: "6vh",
-                  borderRadius: "5px",
-                  fontSize: "3vh",
-                  paddingLeft: "2vw",
-                  border: "0.2vh solid black",
-                  marginTop: "1vh",
-                }}
+                className={styles.inputStyle}
               />
-              <input
+          </div>
+
+          <div className={styles.horizontalInfo}>
+            <div style={{width: "20%"}}>Your nationality<span style={{color:"red"}}>*</span>:</div>
+            <input
                 value={nationality}
                 onChange={handleNationalityChange}
                 type="text"
-                style={{
-                  width: "40vw",
-                  height: "6vh",
-                  borderRadius: "5px",
-                  fontSize: "3vh",
-                  paddingLeft: "2vw",
-                  border: "0.2vh solid black",
-                  marginTop: "1vh",
-                }}
+                className={styles.inputStyle}
               />
-              <input
+          </div>
+
+          <div className={styles.horizontalInfo}>
+            <div style={{width: "20%"}}>Your address<span style={{color:"red"}}>*</span>:</div>
+            <input
                 value={address}
                 onChange={handleAddressChange}
                 type="text"
-                style={{
-                  width: "40vw",
-                  height: "6vh",
-                  borderRadius: "5px",
-                  fontSize: "3vh",
-                  paddingLeft: "2vw",
-                  border: "0.2vh solid black",
-                  marginTop: "1vh",
-                }}
+                className={styles.inputStyle}
               />
-            </div>
           </div>
+          
           <div className={styles.heading1} style={{ marginTop: "6vh" }}>
             2. Customer Information
           </div>
@@ -198,17 +403,12 @@ const MakeBookingScreen = () => {
               alignItems: "center",
             }}
           >
-            <CustomerBox type={"adult"}></CustomerBox>
-            <motion.img
-              src={DeleteIC}
-              alt="DeleteIcon.png"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.8, opacity: 0.5 }}
-              style={{
-                marginLeft: "4vw",
-                width: "2%",
-              }}
-            ></motion.img>
+          <div>
+          <div style={{display: "flex", flexDirection: "column"}}>
+            {renderCustomerBoxes()}
+          </div>
+          </div>
+
           </div>
           <motion.img
             src={AddButtonIC}
@@ -216,16 +416,24 @@ const MakeBookingScreen = () => {
             className={styles.addButton}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8, opacity: 0.5 }}
+            onClick={handleAddBtn}
           ></motion.img>
           <div className={styles.notionSectionContainer}>
             <div>
               If you have any notion for this booking, please do not hesitate to
               fill in this notion box:
             </div>
-            <textarea className={styles.textBox}></textarea>
+            <textarea value={note} onChange={(e) => setNote(e.target.value)} className={styles.textBox}></textarea>
           </div>
         </div>
       </div>
+
+      {
+        isShow ? (
+          <div style={{marginTop:"2vw",color: "red", marginLeft: "15%", fontSize: "1.5vw"}}>Please fill in essential information in your form!</div>
+        ) : null
+      }
+      
       <div
         style={{
           display: "flex",
@@ -237,26 +445,12 @@ const MakeBookingScreen = () => {
           className={styles.submitButton}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95, opacity: 0.5 }}
+          onClick={handleSubmit}
         >
           Submit
         </motion.button>
       </div>
-      <div
-        style={{
-          textAlign: "center",
-          fontFamily: "NunitoSans",
-          fontSize: "2.5vh",
-          width: "70vw",
-          marginLeft: "auto",
-          marginRight: "auto",
-          marginTop: "5vh",
-        }}
-      >
-        Thank you for choosing Ha Long Bay as your destination! <br></br>
-        Thank you for your kind trust in MyAdventure! With many years of
-        experience, My Adventure travel expert team will contact you soonest for
-        best trips and Advice
-      </div>
+      <Footer/>
     </div>
   );
 };

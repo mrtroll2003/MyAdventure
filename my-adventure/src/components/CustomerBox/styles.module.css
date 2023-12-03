@@ -53,7 +53,7 @@ overflow-y: hidden;
 
 .space {
   margin-top: 5vh;
-  font-size: 2.3vh;
+  font-size: 1.2vw;
 }
 
 .row {
@@ -66,9 +66,9 @@ width: 46vw;
 .datePicker {
 border: 0.2vh solid #000;
 padding: 10px;
-border-radius: 10vh;
+border-radius: 0.5vw;
 width: 30vw;
 height: 6vh;
-font-size: 2.3vh;
+font-size: 1.2vw;
 padding-left: 2vw;
 }
