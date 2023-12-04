@@ -23,17 +23,7 @@ const CompanyCard = ({ avatar, name, role, details }) => {
         <h2 className="companyCardRole" style={{ marginTop: "1.25vh" }}>
           {role}
         </h2>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            marginLeft: "10%",
-            marginRight: "10%",
-            marginTop: "2.5vh",
-          }}
-        >
+        <div className="detailsContainer">
           <p className="companyCardDetails">{details[0]}</p>
           <p className="companyCardDetails">{details[1]}</p>
           <p className="companyCardDetails">{details[2]}</p>

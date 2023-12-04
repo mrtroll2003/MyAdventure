@@ -42,10 +42,19 @@ const AboutUsScreen = () => {
     <div className={styles.content}>
       {/* Intro Background */}
       <div className={styles.title}>
-          <h2 className={styles.welcome}><mark className={styles.highlight}>Welcome To Our</mark></h2>
-          <h2 className={styles.myadventure}><mark className={styles.highlight}>My Adventure</mark></h2>
-          <h2 className={styles.booking}><mark className={styles.highlight}>Enjoy your dream vacation, discover amazing places at exclusive details</mark></h2>
-        </div>
+        <h2 className={styles.welcome}>
+          <mark className={styles.highlight}>Welcome To Our</mark>
+        </h2>
+        <h2 className={styles.myadventure}>
+          <mark className={styles.highlight}>My Adventure</mark>
+        </h2>
+        <h2 className={styles.booking}>
+          <mark className={styles.highlight}>
+            Enjoy your dream vacation, discover amazing places at exclusive
+            details
+          </mark>
+        </h2>
+      </div>
       {/* About my Adventure */}
       <div
         style={{
@@ -53,11 +62,11 @@ const AboutUsScreen = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          textAlign: "center",
+          marginTop: "2.5%",
         }}
       >
-        <h1 className={styles.aboutUsGreenText} style={{ marginTop: "10%" }}>
-          About My Adventure
-        </h1>
+        <h1 className={styles.aboutUsGreenText}>About My Adventure</h1>
       </div>
       <div
         style={{
@@ -67,7 +76,7 @@ const AboutUsScreen = () => {
           marginTop: "5%",
         }}
       >
-        <p className={styles.aboutUsNormalText} style={{ width: "45%" }}>
+        <p className={styles.aboutUsNormalText}>
           My Adventure’s Travel Agency is your number one Ho Chi Minh Travel
           Agent, helping you plan and book Vietnam travel experiences,
           adventures and itineraries for more than 15 years. We are proud to
@@ -82,7 +91,12 @@ const AboutUsScreen = () => {
           travel agency, we always insist in our mind and our heart that “TRUST
           IS MORE VALUABLE THAN GOLD”
         </p>
-        <img src={DiHetVN} alt="DiHetVN" style={{ width: "30%" }} />
+        <img
+          className={styles.diHetVN}
+          src={DiHetVN}
+          alt="DiHetVN"
+          style={{ width: "30%" }}
+        />
       </div>
       {/* Company Overview */}
       <div
@@ -91,6 +105,7 @@ const AboutUsScreen = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          textAlign: "center",
           backgroundColor: "#5CD6C0",
           marginTop: "5%",
           paddingBottom: "5%",
@@ -108,14 +123,12 @@ const AboutUsScreen = () => {
           }}
         >
           <img
+            className={styles.companyIllus}
             src={CompanyOverviewIllus}
             alt="about_us_2"
             style={{ width: "35%" }}
           />
-          <p
-            className={styles.aboutUsNormalText}
-            style={{ width: "40%", color: "white" }}
-          >
+          <p className={styles.aboutUsNormalText} style={{ color: "white" }}>
             My Adventure’s Travel also supports travellers with transportation
             by bus, train, and plane, as well as visa arrangements and even
             laundry!
@@ -147,57 +160,17 @@ const AboutUsScreen = () => {
       >
         <h1 className={styles.aboutUsGreenText}>Meet Our Team</h1>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          marginTop: "5%",
-        }}
-      >
-        <CompanyCard
-          avatar={CompanyInfo.avatar}
-          name={CompanyInfo.name[0]}
-          role={CompanyInfo.role[0]}
-          details={CompanyInfo.details}
-        />
-        <CompanyCard
-          avatar={CompanyInfo.avatar}
-          name={CompanyInfo.name[1]}
-          role={CompanyInfo.role[1]}
-          details={CompanyInfo.details}
-        />
-        <CompanyCard
-          avatar={CompanyInfo.avatar}
-          name={CompanyInfo.name[2]}
-          role={CompanyInfo.role[2]}
-          details={CompanyInfo.details}
-        />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          marginTop: "2.5%",
-        }}
-      >
-        <CompanyCard
-          avatar={CompanyInfo.avatar}
-          name={CompanyInfo.name[3]}
-          role={CompanyInfo.role[3]}
-          details={CompanyInfo.details}
-        />
-        <CompanyCard
-          avatar={CompanyInfo.avatar}
-          name={CompanyInfo.name[4]}
-          role={CompanyInfo.role[4]}
-          details={CompanyInfo.details}
-        />
-        <CompanyCard
-          avatar={CompanyInfo.avatar}
-          name={CompanyInfo.name[5]}
-          role={CompanyInfo.role[5]}
-          details={CompanyInfo.details}
-        />
+      {/* Card section  */}
+      <div className={styles.cardSection}>
+        {CompanyInfo.name.map((name, index) => (
+          <CompanyCard
+            key={index}
+            avatar={CompanyInfo.avatar}
+            name={name}
+            role={CompanyInfo.role[index]}
+            details={CompanyInfo.details}
+          />
+        ))}
       </div>
       {/* Footer */}
       <Footer />
