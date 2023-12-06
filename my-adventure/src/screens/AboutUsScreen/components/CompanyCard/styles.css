@@ -11,22 +11,76 @@
 .companyCardName {
     font-family: "NunitoSans";
     font-weight: 900;
-    font-size: 25px;
+    font-size: 3vh;
 }
 .companyCardRole {
     font-family: "NunitoSans";
     font-weight: 400;
-    font-size: 20px;
+    font-size: 2.5vh;
     color: rgba(0, 0, 0, 0.54);
+}
+.detailsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2.5vh;
 }
 .companyCardDetails::before {
     content: "\00B7";
     font-weight: 900;
-    font-size: 25px;
-    margin-right: 5px;
+    font-size: 3vh;
+    margin-right: 1vh;
     line-height: 1;
 }
 .companyCardDetails {
     display: flex;
-    font-size: 17px;
+    font-size: 1.0625em;
+}
+
+/* Tablet: width >= 740px && width <= 1025px */
+@media screen and (max-width: 1025px) and (min-width: 740px) {
+    .companyCardContainer{
+        background-color: rgba(217, 217, 217, 0.5);
+        width: 40vw;
+        height: 60vh;
+    }
+    .companyCardName {
+        font-family: "NunitoSans";
+        font-weight: 900;
+        font-size:  2vh;
+    }
+    .companyCardDetails {
+        display: flex;
+        font-size: 1.5vh;
+    }
+}
+
+/* Mobile: width < 740px */
+@media screen and (max-width: 739px) {
+    .companyCardContainer{
+        background-color: rgba(217, 217, 217, 0.5);
+        width: 80vw;
+        height: 80vh;
+    }
+    .detailsContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 2.5vh;
+    }
+    .companyCardName {
+        font-family: "NunitoSans";
+        font-weight: 900;
+        font-size:  2vh;
+    }
+    .companyCardDetails {
+        display: flex;
+        font-size: 2.375vh;
+    }
 }
