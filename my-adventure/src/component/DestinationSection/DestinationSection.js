@@ -27,129 +27,61 @@ const DestinationSection = (props) => {
     },
   };
   const navigate = useNavigate();
+
+  const handleClick = (destination) => {
+    // console.log('Clicked:', id);
+    const url = `/destination-detail?destination=${encodeURIComponent(destination)}`;
+    navigate(url);
+  };
+
+  // const handleClick = () => {
+  //   navigate(`/destination-detail`)
+  // }
+
   return (
     <div>
       <div className={styles.destinationSectionView}>
         <h1 className={styles.destinationSectionTitle}>{props.children}</h1>
         <p className={styles.destinationSectionText}>{props.text}</p>
       </div>
-      <Carousel className={styles.carouselContainer} responsive={responsive}>
-        <div className={styles.illustContainer}>
-          <motion.img
-            alt="illus01"
-            src={props.img[0]}
-            id="illusImage"
-            whileHover={{
-              scale: 0.95,
-              transition: { duration: 0.1 },
-            }}
-            whileTap={{ opacity: 0.75 }}
-            onClick={() => navigate("/tour-detail")}
-          />
-          <motion.div className={styles.illustOverlay}>
-            <p className={styles.illustOverlayText}>Ha Long Bay</p>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ opacity: 0.5, scale: 0.9 }}
-              className={styles.illustOverlayButton}
-            >
-              Detail
-            </motion.button>
-          </motion.div>
-        </div>
-        <div className={styles.illustContainer}>
-          <motion.img
-            alt="illus02"
-            src={props.img[1]}
-            id="illusImage"
-            whileHover={{
-              scale: 0.95,
-              transition: { duration: 0.1 },
-            }}
-            whileTap={{ opacity: 0.75 }}
-            onClick={() => navigate("/tour-detail")}
-          />
-          <motion.div className={styles.illustOverlay}>
-            <p className={styles.illustOverlayText}>Ha Long Bay</p>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ opacity: 0.5, scale: 0.9 }}
-              className={styles.illustOverlayButton}
-            >
-              Detail
-            </motion.button>
-          </motion.div>
-        </div>
-        <div className={styles.illustContainer}>
-          <motion.img
-            alt="illus02"
-            src={props.img[1]}
-            id="illusImage"
-            whileHover={{
-              scale: 0.95,
-              transition: { duration: 0.1 },
-            }}
-            whileTap={{ opacity: 0.75 }}
-            onClick={() => navigate("/tour-detail")}
-          />
-          <motion.div className={styles.illustOverlay}>
-            <p className={styles.illustOverlayText}>Ha Long Bay</p>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ opacity: 0.5, scale: 0.9 }}
-              className={styles.illustOverlayButton}
-            >
-              Detail
-            </motion.button>
-          </motion.div>
-        </div>
-        <div className={styles.illustContainer}>
-          <motion.img
-            alt="illus03"
-            src={props.img[2]}
-            id="illusImage"
-            whileHover={{
-              scale: 0.95,
-              transition: { duration: 0.1 },
-            }}
-            whileTap={{ opacity: 0.75 }}
-            onClick={() => navigate("/tour-detail")}
-          />
-          <motion.div className={styles.illustOverlay}>
-            <p className={styles.illustOverlayText}>Ha Long Bay</p>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ opacity: 0.5, scale: 0.9 }}
-              className={styles.illustOverlayButton}
-            >
-              Detail
-            </motion.button>
-          </motion.div>
-        </div>
-        <div className={styles.illustContainer}>
-          <motion.img
-            alt="illus04"
-            src={props.img[3]}
-            id="illusImage"
-            whileHover={{
-              scale: 0.95,
-              transition: { duration: 0.1 },
-            }}
-            whileTap={{ opacity: 0.75 }}
-            onClick={() => navigate("/tour-detail")}
-          />
-          <motion.div className={styles.illustOverlay}>
-            <p className={styles.illustOverlayText}>Ha Long Bay</p>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ opacity: 0.5, scale: 0.9 }}
-              className={styles.illustOverlayButton}
-            >
-              Detail
-            </motion.button>
-          </motion.div>
-        </div>
-      </Carousel>
+      {
+        props.img && props.img.length > 0 && (
+          <>
+          <Carousel className={styles.carouselContainer}  responsive={responsive}>
+          {
+            props.img && props.img.map((image) => (
+              <>
+              <div className={styles.illustContainer}>
+                <img
+                  alt={image[0].name}
+                  src={image[0].images[0]}
+                  id={image[0].name}
+                  onClick={() => navigate("/tour-detail")}
+                  style={{
+                    objectFit: "cover",
+                    height: "25vw",
+                    width: "100%",
+                  }}
+                />
+                <motion.div className={styles.illustOverlay}>
+                  <p className={styles.illustOverlayText}>{image[0].name}</p>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ opacity: 0.5, scale: 0.9 }}
+                    className={styles.illustOverlayButton}
+                    onClick={() => handleClick(image[0].name)}
+                  >
+                    View more
+                  </motion.button>
+                </motion.div>
+              </div>
+              </>
+            ))
+          }
+        </Carousel>
+          </>
+        )
+      }
     </div>
   );
 };

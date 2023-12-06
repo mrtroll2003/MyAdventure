@@ -12,22 +12,29 @@ function TourContainer (props) {
   const navigate = useNavigate();
     const { departureDate, returnDate, departure, destination, numAdult, nameA, numChild, nameC, tourStatus } = props;
     const BUTTON_STATUS = {
-        WaitingForHandling: <div className={styles.button} style={{backgroundColor:'#FFED8C',}}><div className={styles.buttonText}>Waiting for handling</div></div>,
-        Confirmed: <div className={styles.button} style={{backgroundColor:"#F5AE45",}}><div className={styles.buttonText}>Confirmed</div></div>,
-        Paid: <div className={styles.button} style={{backgroundColor:"#2CF594",}}><div className={styles.buttonText}>Paid</div></div>,
-        Successful: <div className={styles.button} style={{backgroundColor:"#30E742",}}><div className={styles.buttonText}>Successful</div></div>,
+        "Waiting For Handling": <div className={styles.button} style={{backgroundColor:'#FFED8C',}}><div className={styles.buttonText}>Waiting for handling</div></div>,
+        "Confirmed": <div className={styles.button} style={{backgroundColor:"#F5AE45",}}><div className={styles.buttonText}>Confirmed</div></div>,
+        "Paid": <div className={styles.button} style={{backgroundColor:"#2CF594",}}><div className={styles.buttonText}>Paid</div></div>,
+        "Successful": <div className={styles.button} style={{backgroundColor:"#30E742",}}><div className={styles.buttonText}>Successful</div></div>,
       }
     var AdultList = nameA?.map((adult) => <li>{adult.name}</li>)
     var ChildList = nameC?.map((child) => <li>{child.name}</li>)
+
+    const handleClick = () => {
+      const url = `/booking-status?bookingID=${encodeURIComponent(props.bookingID)}`;
+      navigate(url);
+    };
+
+
         return (
-          <motion.button className={styles.mainView} whileTap={{scale: 0.8}} onClick={() => navigate('/detail-booking')}>
+          <motion.button className={styles.mainView} whileTap={{scale: 0.8}} onClick={handleClick}>
             <div className={styles.column}>
               <div className={styles.horizon}>
                 <div className={styles.horizon1}>
                   <img className={styles.img} src={Departure} alt="departure"></img>
                   <div className={styles.label}>Expected time:</div>
                 </div>
-                <div className={styles.content}>{formatDate(departureDate)} - {formatDate(returnDate)}</div>
+                <div className={styles.content}>{departureDate && formatDate(departureDate)} - { returnDate && formatDate(returnDate)}</div>
               </div>
 
               <div className={styles.horizon} style={{marginTop: "3vh"}}>

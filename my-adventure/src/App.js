@@ -52,6 +52,7 @@ export default function App() {
     setIsLogin(login);
     setIsAdmin(user);
     Cookies.set('signedIn', login.toString(), { expires: 365 });
+    localStorage.setItem('isAdmin', user.toString());
   };
 
 
@@ -59,7 +60,8 @@ export default function App() {
     const signedInStatus = Cookies.get('signedIn');
     if (signedInStatus === 'true') {
       setIsLogin(true);
-      setIsAdmin(localStorage.getItem('isAdmin'));
+      const isAdminValue = localStorage.getItem('isAdmin');
+      setIsAdmin(isAdminValue === 'true');
     }
   }, []);
   return (
@@ -75,6 +77,7 @@ export default function App() {
           <Route path="sign-in" element={<SignIn onLogin={handleLogin} />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="forgot-password" element={<ForgotPassword />} />
+          <Route path="about-us" element={<AboutUsScreen />} />
           <Route path="home" element={<HomePage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="tour-detail" element={<TourDetail />} />
@@ -84,6 +87,8 @@ export default function App() {
           <Route path="contact" element={<Contacts />} />
           <Route path="vietnam-tours" element={<VietNamTourScreen />} />
           <Route path="international-tours" element={<InternationalTourScreen />}/>
+          <Route path="booking-status" element={<BookingStatusScreen />} />
+          <Route path="destination-detail" element={<DestinationDetail />} />
 
           <Route path="company/home" element={<HomePageCompany />} />
           <Route path="company/vietnam-tours" element={<VietNamTourScreenCompany />}/>
@@ -116,7 +121,7 @@ export default function App() {
           />
 
         </Route>
-        <Route path="about-us" element={<AboutUsScreen />} />
+        
         <Route
           path="confirmed-detail-booking"
           element={<ConfirmedDetailBookingScreen />}
@@ -129,8 +134,8 @@ export default function App() {
         <Route path="phucthinh" element={<MakeBookingScreen />} />
 
         <Route path="/booking-management" element={<BookingManagement />} />
-        <Route path="/phuclam" element={<DestinationDetail />} />
-        <Route path="/phuclam2" element={<BookingStatusScreen />} />
+        
+
       </Routes>
     </BrowserRouter>
     // <SignIn/>

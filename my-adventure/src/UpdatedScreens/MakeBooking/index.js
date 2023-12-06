@@ -51,7 +51,7 @@ const MakeBookingScreen = () => {
       "address": address,
       "note": note,
       "tourID": id,
-      "status": "Waiting for Handling",
+      "status": "WaitingForHandling",
       "date": date,
     });
 
