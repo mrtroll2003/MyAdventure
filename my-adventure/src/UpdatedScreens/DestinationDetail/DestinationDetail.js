@@ -1,20 +1,124 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { motion } from "framer-motion";
 
 import RecommendedTripCard from "../../component/RecommendedTripCard/RecommendedTripCard";
-
-import HaLongBay from "../../assets/images/HaLongBayBg.png";
 import FilterIC from "../../assets/icons/filter.png";
 import Footer from "../../component/Footer/Footer";
-
-import data from "./data";
+import { useLocation, useNavigate } from "react-router-dom";
+import { formatDate } from "../../constant/formatDate";
 
 const DestinationDetail = () => {
-  const numRows = Math.ceil(data.length / 3);
+  const navigate = useNavigate()
+  const location  = useLocation()
+  const searchParams = new URLSearchParams(location.search);
+  const destination = searchParams.get('destination');
+  console.log("destination: " + destination);
+
+  const [depatureList, setDepartureList] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [tours, setTours] = useState([])
+  const [ratings, setRatings] = useState([])
+  const [images, setImages] = useState([])
+
+  const [selectedDeparture, setSelectedDeparture] = useState("all departure")
+  const [sortOrder, setSortOrder] = useState('asc')
+
+
+  useEffect (() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:3001/image", requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      setImages(data)
+    })
+    .catch(error => console.log('error', error));
+
+  fetch("http://localhost:3001/rating", requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      setRatings(data)
+    })
+    .catch(error => console.log('error', error));
+    
+    fetch(`http://localhost:3001/tour/destination?destination=${destination}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setTours(result)
+        setLoading(false)
+    })
+      .catch(error => console.log('error', error));
+  }, [destination])
+
+
+  useEffect (() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    fetch(`http://localhost:3001/tour/destination/departures?destination=${destination}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setDepartureList(result)
+      })
+      .catch(error => console.log('error', error));
+  }, [destination])
+
+  const numRows = Math.ceil(tours?.length / 3);
   const rows = Array.from({ length: numRows }, (_, index) =>
-    data.slice(index * 3, (index + 1) * 3)
+  tours.slice(index * 3, (index + 1) * 3)
   );
+
+
+  const renderImage = (departure) => {
+    const image = images.find(image => image.name === departure);
+    if (image && image.images && image.images.length > 0) {
+      const imageLink = image.images[0];
+      return imageLink;
+    }
+    return null; 
+  };
+  
+  const getRating = (trip) => {
+    const rating = ratings.find(rating => rating.name === trip.destination);
+    if (rating) {
+      return rating.rating;
+    }
+    return 0; // Default rating if 'rating' object is undefined
+  };
+
+  const handleSortOrderChange = () => {
+    const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+    setSortOrder(newSortOrder);
+  };
+
+  const sortedTours = tours
+    .filter((item) => selectedDeparture === 'all departure' || item.departure === selectedDeparture)
+    .sort((a, b) => {
+      if (sortOrder === 'asc') {
+        return a.departureDate.localeCompare(b.departureDate);
+      } else {
+        return b.departureDate.localeCompare(a.departureDate);
+      }
+    });
+
+  
+    const handleClick = (id) => {
+      console.log('Clicked:', id);
+      const url = `/tour-detail?id=${encodeURIComponent(id)}`;
+      navigate(url);
+    };
+
+  if(loading) {
+    return <div>Loading...</div>
+  }
+
+
   return (
     <div
       className={styles.screenFont}
@@ -22,19 +126,20 @@ const DestinationDetail = () => {
     >
       {/* Intro Background */}
       <div className={styles.introBackground}>
-        <div className={styles.introBackgroundLayer}>
-          <h1 className={styles.introBackgroundText}>HA LONG BAY</h1>
+        <div className={styles.introBackgroundLayer} style={{backgroundImage: `url(${renderImage(destination)})`,     backgroundSize: "cover",
+    backgroundRepeat: "no-repeat"}}>
+          <h1 className={styles.introBackgroundText}>{destination}</h1>
         </div>
       </div>
       {/* Some text */}
       <div style={{ marginLeft: "5%", marginTop: "2.5%", fontSize: "22px" }}>
-        We introduce you all tours that have the destination is Ha Long Bay!
+        We introduce you all tours that have the destination is {destination}!
       </div>
       {/* Filter section */}
       <div
         style={{
           marginLeft: "5%",
-          marginTop: "2.5%",
+          marginTop: "1vw",
           fontSize: "18px",
         }}
       >
@@ -47,17 +152,21 @@ const DestinationDetail = () => {
           justifyContent: "space-between",
         }}
       >
-        <motion.select className={styles.filterBox} name="departure">
+        <motion.select className={styles.filterBox} name="departure" onChange={(e) => setSelectedDeparture(e.target.value)}>
           <motion.option value="all departure">All departure</motion.option>
-          <motion.option value="option 2">Option 2</motion.option>
-          <motion.option value="option 3">Option 3</motion.option>
-          <motion.option value="option 4">Option 4</motion.option>
-          <motion.option value="option 5">Option 5</motion.option>
+          {
+            depatureList.map((departure) => (
+              <motion.option value={departure }>
+                {departure}
+              </motion.option>
+            ))
+          }
         </motion.select>
 
         <motion.button
           className={styles.displayHorizon}
           whileTap={{ scale: 0.9 }}
+          onChange={handleSortOrderChange}
         >
           <div style={{ fontSize: "20px" }}>Filter Date</div>
           <img
@@ -69,28 +178,35 @@ const DestinationDetail = () => {
       </div>
       {/* Tour Card Section */}
       {rows.map((row, rowIndex) => (
+        <>
         <div
           key={rowIndex}
           style={{
-            display: "flex",
+            display: "inline-grid",
             flexDirection: "row",
             justifyContent: "space-evenly",
             marginTop: "5%",
+            marginLeft: "5vw"
           }}
         >
-          {row.map((item) => (
+          {sortedTours
+          .map((item) => (
+            <>
             <RecommendedTripCard
-              key={item.id}
-              image={item.image}
+              key={item._id}
+              image={renderImage(item.departure)}
               departure={item.departure}
               destination={item.destination}
-              departure_date={item.departure_date}
-              return_date={item.return_date}
-              rating={item.rating}
+              departure_date={formatDate(item.departureDate)}
+              return_date={formatDate(item.departureDate)}
+              rating={getRating(item)}
               price={item.price}
+              onClick={() => handleClick(item._id)}
             />
+            </>
           ))}
         </div>
+        </>
       ))}
       {/* Footer */}
       <Footer />

@@ -217,22 +217,28 @@ const TourDetail = (props) => {
       {/* Number of customers */}
       {
         localStorage.getItem("isAdmin") ? (
-          <div style={{padding: "1vw 5vw", fontSize: "1.8vw"}}>
-            <div style={{fontStyle: "italic"}}>Number of customers booking this tour: <span style={{fontWeight: "bold"}}>{(adult?.length || 0)}</span> adults <span style={{fontWeight: "bold"}}>{(children?.length || 0)}</span> children</div>
-            <div style={{fontSize: "1.2vw"}}>Click <motion.button whileTap={{scale: 0.9}} style={{fontWeight: "500", fontStyle: "italic", textDecoration: "underline"}} onClick={() => {}}>here</motion.button> to see the customer list for this tour</div>
-          </div>
+          <>
+            <div style={{padding: "1vw 5vw", fontSize: "1.8vw"}}>
+              <div style={{fontStyle: "italic"}}>Number of customers booking this tour: <span style={{fontWeight: "bold"}}>{(adult?.length || 0)}</span> adults <span style={{fontWeight: "bold"}}>{(children?.length || 0)}</span> children</div>
+              <div style={{fontSize: "1.2vw"}}>Click <motion.button whileTap={{scale: 0.9}} style={{fontWeight: "500", fontStyle: "italic", textDecoration: "underline"}} onClick={() => {}}>here</motion.button> to see the customer list for this tour</div>
+            </div>
+          </>
         ) : null
       }
       
 
 
       {/* Book this tour button  */}
-        {localStorage.getItem("isAdmin") ? (
+      {console.log("isAdmin" + localStorage.getItem("isAdmin"))}
+        {localStorage.getItem("isAdmin") === true ? (
+          <>
           <div className={styles.displayHorizon}> 
             <motion.button className={styles.companyBtn} whileHover={{scale: 0.9}}>Modify</motion.button>
             <motion.button className={styles.companyBtn} style={{backgroundColor: "#FF8139"}}  whileHover={{scale: 0.9}}>Cancel</motion.button>
           </div>
+          </>
         ) : (
+          <>
           <div
         style={{
           display: "flex",
@@ -251,6 +257,7 @@ const TourDetail = (props) => {
           Booking this tour
         </motion.div>
       </div>
+          </>
         )}
       {/* Footer */}
       <Footer />

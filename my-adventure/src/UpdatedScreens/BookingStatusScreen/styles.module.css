@@ -118,10 +118,14 @@
     width: 30%;
 }
 
+.infoTag {
+    margin-left: 6vw;
+}
+
 .price {
     font-style: "NunitoSans";
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 2vw;
+    font-weight: bold;
     text-transform: uppercase;
 }
 

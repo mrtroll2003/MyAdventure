@@ -223,6 +223,7 @@ const HomePage = () => {
               </motion.button>
             </div>
             {rows.map((row, rowIndex) => (
+              <>
               <div
                 key={rowIndex}
                 style={{
@@ -233,6 +234,7 @@ const HomePage = () => {
                 }}
               >
                 {row.map((item) => (
+                  <>
                   <RecommendedTripCard
                     key={item._id}
                     image={renderImage(item)}
@@ -244,8 +246,11 @@ const HomePage = () => {
                     price={item.price}
                     onClick={() => handleClick(item._id)}
                   />
+                  </>
                 ))}
               </div>
+              </>
+
             ))}
           </div>
           {/* Happy Customer */}
