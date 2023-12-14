@@ -9,12 +9,12 @@
 
 .container {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
     align-items: center;
-    width: 15vw;
+    width: 12.5vw;
     height: auto;
     padding: 0;
-    
+    /* border: 1px solid red; */
 }
 
 .phoneIcon {
@@ -31,6 +31,9 @@
     width: 1.5vw;
 }
 
+.aboutUsIcon {
+    width: 1.5vw;
+}
 
 .facebookIcon {
     width: 1.5vw;
@@ -40,4 +43,68 @@
 .instagramIcon {
     width: 1.5vw;
     margin-left: 2vw;
+}
+/* Tablet */
+@media screen and (max-width: 1025px) and (min-width: 740px) {
+    .header {
+        display: flex;
+        background-color: #49DEC3 ;
+        height: 8vh;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 8vw;
+        padding-right: 8vw;
+    }
+    
+    .text {
+        display: none;
+    }
+    .phoneIcon {
+        width: 4vw;
+    }
+    .mailIcon {
+        width: 4vw;
+    }
+    .aboutUsIcon {
+        width: 4vw;
+    }
+    .facebookIcon {
+        width: 4vw;
+        margin-left: -5vw;
+    }
+    .instagramIcon {
+        width: 4vw;
+    }
+}
+/* Mobile */
+@media screen and (max-width: 739px) {
+    .header {
+        display: flex;
+        background-color: #49DEC3 ;
+        height: 8vh;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 8vw;
+        padding-right: 8vw;
+    }
+    
+    .text {
+        display: none;
+    }
+    .phoneIcon {
+        width: 4vw;
+    }
+    .mailIcon {
+        width: 4vw;
+    }
+    .aboutUsIcon {
+        width: 4vw;
+    }
+    .facebookIcon {
+        width: 4vw;
+        margin-left: -5vw;
+    }
+    .instagramIcon {
+        width: 4vw;
+    }
 }
