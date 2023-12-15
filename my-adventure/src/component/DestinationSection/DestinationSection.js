@@ -53,9 +53,9 @@ const DestinationSection = (props) => {
               <>
               <div className={styles.illustContainer}>
                 <img
-                  alt={image[0].name}
-                  src={image[0].images[0]}
-                  id={image[0].name}
+                  alt={image?.name}
+                  src={image?.images[0]}
+                  id={image?.name}
                   onClick={() => navigate("/tour-detail")}
                   style={{
                     objectFit: "cover",
@@ -64,12 +64,12 @@ const DestinationSection = (props) => {
                   }}
                 />
                 <motion.div className={styles.illustOverlay}>
-                  <p className={styles.illustOverlayText}>{image[0].name}</p>
+                  <p className={styles.illustOverlayText}>{image?.name}</p>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ opacity: 0.5, scale: 0.9 }}
                     className={styles.illustOverlayButton}
-                    onClick={() => handleClick(image[0].name)}
+                    onClick={() => handleClick(image?.name)}
                   >
                     View more
                   </motion.button>
