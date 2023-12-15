@@ -1,0 +1,82 @@
+.container {
+    background-image: url(../../assets/images/YourBookingBg.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    padding: 10vh;
+}
+
+.hi {
+    font-size: 5vh;
+    color: black;
+    font-weight: bold;
+}
+
+.mark {
+    color: #5CD6C0;
+}
+
+.welcome {
+    font-size: 3vh;
+    margin-top: 6vh;
+    margin-left: 5%;
+}
+
+@font-face {
+    font-family: 'NunitoSans';
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf") format("truetype");
+}
+.mainContentContainer {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
+                0 4px 8px rgba(0, 0, 0, 0.25); 
+
+    background-color: rgba(135, 244, 224, 0.8);;
+    display: flex;
+    flex-direction: column; 
+    padding: 2% 10%;
+}
+
+.title {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 5vh;
+}
+.statusContainer {
+    align-self: center;
+    text-align: center;
+    width: 20%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 2.5vh;
+    margin-top: 2vh;
+}
+.text {
+    margin-top: 3vw;
+    font-size: 1.5vw;
+}
+.button {
+    font-size: 1.2vw;
+    color: white;
+    font-weight: bold;
+}
+
+.buttonContainer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2vw;
+    padding: 1vw 1vw;
+    background-color: #32C841;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
+                0 4px 8px rgba(0, 0, 0, 0.25); 
+}
+
+.file {
+    margin-top: 2vw;
+    font-size: 1.2vw;   
+}

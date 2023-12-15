@@ -43,6 +43,7 @@ import "./index.css";
 import HomePage from "./screens/HomePage/index.js";
 import Cookies from 'js-cookie';
 import SignedInTabbar from "./component/SignedInTabbar/index.js";
+import MakePaymentScreen from "./UpdatedScreens/MakePaymentScreen/index.js";
 
 
 export default function App() {
@@ -89,14 +90,13 @@ export default function App() {
           <Route path="international-tours" element={<InternationalTourScreen />}/>
           <Route path="booking-status" element={<BookingStatusScreen />} />
           <Route path="destination-detail" element={<DestinationDetail />} />
+          <Route path="cancel" element={<CancelSuccessfulBooking />} />
+          <Route path="make-payment" element={<MakePaymentScreen />} />
 
           <Route path="company/home" element={<HomePageCompany />} />
           <Route path="company/vietnam-tours" element={<VietNamTourScreenCompany />}/>
           <Route path="company/international-tours" element={<InternationalTourScreenCompany />}/>
 
-
-
-   
           <Route path="booking-step-two" element={<BookingStepTwo />} />
           <Route path="booking-step-three" element={<BookingStepThree />} />
 
@@ -127,8 +127,6 @@ export default function App() {
           element={<ConfirmedDetailBookingScreen />}
         />
 
-        <Route path="cancel" element={<CancelSuccessfulBooking />} />
-        <Route path="make-booking" element={<MakeBookingScreen />} />
         <Route path="vietnam-tour-customer" element={<VietNamTourCustomer />} />
 
         <Route path="phucthinh" element={<MakeBookingScreen />} />
@@ -142,5 +140,3 @@ export default function App() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);

@@ -3,7 +3,7 @@ const formatDate = (mongoDate) => {
   
     if (isNaN(date)) {
       // If the date is not valid, try parsing it as an ISO 8601 date
-      const isoDate = new Date(mongoDate.replace(' ', 'T'));
+      const isoDate = new Date(mongoDate?.replace(' ', 'T'));
   
       if (isNaN(isoDate)) {
         // If it's still not valid, return an empty string or an appropriate default value
@@ -29,7 +29,7 @@ const formatDate = (mongoDate) => {
   
     if (isNaN(date)) {
       // If the date is not valid, try parsing it as an ISO 8601 date
-      const isoDate = new Date(mongoDate.replace(' ', 'T'));
+      const isoDate = new Date(mongoDate?.replace(' ', 'T'));
   
       if (isNaN(isoDate)) {
         // If it's still not valid, return an empty string or an appropriate default value

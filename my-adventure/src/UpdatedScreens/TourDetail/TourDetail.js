@@ -2,16 +2,18 @@ import React, {useState, useEffect} from "react";
 import styles from "./styles.module.css";
 import { motion } from "framer-motion";
 import Footer from "../../component/Footer/Footer";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { formatDate, formatHour } from "../../constant/formatDate";
 
 const TourDetail = (props) => {
-  console.log("hello")
   const navigate = useNavigate()
   const location  = useLocation()
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get('id');
-  console.log("id",id)
+
+  // const { id } = useParams();
+  // console.log("id", id)
+  // const navigate = useNavigate()
 
   const [loading, setLoading] = useState(true);
   
@@ -33,7 +35,7 @@ const TourDetail = (props) => {
     })
     .catch(error => console.log('error', error));
   
-    fetch(`http://localhost:3001/tour/place?id=${id}`, requestOptions)
+    fetch(`http://localhost:3001/tour/place?id=${encodeURIComponent(id)}`, requestOptions)
     .then(response => response.json())
     .then(data => {
       setTour(data);
@@ -43,7 +45,7 @@ const TourDetail = (props) => {
   
 
     .catch(error => console.log('error', error));
-  }, [id]);
+  }, []);
 
   useEffect (() => {
     console.log("tour", tour)
@@ -53,12 +55,12 @@ const TourDetail = (props) => {
         redirect: 'follow'
       };
   
-      fetch(`http://localhost:3001/children/tour?tourID=${tour._id}`, requestOptions)
+      fetch(`http://localhost:3001/children/tour?tourID=${encodeURIComponent(tour._id)}`, requestOptions)
         .then(response => response.json())
         .then(result => setChildren(result))
         .catch(error => console.log('error', error));
   
-      fetch(`http://localhost:3001/adult/tour?tourID=${tour._id}`, requestOptions)
+      fetch(`http://localhost:3001/adult/tour?tourID=${encodeURIComponent(tour._id)}`, requestOptions)
         .then(response => response.json())
         .then(result => setAdult(result))
         .catch(error => console.log('error', error));
@@ -88,7 +90,7 @@ const TourDetail = (props) => {
 
   const getCity = (name) => {
     const location =name;
-    const city = location.split(",")[0].trim();
+    const city = location?.split(",")[0].trim();
     return city;
   }
   if (loading) {
@@ -96,7 +98,8 @@ const TourDetail = (props) => {
   }
 
   return (
-    <div>
+    <>
+      <>
       <div style={{ display: "flex", flexDirection: "row" }}>
         {/* Left background */}
         <div
@@ -113,7 +116,9 @@ const TourDetail = (props) => {
           <div className={styles.halfIntroBackgroundLayer}>{getCity(tour.destination)}</div>
         </div>
       </div>
+      </>
       {/* Title */}
+      <>
       <div
         style={{
           display: "flex",
@@ -145,13 +150,19 @@ const TourDetail = (props) => {
           {formatDate(tour.returnDate)}
         </h3>
       </div>
+      </>
       {/* Transportation */}
+      <>
       <div
         className={styles.text}
         style={{ marginLeft: "5%", marginTop: "2.5%" }}
       >
         Transportation:
       </div>
+      </>
+
+
+      <>
       <div className={styles.horizontal}>
         <div className={styles.firstHalf}>
           <p className={styles.leftText}>Transportation's brand: </p>
@@ -168,14 +179,18 @@ const TourDetail = (props) => {
           <p className={styles.rightText}>{formatHour(tour.returnDate)}</p>
         </div>
       </div>
+      </>
       {/* Accommodation */}
+      <>
       <div
         className={styles.text}
         style={{ marginLeft: "5%", marginTop: "1.5%" }}
       >
         Accommodation:
       </div>
-      <div className={styles.horizontal}>
+      </>
+        <>
+        <div className={styles.horizontal}>
         <div className={styles.firstHalf}>
           <p className={styles.leftText}>Accommodation's name: </p>
           <p className={styles.leftText}>Checkin Date: </p>
@@ -191,31 +206,41 @@ const TourDetail = (props) => {
           <p className={styles.rightText}>{formatHour(tour.checkout)}</p>
         </div>
       </div>
+        </>
       {/* Schedule Details */}
-      <div
+        <>
+        <div
         className={styles.text}
         style={{ marginLeft: "5%", marginTop: "1.5%" }}
       >
         Schedule Details:
       </div>
-      <div
+        </>
+
+
+        <>
+        <div
         className={styles.text1}
         style={{ marginLeft: "7.8%", marginTop: "1%", marginRight: "6%" }}
       >
         {tour.details}
       </div>
+        </>
    
       {/* Price */}
-      <div
+        <>
+        <div
         className={styles.price}
         style={{ marginTop: "2.5%", marginLeft: "6%" }}
       >
         Price: ${tour.price}
       </div>
+        </>
 
 
       {/* Number of customers */}
-      {
+        <>
+        {
         localStorage.getItem("isAdmin") ? (
           <>
             <div style={{padding: "1vw 5vw", fontSize: "1.8vw"}}>
@@ -225,12 +250,14 @@ const TourDetail = (props) => {
           </>
         ) : null
       }
+        </>
       
 
 
       {/* Book this tour button  */}
       {console.log("isAdmin" + localStorage.getItem("isAdmin"))}
-        {localStorage.getItem("isAdmin") === true ? (
+      <>
+      {localStorage.getItem("isAdmin") === true ? (
           <>
           <div className={styles.displayHorizon}> 
             <motion.button className={styles.companyBtn} whileHover={{scale: 0.9}}>Modify</motion.button>
@@ -259,9 +286,10 @@ const TourDetail = (props) => {
       </div>
           </>
         )}
+      </>
       {/* Footer */}
       <Footer />
-    </div>
+    </>
   );
 };
 

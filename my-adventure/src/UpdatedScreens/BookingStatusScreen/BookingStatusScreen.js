@@ -7,8 +7,9 @@ import BirthCert from "../../assets/images/birthcert.png";
 
 import CustomerTextBox from "../../components/CustomerTextBox";
 import { useLocation, useNavigate } from "react-router-dom";
-import { hover } from "@testing-library/user-event/dist/hover";
 import { formatDate } from "../../constant/formatDate";
+import CancelPopUp from "../../component/CancelPopUp";
+import StarRatings from 'react-star-ratings';
 
 const BookingStatusScreen = (props) => {
   const navigate = useNavigate();
@@ -21,10 +22,13 @@ const BookingStatusScreen = (props) => {
   const [tour, setTour] = useState()
   const [loading, setLoading] = useState(true)
   const [loading1, setLoading1] = useState(true)
-  // const [statusBackgroundColor, setstatusBackgroundColor] = useState("#FFED8C")
   const [adultList, setAdultList] = useState([])
   const [childList, setChildList] = useState([])
-
+  const [showCancelBox, setShowCancelBox] = useState(false)
+  const [bookings, setBookings] = useState([])
+  const [tours, setTours] = useState([])
+  const [isSubmit, setIsSubmit] = useState(false)
+  const [rating, setRating] = useState(0);
 
   useEffect(() => {
     var requestOptions = {
@@ -39,11 +43,6 @@ const BookingStatusScreen = (props) => {
         setLoading(false)})
       .catch(error => console.log('error', error));
   }, [bookingID])
-
-  // useEffect (() => {
-  //   // console.log("bookingID",bookingID)
-  //   console.log("booking",booking)
-  // }, [booking])
 
   useEffect(() => {
     const fetchAdultLists = async () => {
@@ -102,22 +101,78 @@ const BookingStatusScreen = (props) => {
       }
     };
 
+    
+    const fetchBookingList = async () => {
+      try {
+        const requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+
+        const response = await fetch(`http://localhost:3001/booking`, requestOptions)
+        const result = await response.json();
+        setBookings(result);
+      } catch (error) {
+        console.log('Error:', error);
+        setBookings([]);
+      }
+    };
+
+    const fetchToursList = async () => {
+      try {
+        const requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+
+        const response = await fetch(`http://localhost:3001/tour`, requestOptions)
+        const result = await response.json();
+        setTours(result);
+      } catch (error) {
+        console.log('Error:', error);
+        setTours([]);
+      }
+    };
+
+    console.log ("bbb", booking)
+
+    
+
       fetchAdultLists();
       fetchChildrenLists();
       fetchTourList();
+      fetchBookingList()
+      fetchToursList()
+      
   }, [booking]);
+
+  useEffect(() => {
+    const setRating1 = async () => {
+      if (booking && booking.rating) {
+        await setRating(booking.rating);
+      }
+    };
+  
+    setRating1();
+  }, [booking]);
+
+
 
 
   const setBg =  (status) => {
     var backgroundColor = "#FFED8C"
     if (status === "Successful") {
       backgroundColor = "#30E742"
-    } else if (status === "Waiting For Handling") {
+    } else if (status === "Waiting for handling") {
       backgroundColor = "#FFED8C"
-    } else if (status === "Confirmed") {
+    } else if (status === "Waiting for checking") {
       backgroundColor = "#F5AE45"
+    } else if (status === "Confirmed") {
+      backgroundColor = "#E4F61A"
     } else if (status === "Paid") {
       backgroundColor = "#2CF594"
+    }else if (status === "Cancelled") {
+      backgroundColor = "red"
     }
     return backgroundColor;
   }
@@ -139,12 +194,101 @@ const BookingStatusScreen = (props) => {
     return price * num;
   }
 
-  const [rating, setRating] = useState(null);
-  const [starHover, setStarHover] = useState(null);
+
+
+
+  const UpdateRating = async (data) => {
+    try {
+      const response = await fetch("http://localhost:3001/booking/update-rating", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+        const status = await response.status;
+        return status;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  const UpdateRatingTotal = async (data) => {
+    try {
+      const response = await fetch("http://localhost:3001/rating/update", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+        const status = await response.status;
+        return status;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+
+
+  const handleRatingSubmit = () => {
+    const data = {
+      bookingID: bookingID,
+      rating: rating,
+    }
+    UpdateRating(data);
+
+    let total = 0;
+    let count = 0;
+
+    console.log("bookings", bookings)
+    bookings.forEach(aBooking => {
+      tours.forEach(aTour => {
+        if (aBooking.tourID === aTour._id && aTour.destination === tour.destination && aBooking._id !== bookingID && aBooking.rating !== 0) {
+
+          total += aBooking.rating;
+          console.log("total" + total)
+          count ++;
+        }
+      })
+    })
+    const finalTotal = total + rating;
+    console.log("finalTotal" + finalTotal)
+    const averageRating = finalTotal / (count + 1)
+    console.log("averageRating" + averageRating)
+
+    const data1 = {
+      name: tour.destination,
+      rating: averageRating
+    }
+
+    UpdateRatingTotal(data1)
+    setIsSubmit (true);
+
+  }
  
 
   if(loading === true || loading1 === true) {
     return  <div>Loading...</div>
+  }
+
+  const handleCancelClick = () => {
+    if(booking.status !== "Confirmed" && booking.status !== "Waiting for handling") {
+      const url = `/cancel?id=${encodeURIComponent(bookingID)}`;
+      navigate(url);
+      return;
+    }
+    setShowCancelBox(!showCancelBox);
+  }
+
+  const handlePaymentClick = () => {
+      const url = `/make-payment?id=${encodeURIComponent(bookingID)}`;
+      navigate(url);
+      return;
   }
 
   return (
@@ -350,7 +494,7 @@ const BookingStatusScreen = (props) => {
 
 
         {
-          (booking.status === "Confirmed" || booking.status === "Paid") ? (
+          (booking.status === "Waiting for checking" || booking.status === "Paid") ? (
             <>
           <div className={styles.text} style={{ fontWeight: "600" }}>
             Evidence of your payment for this tour:
@@ -366,7 +510,7 @@ const BookingStatusScreen = (props) => {
           <img src={BirthCert} alt="evidence" />
           <div>payment.jpg</div>
           {
-            booking.status === "Confirmed" ? (
+            booking.status === "Waiting for checking" ? (
               <motion.button
                 className={styles.changeButton}
                 whileTap={{ scale: 0.9 }}
@@ -388,77 +532,163 @@ const BookingStatusScreen = (props) => {
             </div>
             {/* Star rating section */}
             <div className={styles.horizon} style={{ marginTop: "2.5%" }}>
-              {[...Array(5)].map((star, index) => {
-                const currentRating = index + 1;
-                return (
-                  <label>
-                    <input
-                      type="radio"
-                      name="rating"
-                      value={currentRating}
-                      onClick={() => setRating(currentRating)}
-                    />
-                  </label>
-                );
-              })}
-              <motion.button
-                className={styles.submitButton}
-                style={{ marginLeft: "10%" }}
-                whileTap={{ scale: 0.9 }}
-              >
-                submit
-              </motion.button>
+            {
+              (isSubmit === false && booking.rating === 0) ? (
+                <StarRatings
+                  rating={rating}
+                  starRatedColor="gold"
+                  changeRating={(newRating) => setRating(newRating)}
+                  numberOfStars={5}
+                  starDimension="40px"
+                  starSpacing="2px"
+                  starHoverColor="gold"
+                  isSelectable={true}
+                />
+              ) : (
+                <StarRatings
+                  rating={rating}
+                  starRatedColor="gold"
+                  numberOfStars={5}
+                  starDimension="40px"
+                  starSpacing="2px"
+                  starHoverColor="gold"
+                  isSelectable={true}
+                />
+              )
+            }
+
+
+            {
+              (booking.rating ===0 && isSubmit=== false) && (
+                  <motion.button
+                  className={styles.submitButton}
+                  style={{ marginLeft: "10%" }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick = {handleRatingSubmit}
+                >
+                  Submit
+                </motion.button>
+              )
+            }
             </div>
             {/* We gratefully thanks for your evaluation! */}
-            <div className={styles.text} style={{ fontStyle: "italic" }}>
-              We gratefully thanks for your evaluation!
-            </div>
+            {
+              (booking.rating !== 0 || isSubmit === true) && (
+                <div className={styles.text} style={{ fontStyle: "italic" }}>
+                  We gratefully thanks for your evaluation!
+                </div>
+              )
+            }
             </>
           ) : null
         }
-
-
       </div>
 
-      <div
-        className={styles.horizon}
-        style={{
-          justifyContent: "space-between",
-          marginTop: "2.5%",
-          marginLeft: "5%",
-          marginRight: "5%",
-        }}
-      >
-        {/* Modify button side */}
-        <div className={styles.halfSide}>
-          <div className={styles.text} style={{ fontSize: "1.5vw" }}>
-            If you want to change above information, <br />
-            please click on “Modify” button!
-          </div>
-          <motion.button
-            className={styles.smallButton}
-            style={{ backgroundColor: "#66F235" }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => handleModifyClick(booking._id)}
-          >
-            Modify
-          </motion.button>
-        </div>
-        {/* Cancel button side */}
-        <div className={styles.halfSide}>
-          <div className={styles.text} style={{ fontSize: "1.5vw" }}>
-            If you want to cancel this trip, please click on “Cancel” button!
-          </div>
-          <motion.button
-            className={styles.smallButton}
-            style={{ backgroundColor: "#FF8139" }}
-            whileTap={{ scale: 0.9 }}
-          >
-            Cancel
-          </motion.button>
-        </div>
-      </div>
 
+      {
+          (booking.status === "Waiting for checking" || booking.status === "Paid") && (
+            <motion.button className={styles.cancelButton} whileHover={{scale: 0.9}} onClick={handleCancelClick}>
+              Cancel this booking
+            </motion.button>
+          )
+        }
+        {
+          booking.status === "Waiting for handling" && (
+            <div
+              className={styles.horizon}
+              style={{
+                justifyContent: "space-between",
+                marginTop: "2.5%",
+                marginLeft: "5%",
+                marginRight: "5%",
+              }}
+            >
+              {/* Modify button side */}
+              <div className={styles.halfSide}>
+                <div className={styles.text} style={{ fontSize: "1.5vw" }}>
+                  If you want to change above information, <br />
+                  please click on “Modify” button!
+                </div>
+                <motion.button
+                  className={styles.smallButton}
+                  style={{ backgroundColor: "#66F235" }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => handleModifyClick(booking._id)}
+                >
+                  Modify
+                </motion.button>
+              </div>
+              {/* Cancel button side */}
+              <div className={styles.halfSide}>
+                <div className={styles.text} style={{ fontSize: "1.5vw" }}>
+                  If you want to cancel this trip, please click on “Cancel” button!
+                </div>
+                <motion.button
+                  className={styles.smallButton}
+                  style={{ backgroundColor: "#FF8139" }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={handleCancelClick}
+                >
+                  Cancel
+                </motion.button>
+
+              </div>
+            </div>
+          )
+        }
+        
+        {
+          booking.status === "Confirmed" && (
+            <div
+              className={styles.horizon}
+              style={{
+                justifyContent: "space-between",
+                marginTop: "2.5%",
+                marginLeft: "5%",
+                marginRight: "5%",
+              }}
+            >
+              {/* Modify button side */}
+              <div className={styles.halfSide}>
+                <div className={styles.text} style={{ fontSize: "1.5vw" }}>
+                  If you want to pay for this booking, <br />
+                  please click on "Make payment" button!
+                </div>
+                <motion.button
+                  className={styles.smallButton}
+                  style={{ backgroundColor: "#32C841" }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={handlePaymentClick}
+                >
+                  Make Payment
+                </motion.button>
+              </div>
+              {/* Cancel button side */}
+              <div className={styles.halfSide}>
+                <div className={styles.text} style={{ fontSize: "1.5vw" }}>
+                  If you want to cancel this trip, please click on “Cancel” button!
+                </div>
+                <motion.button
+                  className={styles.smallButton}
+                  style={{ backgroundColor: "#FF8139" }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={handleCancelClick}
+                >
+                  Cancel
+                </motion.button>
+
+              </div>
+            </div>
+          )
+        }
+
+
+      
+      {showCancelBox  && (
+        <div className={styles.overlay}>
+          <CancelPopUp className={styles.loader} onClick={handleCancelClick} bookingID = {bookingID}></CancelPopUp>
+        </div>
+        )}
     </div>
   );
 };

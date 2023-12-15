@@ -51,8 +51,9 @@ const MakeBookingScreen = () => {
       "address": address,
       "note": note,
       "tourID": id,
-      "status": "WaitingForHandling",
+      "status": "Waiting for handling",
       "date": date,
+      "rating" : 0,
     });
 
     var requestOptions = {
@@ -199,6 +200,7 @@ const MakeBookingScreen = () => {
     return (
       <>
         {customerBoxes.map((box, index) => (
+          <>
           <CustomerBox
             key={index}
             type="both"
@@ -207,6 +209,7 @@ const MakeBookingScreen = () => {
             index={index}
             onDataChange={handleCustomerInfoChange}
           />
+          </>
         ))}
       </>
     );
@@ -231,7 +234,7 @@ const MakeBookingScreen = () => {
       redirect: 'follow'
     };
   
-    fetch(`http://localhost:3001/tour/place?id=${id}`, requestOptions)
+    fetch(`http://localhost:3001/tour/place?id=${encodeURIComponent(id)}`, requestOptions)
     .then(response => response.json())
     .then(data => {
       setTour(data);
@@ -262,7 +265,7 @@ const MakeBookingScreen = () => {
 
   return (
     <div>
-      <div className={styles.title}>BOOKING TOUR</div>
+      <div className={styles.title} key="bookingTour">BOOKING TOUR</div>
       <div
         style={{
           display: "flex",

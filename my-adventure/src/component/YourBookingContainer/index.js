@@ -12,10 +12,13 @@ function TourContainer (props) {
   const navigate = useNavigate();
     const { departureDate, returnDate, departure, destination, numAdult, nameA, numChild, nameC, tourStatus } = props;
     const BUTTON_STATUS = {
-        "Waiting For Handling": <div className={styles.button} style={{backgroundColor:'#FFED8C',}}><div className={styles.buttonText}>Waiting for handling</div></div>,
-        "Confirmed": <div className={styles.button} style={{backgroundColor:"#F5AE45",}}><div className={styles.buttonText}>Confirmed</div></div>,
+        "Waiting for handling": <div className={styles.button} style={{backgroundColor:'#FFED8C',}}><div className={styles.buttonText}>Waiting for handling</div></div>,
+        "Waiting for checking": <div className={styles.button} style={{backgroundColor:"#F5AE45",}}><div className={styles.buttonText}>Waiting for checking</div></div>,
+        "Confirmed": <div className={styles.button} style={{backgroundColor:"#E4F61A",}}><div className={styles.buttonText}>Confirmed</div></div>,
         "Paid": <div className={styles.button} style={{backgroundColor:"#2CF594",}}><div className={styles.buttonText}>Paid</div></div>,
         "Successful": <div className={styles.button} style={{backgroundColor:"#30E742",}}><div className={styles.buttonText}>Successful</div></div>,
+        "Cancelled": <div className={styles.button} style={{backgroundColor:"red",}}><div className={styles.buttonText}>Cancelled</div></div>,
+        // "Waiting for cancel": <div className={styles.button} style={{backgroundColor:"#F31E38",}}><div className={styles.buttonText}>Waiting for cancel</div></div>,
       }
     var AdultList = nameA?.map((adult) => <li>{adult.name}</li>)
     var ChildList = nameC?.map((child) => <li>{child.name}</li>)
