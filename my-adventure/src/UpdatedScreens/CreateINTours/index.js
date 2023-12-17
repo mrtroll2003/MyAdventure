@@ -92,7 +92,7 @@ class CreateInternationalTourScreen extends React.Component {
             <motion.input type="number" id="froom" name="froom" placeholder="0" className={styles.enterInput} min="0" style={{width: "5vw"}}/>
             <div className={styles.gridText} style={{textAlign:"left",}}>Family room ( 2 adults and 2 children)</div>
           </div>
-          <div style={{fontWeight:"bolder",fontSize:"2.5em",textAlign:"right",marginRight:"10%"}}>PRICE</div>
+          <div style={{padding: "18px",fontWeight:"bolder",fontSize:"2.5em",textAlign:"left",marginRight:"10%"}}>PRICE</div>
           <div style={{display:"flex", flexDirection:"row"}}>
             <motion.input type="text" id="price" name="price" className={styles.enterInput} inputmode="numeric"/>
             <div className={styles.gridText} style={{textAlign:"left",fontWeight:"bold"}}>VND</div>
