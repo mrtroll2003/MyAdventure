@@ -52,15 +52,15 @@ const SignedInTabbar = ({onLogin}) => {
           className={styles.contentText}
           whileHover={{ color: "#5CD6C0" }}
           >
-          <Link to="/yourbooking">Booking</Link>
+          <Link to="/company/booking-management">Booking</Link>
         </motion.div>
-
+{/* 
         <motion.div
           className={styles.contentText}
           whileHover={{ color: "#5CD6C0" }}
           >
           <Link to="/contact">Report</Link>
-        </motion.div>
+        </motion.div> */}
 
         <motion.div className={styles.dropdown}>
           <motion.img src={User} alt="icon" className={styles.icon} whileHover={{ scale: 0.8 }}/>

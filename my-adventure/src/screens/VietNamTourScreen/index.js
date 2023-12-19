@@ -59,12 +59,6 @@ const VietNamTourScreen = () => {
       .catch(error => console.log('error', error));
   }, []);
 
-
-  useEffect(() => {
-    console.log("result data", resultData)
-  }, [resultData])
-
-
   useEffect(() => {
     const fetchImage = async () => {
       try {
