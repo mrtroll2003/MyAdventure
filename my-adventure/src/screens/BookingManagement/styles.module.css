@@ -47,7 +47,7 @@
     margin-top: 9%;
     text-align: center;
     font-family: 'NunitoSans';
-    font-size: 7vh;
+    font-size: 2.5vw;
     font-weight: bolder;
 }
 
@@ -114,9 +114,10 @@
 .box {
     font-size: 3vh;
     border: 1px solid black;
-    border-radius: 5vh;
+    border-radius: 0.5vw;
     padding: 1vh 1vw;
     padding-right: 3vw;
+    width: 25vw;
 }
 
 .horizon {

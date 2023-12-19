@@ -123,6 +123,10 @@ const  VietNamTourScreenCompany = () =>{
       }
     });
 
+    const hanleCreateClick = () => {
+      navigate('/company/create-vietnam-tours')
+    }
+
     return (
       <div style={{flexDirection: "column", display: "flex"}}>
         {/* Viet Nam Tour Intro */}
@@ -191,7 +195,7 @@ const  VietNamTourScreenCompany = () =>{
         If you want to make a new tour in the future please click below button!
       </div>
 
-      <motion.button className={styles.button} whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }}>
+      <motion.button className={styles.button} whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }} onClick={hanleCreateClick}>
           + Create a new tour
       </motion.button>
 

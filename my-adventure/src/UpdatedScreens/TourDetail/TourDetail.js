@@ -10,11 +10,6 @@ const TourDetail = (props) => {
   const location  = useLocation()
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get('id');
-
-  // const { id } = useParams();
-  // console.log("id", id)
-  // const navigate = useNavigate()
-
   const [loading, setLoading] = useState(true);
   
   const [tour, setTour] = useState()
@@ -45,7 +40,7 @@ const TourDetail = (props) => {
   
 
     .catch(error => console.log('error', error));
-  }, []);
+  }, [localStorage.getItem('isAdmin')]);
 
   useEffect (() => {
     console.log("tour", tour)
@@ -93,6 +88,18 @@ const TourDetail = (props) => {
     const city = location?.split(",")[0].trim();
     return city;
   }
+
+  const handleHereClick = () => {
+    const url = `/company/customer-list?tourID=${encodeURIComponent(id)}`
+    navigate(url)
+  }
+
+  const handleModifyClick = () => {
+    const url = `/company/modify-tour?id=${encodeURIComponent(id)}`
+    navigate(url)
+  }
+
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -219,12 +226,11 @@ const TourDetail = (props) => {
 
 
         <>
-        <div
-        className={styles.text1}
-        style={{ marginLeft: "7.8%", marginTop: "1%", marginRight: "6%" }}
-      >
-        {tour.details}
-      </div>
+        <div style={{ marginLeft: "7.8%", marginTop: "1%", marginRight: "6%", width: "85vw" }}>
+          <div style={{ overflowX: "auto" }}>
+            <pre className={styles.text1}>{tour.details}</pre>
+          </div>
+        </div>
         </>
    
       {/* Price */}
@@ -239,28 +245,26 @@ const TourDetail = (props) => {
 
 
       {/* Number of customers */}
-        <>
         {
-        localStorage.getItem("isAdmin") ? (
+        localStorage.getItem("isAdmin") === 'true' ? (
           <>
             <div style={{padding: "1vw 5vw", fontSize: "1.8vw"}}>
               <div style={{fontStyle: "italic"}}>Number of customers booking this tour: <span style={{fontWeight: "bold"}}>{(adult?.length || 0)}</span> adults <span style={{fontWeight: "bold"}}>{(children?.length || 0)}</span> children</div>
-              <div style={{fontSize: "1.2vw"}}>Click <motion.button whileTap={{scale: 0.9}} style={{fontWeight: "500", fontStyle: "italic", textDecoration: "underline"}} onClick={() => {}}>here</motion.button> to see the customer list for this tour</div>
+              <div style={{fontSize: "1.2vw"}}>Click <motion.button whileTap={{scale: 0.9}} style={{fontWeight: "500", fontStyle: "italic", textDecoration: "underline"}} onClick={handleHereClick}>here</motion.button> to see the customer list for this tour</div>
             </div>
           </>
         ) : null
       }
-        </>
       
 
 
       {/* Book this tour button  */}
       {console.log("isAdmin" + localStorage.getItem("isAdmin"))}
       <>
-      {localStorage.getItem("isAdmin") === true ? (
+      {localStorage.getItem("isAdmin") === 'true' ? (
           <>
           <div className={styles.displayHorizon}> 
-            <motion.button className={styles.companyBtn} whileHover={{scale: 0.9}}>Modify</motion.button>
+            <motion.button className={styles.companyBtn} whileHover={{scale: 0.9}} onClick={handleModifyClick}>Modify</motion.button>
             <motion.button className={styles.companyBtn} style={{backgroundColor: "#FF8139"}}  whileHover={{scale: 0.9}}>Cancel</motion.button>
           </div>
           </>
