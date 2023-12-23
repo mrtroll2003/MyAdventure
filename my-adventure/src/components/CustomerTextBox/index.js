@@ -119,31 +119,37 @@ const CustomerTextBox = (props) => {
           </div>
         )}
 
-        <div
-          style={{
-            marginTop: "2vh",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            fontSize: "2.5vh",
-          }}
-        >
-          <div style={{width: "30%"}}>Phone Number:</div>
-          <div>{props.phone}</div>
-        </div>
+        {
+          props.type === "adult" && (
+            <div>
+                <div
+              style={{
+                marginTop: "2vh",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                fontSize: "2.5vh",
+              }}
+            >
+              <div style={{width: "30%"}}>Phone Number:</div>
+              <div>{props.phone}</div>
+            </div>
 
-        <div
-          style={{
-            marginTop: "2vh",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            fontSize: "2.5vh",
-          }}
-        >
-          <div style={{width: "30%"}}>Email:</div>
-          <div>{props.email}</div>
-        </div>
+            <div
+              style={{
+                marginTop: "2vh",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                fontSize: "2.5vh",
+              }}
+            >
+              <div style={{width: "30%"}}>Email:</div>
+              <div>{props.email}</div>
+            </div>
+            </div>
+          )
+        }
       </div>
     </div>
   );

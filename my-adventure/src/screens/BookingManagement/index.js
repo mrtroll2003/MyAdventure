@@ -1,21 +1,131 @@
-import React from 'react'
-import SignedInTabbar from '../../component/SignedInTabbar'
-import IntroBackground from '../../component/IntroBackground/IntroBackground'
-import BlackDropDownIcon from '../../assets/icons/black_drop_down.png'
-import fillData from './fillData'
-import TourContainer from '../../component/YourBookingContainer'
-import UpDownIcon from '../../assets/icons/up_down_icon.png'
-
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-
 import styles from "./styles.module.css";
 import TourContainerCompany from '../../component/TourContainerCompany'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const BookingManagement = () => {
+    const navigate = useNavigate()
+    const [bookings, setBookings] = useState([])
+    const [loading, setLoading] = useState(true);
+    const [adultList, setAdultList] = useState([])
+    const [childList, setChildList] = useState([])
+    const [tours, setTours] = useState([]);
+    const [sortOrder, setSortOrder] = useState('asc');
+    const [selectedStatus , setSelectedStatus] = useState("all bookings")
+
+    useEffect(() => {
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+          };
+          
+          fetch("http://localhost:3001/booking", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                setBookings(result)
+                setLoading(false);
+            })
+            .catch(error => console.log('error', error));
+    }, [])
+
+    useEffect(() => {
+        const fetchAdultLists = async () => {
+          try {
+            const requestOptions = {
+              method: 'GET',
+              redirect: 'follow'
+            };
+    
+            const fetchedAdultLists = [];
+    
+            for (const booking of bookings) {
+              const response = await fetch(`http://localhost:3001/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`, requestOptions);
+              const result = await response.json();
+              fetchedAdultLists.push(result);
+            }
+    
+            setAdultList(fetchedAdultLists);
+          } catch (error) {
+            console.log('Error:', error);
+            setAdultList([]);
+          }
+        };
+    
+        const fetchChildrenLists = async () => {
+          try {
+            const requestOptions = {
+              method: 'GET',
+              redirect: 'follow'
+            };
+    
+            const fetchedChildrenLists = [];
+    
+            for (const booking of bookings) {
+              const response = await fetch(`http://localhost:3001/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`, requestOptions);
+              const result = await response.json();
+              fetchedChildrenLists.push(result);
+            }
+    
+            setChildList(fetchedChildrenLists);
+            console.log('Children Lists:', adultList);
+          } catch (error) {
+            console.log('Error:', error);
+            setChildList([]);
+          }
+        };
+
+        const fetchTourList = async () => {
+            try {
+              const requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+              };
+      
+              const fetchedTourLists = [];
+      
+              for (const booking of bookings) {
+                const response = await fetch(`http://localhost:3001/tour/place?id=${booking.tourID}`, requestOptions)
+                const result = await response.json();
+                fetchedTourLists.push(result);
+              }
+      
+              setTours(fetchedTourLists);
+              console.log('Tours Lists:', tours);
+            } catch (error) {
+              console.log('Error:', error);
+              setTours([]);
+            }
+          };
+    
+        fetchAdultLists();
+        fetchChildrenLists();
+        fetchTourList();
+      }, [bookings]);
+
+      const handleSortOrderChange = () => {
+        const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+        setSortOrder(newSortOrder);
+      };
+
+
+      const filterBookings = bookings
+      .filter((item) => selectedStatus === 'all bookings' || item.status === selectedStatus)
+      .sort((a, b) => {
+        if (sortOrder === 'asc') {
+          return a.date.localeCompare(b.date);
+        } else {
+          return b.date.localeCompare(a.date);
+        }
+      });
+
+
+    if(loading) {
+        return <div>Loading...</div>
+    }
+
   return (
     <>
-    <SignedInTabbar></SignedInTabbar>
-    {/* <IntroBackground></IntroBackground> */}
     <div className={styles.content}>
         <div className={styles.title}>
             <h2 className={styles.welcome}><mark className={styles.highlight}>Welcome To Our</mark></h2>
@@ -25,56 +135,37 @@ const BookingManagement = () => {
         <div id={styles.bookingManagementBoldStatement}>
             BOOKING MANAGEMENT
         </div>
-        {/* <div className={styles.bookingManagementFilterContainer}>
-            <div className={styles.bookingManagementDropDownContainer}>
-                All Booking
-                <motion.img src={BlackDropDownIcon} 
-                            alt='DropDown.png' 
-                            id={styles.bookingManagementDropDownIcon}
-                            whileHover={{scale: 1.2}}>
-                </motion.img>
-                <div className={styles.bookingManagementDropDownMenu}>
-                    <ul>
-                        <DropDownItem text = {"Waiting for handling"}></DropDownItem>
-                        <DropDownItem text = {"Confirmed Booking"}></DropDownItem>
-                        <DropDownItem text = {"Paid Booking"}></DropDownItem>
-                        <DropDownItem text = {"Successful Booking"}></DropDownItem>
-                    </ul>
-                </div>
-            </div>
-            <div style={{display: 'flex', flexDirection:'row', marginLeft:'200px'}}>
-                <p className={styles.bookingManagementNormalFont}>Filter Date</p>
-                <motion.img src={UpDownIcon} whileHover={{scale: 1.2}} className={styles.bookingManagementUpDownIcon}/> 
-            </div>
-        </div> */}
-
         <div className={styles.horizon} style={{padding: "0 10vw", justifyContent:'space-between', marginTop: "7vh", marginBottom: "7vh"}}>
-            <motion.select id="depart" name="depart" className={styles.box}>
-                <motion.option value="" selected>All Booking</motion.option>
-                <motion.option value="waiting">Waiting for handling</motion.option>
-                <motion.option value="confirmed">Confirmed booking</motion.option>
-                <motion.option value="paid">Paid booking</motion.option>
-                <motion.option value="successful">Successful booking</motion.option>
+            <motion.select id="depart" name="depart" className={styles.box} onChange={(e) => setSelectedStatus(e.target.value)}>
+                <motion.option value="all bookings" selected>All Booking</motion.option>
+                <motion.option value="Waiting for handling">Waiting for handling</motion.option>
+                <motion.option value="Waiting for checking">Waiting for checking</motion.option>
+                <motion.option value="Confirmed">Confirmed</motion.option>
+                <motion.option value="Paid">Paid</motion.option>
+                <motion.option value="Successful">Successful</motion.option>
+                <motion.option value="Cancelled">Cancelled</motion.option>
             </motion.select>
 
-            <motion.button className={styles.horizon} whileTap={{scale: 0.8}}>
+            <motion.button className={styles.horizon} whileTap={{scale: 0.8}} onClick={handleSortOrderChange}>
                 <div className={styles.filterText}>Filter Date</div>
                 <img className={styles.icon} src={require("../../assets/icons/filter.png")} alt='tick'/>
             </motion.button>
         </div>
 
-        {fillData.map((booking, index) => (
+        {filterBookings.map((booking, index) => (
             <TourContainerCompany
             key={booking.id}
-            expectedTime={booking.expectedTime}
-            route={booking.route}
-            numAdult={booking.numAdult}
-            nameA={booking.nameA}
-            numChild={booking.numChild}
-            nameC={booking.nameC}
-            tourStatus={booking.tourStatus}
-            bookingID = {booking.bookingID}
-            bookingDate = {booking.bookingDate}
+            type="booking"
+            destination={tours[index]?.destination}
+            departure={tours[index]?.departure}
+            departureDate={tours[index]?.departureDate}
+            returnDate={tours[index]?.returnDate}
+            fullName = {booking.name}
+            phone = {booking.phone}
+            numAdult={adultList[index]?.length || 0}
+            numChild={childList[index]?.length || 0}
+            tourStatus={booking.status}
+            bookingDate = {booking.date}
             color={index % 2 === 1 ? 'white' : 'rgba(135, 244, 224, 0.8)'}
             />
             ))}
@@ -82,13 +173,5 @@ const BookingManagement = () => {
     </>
   )
 }
-
-// function DropDownItem(props){
-//     return (
-//         <li>
-//             <p>{props.text}</p>
-//         </li>
-//     )
-// }
 
 export default BookingManagement

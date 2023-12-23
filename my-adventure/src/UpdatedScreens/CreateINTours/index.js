@@ -260,8 +260,10 @@ class CreateInternationalTourScreen extends React.Component {
               VND
             </div>
           </div>
-          <div className={styles.accordion} style={{ fontSize: "2em" }}>
-            Schedule Detail:
+          <div style={{padding: "18px",fontWeight:"bolder",fontSize:"2.5em",textAlign:"left",marginRight:"10%"}}>PRICE</div>
+          <div style={{display:"flex", flexDirection:"row"}}>
+            <motion.input type="text" id="price" name="price" className={styles.enterInput} inputmode="numeric"/>
+            <div className={styles.gridText} style={{textAlign:"left",fontWeight:"bold"}}>VND</div>
           </div>
           <motion.textarea
             id="detail"

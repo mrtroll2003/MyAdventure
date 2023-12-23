@@ -43,6 +43,9 @@ import "./index.css";
 import HomePage from "./screens/HomePage/index.js";
 import Cookies from "js-cookie";
 import SignedInTabbar from "./component/SignedInTabbar/index.js";
+import MakePaymentScreen from "./UpdatedScreens/MakePaymentScreen/index.js";
+import CustomerList from "./UpdatedScreens/CustomerList/index.js";
+import ModifyTour from "./UpdatedScreens/ModifyTour/index.js";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -97,24 +100,21 @@ export default function App() {
           />
           <Route path="booking-status" element={<BookingStatusScreen />} />
           <Route path="destination-detail" element={<DestinationDetail />} />
+          <Route path="cancel" element={<CancelSuccessfulBooking />} />
+          <Route path="make-payment" element={<MakePaymentScreen />} />
+          <Route path="detail-booking-modify" element={<ModifyBookingScreen />}/>
 
           <Route path="company/home" element={<HomePageCompany />} />
-          <Route
-            path="company/vietnam-tours"
-            element={<VietNamTourScreenCompany />}
-          />
-          <Route
-            path="company/international-tours"
-            element={<InternationalTourScreenCompany />}
-          />
+          <Route path="company/vietnam-tours" element={<VietNamTourScreenCompany />}/>
+          <Route path="company/international-tours" element={<InternationalTourScreenCompany />}/>
+          <Route path="company/create-vietnam-tours" element={<CreateVietNamTourScreen />}/>
+          <Route path="company/customer-list" element={<CustomerList />}/>
+          <Route path="company/booking-management" element={<BookingManagement />} />
+          <Route path="company/modify-tour" element={<ModifyTour />} />
 
           <Route path="booking-step-two" element={<BookingStepTwo />} />
           <Route path="booking-step-three" element={<BookingStepThree />} />
 
-          <Route
-            path="create-vietnam-tours"
-            element={<CreateVietNamTourScreen />}
-          />
           <Route
             path="create-intl-tours"
             element={<CreateInternationalTourScreen />}
@@ -125,10 +125,7 @@ export default function App() {
           />
 
           <Route path="detail-booking" element={<DetailBookingScreen />} />
-          <Route
-            path="detail-booking-modify"
-            element={<ModifyBookingScreen />}
-          />
+            
         </Route>
 
         <Route
@@ -136,18 +133,13 @@ export default function App() {
           element={<ConfirmedDetailBookingScreen />}
         />
 
-        <Route path="cancel" element={<CancelSuccessfulBooking />} />
-        <Route path="make-booking" element={<MakeBookingScreen />} />
         <Route path="vietnam-tour-customer" element={<VietNamTourCustomer />} />
 
         <Route path="/phucthinh" element={<MakeBookingScreen />} />
 
-        <Route path="/booking-management" element={<BookingManagement />} />
       </Routes>
     </BrowserRouter>
     // <SignIn/>
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);

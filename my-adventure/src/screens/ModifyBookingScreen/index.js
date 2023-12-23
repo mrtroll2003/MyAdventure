@@ -239,17 +239,9 @@ const ModifyBookingScreen = (props) => {
           setShowMessage(true);
         }
       }
-      // console.log("adultList[0]" +adultList[0]._id)
-      // const response1 = await SaveAdult(adultList[0]);
-      // if (response1 === 200) {
-      //       console.log("Add Successfully" + adultList[1])
-      //     } else if (response === 401) {
-      //       setMessage("Not found booking information")
-      //       setShowMessage(true);
-      //     }
 
         for(var childIndex in childList) {
-          var child = childList[childIndex]; // Retrieve the object from the array
+          var child = childList[childIndex]; 
           console.log("childList", childList);
           console.log("childTest", child);
           const response2 = await SaveChildren(child)

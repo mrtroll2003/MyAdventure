@@ -19,7 +19,8 @@
 
 .welcome {
     font-size: 3vh;
-    margin-top: 3vh;
+    margin-top: 6vh;
+    margin-left: 5%;
 }
 
 @font-face {
@@ -77,25 +78,32 @@
     border: 1px solid black;
     width: 35vw;
     height: 6vh;
-    border-radius: 20px;
+    border-radius: 0.5vw;
     font-size: 2.3vh;
     padding-left: 1vw;
     float:right;
 }
 
 .button {
-    font-size: 4vh;
+    font-size: 1.5vw;
     color: white;
     font-weight: bold;
 }
 
 .buttonContainer {
-
-    padding: 1vh 5vw;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1vw;
+    padding: 1vw 1vw;
     background-color: #32C841;
-    margin-top: 5vh;
-    position: absolute;
-    right: 15vw;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
                 0 4px 8px rgba(0, 0, 0, 0.25); 
+}
+
+.message {
+    font-size: 1.2vw;
+    margin-bottom: 2vw;
+    color: red;
+    font-weight: bold;
 }

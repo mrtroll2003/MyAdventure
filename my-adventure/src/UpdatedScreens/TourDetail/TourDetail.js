@@ -2,17 +2,14 @@ import React, {useState, useEffect} from "react";
 import styles from "./styles.module.css";
 import { motion } from "framer-motion";
 import Footer from "../../component/Footer/Footer";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { formatDate, formatHour } from "../../constant/formatDate";
 
 const TourDetail = (props) => {
-  console.log("hello")
   const navigate = useNavigate()
   const location  = useLocation()
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get('id');
-  console.log("id",id)
-
   const [loading, setLoading] = useState(true);
   
   const [tour, setTour] = useState()
@@ -33,7 +30,7 @@ const TourDetail = (props) => {
     })
     .catch(error => console.log('error', error));
   
-    fetch(`http://localhost:3001/tour/place?id=${id}`, requestOptions)
+    fetch(`http://localhost:3001/tour/place?id=${encodeURIComponent(id)}`, requestOptions)
     .then(response => response.json())
     .then(data => {
       setTour(data);
@@ -43,7 +40,7 @@ const TourDetail = (props) => {
   
 
     .catch(error => console.log('error', error));
-  }, [id]);
+  }, [localStorage.getItem('isAdmin')]);
 
   useEffect (() => {
     console.log("tour", tour)
@@ -53,12 +50,12 @@ const TourDetail = (props) => {
         redirect: 'follow'
       };
   
-      fetch(`http://localhost:3001/children/tour?tourID=${tour._id}`, requestOptions)
+      fetch(`http://localhost:3001/children/tour?tourID=${encodeURIComponent(tour._id)}`, requestOptions)
         .then(response => response.json())
         .then(result => setChildren(result))
         .catch(error => console.log('error', error));
   
-      fetch(`http://localhost:3001/adult/tour?tourID=${tour._id}`, requestOptions)
+      fetch(`http://localhost:3001/adult/tour?tourID=${encodeURIComponent(tour._id)}`, requestOptions)
         .then(response => response.json())
         .then(result => setAdult(result))
         .catch(error => console.log('error', error));
@@ -88,15 +85,28 @@ const TourDetail = (props) => {
 
   const getCity = (name) => {
     const location =name;
-    const city = location.split(",")[0].trim();
+    const city = location?.split(",")[0].trim();
     return city;
   }
+
+  const handleHereClick = () => {
+    const url = `/company/customer-list?tourID=${encodeURIComponent(id)}`
+    navigate(url)
+  }
+
+  const handleModifyClick = () => {
+    const url = `/company/modify-tour?id=${encodeURIComponent(id)}`
+    navigate(url)
+  }
+
+
   if (loading) {
     return <p>Loading...</p>;
   }
 
   return (
-    <div>
+    <>
+      <>
       <div style={{ display: "flex", flexDirection: "row" }}>
         {/* Left background */}
         <div
@@ -113,7 +123,9 @@ const TourDetail = (props) => {
           <div className={styles.halfIntroBackgroundLayer}>{getCity(tour.destination)}</div>
         </div>
       </div>
+      </>
       {/* Title */}
+      <>
       <div
         style={{
           display: "flex",
@@ -145,13 +157,19 @@ const TourDetail = (props) => {
           {formatDate(tour.returnDate)}
         </h3>
       </div>
+      </>
       {/* Transportation */}
+      <>
       <div
         className={styles.text}
         style={{ marginLeft: "5%", marginTop: "2.5%" }}
       >
         Transportation:
       </div>
+      </>
+
+
+      <>
       <div className={styles.horizontal}>
         <div className={styles.firstHalf}>
           <p className={styles.leftText}>Transportation's brand: </p>
@@ -168,14 +186,18 @@ const TourDetail = (props) => {
           <p className={styles.rightText}>{formatHour(tour.returnDate)}</p>
         </div>
       </div>
+      </>
       {/* Accommodation */}
+      <>
       <div
         className={styles.text}
         style={{ marginLeft: "5%", marginTop: "1.5%" }}
       >
         Accommodation:
       </div>
-      <div className={styles.horizontal}>
+      </>
+        <>
+        <div className={styles.horizontal}>
         <div className={styles.firstHalf}>
           <p className={styles.leftText}>Accommodation's name: </p>
           <p className={styles.leftText}>Checkin Date: </p>
@@ -191,36 +213,44 @@ const TourDetail = (props) => {
           <p className={styles.rightText}>{formatHour(tour.checkout)}</p>
         </div>
       </div>
+        </>
       {/* Schedule Details */}
-      <div
+        <>
+        <div
         className={styles.text}
         style={{ marginLeft: "5%", marginTop: "1.5%" }}
       >
         Schedule Details:
       </div>
-      <div
-        className={styles.text1}
-        style={{ marginLeft: "7.8%", marginTop: "1%", marginRight: "6%" }}
-      >
-        {tour.details}
-      </div>
+        </>
+
+
+        <>
+        <div style={{ marginLeft: "7.8%", marginTop: "1%", marginRight: "6%", width: "85vw" }}>
+          <div style={{ overflowX: "auto" }}>
+            <pre className={styles.text1}>{tour.details}</pre>
+          </div>
+        </div>
+        </>
    
       {/* Price */}
-      <div
+        <>
+        <div
         className={styles.price}
         style={{ marginTop: "2.5%", marginLeft: "6%" }}
       >
         Price: ${tour.price}
       </div>
+        </>
 
 
       {/* Number of customers */}
-      {
-        localStorage.getItem("isAdmin") ? (
+        {
+        localStorage.getItem("isAdmin") === 'true' ? (
           <>
             <div style={{padding: "1vw 5vw", fontSize: "1.8vw"}}>
               <div style={{fontStyle: "italic"}}>Number of customers booking this tour: <span style={{fontWeight: "bold"}}>{(adult?.length || 0)}</span> adults <span style={{fontWeight: "bold"}}>{(children?.length || 0)}</span> children</div>
-              <div style={{fontSize: "1.2vw"}}>Click <motion.button whileTap={{scale: 0.9}} style={{fontWeight: "500", fontStyle: "italic", textDecoration: "underline"}} onClick={() => {}}>here</motion.button> to see the customer list for this tour</div>
+              <div style={{fontSize: "1.2vw"}}>Click <motion.button whileTap={{scale: 0.9}} style={{fontWeight: "500", fontStyle: "italic", textDecoration: "underline"}} onClick={handleHereClick}>here</motion.button> to see the customer list for this tour</div>
             </div>
           </>
         ) : null
@@ -230,10 +260,11 @@ const TourDetail = (props) => {
 
       {/* Book this tour button  */}
       {console.log("isAdmin" + localStorage.getItem("isAdmin"))}
-        {localStorage.getItem("isAdmin") === true ? (
+      <>
+      {localStorage.getItem("isAdmin") === 'true' ? (
           <>
           <div className={styles.displayHorizon}> 
-            <motion.button className={styles.companyBtn} whileHover={{scale: 0.9}}>Modify</motion.button>
+            <motion.button className={styles.companyBtn} whileHover={{scale: 0.9}} onClick={handleModifyClick}>Modify</motion.button>
             <motion.button className={styles.companyBtn} style={{backgroundColor: "#FF8139"}}  whileHover={{scale: 0.9}}>Cancel</motion.button>
           </div>
           </>
@@ -259,9 +290,10 @@ const TourDetail = (props) => {
       </div>
           </>
         )}
+      </>
       {/* Footer */}
       <Footer />
-    </div>
+    </>
   );
 };
 
