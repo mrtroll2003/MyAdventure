@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "./styles.module.css";
 
@@ -38,6 +38,10 @@ const AboutUsScreen = () => {
       "Relevant management experience in other areas of the leisure or tourism industry such as hotels or airlines",
     ],
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.content}>
       {/* Intro Background */}

@@ -46,6 +46,10 @@ const ModifyTour = (props) => {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'
@@ -243,13 +247,13 @@ const ModifyTour = (props) => {
 
           <div className={styles.horizontal}>
             <p className={styles.leftText}>Departure Date: </p>
-            <DatePicker selected={departureDate} onChange={(date) => setDepartureDate(date)} showTimeSelect dateFormat="dd/MM/yyyy HH:mm" className={styles.datePicker}/>
+            <DatePicker selected={departureDate} onChange={(date) => setDepartureDate(date)} showTimeInput dateFormat="dd/MM/yyyy HH:mm" className={styles.datePicker}/>
           </div>
 
 
           <div className={styles.horizontal}>
             <p className={styles.leftText}>Return Date: </p>
-            <DatePicker selected={returnDate} onChange={(date) => setReturnDate(date)} showTimeSelect dateFormat="dd/MM/yyyy HH:mm" className={styles.datePicker}/>
+            <DatePicker selected={returnDate} onChange={(date) => setReturnDate(date)} showTimeInput dateFormat="dd/MM/yyyy HH:mm" className={styles.datePicker}/>
           </div>
 
         </div>

@@ -5,8 +5,10 @@
 }
 .vnTourIntroBackground {
     height: 50vh;
+    width: 100%;
     background-image: url('../../assets/images/viet_nam_tour_background.png');
     background-position: center;
+    background-size: contain;
     background-size: cover;
 }
 .vnTourIntroLayer {

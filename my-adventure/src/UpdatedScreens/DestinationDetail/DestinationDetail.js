@@ -24,6 +24,10 @@ const DestinationDetail = () => {
   const [selectedDeparture, setSelectedDeparture] = useState("all departure")
   const [sortOrder, setSortOrder] = useState('asc')
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   useEffect (() => {
     var requestOptions = {
@@ -97,8 +101,19 @@ const DestinationDetail = () => {
     setSortOrder(newSortOrder);
   };
 
+  const currentDate = new Date();
+
+  const tenDaysFromNow = new Date();
+  tenDaysFromNow.setDate(currentDate.getDate() + 10);
+
   const sortedTours = tours
-    .filter((item) => selectedDeparture === 'all departure' || item.departure === selectedDeparture)
+  .filter((item) => {
+    const departureDate = new Date(item.departureDate);
+      return (
+        (selectedDeparture === 'all departure' || item.departure === selectedDeparture) &&
+        departureDate > tenDaysFromNow && item.isCancel === false
+      );
+  })
     .sort((a, b) => {
       if (sortOrder === 'asc') {
         return a.departureDate.localeCompare(b.departureDate);
@@ -177,18 +192,7 @@ const DestinationDetail = () => {
         </motion.button>
       </div>
       {/* Tour Card Section */}
-      {rows.map((row, rowIndex) => (
-        <>
-        <div
-          key={rowIndex}
-          style={{
-            display: "inline-grid",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-            marginTop: "5%",
-            marginLeft: "5vw"
-          }}
-        >
+      <div className={styles.tourContainer}>
           {sortedTours
           .map((item) => (
             <>
@@ -206,8 +210,6 @@ const DestinationDetail = () => {
             </>
           ))}
         </div>
-        </>
-      ))}
       {/* Footer */}
       <Footer />
     </div>

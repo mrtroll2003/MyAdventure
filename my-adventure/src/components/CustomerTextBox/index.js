@@ -32,7 +32,7 @@ const CustomerTextBox = (props) => {
             alt="adult2"
             style={{ width: "1.5vw", height: "1.5vw" }}
           ></img>
-          <div style={{ marginLeft: "2vw", fontSize: "3vh" }}>{props.name}</div>
+          <div style={{ marginLeft: "2vw", fontSize: "1.2vw" }}>{props.name}</div>
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -56,7 +56,7 @@ const CustomerTextBox = (props) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            fontSize: "2.5vh",
+            fontSize: "1.2vw",
           }}
         >
           <div style={{width: "30%"}}>Full Name:</div>
@@ -68,7 +68,7 @@ const CustomerTextBox = (props) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            fontSize: "2.5vh"
+            fontSize: "1.2vw"
           }}
         >
           <div style={{width: "30%"}}>Sex:</div>
@@ -80,7 +80,7 @@ const CustomerTextBox = (props) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            fontSize: "2.5vh",
+            fontSize: "1.2vw",
           }}
         >
           <div style={{width: "30%"}}>Date of Birthday:</div>
@@ -94,7 +94,7 @@ const CustomerTextBox = (props) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              fontSize: "2.5vh",
+              fontSize: "1.2vw",
             }}
           >
             <div style={{width: "30%"}}>Citizen ID:</div>
@@ -109,7 +109,7 @@ const CustomerTextBox = (props) => {
               justifyContent: "flex-start",
             }}
           >
-            <div style={{ fontSize: "2.5vh", width: "30%"}}>Birth Certificate:</div>
+            <div style={{ fontSize: "1.2vw", width: "30%"}}>Birth Certificate:</div>
             <img
               src={require("../../assets/images/birthcert.png")}
               alt="birthcert"
@@ -128,7 +128,7 @@ const CustomerTextBox = (props) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                fontSize: "2.5vh",
+                fontSize: "1.2vw",
               }}
             >
               <div style={{width: "30%"}}>Phone Number:</div>
@@ -141,7 +141,7 @@ const CustomerTextBox = (props) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                fontSize: "2.5vh",
+                fontSize: "1.2vw",
               }}
             >
               <div style={{width: "30%"}}>Email:</div>

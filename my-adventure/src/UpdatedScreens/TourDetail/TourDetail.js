@@ -2,8 +2,9 @@ import React, {useState, useEffect} from "react";
 import styles from "./styles.module.css";
 import { motion } from "framer-motion";
 import Footer from "../../component/Footer/Footer";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { formatDate, formatHour } from "../../constant/formatDate";
+import CancelBooking from "../../component/CacelBookingPopUp";
 
 const TourDetail = (props) => {
   const navigate = useNavigate()
@@ -16,6 +17,13 @@ const TourDetail = (props) => {
   const [images, setImages] = useState([])
   const [adult, setAdult] = useState([])
   const [children, setChildren] = useState([])
+  const [bookings, setBookings] = useState([])
+
+  const [isShowCancel, setIsShowCancel] = useState(false)
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     var requestOptions = {
@@ -29,6 +37,13 @@ const TourDetail = (props) => {
       setImages(data);
     })
     .catch(error => console.log('error', error));
+
+    fetch(`http://localhost:3001/booking`, requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      setBookings(data);
+    })
+    .catch(error => console.log('error', error));
   
     fetch(`http://localhost:3001/tour/place?id=${encodeURIComponent(id)}`, requestOptions)
     .then(response => response.json())
@@ -37,6 +52,8 @@ const TourDetail = (props) => {
       setLoading(false);
       console.log("place")
     })
+
+    
   
 
     .catch(error => console.log('error', error));
@@ -98,6 +115,29 @@ const TourDetail = (props) => {
     const url = `/company/modify-tour?id=${encodeURIComponent(id)}`
     navigate(url)
   }
+
+  const getNumber = (data) => {
+    let num = 0;
+
+    data.forEach(element => {
+      bookings.forEach(booking => {
+        if(booking.email === element.bookingEmail && booking.date === element.bookingDate)
+        {
+          if(booking.status !== "Cancelled")
+            num++;
+        }
+      })
+    });
+
+    return num;
+
+  }
+
+
+
+  const handleCancelClick = () => {
+      setIsShowCancel(!isShowCancel)
+    }
 
 
   if (loading) {
@@ -249,7 +289,7 @@ const TourDetail = (props) => {
         localStorage.getItem("isAdmin") === 'true' ? (
           <>
             <div style={{padding: "1vw 5vw", fontSize: "1.8vw"}}>
-              <div style={{fontStyle: "italic"}}>Number of customers booking this tour: <span style={{fontWeight: "bold"}}>{(adult?.length || 0)}</span> adults <span style={{fontWeight: "bold"}}>{(children?.length || 0)}</span> children</div>
+              <div style={{fontStyle: "italic"}}>Number of customers booking this tour: <span style={{fontWeight: "bold"}}>{getNumber(adult) }</span> adults <span style={{fontWeight: "bold"}}>{getNumber(children)}</span> children</div>
               <div style={{fontSize: "1.2vw"}}>Click <motion.button whileTap={{scale: 0.9}} style={{fontWeight: "500", fontStyle: "italic", textDecoration: "underline"}} onClick={handleHereClick}>here</motion.button> to see the customer list for this tour</div>
             </div>
           </>
@@ -265,7 +305,7 @@ const TourDetail = (props) => {
           <>
           <div className={styles.displayHorizon}> 
             <motion.button className={styles.companyBtn} whileHover={{scale: 0.9}} onClick={handleModifyClick}>Modify</motion.button>
-            <motion.button className={styles.companyBtn} style={{backgroundColor: "#FF8139"}}  whileHover={{scale: 0.9}}>Cancel</motion.button>
+            <motion.button className={styles.companyBtn} style={{backgroundColor: "#FF8139"}}  whileHover={{scale: 0.9}} onClick={handleCancelClick}>Cancel</motion.button>
           </div>
           </>
         ) : (
@@ -293,6 +333,13 @@ const TourDetail = (props) => {
       </>
       {/* Footer */}
       <Footer />
+
+
+      {isShowCancel  && (
+        <div className={styles.overlay}>
+          <CancelBooking className={styles.loader} onClick={handleCancelClick} tourID = {id} isVNTour= {tour.isVNTour}></CancelBooking>
+        </div>
+        )}
     </>
   );
 };

@@ -8,6 +8,10 @@ const YourBooking = () => {
   const [adultList, setAdultList] = useState([]);
   const [childList, setChildList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchText, setSearchText] = useState("")
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   useEffect(() => {
     var requestOptions = {
@@ -21,10 +25,6 @@ const YourBooking = () => {
       setLoading(false)})
       .catch(error => console.log('error', error));
   }, [email])
-
-
-
-
 
   useEffect(() => {
     const fetchAdultLists = async () => {
@@ -50,9 +50,6 @@ const YourBooking = () => {
       }
     };
 
-
-
-
     const fetchChildrenLists = async () => {
       try {
         const requestOptions = {
@@ -76,7 +73,6 @@ const YourBooking = () => {
       }
     };
 
-
     const fetchTourList = async () => {
       try {
         const requestOptions = {
@@ -99,7 +95,6 @@ const YourBooking = () => {
         setTours([]);
       }
     };
-
     fetchAdultLists();
     fetchChildrenLists();
     fetchTourList();
@@ -108,7 +103,6 @@ const YourBooking = () => {
 
   if(loading)
   return <div>Loading...</div>
-
     return (
       <div className={styles.container}>
         <div className={styles.hi}>Hi our beloved customer, <span className={styles.mark}></span></div>
@@ -116,24 +110,41 @@ const YourBooking = () => {
         <div className={styles.welcome} style={{marginBottom: "5vh"}}>Here are all your booking and its status!</div>
         <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
         <>
-        {bookings.map((booking, index) => (
-          <>
-          <div key={booking._id}>
-          <TourContainer
-            departureDate={tours[index]?.departureDate}
-            returnDate={tours[index]?.returnDate}
-            departure={tours[index]?.departure}
-            destination={tours[index]?.destination}
-            numAdult={adultList[index]?.length || 0}
-            nameA={adultList[index]}
-            numChild={childList[index]?.length || 0}
-            nameC={childList[index]}
-            tourStatus={booking.status}
-            bookingID = {booking._id}
-          />
-        </div>
-          </>
-      ))}
+
+        <input
+          type="text"
+          placeholder="Search for destination..."
+          onChange={(e) => setSearchText(e.target.value)}
+          className={styles.searchBox}
+        />
+        {bookings
+        .map((booking, index) => ({ booking, tourIndex: index }))
+        .filter(({ booking, tourIndex }) => {
+          if (searchText === '') {
+            return true;
+          } else {
+            const tour = tours[tourIndex];
+            return tour && tour.destination.toLowerCase().includes(searchText.toLowerCase());
+          }
+        })
+        .map(({ booking, tourIndex }) => {
+          return (
+            <div key={booking._id}>
+              <TourContainer
+                departureDate={tours[tourIndex]?.departureDate}
+                returnDate={tours[tourIndex]?.returnDate}
+                departure={tours[tourIndex]?.departure}
+                destination={tours[tourIndex]?.destination}
+                numAdult={adultList[tourIndex]?.length || 0}
+                nameA={adultList[tourIndex]}
+                numChild={childList[tourIndex]?.length || 0}
+                nameC={childList[tourIndex]}
+                tourStatus={booking.status}
+                bookingID={booking._id}
+              />
+            </div>
+          );
+        })}
         </>
 
         </div>

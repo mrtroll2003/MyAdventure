@@ -34,6 +34,10 @@ const ModifyBookingScreen = (props) => {
   const [message, setMessage] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };

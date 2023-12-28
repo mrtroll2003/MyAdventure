@@ -5,7 +5,6 @@ import TourContainerCompany from '../../component/TourContainerCompany'
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const CustomerList = () => {
-    const navigate = useNavigate()
     const location  = useLocation()
     const searchParams = new URLSearchParams(location.search);
     const tourID = searchParams.get('tourID');
@@ -15,6 +14,10 @@ const CustomerList = () => {
     const [childList, setChildList] = useState([])
     const [sortOrder, setSortOrder] = useState('asc');
     const [selectedStatus , setSelectedStatus] = useState("all bookings")
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         var requestOptions = {
@@ -132,7 +135,8 @@ const CustomerList = () => {
 
         {filterBookings.map((booking, index) => (
             <TourContainerCompany
-            key={booking.id}
+            key={booking._id}
+            _id={booking._id}
             destination={booking.destination}
             departure={booking.departure}
             fullName = {booking.name}

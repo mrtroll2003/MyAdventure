@@ -17,7 +17,6 @@ const CustomerBox = ({ type, onDataChange, index, data, onDelete}) => {
   console.log("index", index)
 
   const handleDataChange = () => {
-    // Gather the customer information
     const customerInfo = {
       fullName,
       sex,
@@ -28,7 +27,6 @@ const CustomerBox = ({ type, onDataChange, index, data, onDelete}) => {
       birthDate,
       selectedFile
     };
-    // Invoke the callback function passed from the booking screen
     onDataChange(index, customerInfo);
   };
 

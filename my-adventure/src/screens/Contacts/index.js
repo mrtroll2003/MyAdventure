@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles.module.css";
 import LocationIC from "../../assets/icons/locationBlue.png";
 import HeadphoneIC from "../../assets/icons/headphoneBlue.png";
@@ -9,6 +9,9 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../../component/Footer/Footer";
 
 const Contacts = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
     return (
     <div className={styles.content}>
       {/* Intro Background */}

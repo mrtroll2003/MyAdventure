@@ -1,0 +1,153 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf") format("truetype");
+}
+.halfIntroBackground {
+    flex: 1;
+    height: 50vh;
+    border: 1px solid white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.halfIntroBackgroundLayer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "NunitoSans";
+    font-weight: 800;
+    font-size: 3.5vw;
+    text-transform: uppercase;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.titleText {
+    font-family: "NunitoSans";
+    text-transform: uppercase;
+    text-align: center;
+}
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .loader {
+    border: 4px solid #f3f3f3; /* Light gray border */
+    border-top: 4px solid #3498db; /* Blue border for the loading animation */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .loader {
+    border: 4px solid #f3f3f3; /* Light gray border */
+    border-top: 4px solid #3498db; /* Blue border for the loading animation */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    /* animation: spin 1s linear infinite; */
+  }
+  .statusContainer {
+    align-self: center;
+    text-align: center;
+    width: 20%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 2.5vh;
+    margin-top: 2vh;
+}
+
+.horizontal  {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-top: 1.8vw;
+}
+
+.text1 {
+    font-size: 1.2vw;
+    font-weight: 500;
+    width: 15vw;
+}
+
+.text2 {
+    font-size: 1.2vw;
+}
+
+.changeBtn {
+  background-color: #32C841;
+  padding: 0.5vw 8vw;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  margin-top: 3.5vw;
+  align-items: center;
+}
+
+.cancelBtn {
+  background-color: #FF8139;
+  padding: 0.5vw 8vw;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  margin-top: 3.5vw;
+  align-items: center;
+}
+
+
+.confirmBtn {
+  background-color: #66F235;
+  padding: 0.5vw 8vw;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  margin-top: 3.5vw;
+  align-items: center;
+}
+
+
+
+.inputStyle {
+  font-family: "NunitoSans";
+  font-weight: 400;
+  font-size: 1.2vw;
+  border-radius: 5px;
+  border: 0.2vh solid black;
+  padding: 0.5vw 1vw;
+  width: 35vw;
+}
+  
+

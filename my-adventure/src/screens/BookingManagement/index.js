@@ -15,6 +15,10 @@ const BookingManagement = () => {
     const [selectedStatus , setSelectedStatus] = useState("all bookings")
 
     useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
@@ -154,7 +158,8 @@ const BookingManagement = () => {
 
         {filterBookings.map((booking, index) => (
             <TourContainerCompany
-            key={booking.id}
+            id = {booking._id}
+            key={booking._id}
             type="booking"
             destination={tours[index]?.destination}
             departure={tours[index]?.departure}

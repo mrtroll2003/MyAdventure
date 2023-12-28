@@ -31,6 +31,10 @@ const BookingStatusScreen = (props) => {
   const [rating, setRating] = useState(0);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'
