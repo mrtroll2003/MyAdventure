@@ -166,6 +166,7 @@ const CreateVietNamTourScreen = (props) => {
               {areas?.map((area, index) => (
                 <motion.option key={index} value={area}>{area}</motion.option>
               ))}
+
             </motion.select>
        </div>
       </>
@@ -220,6 +221,7 @@ const CreateVietNamTourScreen = (props) => {
           <div className={styles.horizontal}>
             <p className={styles.leftText}>Checkin Date: </p>
             <DatePicker selected={checkinDate} onChange={(date) => setCheckinDate(date)} showTimeInput dateFormat="dd/MM/yyyy HH:mm" className={styles.datePicker}/>
+
           </div>
 
 
@@ -238,6 +240,7 @@ const CreateVietNamTourScreen = (props) => {
         style={{ marginLeft: "5%", marginTop: "1.5%" }}
       >
         Schedule Details:
+
       </div>
         </>
 
