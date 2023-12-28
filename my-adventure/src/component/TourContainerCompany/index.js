@@ -12,7 +12,7 @@ import { formatDate } from "../../constant/formatDate";
 
 function    TourContainerCompany (props) {
   const navigate = useNavigate();
-    const { departure, destination, departureDate, returnDate, numAdult,  numChild, tourStatus,bookingDate, color, fullName, phone, type } = props;
+    const { departure, destination, departureDate, returnDate, numAdult,  numChild, tourStatus,bookingDate, color, fullName, phone, type, key } = props;
     const BUTTON_STATUS = {
       "Waiting for handling": <div className={styles.button} style={{backgroundColor:'#FFED8C',}}><div className={styles.buttonText}>Waiting for handling</div></div>,
       "Waiting for checking": <div className={styles.button} style={{backgroundColor:"#F5AE45",}}><div className={styles.buttonText}>Waiting for checking</div></div>,
@@ -21,8 +21,13 @@ function    TourContainerCompany (props) {
       "Successful": <div className={styles.button} style={{backgroundColor:"#30E742",}}><div className={styles.buttonText}>Successful</div></div>,
       "Cancelled": <div className={styles.button} style={{backgroundColor:"red",}}><div className={styles.buttonText}>Cancelled</div></div>,
       }
+
+      const handleClick = () => {
+        const url = `/company/detail-booking?id=${encodeURIComponent(props.id)}`;
+        navigate(url);
+      };
         return (
-          <motion.button className={styles.mainView} whileTap={{scale: 0.8}} style={{backgroundColor: color}}>
+          <motion.button className={styles.mainView} whileTap={{scale: 0.8}} style={{backgroundColor: color}} onClick={handleClick}>
             <div className={styles.column}>
             { type === "booking" && (
                 <div className={styles.horizon} style={{marginTop: "3vh"}}>

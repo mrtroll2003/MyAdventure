@@ -26,6 +26,10 @@ const HomePage = () => {
   const [ratings, setRatings] = useState([])
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'

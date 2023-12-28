@@ -21,22 +21,17 @@ import TourDetail from "./UpdatedScreens/TourDetail/TourDetail";
 import CreateInternationalTourScreen from "./UpdatedScreens/CreateINTours";
 import CreateVietNamTourScreen from "./UpdatedScreens/CreateVNTours";
 import BookingStatusScreen from "./UpdatedScreens/BookingStatusScreen/BookingStatusScreen";
-
 import MakeBookingScreen from "./UpdatedScreens/MakeBooking/index.js";
 import VietNamTourCustomer from "./UpdatedScreens/VietNamTourCustomer/index.js";
-
 import Header from "./component/Header";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, ScrollRestoration } from "react-router-dom";
 import SignIn from "./screens/SignIn/index.js";
 import SignUp from "./screens/SignUp/index.js";
 import ForgotPassword from "./screens/ForgotPassword/index.js";
 import BookingManagement from "./screens/BookingManagement/index.js";
-// import TourDetail from "./screens/TourDetail/index.js"; // old version of tour detail
 import SuccessfulBooking from "./screens/SuccessfulBooking/index.js";
 import HomePageCompany from "./screens/HomePageCompany/index.js";
 import AboutUsScreen from "./screens/AboutUsScreen";
-import { MakingArrangement } from "./screens/MakingArrangement/index.js";
 import { useState, useEffect } from "react";
 import Tabbar from "./component/Tabbar/Tabbar.js";
 import "./index.css";
@@ -46,6 +41,9 @@ import SignedInTabbar from "./component/SignedInTabbar/index.js";
 import MakePaymentScreen from "./UpdatedScreens/MakePaymentScreen/index.js";
 import CustomerList from "./UpdatedScreens/CustomerList/index.js";
 import ModifyTour from "./UpdatedScreens/ModifyTour/index.js";
+import BookingDetail from "./UpdatedScreens/BookingDetail/index.js";
+import BookingDetailModify from "./UpdatedScreens/BookingDetailModify/index.js";
+import Report from "./UpdatedScreens/Report/index.js";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -104,28 +102,24 @@ export default function App() {
           <Route path="make-payment" element={<MakePaymentScreen />} />
           <Route path="detail-booking-modify" element={<ModifyBookingScreen />}/>
 
-          <Route path="company/home" element={<HomePageCompany />} />
+          <Route path="company/home" element={<HomePage />} />
           <Route path="company/vietnam-tours" element={<VietNamTourScreenCompany />}/>
           <Route path="company/international-tours" element={<InternationalTourScreenCompany />}/>
           <Route path="company/create-vietnam-tours" element={<CreateVietNamTourScreen />}/>
+          <Route path="company/create-intl-tours" element={<CreateInternationalTourScreen />}/>
           <Route path="company/customer-list" element={<CustomerList />}/>
           <Route path="company/booking-management" element={<BookingManagement />} />
           <Route path="company/modify-tour" element={<ModifyTour />} />
+          <Route path="company/detail-booking" element={<BookingDetail />} />
+          <Route path="company/booking-detail-modify" element={<BookingDetailModify />} />
+          <Route path="company/report" element={<Report/>} />
 
-          <Route path="booking-step-two" element={<BookingStepTwo />} />
-          <Route path="booking-step-three" element={<BookingStepThree />} />
 
-          <Route
-            path="create-intl-tours"
-            element={<CreateInternationalTourScreen />}
-          />
           <Route
             path="international-tours"
             element={<InternationalTourScreen />}
           />
-
           <Route path="detail-booking" element={<DetailBookingScreen />} />
-            
         </Route>
 
         <Route

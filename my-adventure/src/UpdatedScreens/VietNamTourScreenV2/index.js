@@ -20,6 +20,11 @@ const  VietNamTourScreenCompany = () =>{
   const [selectedDestination, setSelectedDestination] = useState("all destination");
   const [selectedDeparture, setSelectedDeparture] = useState("all departure");
   const [sortOrder, setSortOrder] = useState('asc');
+  const [type, setType] = useState("On Progress");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     var requestOptions = {
@@ -112,9 +117,39 @@ const  VietNamTourScreenCompany = () =>{
     setSortOrder(newSortOrder);
   };
 
+  const currentDate = new Date();
+
+  const tenDaysFromNow = new Date();
+  tenDaysFromNow.setDate(currentDate.getDate() + 10);
+
   const sortedTours = tours
-    .filter((item) => selectedDestination === 'all destination' || item.destination === selectedDestination)
-    .filter((item) => selectedDeparture === 'all departure' || item.departure === selectedDeparture)
+    .filter((item) => {
+      const departureDate = new Date(item.departureDate);
+      if(type === "On Progress") {
+        return (
+          (selectedDestination === 'all destination' || item.destination === selectedDestination) &&
+          (selectedDeparture === 'all departure' || item.departure === selectedDeparture) &&
+          departureDate > tenDaysFromNow && item.isCancel === false
+        );
+      } else if (type === "Cancelled") {
+        return (
+          (selectedDestination === 'all destination' || item.destination === selectedDestination) &&
+          (selectedDeparture === 'all departure' || item.departure === selectedDeparture) &&
+          item.isCancel === true
+        );
+      } else if(type === "Waiting for departuring") {
+        return (
+          (selectedDestination === 'all destination' || item.destination === selectedDestination) &&
+          (selectedDeparture === 'all departure' || item.departure === selectedDeparture) &&
+          departureDate <= tenDaysFromNow && departureDate > currentDate && item.isCancel === false
+        );
+      }
+      return (
+        (selectedDestination === 'all destination' || item.destination === selectedDestination) &&
+        (selectedDeparture === 'all departure' || item.departure === selectedDeparture) &&
+        departureDate <= currentDate && item.isCancel === false
+      );
+    })
     .sort((a, b) => {
       if (sortOrder === 'asc') {
         return a.departureDate.localeCompare(b.departureDate);
@@ -184,6 +219,23 @@ const  VietNamTourScreenCompany = () =>{
               />
             </motion.button>
         </div>
+
+
+        <div className={styles.comboboxContainer} style={{marginTop: "0.2vw"}}>
+            <div>The status of tours</div>
+            <motion.select
+              className={styles.filterBox}
+              name="status"
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+            >
+              <motion.option key="On Progress" value="On Progress">On Progress</motion.option>
+              <motion.option key="Cancelled" value="Cancelled">Cancelled</motion.option>
+              <motion.option key="Finished" value="Finished">Finished</motion.option>
+              <motion.option key="Waiting for departuring" value="Waiting for departuring">Waiting for departuring</motion.option>
+            </motion.select>
+          </div>
+        
       
         <div
         style={{
@@ -210,7 +262,7 @@ const  VietNamTourScreenCompany = () =>{
                 departure={item.departure}
                 destination={item.destination}
                 departure_date={formatDate(item.departureDate)}
-                return_date={formatDate(item.departureDate)}
+                return_date={formatDate(item.returnDate)}
                 rating={getRating(item)}
                 price={item.price}
                 onClick={() => handleClick(item._id)}

@@ -9,17 +9,20 @@ import { useNavigate } from "react-router-dom";
 import RecommendedTripCard from "../../component/RecommendedTripCard/RecommendedTripCard";
 import { formatDate } from "../../constant/formatDate";
 
-const  VietNamTourScreenCompany = () =>{
-
+const  InternationalTourScreenCompany = () =>{
   const navigate = useNavigate();
-  // const [departures, setDepartures] = useState([]);
   const [destinations, setDestinations] = useState([]);
   const [tours, setTours] = useState([]);
   const [images, setImages] = useState([])
   const [ratings, setRatings] = useState([])
   const [selectedDestination, setSelectedDestination] = useState("all destination")
   const [sortOrder, setSortOrder] = useState('asc');
+  const [type, setType] = useState("On Progress")
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   useEffect(() => {
     var requestOptions = {
       method: 'GET',
@@ -97,8 +100,35 @@ const  VietNamTourScreenCompany = () =>{
     setSortOrder(newSortOrder);
   };
 
+  const currentDate = new Date();
+
+  const tenDaysFromNow = new Date();
+  tenDaysFromNow.setDate(currentDate.getDate() + 10);
+
   const sortedTours = tours
-    .filter((item) => selectedDestination === 'all destination' || item.destination === selectedDestination)
+    .filter((item) => {
+      const departureDate = new Date(item.departureDate);
+      if(type === "On Progress") {
+        return (
+          (selectedDestination === 'all destination' || item.destination === selectedDestination) &&
+          departureDate > tenDaysFromNow && item.isCancel === false
+        );
+      } else if (type === "Cancelled") {
+        return (
+          (selectedDestination === 'all destination' || item.destination === selectedDestination) &&
+          item.isCancel === true
+        );
+      } else if(type === "Waiting for departuring") {
+        return (
+          (selectedDestination === 'all destination' || item.destination === selectedDestination) &&
+          departureDate <= tenDaysFromNow && departureDate > currentDate && item.isCancel === false
+        );
+      }
+      return (
+        (selectedDestination === 'all destination' || item.destination === selectedDestination) &&
+        departureDate <= currentDate && item.isCancel === false
+      );
+    })
     .sort((a, b) => {
       if (sortOrder === 'asc') {
         return a.departureDate.localeCompare(b.departureDate);
@@ -145,6 +175,21 @@ const  VietNamTourScreenCompany = () =>{
               />
             </motion.button>
         </div>
+
+        <div className={styles.comboboxContainer} style={{marginTop: "0.2vw"}}>
+            <div>The status of tours</div>
+            <motion.select
+              className={styles.filterBox}
+              name="status"
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+            >
+              <motion.option key="On Progress" value="On Progress">On Progress</motion.option>
+              <motion.option key="Cancelled" value="Cancelled">Cancelled</motion.option>
+              <motion.option key="Finished" value="Finished">Finished</motion.option>
+              <motion.option key="Waiting for departuring" value="Waiting for departuring">Waiting for departuring</motion.option>
+            </motion.select>
+          </div>
       
         <div
         style={{
@@ -156,7 +201,7 @@ const  VietNamTourScreenCompany = () =>{
         If you want to make a new tour in the future please click below button!
       </div>
 
-      <motion.button className={styles.button} whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }}>
+      <motion.button className={styles.button} whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }} onClick={() => navigate("/company/create-intl-tours")}>
           + Create a new tour
       </motion.button>
 
@@ -185,4 +230,4 @@ const  VietNamTourScreenCompany = () =>{
     );
   }
 
-export default VietNamTourScreenCompany;
+export default InternationalTourScreenCompany;

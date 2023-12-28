@@ -24,6 +24,19 @@ function CancelPopUp(props) {
     }
   }
 
+  const navigatePage = () => {
+    if(props.type === "company")
+    {
+      window.location.href = `/company/detail-booking?id=${encodeURIComponent(props.bookingID)}`;
+      window.location.reload();
+       return;
+    }
+    else {
+      navigate(`/yourbooking`)
+      return;
+    }
+  }
+
   const handleAcceptClick = async (e) => {
     e.preventDefault();
 
@@ -36,8 +49,8 @@ function CancelPopUp(props) {
       const response = await UpdateStatus(data)
 
       if (response === 200 ) {
-        const url = `/yourbooking`;
-        navigate(url);
+        navigatePage()
+        
       } else if (response === 401) {
         console.log("No found booking")
       }

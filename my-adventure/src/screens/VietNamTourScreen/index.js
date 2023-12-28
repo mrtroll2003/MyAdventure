@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from "react";
 import DestinationSection from "../../component/DestinationSection/DestinationSection";
 import Footer from "../../component/Footer/Footer";
-import Illustration01 from "../../assets/images/illustration/illustration01.png";
-import Illustration02 from "../../assets/images/illustration/illustration02.png";
-import Illustration03 from "../../assets/images/illustration/illustration03.png";
-import Illustration04 from "../../assets/images/illustration/illustration04.png";
-
 import styles from "./styles.module.css";
 
 const VietNamTourScreen = () => {
   const [northDestinations, setNorthDestinations] = useState()
   const [southDestinations, setSouthDestinations] = useState()
   const [centerDestinations, setCenterDestinations] = useState()
-
   const [resultData, setResultData] = useState([])
-
   const [northDestinationsImage, setNorthDestinationsImage] = useState()
   const [southDestinationsImage, setSouthDestinationsImage] = useState()
   const [centerDestinationsImage, setCenterDestinationsImage] = useState()
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect (() => {
     var requestOptions = {

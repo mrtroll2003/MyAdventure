@@ -1,0 +1,52 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf");
+}
+
+.container {
+    position: fixed;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+    box-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+    padding: 2vw 2vw;
+}
+
+.title {
+    text-align: center;
+    font-family: "NunitoSans";
+    font-weight: bold;
+    font-size: 1.1vw;
+    color: #F71D1D;
+}
+
+.information {
+    font-family: "NunitoSans";
+    padding: 5%;
+    font-size: 18px;
+}
+
+.acceptChoice {
+    width: 20%;
+    height: 5vh;
+    background-color: #50C31A;
+    font-family: "NunitoSans";
+    box-shadow:  1px 1px #50c31f;
+    font-weight: 600;
+    font-size: 1vw;
+}
+
+.cancelChoice {
+    width: 20%;
+    height: 5vh;
+    background-color: #F8973E;
+    font-family: "NunitoSans";
+    box-shadow: 1px 1px #F8974F;
+    font-weight: 600;
+    font-size: 1vw;
+}

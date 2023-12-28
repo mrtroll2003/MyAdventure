@@ -24,15 +24,15 @@
     font-weight: bolder;
 }
 .tourContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Set the number of columns */
+    grid-gap: 5vw; /* Adjust the gap between items */
     padding: 0 5vw;
   }
   
 .tourContainer .tourCard {
     flex: 0 0 auto;
-    margin-top: 4vw;
+    margin-top: 2vw;
   }
   
   .displayHorizon {

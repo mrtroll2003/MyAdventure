@@ -8,6 +8,7 @@
     align-items: center;
     margin-top: 5%;
     margin-bottom: 5vh;
+    width: 100%;
 }
 .destinationSectionTitle {
     font-family: "NunitoSans";
@@ -68,20 +69,13 @@
     justify-content: space-between;
     align-items: flex-start;
     height: 25vw;
-    width: 100vw;
-}
-
-/* .image {
-    object-fit: cover;
-    height: 20vw;
     width: 100%;
-} */
+}
 
 .illustContainer {
     display: flex;
     flex-direction: column;
     position: relative;
-    /* object-fit: cover; */
 }
 
 .illustOverlay {

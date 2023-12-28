@@ -32,7 +32,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 0px;
+    padding-right: 3vw;
 }
 .filterBox {
     border: 2px solid black;
@@ -43,3 +43,16 @@
     font-weight: 600;
     text-indent: 5%;
 }
+
+.tourContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Set the number of columns */
+    grid-gap: 5vw; /* Adjust the gap between items */
+    padding: 0 5vw;
+    margin-top: 10vh;
+  }
+  
+.tourContainer .tourCard {
+    flex: 0 0 auto;
+    margin-top: 2vw;
+  }

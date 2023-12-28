@@ -2,10 +2,15 @@ import React from "react";
 import styles from "./styles.module.css";
 import { motion } from "framer-motion";
 import CustomerTextBox from "../../components/CustomerTextBox";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const DetailBookingScreen = () => {
   const navigate = useNavigate();
+  const location  = useLocation()
+  const searchParams = new URLSearchParams(location.search);
+  const bookingID = searchParams.get('id');
+  console.log(bookingID);
+
   let form = {
     transport: "",
     hotel: "",

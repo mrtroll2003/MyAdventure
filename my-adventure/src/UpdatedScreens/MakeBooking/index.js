@@ -4,11 +4,16 @@ import { useState, useEffect } from "react";
 import CustomerBox from "../../components/CustomerBox";
 import GlobeIMG from "../../assets/images/globe.png";
 import AddButtonIC from "../../assets/icons/add.png";
-
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { formatDate } from "../../constant/formatDate";
+import { createClient } from '@supabase/supabase-js'
+import { v4 as uuidv4 } from 'uuid';
 import Footer from "../../component/Footer/Footer";
+
+const supabaseUrl = "https://nkaxnoxocaglizzrfhjw.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYXhub3hvY2FnbGl6enJmaGp3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDAxMjAyNjQsImV4cCI6MjAxNTY5NjI2NH0.BtdGBAYeLPKDiFYNAwQILcUuC2H6VC-xzGQcytPhJuA";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const MakeBookingScreen = () => {
   const navigate = useNavigate();
@@ -30,6 +35,9 @@ const MakeBookingScreen = () => {
 
   const [customerInfo, setCustomerInfo] = useState({});
 
+  const [userId, setUserId] = useState('');
+  const [media, setMedia] = useState([]);
+
   const email = localStorage.getItem('email')
 
   const handleCustomerInfoChange = (index, info) => {
@@ -39,10 +47,46 @@ const MakeBookingScreen = () => {
     }));
   };
 
+  async function loginUser() {
+    const { user, error } = await supabase.auth.signIn({
+      email: "21522041@gm.uit.edu.vn",
+      password: "123456",
+    });
+  
+    if (error) {
+      console.error('Login error:', error.message);
+      return;
+    }
+  
+    const accessToken = user.access_token;
+    return accessToken;
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  
+
+  async function uploadImage(file) {
+    console.log("file " + file)
+    const { data, error } = await supabase.storage.from('myadventure').upload(`BirthCert/${uuidv4()}`, file, {
+      cacheControl: 'max-age=31536000',
+      upsert: false,
+      contentType: 'image/jpeg',
+    });
+    if (error) {
+      console.error('Error uploading image:', error.message);
+      return;
+    }
+    console.log('Image uploaded successfully:', data.Key);
+  }
   const addBooking = (date) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
+    console.log("customerInfo", customerInfo)
+    const price = Object.keys(customerInfo).length * tour.price;
     var raw = JSON.stringify({
       "email":email,
       "name": name,
@@ -54,6 +98,7 @@ const MakeBookingScreen = () => {
       "status": "Waiting for handling",
       "date": date,
       "rating" : 0,
+      "price": price,
     });
 
     var requestOptions = {
@@ -99,32 +144,69 @@ const MakeBookingScreen = () => {
         .catch(error => console.log('error', error));
   }
 
-  const addChildren = (data, date) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+  const addChildren = async (data, date) => {
+    try {
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+  
+      const raw = JSON.stringify({
+        bookingEmail: email,
+        bookingDate: date,
+        tourID: id,
+        name: data.fullName,
+        sex: data.sex,
+        dob: data.birthDate,
+        birthCert: "test",
+      });
+  
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+  
+      const response = await fetch("http://localhost:3001/children/add", requestOptions);
+      const result = await response.json();
+  
+      if (response.ok) {
+        const childId = result.children._id
+        console.log(data.selectedFile)
+        await uploadImage(data.selectedFile);
+      } else {
+        console.error("Failed to add children:", result.error);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+  
+  const handleImageUpload = async (file, childId) => {
+    if (!file) {
+      return;
+    }
 
-    var raw = JSON.stringify({
-      "bookingEmail": email,
-      "bookingDate": date,
-      "tourID" : id,
-      "name": data.fullName,
-      "sex": data.sex,
-      "dob": data.birthDate,
-      "birthCert": data.selectedFile,
-    });
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.append('childID', childId);
 
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
-    };
+    try {
+      const response = await fetch('/children/upload-image', {
+        method: 'POST',
+        body: formData,
+      });
 
-    fetch("http://localhost:3001/children/add", requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-  }
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Image uploaded successfully:', data.imageUrl);
+      } else {
+        console.error('Failed to upload image');
+      }
+    } catch (error) {
+      console.error('An error occurred during image upload:', error);
+    }
+  };
+  
 
   const addAll = () => {
     const date = new Date();

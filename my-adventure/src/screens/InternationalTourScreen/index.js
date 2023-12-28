@@ -15,6 +15,10 @@ const InternationalTourScreen = () => {
   const [europeDestinationsImage, setEuropeDestinationsImage] = useState()
   const [australiaDestinationsImage, setAustraliaDestinationsImage] = useState()
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect (() => {
     var requestOptions = {
       method: 'GET',
