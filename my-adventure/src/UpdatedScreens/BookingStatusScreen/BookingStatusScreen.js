@@ -1,4 +1,4 @@
-import React, { useDebugValue, useEffect, useState } from "react";
+import React, { useDebugValue, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 // import { FaStar } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -10,6 +10,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { formatDate } from "../../constant/formatDate";
 import CancelPopUp from "../../component/CancelPopUp";
 import StarRatings from 'react-star-ratings';
+import ImageZoom from "../../component/ImagePopUp";
+import { v4 as uuidv4 } from 'uuid';
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = "https://nkaxnoxocaglizzrfhjw.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYXhub3hvY2FnbGl6enJmaGp3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMDEyMDI2NCwiZXhwIjoyMDE1Njk2MjY0fQ.6ZNDz2LY3uTglFR2sqJvyPirr00voeSv9BNBRDU_F08";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const BookingStatusScreen = (props) => {
   const navigate = useNavigate();
@@ -29,6 +36,10 @@ const BookingStatusScreen = (props) => {
   const [tours, setTours] = useState([])
   const [isSubmit, setIsSubmit] = useState(false)
   const [rating, setRating] = useState(0);
+  const [zoom, setZoom] = useState(false)
+  const [file, setFile] = useState(null);
+  const fileInputRef = useRef(null);
+  const [bank, setBank] = useState()
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -49,6 +60,12 @@ const BookingStatusScreen = (props) => {
   }, [bookingID])
 
   useEffect(() => {
+    if(booking && booking.payment ) {
+      setFile(booking.payment)
+    }
+  }, [booking])
+
+  useEffect(() => {
     const fetchAdultLists = async () => {
       try {
         const requestOptions = {
@@ -66,6 +83,7 @@ const BookingStatusScreen = (props) => {
         setAdultList([]);
       }
     };
+
 
     const fetchChildrenLists = async () => {
       try {
@@ -138,15 +156,30 @@ const BookingStatusScreen = (props) => {
       }
     };
 
-    console.log ("bbb", booking)
+    const fetchPayment = async () => {
+      try {
+        const requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
 
-    
+        const response = await fetch(`http://localhost:3001/banking-account/booking?bookingID=${booking._id}`, requestOptions)
+        const result = await response.json();
+        setBank(result);
+      } catch (error) {
+        console.log('Error:', error);
+        setTours([]);
+      }
+    };
+
+    console.log ("bbb", booking)
 
       fetchAdultLists();
       fetchChildrenLists();
       fetchTourList();
       fetchBookingList()
       fetchToursList()
+      fetchPayment()
       
   }, [booking]);
 
@@ -289,11 +322,83 @@ const BookingStatusScreen = (props) => {
     setShowCancelBox(!showCancelBox);
   }
 
+  const handleZoom = () => {
+    setZoom(!zoom)
+  }
+
   const handlePaymentClick = () => {
       const url = `/make-payment?id=${encodeURIComponent(bookingID)}`;
       navigate(url);
       return;
   }
+
+  async function uploadImage(file) {
+    console.log("file " + file);
+    const key = `Payment/${uuidv4()}`;
+    const { data, error } = await supabase.storage.from('myadventure').upload(key, file, {
+      cacheControl: 'max-age=31536000',
+      upsert: false,
+      contentType: 'image/jpeg',
+    });
+    if (error) {
+      console.error('Error uploading image:', error.message);
+      return;
+    }
+    console.log('Image uploaded successfully:', key);
+  
+    const supabaseUrl = 'https://nkaxnoxocaglizzrfhjw.supabase.co/storage/v1/object/public';
+    const imageUrl = `${supabaseUrl}/myadventure/${key}`;
+    console.log('Image URL:', imageUrl);
+    return imageUrl;
+  }
+
+  const updatePayment = (imageUrl) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    var raw = JSON.stringify({
+      "_id": bookingID,
+      "payment": imageUrl,
+    });
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    
+    fetch("http://localhost:3001/booking/update-payment", requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+
+
+
+  const handleFileChange = async (event) => {
+    const selectedFile = event.target.files[0];
+    // setFile(selectedFile);
+
+    if (selectedFile) {
+      try {
+        const imageUrl = await uploadImage(selectedFile);
+        if (imageUrl) {
+          updatePayment(imageUrl);
+          setFile(imageUrl);
+          window.location.reload();
+        }
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
+    }
+  };
+
+  const handleClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -467,6 +572,7 @@ const BookingStatusScreen = (props) => {
                     type="children"
                     sex ={child.sex}
                     dob = {formatDate(child.dob)}
+                    birthCert = {child.birthCert}
                   />
                 </>
               ))
@@ -474,14 +580,14 @@ const BookingStatusScreen = (props) => {
           </div>
         </div>
 
-        <div className={styles.text} style={{ fontWeight: "600" }}>
+        <div className={styles.heading1} style={{ fontWeight: "600",marginTop: "2.5vw", fontSize: "1.5vw" }}>
           Your additional notion: {booking.note}
         </div>
 
 
         <div
-          className={styles.text}
-          style={{ fontSize: "4vh", fontStyle: "italic" }}
+          className={styles.heading1}
+          style={{ fontSize: "1.5vw", fontStyle: "italic", marginTop: "2.5vw",}}
         >
           Details for this trip:{" "}
           <motion.button className={styles.title} style={{ fontWeight: "bold", fontStyle: "normal", textDecoration: "underline", marginLeft: "2vw", fontSize: "2vw"}} whileHover={{scale: 0.9}} onClick={()=>handleDetailClick(tour._id)}>
@@ -490,42 +596,96 @@ const BookingStatusScreen = (props) => {
         </div>
 
         <div
-          className={styles.price}
-          style={{ marginTop: "2.5%", marginBottom: "5%" }}
+          className={styles.heading1}
+          style={{ marginTop: "2.5%", marginBottom: "5%", fontSize: "2.5vw"}}
         >
-          Total price: ${calPrice(adultList, childList, tour.price)}
+          TOTAL PRICE: ${calPrice(adultList, childList, tour.price)}
         </div>
 
 
         {
-          (booking.status === "Waiting for checking" || booking.status === "Paid") ? (
-            <>
-          <div className={styles.text} style={{ fontWeight: "600" }}>
-            Evidence of your payment for this tour:
-          </div>
-          <div
-          className={styles.horizon}
-          style={{
-            width: "50%",
-            justifyContent: "space-between",
-            marginTop: "2.5%",
-          }}
-        >
-          <img src={BirthCert} alt="evidence" />
-          <div>payment.jpg</div>
-          {
-            booking.status === "Waiting for checking" ? (
-              <motion.button
-                className={styles.changeButton}
-                whileTap={{ scale: 0.9 }}
-              >
-                Change
-              </motion.button>
-            ) : null
-          }
-        </div>
-            </>
+          (booking.payment && booking.payment !== "test") ? (
+            <div           
+            className={styles.horizon}>
+              <div className={styles.heading1} style={{ fontWeight: "600", fontSize: "1.5vw" }}>
+                Evidence of your payment for this tour:
+              </div>
+              <div className= {styles.horizon1}>
+                <div>
+                    {
+                    booking.payment && booking.payment !== "test" && (
+                    <motion.button onClick={handleZoom}>
+                        <img className={styles.birthCertImg} src={file} alt="payment" style={{width: "8vw",}}></img>
+                    </motion.button>
+                    )
+                  }
+                </div>
+                <div>
+                  <input
+                    type="file"
+                    style={{ display: "none" }}
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                  />
+                  {booking.status === "Waiting for checking" ? (
+                    <motion.button
+                      className={styles.changeButton}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={handleClick}
+                    >
+                      Change
+                    </motion.button>
+                  ) : null}
+                </div>
+              </div>
+            </div>
           ): null
+        }
+
+        {
+          bank && bank.bookingID && (
+            <div className={styles.bookingForm} style={{ alignSelf: "center" }}>
+
+            <div className={styles.heading1}>Refund Banking Account</div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                marginTop: "4vh",
+              }}
+            >
+              <div className={styles.heading2}>Bank name: </div>
+              <div style={{ fontSize: "3vh" }}>{bank.bankName}</div>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                marginTop: "4vh",
+              }}
+            >
+              <div className={styles.heading2}>Bank account: </div>
+              <div style={{ fontSize: "3vh" }}>{bank.bankAccount}</div>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                marginTop: "4vh",
+                paddingBottom: "4vw",
+              }}
+            >
+              <div className={styles.heading2}>Bank holder: </div>
+              <div style={{ fontSize: "3vh" }}>{bank.bankHolder}</div>
+            </div>
+
+            </div>
+          )
         }
 
         {
@@ -692,6 +852,13 @@ const BookingStatusScreen = (props) => {
         <div className={styles.overlay}>
           <CancelPopUp className={styles.loader} onClick={handleCancelClick} bookingID = {bookingID}></CancelPopUp>
         </div>
+        )}
+
+
+        {zoom  && (   
+          <div className={styles.overlay}>
+            <ImageZoom imageUrl={booking.payment} onClick={handleZoom}/>
+          </div>
         )}
     </div>
   );

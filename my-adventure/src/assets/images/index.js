@@ -4,6 +4,7 @@ import Morocco from "./Morocco.png";
 import Mongolia from "./Mongolia.png";
 import IntBG from "./InternationalBg.png";
 import MyBookingBG from "./MyBookingBG.png";
+import ChatBot from "./chatbot.jpg";
 
 export { Maldives,Mongolia,Morocco,IntBG,MyBookingBG };
 

@@ -28,9 +28,25 @@
 .searchBox {
     font-size: 1.2vw;
     padding: 0.5vw 1vw;
-    width: 25vw;
+    width: 20vw;
     border: 1px solid black;
     border-radius: 5px;
-    align-self: start;
-    margin-left: 10vw;
+}
+
+.horizon {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    width: 70vw;
+}
+
+.filterText {
+    font-size: 1.2vw;
+    font-weight: 600;
+    
+}
+
+.icon {
+    height: 3vh;
+    margin-left: 1vw;
 }

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import TourContainer from "../../component/YourBookingContainer";
 import styles from  "./styles.module.css"
+import { motion } from "framer-motion";
+import { formatDate } from "../../constant/formatDate";
 const YourBooking = () => {
   const email = localStorage.getItem("email");
   const [bookings, setBooking] = useState([]);
@@ -9,6 +11,8 @@ const YourBooking = () => {
   const [childList, setChildList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("")
+  const [selectedStatus, setSelectedStatus] = useState("all bookings")
+  const [sortOrder, setSortOrder] = useState("asc")
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -100,6 +104,22 @@ const YourBooking = () => {
     fetchTourList();
   }, [bookings]);
 
+  const handleSortOrderChange = () => {
+    const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+    setSortOrder(newSortOrder);
+  };
+
+
+  const filterBookings = bookings
+  .filter((item) => selectedStatus === 'all bookings' || item.status === selectedStatus)
+  .sort((a, b) => {
+    if (sortOrder === 'asc') {
+      return a.date.localeCompare(b.date);
+    } else {
+      return b.date.localeCompare(a.date);
+    }
+  });
+
 
   if(loading)
   return <div>Loading...</div>
@@ -111,40 +131,68 @@ const YourBooking = () => {
         <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
         <>
 
+      <div className={styles.horizon}>
         <input
-          type="text"
-          placeholder="Search for destination..."
-          onChange={(e) => setSearchText(e.target.value)}
-          className={styles.searchBox}
-        />
-        {bookings
-        .map((booking, index) => ({ booking, tourIndex: index }))
-        .filter(({ booking, tourIndex }) => {
-          if (searchText === '') {
-            return true;
-          } else {
-            const tour = tours[tourIndex];
-            return tour && tour.destination.toLowerCase().includes(searchText.toLowerCase());
-          }
-        })
-        .map(({ booking, tourIndex }) => {
-          return (
-            <div key={booking._id}>
-              <TourContainer
-                departureDate={tours[tourIndex]?.departureDate}
-                returnDate={tours[tourIndex]?.returnDate}
-                departure={tours[tourIndex]?.departure}
-                destination={tours[tourIndex]?.destination}
-                numAdult={adultList[tourIndex]?.length || 0}
-                nameA={adultList[tourIndex]}
-                numChild={childList[tourIndex]?.length || 0}
-                nameC={childList[tourIndex]}
-                tourStatus={booking.status}
-                bookingID={booking._id}
-              />
-            </div>
-          );
-        })}
+            type="text"
+            placeholder="Search for destination..."
+            onChange={(e) => setSearchText(e.target.value)}
+            className={styles.searchBox}
+          />
+
+          <motion.select className={styles.searchBox} onChange={(e) => setSelectedStatus(e.target.value)} style={{marginLeft: "5vw"}}>
+              <motion.option value="all bookings">All Bookings</motion.option>
+              <motion.option value="Waiting for handling">Waiting for handling</motion.option>
+              <motion.option value="Waiting for checking">Waiting for checking</motion.option>
+              <motion.option value="Confirmed">Confirmed</motion.option>
+              <motion.option value="Paid">Paid</motion.option>
+              <motion.option value="Successful">Successful</motion.option>
+              <motion.option value="Cancelled">Cancelled</motion.option>
+          </motion.select>
+
+          <motion.button className={styles.horizon} whileTap={{scale: 0.95}} onClick={handleSortOrderChange} style={{marginLeft: "5vw"}}>
+                <div className={styles.filterText}>Filter Date</div>
+                <img className={styles.icon} src={require("../../assets/icons/filter.png")} alt='tick'/>
+            </motion.button>
+      </div>
+        {filterBookings
+          .map((booking) => {
+            const tourIndex = bookings.findIndex((item) => item._id === booking._id);
+            return { booking, tourIndex };
+          })
+          .filter(({ booking, tourIndex }) => {
+            if (searchText === '') {
+              return true;
+            } else {
+              const tour = tours[tourIndex];
+              return tour && tour.destination && tour.destination.toLowerCase().includes(searchText.toLowerCase());
+            }
+          })
+          .sort((a, b) => {
+            if (sortOrder === 'asc') {
+              return a.booking.date.localeCompare(b.booking.date);
+            } else {
+              return b.booking.date.localeCompare(a.booking.date);
+            }
+          })
+          .map(({ booking, tourIndex }) => {
+            return (
+              <div key={booking._id}>
+                <TourContainer
+                  departureDate={tours[tourIndex]?.departureDate}
+                  returnDate={tours[tourIndex]?.returnDate}
+                  departure={tours[tourIndex]?.departure}
+                  destination={tours[tourIndex]?.destination}
+                  numAdult={adultList[tourIndex]?.length || 0}
+                  nameA={adultList[tourIndex]}
+                  numChild={childList[tourIndex]?.length || 0}
+                  nameC={childList[tourIndex]}
+                  tourStatus={booking.status}
+                  bookingID={booking._id}
+                  date={booking.date && formatDate(booking.date)}
+                />
+              </div>
+            );
+          })}
         </>
 
         </div>

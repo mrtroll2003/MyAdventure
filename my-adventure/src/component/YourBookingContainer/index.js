@@ -71,9 +71,15 @@ function TourContainer (props) {
               </div>
             </div>
 
-            <button>
+            <div>
+              <div className={styles.bookingDate}>
+                  Booking date: {props.date}
+                </div>
               { BUTTON_STATUS[tourStatus] }
-            </button>
+            </div>
+
+
+            
 
           </motion.button>
     );
