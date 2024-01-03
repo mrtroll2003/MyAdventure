@@ -111,7 +111,7 @@ const CustomerTextBox = (props) => {
           >
             <div style={{ fontSize: "1.2vw", width: "30%"}}>Birth Certificate:</div>
             <img
-              src={require("../../assets/images/birthcert.png")}
+              src={props.birthCert}
               alt="birthcert"
               style={{ width: "5vw", height: "auto", marginLeft: "7vw" }}
             ></img>

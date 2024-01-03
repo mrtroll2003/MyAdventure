@@ -3,6 +3,12 @@ import styles from "./styles.module.css";
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { formatDate } from "../../constant/formatDate";
+import { v4 as uuidv4 } from 'uuid';
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = "https://nkaxnoxocaglizzrfhjw.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYXhub3hvY2FnbGl6enJmaGp3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMDEyMDI2NCwiZXhwIjoyMDE1Njk2MjY0fQ.6ZNDz2LY3uTglFR2sqJvyPirr00voeSv9BNBRDU_F08";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const MakePaymentScreen = () => {
     const navigate = useNavigate();
@@ -15,8 +21,9 @@ const MakePaymentScreen = () => {
     const [loading, setLoading] = useState(true)
     const [loading1, setLoading1] = useState(true)
     const [tour, setTour] = useState()
+    const [isShow, setIsShow] = useState(false)
 
-    const [file, setFile] = useState("")
+    const [file, setFile] = useState(null)
 
 
     useEffect(() => {
@@ -98,21 +105,68 @@ const MakePaymentScreen = () => {
         }
       }
 
+      async function uploadImage(file) {
+        console.log("file " + file);
+        const key = `Payment/${uuidv4()}`;
+        const { data, error } = await supabase.storage.from('myadventure').upload(key, file, {
+          cacheControl: 'max-age=31536000',
+          upsert: false,
+          contentType: 'image/jpeg',
+        });
+        if (error) {
+          console.error('Error uploading image:', error.message);
+          return;
+        }
+        console.log('Image uploaded successfully:', key);
+      
+        const supabaseUrl = 'https://nkaxnoxocaglizzrfhjw.supabase.co/storage/v1/object/public';
+        const imageUrl = `${supabaseUrl}/myadventure/${key}`;
+        console.log('Image URL:', imageUrl);
+        return imageUrl;
+      }
 
-      const handleSubmitClick = () => {
+      const updatePayment = (imageUrl) => {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        
+        var raw = JSON.stringify({
+          "_id": bookingID,
+          "payment": imageUrl,
+        });
+        
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+        
+        fetch("http://localhost:3001/booking/update-payment", requestOptions)
+          .then(response => response.json())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+      }
+
+
+      const handleSubmitClick = async () => {
+        if(file === null) {
+          return;
+        }
         const data = {
             bookingID: bookingID,
             status: "Waiting for checking"
         }
         UpdateStatus(data)
+        const image = await uploadImage(file)
+        console.log ("imageUrl   ", image)
+        updatePayment(image)
         const url = `/booking-status?bookingID=${encodeURIComponent(bookingID)}`;
         navigate(url);
-
+        window.location.reload();
       }
     
-      // method:
     const handleFileChange = (event) => {
-        setFile (event.target.value)
+      setFile(event.target.files[0]);
     };
     
 

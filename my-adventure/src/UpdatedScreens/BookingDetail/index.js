@@ -7,6 +7,7 @@ import { formatDate, formatHour } from "../../constant/formatDate";
 import CancelBooking from "../../component/CacelBookingPopUp";
 import CustomerTextBox from "../../components/CustomerTextBox";
 import CancelPopUp from "../../component/CancelPopUp";
+import ImagePopUp from "../../component/ImagePopUp";
 
 const BookingDetail = (props) => {
   const navigate = useNavigate()
@@ -21,9 +22,14 @@ const BookingDetail = (props) => {
   const [adult, setAdult] = useState([])
   const [children, setChildren] = useState([])
   const [bookings, setBookings] = useState([])
-
   const [isShowCancel, setIsShowCancel] = useState(false)
   const [showCancelBox, setShowCancelBox] = useState(false)
+  const [zoom, setZoom] = useState(false)
+  const [bank, setBank] = useState()
+
+  const handleZoom = () => {
+    setZoom(!zoom)
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -56,6 +62,13 @@ const BookingDetail = (props) => {
       .then(data => {
         setTour(data);
         setLoading1(false)
+      })
+      .catch(error => console.log('error', error));
+
+      fetch(`http://localhost:3001/banking-account/booking?bookingID=${booking._id}`, requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        setBank(data);
       })
       .catch(error => console.log('error', error));
     }
@@ -294,10 +307,41 @@ const BookingDetail = (props) => {
             <div className={styles.text2}>{booking.note}</div>
           </div>
 
+        {
+          booking.payment !== "test" && booking.payment && (
+            <div className={styles.horizontal} style={{marginTop: "3vw", alignItems: "center"}}>
+              <div className={styles.text1}>Payment's evidence: </div>
+              <motion.button onClick={handleZoom}>
+                <img className={styles.birthCertImg} src={booking.payment} alt="payment" style={{width: "8vw",}}></img>
+              </motion.button>
+            </div>
+          ) 
+        }
+
 
         
-      </div>
+        {
+          bank && bank.bookingID && (
+            <>
+            <div className={styles.horizontal} style={{marginTop: "3vw"}}>
+              <div className={styles.text1}>Bank name: </div>
+              <div className={styles.text2}>{bank.bankName}</div>
+          </div>
 
+          <div className={styles.horizontal} style={{marginTop: "3vw"}}>
+              <div className={styles.text1}>Bank account: </div>
+              <div className={styles.text2}>{bank.bankAccount}</div>
+          </div>
+
+          <div className={styles.horizontal} style={{marginTop: "3vw"}}>
+              <div className={styles.text1}>Bank holder: </div>
+              <div className={styles.text2}>{bank.bankHolder}</div>
+          </div>
+            </>
+          ) 
+        }
+
+        
         {
           booking.status === "Waiting for handling" && (
             <div className={styles.horizontal} style={{justifyContent: "space-between", marginTop: "5vw"}}>
@@ -311,7 +355,7 @@ const BookingDetail = (props) => {
 
         {
           booking.status === "Waiting for checking" && (
-            <div className={styles.horizontal} style={{justifyContent: "space-between", marginTop: "5vw"}}>
+            <div className={styles.horizontal} style={{}}>
               <motion.button className={styles.changeBtn} whileHover={{scale: 0.95}} onClick={handleChangeClick}>Change</motion.button>
               <motion.button className={styles.confirmBtn} whileHover={{scale: 0.95}} onClick={handleConfirmPaymentClick}>Confirmed payment</motion.button>
               <motion.button className={styles.cancelBtn} whileHover={{scale: 0.95}}  onClick={handleCancelClick}>Cancel</motion.button>
@@ -323,17 +367,30 @@ const BookingDetail = (props) => {
         {
           (booking.status === "Confirmed"  || booking.status ==="Paid")&& (
             <div className={styles.horizontal} style={{justifyContent: "space-between", marginTop: "5vw"}}>
-              <motion.button className={styles.changeBtn} whileHover={{scale: 0.95}} style={{width: "35vw"}} onClick={handleChangeClick}>Change</motion.button>
-              <motion.button className={styles.cancelBtn} whileHover={{scale: 0.95}} style={{width: "35vw"}} onClick={handleCancelClick}>Cancel</motion.button>
+              <motion.button className={styles.changeBtn} whileHover={{scale: 0.95}} onClick={handleChangeClick}>Change</motion.button>
+              <motion.button className={styles.cancelBtn} whileHover={{scale: 0.95}} onClick={handleCancelClick}>Cancel</motion.button>
             </div>
           )
         }
 
+        
+
         {showCancelBox  && (
-        <div className={styles.overlay}>
+        <div className={styles.overlay} >
           <CancelPopUp className={styles.loader} onClick={handleCancelClick} bookingID = {id} type="company"></CancelPopUp>
         </div>
         )}
+
+
+        {zoom  && (   
+          <div className={styles.overlay} style={{backgroundColor: "rgba(0,0,0,0.8)"}}>
+            <ImagePopUp imageUrl={booking.payment} onClick={handleZoom}/>
+          </div>
+        )}
+
+        
+      </div>
+
     </div>
   );
 };

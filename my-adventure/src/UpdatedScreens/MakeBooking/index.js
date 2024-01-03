@@ -12,7 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Footer from "../../component/Footer/Footer";
 
 const supabaseUrl = "https://nkaxnoxocaglizzrfhjw.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYXhub3hvY2FnbGl6enJmaGp3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDAxMjAyNjQsImV4cCI6MjAxNTY5NjI2NH0.BtdGBAYeLPKDiFYNAwQILcUuC2H6VC-xzGQcytPhJuA";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYXhub3hvY2FnbGl6enJmaGp3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMDEyMDI2NCwiZXhwIjoyMDE1Njk2MjY0fQ.6ZNDz2LY3uTglFR2sqJvyPirr00voeSv9BNBRDU_F08";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const MakeBookingScreen = () => {
@@ -35,9 +35,6 @@ const MakeBookingScreen = () => {
 
   const [customerInfo, setCustomerInfo] = useState({});
 
-  const [userId, setUserId] = useState('');
-  const [media, setMedia] = useState([]);
-
   const email = localStorage.getItem('email')
 
   const handleCustomerInfoChange = (index, info) => {
@@ -47,30 +44,10 @@ const MakeBookingScreen = () => {
     }));
   };
 
-  async function loginUser() {
-    const { user, error } = await supabase.auth.signIn({
-      email: "21522041@gm.uit.edu.vn",
-      password: "123456",
-    });
-  
-    if (error) {
-      console.error('Login error:', error.message);
-      return;
-    }
-  
-    const accessToken = user.access_token;
-    return accessToken;
-  }
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  
-
   async function uploadImage(file) {
-    console.log("file " + file)
-    const { data, error } = await supabase.storage.from('myadventure').upload(`BirthCert/${uuidv4()}`, file, {
+    console.log("file " + file);
+    const key = `BirthCert/${uuidv4()}`;
+    const { data, error } = await supabase.storage.from('myadventure').upload(key, file, {
       cacheControl: 'max-age=31536000',
       upsert: false,
       contentType: 'image/jpeg',
@@ -79,8 +56,14 @@ const MakeBookingScreen = () => {
       console.error('Error uploading image:', error.message);
       return;
     }
-    console.log('Image uploaded successfully:', data.Key);
+    console.log('Image uploaded successfully:', key);
+  
+    const supabaseUrl = 'https://nkaxnoxocaglizzrfhjw.supabase.co/storage/v1/object/public';
+    const imageUrl = `${supabaseUrl}/myadventure/${key}`;
+    console.log('Image URL:', imageUrl);
+    return imageUrl;
   }
+
   const addBooking = (date) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -99,6 +82,7 @@ const MakeBookingScreen = () => {
       "date": date,
       "rating" : 0,
       "price": price,
+      "payment": "test",
     });
 
     var requestOptions = {
@@ -144,6 +128,31 @@ const MakeBookingScreen = () => {
         .catch(error => console.log('error', error));
   }
 
+  const updateImage = (id, url) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    var raw = JSON.stringify({
+      _id: id,
+      birthCert: url
+    });
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    console.log("id" + id)
+    console.log("url" + url)
+    
+    fetch(`http://localhost:3001/children/update-imageURL?_id=${id}&birthCert=${url}`, requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+
   const addChildren = async (data, date) => {
     try {
       const myHeaders = new Headers();
@@ -172,7 +181,9 @@ const MakeBookingScreen = () => {
       if (response.ok) {
         const childId = result.children._id
         console.log(data.selectedFile)
-        await uploadImage(data.selectedFile);
+        const url = await uploadImage(data.selectedFile);
+        updateImage(childId, url);
+        
       } else {
         console.error("Failed to add children:", result.error);
       }
@@ -181,31 +192,6 @@ const MakeBookingScreen = () => {
     }
   };
   
-  const handleImageUpload = async (file, childId) => {
-    if (!file) {
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('image', file);
-    formData.append('childID', childId);
-
-    try {
-      const response = await fetch('/children/upload-image', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Image uploaded successfully:', data.imageUrl);
-      } else {
-        console.error('Failed to upload image');
-      }
-    } catch (error) {
-      console.error('An error occurred during image upload:', error);
-    }
-  };
   
 
   const addAll = () => {
