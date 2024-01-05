@@ -147,7 +147,7 @@ const TourDetail = (props) => {
   return (
     <>
       <>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div className={styles.introBackground}>
         {/* Left background */}
         <div
           className={styles.halfIntroBackground}
@@ -175,22 +175,19 @@ const TourDetail = (props) => {
         }}
       >
         <h1
-          className={styles.titleText}
-          style={{ fontSize: "3.5vw", marginTop: "2.5%", fontWeight: "800" }}
+          className={styles.titleMainText}
         >
           Tour details
         </h1>
         <h2
-          className={styles.titleText}
-          style={{ fontSize: "2vw", margin: "0px", fontWeight: "600" }}
+          className={styles.titleTourText}
         >
           {tour.departure}
           {" - "}
           {tour.destination}
         </h2>
         <h3
-          className={styles.titleText}
-          style={{ fontSize: "1.5vw", margin: "0px", fontWeight: "400" }}
+          className={styles.titleTimeText}
         >
           {formatDate(tour.departureDate)}
           {" - "}
@@ -267,7 +264,7 @@ const TourDetail = (props) => {
 
         <>
         <div style={{ marginLeft: "7.8%", marginTop: "1%", marginRight: "6%", width: "85vw" }}>
-          <div style={{ overflowX: "auto" }}>
+          <div className={styles.tourDetailBox}>
             <pre className={styles.text1}>{tour.details}</pre>
           </div>
         </div>
@@ -289,8 +286,8 @@ const TourDetail = (props) => {
         localStorage.getItem("isAdmin") === 'true' ? (
           <>
             <div style={{padding: "1vw 5vw", fontSize: "1.8vw"}}>
-              <div style={{fontStyle: "italic"}}>Number of customers booking this tour: <span style={{fontWeight: "bold"}}>{getNumber(adult) }</span> adults <span style={{fontWeight: "bold"}}>{getNumber(children)}</span> children</div>
-              <div style={{fontSize: "1.2vw"}}>Click <motion.button whileTap={{scale: 0.9}} style={{fontWeight: "500", fontStyle: "italic", textDecoration: "underline"}} onClick={handleHereClick}>here</motion.button> to see the customer list for this tour</div>
+              <div className={styles.numBooked}>Number of customers booking this tour: <span style={{fontWeight: "bold"}}>{getNumber(adult) }</span> adults <span style={{fontWeight: "bold"}}>{getNumber(children)}</span> children</div>
+              <div className={styles.numBooked2}>Click <motion.button whileTap={{scale: 0.9}} style={{fontWeight: "500", fontStyle: "italic", textDecoration: "underline"}} onClick={handleHereClick}>here</motion.button> to see the customer list for this tour</div>
             </div>
           </>
         ) : null
