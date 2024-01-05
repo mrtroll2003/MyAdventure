@@ -10,61 +10,17 @@
     margin-bottom: 5vh;
     width: 100%;
 }
+.destinationSectionText {
+    font-family: "NunitoSans";
+    font-size: 3.1vh;
+    font-weight: 100;
+    text-align: center;
+}
 .destinationSectionTitle {
     font-family: "NunitoSans";
     font-weight: 600;
     font-size: 5vh;
 }
-
-@media screen and (max-width: 1000px) { 
-    .destinationSectionTitle {
-        font-weight: 500;
-        font-size: 3vh;
-    }
-    .destinationSectionText {
-        margin-top: 1vh;
-        margin-left: 7%;
-        margin-right: 7%;
-        font-size: 2.3vh;
-        font-weight: 100;
-        text-align: center;
-    }
-    .illustrationView {
-        height: 200%;
-        display: inline-grid;
-        grid-template-columns: auto auto;
-        transition: height 2s, width 4s;
-    }
-    #illusImage {
-        height: 100px;
-        width: 50%;
-    }
-} 
-@media screen and (max-width: 600px) { 
-    .destinationSectionTitle {
-        font-weight: 500;
-        font-size: 3vh;
-    }
-    .destinationSectionText {
-        margin-top: 1vh;
-        margin-left: 6%;
-        margin-right: 6%;
-        font-size: 2vh;
-        font-weight: 100;
-        text-align: center;
-    }
-    .illustrationView {
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        width:100%;
-        transition: height 2s, width 4s;
-    }
-    #illusImage {
-        height: 30px;
-        width: 100%;
-    }
-} 
 .carouselContainer {
     justify-content: space-between;
     align-items: flex-start;
@@ -104,6 +60,11 @@
 .illustContainer:hover .illustOverlay {
     height: 100%;
     width: 100%;
+    text-align: center;
+    color: beige;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .illustOverlayText {
@@ -129,3 +90,74 @@
     background-color: transparent;
     border-radius: 4px;
 }
+
+@media screen and (max-width: 1000px) { 
+    .destinationSectionTitle {
+        font-weight: 500;
+        font-size: 3vh;
+    }
+    .destinationSectionText {
+        margin-top: 1vh;
+        margin-left: 7%;
+        margin-right: 7%;
+        font-size: 2.3vh;
+        font-weight: 100;
+        text-align: center;
+    }
+    .illustrationView {
+        height: 200%;
+        display: inline-grid;
+        grid-template-columns: auto auto;
+        transition: height 2s, width 4s;
+    }
+    #illusImage {
+        height: 100px;
+        width: 50%;
+    }
+    .illustOverlayText {
+        margin-top: 15%;
+    }
+    .illustContainer:hover .illustOverlay {
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        color: beige;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+} 
+@media screen and (max-width: 600px) { 
+    .destinationSectionTitle {
+        font-weight: 500;
+        font-size: 3vh;
+    }
+    .destinationSectionText {
+        margin-top: 1vh;
+        margin-left: 6%;
+        margin-right: 6%;
+        font-size: 2vh;
+        font-weight: 100;
+        text-align: center;
+    }
+    .illustrationView {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        width:100%;
+        transition: height 2s, width 4s;
+    }
+    #illusImage {
+        height: 30px;
+        width: 100%;
+    }
+    .illustContainer:hover .illustOverlay {
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        color: beige;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+} 

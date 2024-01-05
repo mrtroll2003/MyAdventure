@@ -47,7 +47,7 @@ const DestinationSection = (props) => {
       {
         props.img && props.img.length > 0 && (
           <>
-          <Carousel className={styles.carouselContainer}  responsive={responsive}>
+          <Carousel className={styles.carouselContainer} responsive={responsive}>
           {
             props.img && props.img.map((image) => (
               <>
