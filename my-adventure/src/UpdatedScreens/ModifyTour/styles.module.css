@@ -2,6 +2,10 @@
     font-family: "NunitoSans";
     src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf") format("truetype");
 }
+.introBackground {
+    display: flex;
+    flex-direction: row;
+}
 .halfIntroBackground {
     flex: 1;
     height: 50vh;
@@ -27,6 +31,27 @@
 .titleText {
     font-family: "NunitoSans";
     text-transform: uppercase;
+}
+.titleMainText {
+    font-family: "NunitoSans";
+    text-transform: uppercase;
+    font-size: 3.5vw;
+    margin-top: 2.5%;
+    font-weight: 800;
+}
+.titleTourText {
+    font-family: "NunitoSans";
+    text-transform: uppercase;
+    font-size: 2vw; 
+    margin: 0px;
+    font-weight: 600;
+}
+.titleTimeText {
+    font-family: "NunitoSans";
+    text-transform: uppercase;
+    font-size: 1.5vw; 
+    margin: 0px; 
+    font-weight: 400;
 }
 .text {
     font-family: "NunitoSans";
@@ -220,3 +245,92 @@
       transform: rotate(360deg);
     }
   }
+@media screen and (max-width: 600px) {
+    .introBackground {
+        margin-top: 8vh;
+    }
+    .halfIntroBackground {
+        display: flex;
+        flex: 1;
+        height: 50px;
+        border: 1px solid white;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .halfIntroBackgroundLayer {
+        width: 100%;
+        display: flex;
+        flex-grow:1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: 800;
+        font-size: 4.5vw;
+    }
+    .textareaStyle {
+        font-family: "NunitoSans";
+        font-weight: 400;
+        font-size: 2vw;
+        margin-left: 10vw;
+        border-radius: 5px;
+        height: 15vh;
+    }
+    .titleMainText {
+        font-size: 6.5vw;
+        font-weight: 800;
+    }
+    .titleTourText {
+        font-size: 4vw; 
+        margin: 0px;
+        font-weight: 600;
+    }
+    .titleTimeText {
+        font-family: "NunitoSans";
+        text-transform: uppercase;
+        font-size: 3vw; 
+        margin: 0px; 
+        font-weight: 400;
+    }
+    .text {
+        font-family: "NunitoSans";
+        font-weight: bold;
+        font-style: italic;
+        font-size: 3vw; 
+    }
+    
+    .text1 {
+        font-family: "NunitoSans";
+        font-weight: 600;
+        font-size: 2.2vw; 
+    }
+    .leftText {
+        font-family: "NunitoSans";
+        font-weight: 600;
+        font-size: 2.2vw;
+        margin-top: 1.5vh;
+    }
+    .inputStyle {
+        font-size: 2vw;
+    }
+    .datePicker {
+        font-size: 2vw;
+    }
+    .price {
+        font-size: 2.7vw;
+        font-family: "NunitoSans";
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+    .submitBtn {
+        width: 83vw;
+        margin-left: 10%;
+        margin-top: 1vw;
+        height: fit-content;
+        padding: 0.8vw;
+        font-size: 2.2vw;
+        background-color: #5CD6C0;
+        font-weight: 600;
+        box-shadow: 1px 2px 2px rgb(0, 0, 0, 0.5);
+    }
+}
