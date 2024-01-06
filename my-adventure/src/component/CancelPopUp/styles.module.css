@@ -50,3 +50,61 @@
     font-weight: 600;
     font-size: 1vw;
 }
+/* Tablet: width >= 740px && width <= 1025px */
+@media screen and (max-width: 1025px) and (min-width: 740px) {
+    .title {
+        text-align: center;
+        font-family: "NunitoSans";
+        font-weight: bold;
+        font-size: 2vh;
+        color: #F71D1D;
+    }
+    .acceptChoice {
+        width: 40%;
+        height: 3vh;
+        background-color: #50C31A;
+        font-family: "NunitoSans";
+        box-shadow:  1px 1px #50c31f;
+        font-weight: 600;
+        font-size: 1.5vh;
+    }
+    
+    .cancelChoice {
+        width: 40%;
+        height: 3vh;
+        background-color: #F8973E;
+        font-family: "NunitoSans";
+        box-shadow: 1px 1px #F8974F;
+        font-weight: 600;
+        font-size: 1.5vh;
+    }
+}
+
+/* Mobile: width < 740px */
+@media screen and (max-width: 739px) { 
+    .title {
+        text-align: center;
+        font-family: "NunitoSans";
+        font-weight: bold;
+        font-size: 2vh;
+        color: #F71D1D;
+    }
+    .acceptChoice {
+        width: 40%;
+        height: 3vh;
+        background-color: #50C31A;
+        font-family: "NunitoSans";
+        box-shadow:  1px 1px #50c31f;
+        font-weight: 600;
+        font-size: 1.5vh;
+    }
+    .cancelChoice {
+        width: 40%;
+        height: 3vh;
+        background-color: #F8973E;
+        font-family: "NunitoSans";
+        box-shadow: 1px 1px #F8974F;
+        font-weight: 600;
+        font-size: 1.5vh;
+    }
+} 

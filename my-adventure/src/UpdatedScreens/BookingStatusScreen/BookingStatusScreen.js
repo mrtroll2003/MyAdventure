@@ -431,14 +431,14 @@ const BookingStatusScreen = (props) => {
       </div>
 
       <div className={styles.mainContentContainer}>
-        <div className={styles.title}>Your Booking Details</div>
+        <div className={styles.title1}>Your Booking Details</div>
 
-        <div className={styles.title}>
+        <div className={styles.title2}>
           {tour.departure} - {tour.destination}
         </div>
 
         <div
-          className={styles.title}
+          className={styles.title3}
           style={{
             textTransform: "capitalize",
           }}
@@ -447,7 +447,7 @@ const BookingStatusScreen = (props) => {
         </div>
 
         <div
-          className={styles.title}
+          className={styles.title3}
           style={{
             textTransform: "capitalize",
           }}
