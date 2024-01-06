@@ -4,19 +4,26 @@ import { motion } from "framer-motion";
 import Footer from "../../component/Footer/Footer";
 import { useLocation, useNavigate } from "react-router-dom";
 import { formatDate, formatHour } from "../../constant/formatDate";
+import CancelBooking from "../../component/CacelBookingPopUp";
 
 const TourDetail = (props) => {
-  console.log("hello")
   const navigate = useNavigate()
   const location  = useLocation()
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get('id');
-  console.log("id",id)
-
   const [loading, setLoading] = useState(true);
   
   const [tour, setTour] = useState()
   const [images, setImages] = useState([])
+  const [adult, setAdult] = useState([])
+  const [children, setChildren] = useState([])
+  const [bookings, setBookings] = useState([])
+
+  const [isShowCancel, setIsShowCancel] = useState(false)
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     var requestOptions = {
@@ -30,16 +37,48 @@ const TourDetail = (props) => {
       setImages(data);
     })
     .catch(error => console.log('error', error));
+
+    fetch(`http://localhost:3001/booking`, requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      setBookings(data);
+    })
+    .catch(error => console.log('error', error));
   
-    fetch(`http://localhost:3001/tour/place?id=${id}`, requestOptions)
+    fetch(`http://localhost:3001/tour/place?id=${encodeURIComponent(id)}`, requestOptions)
     .then(response => response.json())
     .then(data => {
       setTour(data);
       setLoading(false);
       console.log("place")
     })
+
+    
+  
+
     .catch(error => console.log('error', error));
-  }, [id]);
+  }, [localStorage.getItem('isAdmin')]);
+
+  useEffect (() => {
+    console.log("tour", tour)
+    if (tour && tour._id) {
+      var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+  
+      fetch(`http://localhost:3001/children/tour?tourID=${encodeURIComponent(tour._id)}`, requestOptions)
+        .then(response => response.json())
+        .then(result => setChildren(result))
+        .catch(error => console.log('error', error));
+  
+      fetch(`http://localhost:3001/adult/tour?tourID=${encodeURIComponent(tour._id)}`, requestOptions)
+        .then(response => response.json())
+        .then(result => setAdult(result))
+        .catch(error => console.log('error', error));
+    }
+  }, [tour])
+
 
   const handleBookTour = () => {
     console.log('token',localStorage.getItem('token') )
@@ -63,16 +102,52 @@ const TourDetail = (props) => {
 
   const getCity = (name) => {
     const location =name;
-    const city = location.split(",")[0].trim();
+    const city = location?.split(",")[0].trim();
     return city;
   }
+
+  const handleHereClick = () => {
+    const url = `/company/customer-list?tourID=${encodeURIComponent(id)}`
+    navigate(url)
+  }
+
+  const handleModifyClick = () => {
+    const url = `/company/modify-tour?id=${encodeURIComponent(id)}`
+    navigate(url)
+  }
+
+  const getNumber = (data) => {
+    let num = 0;
+
+    data.forEach(element => {
+      bookings.forEach(booking => {
+        if(booking.email === element.bookingEmail && booking.date === element.bookingDate)
+        {
+          if(booking.status !== "Cancelled")
+            num++;
+        }
+      })
+    });
+
+    return num;
+
+  }
+
+
+
+  const handleCancelClick = () => {
+      setIsShowCancel(!isShowCancel)
+    }
+
+
   if (loading) {
     return <p>Loading...</p>;
   }
 
   return (
-    <div>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+    <>
+      <>
+      <div className={styles.introBackground}>
         {/* Left background */}
         <div
           className={styles.halfIntroBackground}
@@ -88,7 +163,9 @@ const TourDetail = (props) => {
           <div className={styles.halfIntroBackgroundLayer}>{getCity(tour.destination)}</div>
         </div>
       </div>
+      </>
       {/* Title */}
+      <>
       <div
         style={{
           display: "flex",
@@ -98,35 +175,38 @@ const TourDetail = (props) => {
         }}
       >
         <h1
-          className={styles.titleText}
-          style={{ fontSize: "3.5vw", marginTop: "2.5%", fontWeight: "800" }}
+          className={styles.titleMainText}
         >
           Tour details
         </h1>
         <h2
-          className={styles.titleText}
-          style={{ fontSize: "2vw", margin: "0px", fontWeight: "600" }}
+          className={styles.titleTourText}
         >
           {tour.departure}
           {" - "}
           {tour.destination}
         </h2>
         <h3
-          className={styles.titleText}
-          style={{ fontSize: "1.5vw", margin: "0px", fontWeight: "400" }}
+          className={styles.titleTimeText}
         >
           {formatDate(tour.departureDate)}
           {" - "}
           {formatDate(tour.returnDate)}
         </h3>
       </div>
+      </>
       {/* Transportation */}
+      <>
       <div
         className={styles.text}
         style={{ marginLeft: "5%", marginTop: "2.5%" }}
       >
         Transportation:
       </div>
+      </>
+
+
+      <>
       <div className={styles.horizontal}>
         <div className={styles.firstHalf}>
           <p className={styles.leftText}>Transportation's brand: </p>
@@ -143,14 +223,18 @@ const TourDetail = (props) => {
           <p className={styles.rightText}>{formatHour(tour.returnDate)}</p>
         </div>
       </div>
+      </>
       {/* Accommodation */}
+      <>
       <div
         className={styles.text}
         style={{ marginLeft: "5%", marginTop: "1.5%" }}
       >
         Accommodation:
       </div>
-      <div className={styles.horizontal}>
+      </>
+        <>
+        <div className={styles.horizontal}>
         <div className={styles.firstHalf}>
           <p className={styles.leftText}>Accommodation's name: </p>
           <p className={styles.leftText}>Checkin Date: </p>
@@ -166,29 +250,64 @@ const TourDetail = (props) => {
           <p className={styles.rightText}>{formatHour(tour.checkout)}</p>
         </div>
       </div>
+        </>
       {/* Schedule Details */}
-      <div
+        <>
+        <div
         className={styles.text}
         style={{ marginLeft: "5%", marginTop: "1.5%" }}
       >
         Schedule Details:
       </div>
-      <div
-        className={styles.text1}
-        style={{ marginLeft: "7.8%", marginTop: "1%", marginRight: "6%" }}
-      >
-        {tour.details}
-      </div>
+        </>
+
+
+        <>
+        <div style={{ marginLeft: "7.8%", marginTop: "1%", marginRight: "6%", width: "85vw" }}>
+          <div className={styles.tourDetailBox}>
+            <pre className={styles.text1}>{tour.details}</pre>
+          </div>
+        </div>
+        </>
    
       {/* Price */}
-      <div
+        <>
+        <div
         className={styles.price}
         style={{ marginTop: "2.5%", marginLeft: "6%" }}
       >
         Price: ${tour.price}
       </div>
+        </>
+
+
+      {/* Number of customers */}
+        {
+        localStorage.getItem("isAdmin") === 'true' ? (
+          <>
+            <div style={{padding: "1vw 5vw", fontSize: "1.8vw"}}>
+              <div className={styles.numBooked}>Number of customers booking this tour: <span style={{fontWeight: "bold"}}>{getNumber(adult) }</span> adults <span style={{fontWeight: "bold"}}>{getNumber(children)}</span> children</div>
+              <div className={styles.numBooked2}>Click <motion.button whileTap={{scale: 0.9}} style={{fontWeight: "500", fontStyle: "italic", textDecoration: "underline"}} onClick={handleHereClick}>here</motion.button> to see the customer list for this tour</div>
+            </div>
+          </>
+        ) : null
+      }
+      
+
+
       {/* Book this tour button  */}
-      <div
+      {console.log("isAdmin" + localStorage.getItem("isAdmin"))}
+      <>
+      {localStorage.getItem("isAdmin") === 'true' ? (
+          <>
+          <div className={styles.displayHorizon}> 
+            <motion.button className={styles.companyBtn} whileHover={{scale: 0.9}} onClick={handleModifyClick}>Modify</motion.button>
+            <motion.button className={styles.companyBtn} style={{backgroundColor: "#FF8139"}}  whileHover={{scale: 0.9}} onClick={handleCancelClick}>Cancel</motion.button>
+          </div>
+          </>
+        ) : (
+          <>
+          <div
         style={{
           display: "flex",
           flexDirection: "row",
@@ -206,9 +325,19 @@ const TourDetail = (props) => {
           Booking this tour
         </motion.div>
       </div>
+          </>
+        )}
+      </>
       {/* Footer */}
       <Footer />
-    </div>
+
+
+      {isShowCancel  && (
+        <div className={styles.overlay}>
+          <CancelBooking className={styles.loader} onClick={handleCancelClick} tourID = {id} isVNTour= {tour.isVNTour}></CancelBooking>
+        </div>
+        )}
+    </>
   );
 };
 

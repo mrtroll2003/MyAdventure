@@ -24,9 +24,10 @@ const HomePage = () => {
   const [tours, setTours] = useState([])
   const [images, setImages] = useState([])
   const [ratings, setRatings] = useState([])
-  const [loading1, setLoading1] = useState(true);
-  const [loading2, setLoading2] = useState(true);
-  const [loading3, setLoading3] = useState(true);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     var requestOptions = {
@@ -38,7 +39,6 @@ const HomePage = () => {
       .then(response => response.json())
       .then(data => {
         setImages(data)
-        setLoading1(false)
       })
       .catch(error => console.log('error', error));
   
@@ -46,7 +46,6 @@ const HomePage = () => {
       .then(response => response.json())
       .then(data => {
         setRatings(data)
-        setLoading2(false)
       })
       .catch(error => console.log('error', error));
   
@@ -54,8 +53,6 @@ const HomePage = () => {
       .then(response => response.json())
       .then(data => {
         setTours(data);
-        // setLoading(false)
-        setLoading3(false)
       })
       .catch(error => console.log('error', error));
   }, []);
@@ -80,12 +77,9 @@ const HomePage = () => {
     if (rating) {
       return rating.rating;
     }
-    return 0; // Default rating if 'rating' object is undefined
+    return 0;
   };
 
-  // const handleClick = () => {
-  //   navigate(`tour-detail?departure=Da Nang&destination=Sapa`)
-  //   }
 
   const handleClick = (id) => {
     console.log('Clicked:', id);
@@ -96,10 +90,6 @@ const HomePage = () => {
   const rows = Array.from({ length: numRows }, (_, index) =>
     data.slice(index * 3, (index + 1) * 3)
   );
-
-    // if (loading1) {
-    //   return <p>Loading...</p>;
-    // }
 
   return (
     <div>
@@ -173,14 +163,14 @@ const HomePage = () => {
                   <span id={styles.packagePriceText02}> per person</span>
                 </h1>
               </div>
-
+{/* 
               <motion.button
                   id={styles.detailsBtn}
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                 >
                   DETAILS
-                </motion.button>
+                </motion.button> */}
             </div>
           </div>
           {/*  */}
@@ -223,6 +213,7 @@ const HomePage = () => {
               </motion.button>
             </div>
             {rows.map((row, rowIndex) => (
+              <>
               <div
                 key={rowIndex}
                 style={{
@@ -233,6 +224,7 @@ const HomePage = () => {
                 }}
               >
                 {row.map((item) => (
+                  <>
                   <RecommendedTripCard
                     key={item._id}
                     image={renderImage(item)}
@@ -244,8 +236,11 @@ const HomePage = () => {
                     price={item.price}
                     onClick={() => handleClick(item._id)}
                   />
+                  </>
                 ))}
               </div>
+              </>
+
             ))}
           </div>
           {/* Happy Customer */}

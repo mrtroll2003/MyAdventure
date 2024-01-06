@@ -1,42 +1,9 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const CustomerTextBox = ({ type, name }) => {
+const CustomerTextBox = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [citizenID, setCitizenID] = useState("");
-  const [phone, setPhone] = useState("");
-
-  const [selectedFile, setSelectedFile] = useState();
-
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
-
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
-  const handleNameChange = (event) => {
-    setFullName(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePhoneChange = (event) => {
-    setPhone(event.target.value);
-  };
-
-  const handleCitizenIDChange = (event) => {
-    setCitizenID(event.target.value);
-  };
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -58,14 +25,16 @@ const CustomerTextBox = ({ type, name }) => {
         >
           <img
             src={
-              type === "adult"
+              props.type === "adult"
                 ? require("../../assets/icons/adult2.png")
                 : require("../../assets/icons/child.png")
             }
             alt="adult2"
             style={{ width: "1.5vw", height: "1.5vw" }}
           ></img>
-          <div style={{ marginLeft: "2vw", fontSize: "3vh" }}>{name}</div>
+          <div style={{ marginLeft: "2vw", fontSize: "1.2vw" }}>
+            {props.name}
+          </div>
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -89,11 +58,11 @@ const CustomerTextBox = ({ type, name }) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            fontSize: "2.5vh",
+            fontSize: "1.2vw",
           }}
         >
-          <div>Full Name:</div>
-          <div style={{ marginLeft: "10.3vw" }}>Lê Thị Bích Hằng</div>
+          <div style={{ width: "30%" }}>Full Name:</div>
+          <div>{props.name}</div>
         </div>
         <div
           style={{
@@ -101,10 +70,11 @@ const CustomerTextBox = ({ type, name }) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
+            fontSize: "1.2vw",
           }}
         >
-          <div style={{ fontSize: "2.5vh" }}>Sex:</div>
-          <div style={{ fontSize: "2.5vh", marginLeft: "13.9vw" }}>Female</div>
+          <div style={{ width: "30%" }}>Sex:</div>
+          <div>{props.sex}</div>
         </div>
         <div
           style={{
@@ -112,25 +82,25 @@ const CustomerTextBox = ({ type, name }) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            fontSize: "2.5vh",
+            fontSize: "1.2vw",
           }}
         >
-          <div>Date of Birthday:</div>
-          <div style={{ marginLeft: "7.2vw" }}>01/01/2003</div>
+          <div style={{ width: "30%" }}>Date of Birthday:</div>
+          <div>{props.dob}</div>
         </div>
 
-        {type === "adult" ? (
+        {props.type === "adult" ? (
           <div
             style={{
               marginTop: "2vh",
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              fontSize: "2.5vh",
+              fontSize: "1.2vw",
             }}
           >
-            <div>Citizen ID:</div>
-            <div style={{ marginLeft: "10.5vw" }}>12345678</div>
+            <div style={{ width: "30%" }}>Citizen ID:</div>
+            <div>{props.ID}</div>
           </div>
         ) : (
           <div
@@ -141,41 +111,49 @@ const CustomerTextBox = ({ type, name }) => {
               justifyContent: "flex-start",
             }}
           >
-            <div style={{ fontSize: "2.5vh" }}>Birth Certificate:</div>
+            <div style={{ fontSize: "1.2vw", width: "18.5%" }}>
+              Birth Certificate:
+            </div>
             <img
-              src={require("../../assets/images/birthcert.png")}
+              src={props.birthCert}
               alt="birthcert"
               style={{ width: "5vw", height: "auto", marginLeft: "7vw" }}
             ></img>
-            <span style={{ marginLeft: "2vw" }}>birthcert.png</span>
+            <span style={{ marginLeft: "2vw", fontSize: "1.2vw" }}>
+              birthcert.png
+            </span>
           </div>
         )}
 
-        <div
-          style={{
-            marginTop: "2vh",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            fontSize: "2.5vh",
-          }}
-        >
-          <div>Phone Number:</div>
-          <div style={{ marginLeft: "7.5vw" }}>012345678</div>
-        </div>
+        {props.type === "adult" && (
+          <div>
+            <div
+              style={{
+                marginTop: "2vh",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                fontSize: "1.2vw",
+              }}
+            >
+              <div style={{ width: "30%" }}>Phone Number:</div>
+              <div>{props.phone}</div>
+            </div>
 
-        <div
-          style={{
-            marginTop: "2vh",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            fontSize: "2.5vh",
-          }}
-        >
-          <div>Email:</div>
-          <div style={{ marginLeft: "12.6vw" }}>21522041@gm.uit.edu.vn</div>
-        </div>
+            <div
+              style={{
+                marginTop: "2vh",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                fontSize: "1.2vw",
+              }}
+            >
+              <div style={{ width: "30%" }}>Email:</div>
+              <div>{props.email}</div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

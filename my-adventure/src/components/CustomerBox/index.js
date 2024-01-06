@@ -8,15 +8,6 @@ import DeleteIC from "../../assets/icons/trash.png"
 const CustomerBox = ({ type, onDataChange, index, data, onDelete}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sex, setSex] = useState("Male");
-  // const [fullName, setFullName] = useState(data?.fullName);
-  // const [email, setEmail] = useState(data?.email);
-  // const [citizenID, setCitizenID] = useState(data?.citizenID);
-  // const [phone, setPhone] = useState(data?.phone);
-  // const validDate = data?.birthDate && !isNaN(new Date(data.birthDate));
-  // const [birthDate, setBirthDate] = useState(validDate ? new Date(data.birthDate) : new Date());
-
-  // const [selectedFile, setSelectedFile] = useState();
-
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [citizenID, setCitizenID] = useState('');
@@ -26,7 +17,6 @@ const CustomerBox = ({ type, onDataChange, index, data, onDelete}) => {
   console.log("index", index)
 
   const handleDataChange = () => {
-    // Gather the customer information
     const customerInfo = {
       fullName,
       sex,
@@ -37,7 +27,6 @@ const CustomerBox = ({ type, onDataChange, index, data, onDelete}) => {
       birthDate,
       selectedFile
     };
-    // Invoke the callback function passed from the booking screen
     onDataChange(index, customerInfo);
   };
 
@@ -238,7 +227,7 @@ const CustomerBox = ({ type, onDataChange, index, data, onDelete}) => {
             }}
           >
             <div style={{ fontSize: "1.2vw" , width: "30%"}}>Birth Certificate<span style={{color: "red"}}>*</span>:</div>
-            <input style={{marginLeft: "2vw"}} type="file" onChange={handleFileChange}         onBlur={handleDataChange}/>
+            <input style={{marginLeft: "2vw"}} type="file" onChange={handleFileChange} onBlur={handleDataChange}/>
           </div>
         )}
 

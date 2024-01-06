@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    width: 100vw;
+    width: 100%;
     padding: 10vh;
 }
 
@@ -78,6 +78,11 @@
     margin-left: 3vw;
     font-size: 2.5vh;
 }
+.yourDetailBooking {
+    font-size: 4vh;
+    font-weight: bold;
+    margin-top: 5vh;
+}
 .optionBtn {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
                 0 4px 8px rgba(0, 0, 0, 0.25);
@@ -99,6 +104,10 @@
     align-items: center;
     background-color: #C1C4C8;
 }
+.noteText {
+    margin-left: 2vw;
+    font-size: 2.5vh;
+}
 .bookingForm {
     width: 100%;
     margin-top: 2vh;
@@ -118,10 +127,17 @@
     width: 30%;
 }
 
+.commonText {
+    font-size: 3vh;
+}
+.infoTag {
+    margin-left: 6vw;
+}
+
 .price {
     font-style: "NunitoSans";
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 2vw;
+    font-weight: bold;
     text-transform: uppercase;
 }
 
@@ -149,6 +165,12 @@
     display: flex;
     flex-direction: column;
 }
+.textBeforeBtn {
+    font-size: 1.5vw;
+    font-weight: 400;
+    margin-top: 5vh;
+    font-family: "NunitoSans";
+ }
 .smallButton {
     width: 100%;
     font-size: 3vh;
@@ -159,24 +181,208 @@
 /* Confirmed status only */
 .changeButton { 
     font-family: "NunitoSans";
-    font-size: 2.5vh;
+    font-size: 1.2vw;
+    margin-left: 5vw;
     background-color: white;
     border-radius: 30px;
     width: 10vw;
     height: 6vh;
-    box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.5);
 }
 /* Confirm status only */
-.makePaymentButton {
-    width: 100%;
-    height: 12vh;
-    color: white;
+.cancelButton {
+    padding: 1vw;
+    margin-top: 3vw;
+    color: black;
     font-family: "NunitoSans";
-    font-size: 5.5vh;
-    font-weight: 900;
-    background-color: #32C841;
-    box-shadow: 4px 4px rgba(0, 0, 0, 0.25),
-                4px 4px rgba(0, 0, 0, 0.25),
-                4px 4px rgba(0, 0, 0, 0.25),
+    font-size: 1.2vw;
+    font-weight: bold;
+    background-color: #FF8139;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
+                0 4px 8px rgba(0, 0, 0, 0.25); 
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .loader {
+    border: 4px solid #f3f3f3; /* Light gray border */
+    border-top: 4px solid #3498db; /* Blue border for the loading animation */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    /* animation: spin 1s linear infinite; */
+  }
+
+  .birthCertImg {
+    margin-left: 2vw;
+  }
+
+  .horizon1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+/* Tablet: width >= 740px && width <= 1025px */
+@media screen and (max-width: 1025px) and (min-width: 740px) {
+ .hi {
+    font-size: 3vh;
+    color: black;
+    font-weight: bold;
+ }
+ .welcome {
+    font-size: 2vh;
+    margin-top: 3vh;
+ }
+ .title {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2.5vh;
+ }
+ .statusContainer {
+    align-self: center;
+    text-align: center;
+    width: 30%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 1.75vh;
+    margin-top: 2vh;
+ }
+ .text {
+    font-size: 1.5vh;
+    font-weight: 400;
+    margin-top: 5vh;
+    font-family: "NunitoSans";
+ }
+ .signIn {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3vw;
+    font-size: 1.5vh;
+ }
+.yourDetailBooking {
+    font-size: 2.25vh;
+    font-weight: bold;
+    margin-top: 5vh;
+ }
+ .noteText {
+    margin-left: 2vw;
+    font-size: 1.5vh;
+ }
+ .heading1 {
+    font-size: 2vh;
+    margin-top: 3vh;
+    font-weight: 500;
+}
+.heading2 {
+    font-size: 1.5vh;
+    margin-left: 3vw;
+    font-weight: 500;
+    width: 40%;
+ }
+ .commonText {
+    font-size: 1.5vh;
+    width: 60%;
+ }
+ .textBeforeBtn {
+    display: none;
+ }
+ .smallButton {
+    width: 100%;
+    margin-top: 3vh;
+    font-size: 2vh;
+    height: 5vh;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.25), 
                 4px 4px rgba(0, 0, 0, 0.25);
+ }
+}
+
+/* Mobile: width < 740px */
+@media screen and (max-width: 739px) { 
+    .hi {
+        font-size: 3vh;
+        color: black;
+        font-weight: bold;
+     }
+     .welcome {
+        font-size: 2vh;
+        margin-top: 3vh;
+     }
+     .title {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 2.5vh;
+     }
+     .statusContainer {
+        align-self: center;
+        text-align: center;
+        width: 30%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        font-size: 1.75vh;
+        margin-top: 2vh;
+     }
+     .text {
+        font-size: 1.5vh;
+        font-weight: 400;
+        margin-top: 5vh;
+        font-family: "NunitoSans";
+     }
+     .signIn {
+        display: flex;
+        flex-direction: column;
+        margin-left: 3vw;
+        font-size: 1.5vh;
+     }
+    .yourDetailBooking {
+        font-size: 2.25vh;
+        font-weight: bold;
+        margin-top: 5vh;
+     }
+     .noteText {
+        margin-left: 2vw;
+        font-size: 1.5vh;
+     }
+     .heading1 {
+        font-size: 2vh;
+        margin-top: 3vh;
+        font-weight: 500;
+    }
+    .heading2 {
+        font-size: 1.5vh;
+        margin-left: 3vw;
+        font-weight: 500;
+        width: 40%;
+     }
+     .commonText {
+        font-size: 1.5vh;
+        width: 60%;
+     }
+     .textBeforeBtn {
+        display: none;
+     }
+     .smallButton {
+        width: 100%;
+        margin-top: 3vh;
+        font-size: 2vh;
+        height: 5vh;
+        box-shadow: 4px 4px rgba(0, 0, 0, 0.25), 
+                    4px 4px rgba(0, 0, 0, 0.25);
+     }
 }

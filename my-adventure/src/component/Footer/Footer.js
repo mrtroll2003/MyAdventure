@@ -12,8 +12,7 @@ import styles from "./styles.module.css";
 class Footer extends React.Component {
   render() {
     return (
-      <>
-              <div className={styles.footerView}>
+      <div className={styles.footerView}>
         <div className={styles.footerLogoView}>
           <img src={MyLogo} alt="My Logo" width={"100%"} />
           <h2
@@ -57,7 +56,7 @@ class Footer extends React.Component {
         <div className={styles.footerOtherView}>
           <h2 id={styles.footerBoldText}>ALL PRODUCTS</h2>
           <p id={styles.footerNormalText}>Travel</p>
-          <p id={styles.footerNormalText}>Travel Protection</p> 
+          <p id={styles.footerNormalText}>Travel Protection</p>
         </div>
         <div className={styles.footerOtherView}>
           <h2 id={styles.footerBoldText}>LET'S CONTACT</h2>
@@ -87,7 +86,6 @@ class Footer extends React.Component {
           </motion.div>
         </div>
       </div>
-      </>
     );
   }
 }

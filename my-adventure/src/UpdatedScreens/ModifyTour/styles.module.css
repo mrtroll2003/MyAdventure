@@ -1,0 +1,222 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf") format("truetype");
+}
+.halfIntroBackground {
+    flex: 1;
+    height: 50vh;
+    border: 1px solid white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.halfIntroBackgroundLayer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "NunitoSans";
+    font-weight: 800;
+    font-size: 3.5vw;
+    text-transform: uppercase;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.titleText {
+    font-family: "NunitoSans";
+    text-transform: uppercase;
+}
+.text {
+    font-family: "NunitoSans";
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.5vw; 
+}
+
+.text1 {
+    font-family: "NunitoSans";
+    font-weight: 600;
+    font-size: 1.2vw; 
+}
+.leftText {
+    font-family: "NunitoSans";
+    font-weight: 600;
+    font-size: 1.2vw;
+    margin-top: 1.5vh;
+    width: 17vw;
+}
+.rightText {
+    font-family: "NunitoSans";
+    font-weight: 400;
+    font-size: 1.2vw;
+}
+
+.inputStyle {
+    font-family: "NunitoSans";
+    font-weight: 400;
+    font-size: 1.2vw;
+    margin-left: 10vw;
+    border-radius: 5px;
+    border: 0.2vh solid black;
+    padding: 0.5vw 1vw;
+    width: 30vw;
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    align-items: center;
+    margin-top: 2vw;
+}
+.firstHalf {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    text-indent: 20%;
+    /* border: 1px solid red; */
+}
+.secondHalf {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid green; */
+}
+.detailsText {
+    font-family: "NunitoSans";
+    font-weight: 600;
+    font-size: 1.5vw; 
+}
+.detailsText::before {
+    margin-left: 7%;
+    display: inline-block;
+    content: '';
+    -webkit-border-radius: 0.3rem;
+    border-radius: 0.3rem;
+    height: 0.6rem;
+    width: 0.6rem;
+    margin-right: 0.6rem;
+    background-color: black;
+}
+.price {
+    font-size: 1.8vw;
+    font-family: "NunitoSans";
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.bookTourBtn {
+    padding: 1% 1%;
+    display: flex;
+    color: white;
+    font-family: "NunitoSans";
+    font-weight: 600;
+    font-size: 1.2vw;
+    justify-content: center;
+    align-items: center;
+    background-color: #5CD6C0;
+    border-radius: 10px;
+}
+
+.displayHorizon {
+    display: flex;
+    flex-direction: row;
+    padding: 0 5vw;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4vw;
+}
+
+.companyBtn {
+    width: 40vw;
+    height: fit-content;
+    padding: 0.8vw;
+    font-size: 1.2vw;
+    background-color: #66F235;
+    font-weight: 600;
+    box-shadow: 1px 2px 2px rgb(0, 0, 0, 0.5);
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    font-size: 1.8vw;
+    font-weight: 900;
+}
+
+.submitBtn {
+    width: 83vw;
+    margin-left: 10%;
+    margin-top: 1vw;
+    height: fit-content;
+    padding: 0.8vw;
+    font-size: 1.2vw;
+    background-color: #5CD6C0;
+    font-weight: 600;
+    box-shadow: 1px 2px 2px rgb(0, 0, 0, 0.5);
+}
+
+.textareaStyle {
+    font-family: "NunitoSans";
+    font-weight: 400;
+    font-size: 1.2vw;
+    margin-left: 10vw;
+    border-radius: 5px;
+    border: 0.2vh solid black;
+    padding: 0.5vw 1vw;
+    width: 83vw;
+    height: 80vh;
+    margin-top: 2vw;
+}
+
+.datePicker {
+    font-family: "NunitoSans";
+    font-weight: 400;
+    font-size: 1.2vw;
+    margin-left: 10vw;
+    border-radius: 5px;
+    border: 0.2vh solid black;
+    padding: 0.5vw 1vw;
+    width: 30vw;
+}
+
+.errorText {
+    color: red;
+    font-size: 14px;
+    margin-left: 10%;
+    margin-top: 3vw;
+  }
+
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .loader {
+    border: 4px solid #f3f3f3; /* Light gray border */
+    border-top: 4px solid #3498db; /* Blue border for the loading animation */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

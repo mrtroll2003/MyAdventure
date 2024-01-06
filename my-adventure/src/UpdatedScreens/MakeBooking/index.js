@@ -4,11 +4,16 @@ import { useState, useEffect } from "react";
 import CustomerBox from "../../components/CustomerBox";
 import GlobeIMG from "../../assets/images/globe.png";
 import AddButtonIC from "../../assets/icons/add.png";
-
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { formatDate } from "../../constant/formatDate";
+import { createClient } from '@supabase/supabase-js'
+import { v4 as uuidv4 } from 'uuid';
 import Footer from "../../component/Footer/Footer";
+
+const supabaseUrl = "https://nkaxnoxocaglizzrfhjw.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYXhub3hvY2FnbGl6enJmaGp3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMDEyMDI2NCwiZXhwIjoyMDE1Njk2MjY0fQ.6ZNDz2LY3uTglFR2sqJvyPirr00voeSv9BNBRDU_F08";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const MakeBookingScreen = () => {
   const navigate = useNavigate();
@@ -39,10 +44,32 @@ const MakeBookingScreen = () => {
     }));
   };
 
+  async function uploadImage(file) {
+    console.log("file " + file);
+    const key = `BirthCert/${uuidv4()}`;
+    const { data, error } = await supabase.storage.from('myadventure').upload(key, file, {
+      cacheControl: 'max-age=31536000',
+      upsert: false,
+      contentType: 'image/jpeg',
+    });
+    if (error) {
+      console.error('Error uploading image:', error.message);
+      return;
+    }
+    console.log('Image uploaded successfully:', key);
+  
+    const supabaseUrl = 'https://nkaxnoxocaglizzrfhjw.supabase.co/storage/v1/object/public';
+    const imageUrl = `${supabaseUrl}/myadventure/${key}`;
+    console.log('Image URL:', imageUrl);
+    return imageUrl;
+  }
+
   const addBooking = (date) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
+    console.log("customerInfo", customerInfo)
+    const price = Object.keys(customerInfo).length * tour.price;
     var raw = JSON.stringify({
       "email":email,
       "name": name,
@@ -50,12 +77,12 @@ const MakeBookingScreen = () => {
       "nationality": nationality,
       "address": address,
       "note": note,
-      "departure": tour.departure,
-      "destination": tour.destination,
-      "departureDate": tour.departureDate,
-      "returnDate": tour.returnDate,
-      "status": "Waiting for Handling",
+      "tourID": id,
+      "status": "Waiting for handling",
       "date": date,
+      "rating" : 0,
+      "price": price,
+      "payment": "test",
     });
 
     var requestOptions = {
@@ -79,6 +106,7 @@ const MakeBookingScreen = () => {
       var raw = JSON.stringify({
         "bookingEmail": email,
         "bookingDate": date,
+        "tourID" : id,
         "name": data.fullName,
         "sex": data.sex,
         "dob": data.birthDate,
@@ -100,19 +128,15 @@ const MakeBookingScreen = () => {
         .catch(error => console.log('error', error));
   }
 
-  const addChildren = (data, date) => {
+  const updateImage = (id, url) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
+    
     var raw = JSON.stringify({
-      "bookingEmail": email,
-      "bookingDate": date,
-      "name": data.fullName,
-      "sex": data.sex,
-      "dob": data.birthDate,
-      "birthCert": data.selectedFile,
+      _id: id,
+      birthCert: url
     });
-
+    
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -120,11 +144,55 @@ const MakeBookingScreen = () => {
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/children/add", requestOptions)
-      .then(response => response.text())
+    console.log("id" + id)
+    console.log("url" + url)
+    
+    fetch(`http://localhost:3001/children/update-imageURL?_id=${id}&birthCert=${url}`, requestOptions)
+      .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   }
+
+  const addChildren = async (data, date) => {
+    try {
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+  
+      const raw = JSON.stringify({
+        bookingEmail: email,
+        bookingDate: date,
+        tourID: id,
+        name: data.fullName,
+        sex: data.sex,
+        dob: data.birthDate,
+        birthCert: "test",
+      });
+  
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+  
+      const response = await fetch("http://localhost:3001/children/add", requestOptions);
+      const result = await response.json();
+  
+      if (response.ok) {
+        const childId = result.children._id
+        console.log(data.selectedFile)
+        const url = await uploadImage(data.selectedFile);
+        updateImage(childId, url);
+        
+      } else {
+        console.error("Failed to add children:", result.error);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+  
+  
 
   const addAll = () => {
     const date = new Date();
@@ -200,6 +268,7 @@ const MakeBookingScreen = () => {
     return (
       <>
         {customerBoxes.map((box, index) => (
+          <>
           <CustomerBox
             key={index}
             type="both"
@@ -208,6 +277,7 @@ const MakeBookingScreen = () => {
             index={index}
             onDataChange={handleCustomerInfoChange}
           />
+          </>
         ))}
       </>
     );
@@ -232,7 +302,7 @@ const MakeBookingScreen = () => {
       redirect: 'follow'
     };
   
-    fetch(`http://localhost:3001/tour/place?id=${id}`, requestOptions)
+    fetch(`http://localhost:3001/tour/place?id=${encodeURIComponent(id)}`, requestOptions)
     .then(response => response.json())
     .then(data => {
       setTour(data);
@@ -263,7 +333,7 @@ const MakeBookingScreen = () => {
 
   return (
     <div>
-      <div className={styles.title}>BOOKING TOUR</div>
+      <div className={styles.title} key="bookingTour">BOOKING TOUR</div>
       <div
         style={{
           display: "flex",

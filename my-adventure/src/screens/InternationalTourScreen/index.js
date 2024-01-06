@@ -1,76 +1,195 @@
-import React from "react";
-
-import Header from "../../component/Header";
-import MainTabbar from "../../component/MainTabbar/MainTabbar";
+import React, { useEffect, useState } from "react";
 import DestinationSection from "../../component/DestinationSection/DestinationSection";
 import Footer from "../../component/Footer/Footer";
 
-import Illustration01 from "../../assets/images/illustration/illustration01.png";
-import Illustration02 from "../../assets/images/illustration/illustration02.png";
-import Illustration03 from "../../assets/images/illustration/illustration03.png";
-import Illustration04 from "../../assets/images/illustration/illustration04.png";
-
 import styles from "./styles.module.css";
 
-class InternationalTourScreen extends React.Component {
-  render() {
-    let images = [
-      Illustration01,
-      Illustration02,
-      Illustration03,
-      Illustration04,
-    ];
+const InternationalTourScreen = () => {
+  const [asiaDestinations, setAsiaDestinations] = useState()
+  const [europeDestinations, setEuropeDestinations] = useState()
+  const [australiaDestinations, setAustraliaDestinations] = useState()
+
+  const [resultData, setResultData] = useState([])
+
+  const [asiaDestinationsImage, setAsiaDestinationsImage] = useState()
+  const [europeDestinationsImage, setEuropeDestinationsImage] = useState()
+  const [australiaDestinationsImage, setAustraliaDestinationsImage] = useState()
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect (() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    fetch("http://localhost:3001/tour/international-tours/asia-destinations", requestOptions)
+      .then(response => response.json())
+      .then(result => setAsiaDestinations(result))
+      .catch(error => console.log('error', error));
+  }, []);
+
+
+  useEffect (() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    fetch("http://localhost:3001/tour/international-tours/europe-destinations", requestOptions)
+      .then(response => response.json())
+      .then(result => setEuropeDestinations(result))
+      .catch(error => console.log('error', error));
+  }, []);
+
+  useEffect (() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    fetch("http://localhost:3001/tour/international-tours/australia-destinations", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setAustraliaDestinations(result)
+        setResultData(result.data)
+      })
+      .catch(error => console.log('error', error));
+  }, []);
+
+
+  useEffect(() => {
+    console.log("result data", resultData)
+  }, [resultData])
+
+
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+  
+        const fetchedImageList = [];
+  
+        for (const destination of asiaDestinations) {
+          const response = await fetch(`http://localhost:3001/image/place?name=${destination}`, requestOptions)
+          const result = await response.json();
+          fetchedImageList.push(result);
+        }
+  
+        setAsiaDestinationsImage(fetchedImageList);
+
+      } catch (error) {
+        console.log('Error:', error);
+        setAsiaDestinationsImage([]);
+      }
+    }
+
+
+    fetchImage()
+  }, [asiaDestinations])
+
+
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+  
+        const fetchedImageList = [];
+  
+        for (const destination of europeDestinations) {
+          const response = await fetch(`http://localhost:3001/image/place?name=${destination}`, requestOptions)
+          const result = await response.json();
+          fetchedImageList.push(result);
+        }
+  
+        setEuropeDestinationsImage(fetchedImageList);
+      } catch (error) {
+        console.log('Error:', error);
+        setEuropeDestinationsImage([]);
+      }
+    }
+
+
+    fetchImage()
+  }, [europeDestinations])
+
+
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+  
+        const fetchedImageList = [];
+  
+        for (const destination of australiaDestinations) {
+          const response = await fetch(`http://localhost:3001/image/place?name=${destination}`, requestOptions)
+          const result = await response.json();
+          fetchedImageList.push(result);
+        }
+  
+        setAustraliaDestinationsImage(fetchedImageList);
+      } catch (error) {
+        console.log('Error:', error);
+        setAustraliaDestinationsImage([]);
+      }
+    }
+
+
+    fetchImage()
+  }, [australiaDestinations])
+
     return (
       <div>
-        {/* International Tour Intro */}
-        <div className={styles.internationalTourIntroBackground}>
-          <div className={styles.internationalTourIntroLayer}>
-            <h1 className={styles.internationalTourIntroText}>
-              INTERNATIONAL TOURS
-            </h1>
+        {/* Viet Nam Tour Intro */}
+        <div className={styles.vnTourIntroBackground}>
+          <div className={styles.vnTourIntroLayer}>
+            <h1 className={styles.vnTourIntroText}>INTERNATIONAL TOURS</h1>
           </div>
         </div>
-        {/* DESTINATIONS IN ASIA */}
+        {/* DESTINATIONS IN ASIA VIETNAM */}
         <DestinationSection
           text={
-            "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Northern Vietnam."
+            "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Asia."
           }
-          img={images}
+          img={asiaDestinationsImage}
         >
           {"DESTINATIONS IN ASIA"}
         </DestinationSection>
-        {/* DESTINATIONS IN EUROPE */}
+        {/* DESTINATIONS IN EUROPE VIETNAM */}
         <DestinationSection
           text={
-            "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Northern Vietnam."
+            "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Europe."
           }
-          img={images}
+          img={europeDestinationsImage}
         >
           {"DESTINATIONS IN EUROPE"}
         </DestinationSection>
-        {/* DESTINATIONS IN SOUTH AUSTRA */}
+        {/* DESTINATIONS IN AUSTRALIA VIETNAM */}
         <DestinationSection
           text={
-            "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Northern Vietnam."
+            "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Australia."
           }
-          img={images}
+          img={australiaDestinationsImage}
         >
-          {"DESTINATIONS IN SOUTH AUSTRA"}
+          {"DESTINATIONS IN AUSTRALIA"}
         </DestinationSection>
-        {/* MYADVENTURE’S TOP DESTINATIONS */}
-        <DestinationSection
-          text={
-            "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Northern Vietnam."
-          }
-          img={images}
-        >
-          {"MYADVENTURE’S TOP DESTINATIONS"}
-        </DestinationSection>
+
+
         {/* Footer */}
         <Footer />
       </div>
     );
-  }
 }
 
 export default InternationalTourScreen;
