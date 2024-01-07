@@ -46,3 +46,53 @@
     font-size: 3vh;
     font-weight: 500;
 }
+
+@media screen and (max-width: 1025px) and (min-width: 740px) {
+    .globe {
+        display: none;
+    }
+    .mainView {
+        width: 100%;
+        align-items: center;
+        padding: 2vh;
+    }
+    .text {
+        font-size: 5vh;
+        margin-top: 10vh;
+        text-align: center;
+    }
+    .subText {
+        font-size: 2.5vh;
+    }
+    .buttonContainer {
+        padding: 1vh;
+    }
+    .button {
+        font-size: 2vh;
+    } 
+}
+
+@media screen and (max-width: 739px) and (min-width: 0px) {
+    .globe {
+        display: none;
+    }
+    .mainView {
+        width: 100%;
+        align-items: center;
+        padding: 2vh;
+    }
+    .text {
+        font-size: 5vh;
+        margin-top: 10vh;
+        text-align: center;
+    }
+    .subText {
+        font-size: 2.5vh;
+    }
+    .buttonContainer {
+        padding: 1vh;
+    }
+    .button {
+        font-size: 2vh;
+    } 
+}
