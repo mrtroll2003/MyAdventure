@@ -349,29 +349,23 @@ const MakeBookingScreen = () => {
         <div className={styles.timeAndPlaceContainer}>
           <div className={styles.timeContainer}>
             Time Start:
-            <span
-              style={{
-                fontWeight: "normal",
-                fontSize: "1.4vw",
-                paddingLeft: "25%",
-              }}
+            
+          </div>
+          <span
+              className={styles.time}
             >
               {formatDate(tour.departureDate)} - {formatDate(tour.returnDate)}
             </span>
-          </div>
 
           <div className={styles.spaceContainer}>
             Departure and Destination:
-            <span
-              style={{
-                fontWeight: "normal",
-                fontSize: "1.4vw",
-                paddingLeft: "3%",
-              }}
+            
+          </div>
+          <span
+              className={styles.time}
             >
               {tour.departure + " - " + tour.destination}
             </span>
-          </div>
         </div>
         <img src={GlobeIMG} alt="globe.png" className={styles.globe}></img>
       </div>
@@ -397,7 +391,7 @@ const MakeBookingScreen = () => {
           </div>
         </div>
         <div className={styles.text1}>
-          <div style={{ color: "#7C8DB0", fontSize: "1.2vw", marginTop: "2vh" }}>
+          <div style={{ color: "#7C8DB0", fontSize: "2vh", marginTop: "2vh" }}>
             You will be received all e-confirmation mail/ tickets/ vouchers from
             this booking to contact
           </div>
@@ -412,7 +406,7 @@ const MakeBookingScreen = () => {
               alt="note"
               style={{ width: "1.5vw", height: "auto", marginLeft: "2vw" }}
             ></img>
-            <div style={{ marginLeft: "2vw", fontSize: "1.2vw" }}>
+            <div className={styles.notif}>
               Almost done! Just fill in the
               <span className={styles.redStar}> * </span>
               required info
@@ -422,7 +416,7 @@ const MakeBookingScreen = () => {
         <div className={styles.bookingForm}>
           <div className={styles.heading1}>1. Contact Information</div>
           <div className={styles.horizontalInfo}>
-            <div style={{width: "20%"}}>Your good name<span style={{color:"red"}}>*</span>:</div>
+            <div className={styles.leftText}>Your good name<span style={{color:"red"}}>*</span>:</div>
             <input
                 value={name}
                 onChange={handleNameChange}
@@ -432,7 +426,7 @@ const MakeBookingScreen = () => {
           </div>
 
           <div className={styles.horizontalInfo}>
-            <div style={{width: "20%"}}>Phone number<span style={{color:"red"}}>*</span>:</div>
+            <div className={styles.leftText}>Phone number<span style={{color:"red"}}>*</span>:</div>
             <input
                 value={phoneNumber}
                 onChange={handlePhoneNumberChange}
@@ -442,7 +436,7 @@ const MakeBookingScreen = () => {
           </div>
 
           <div className={styles.horizontalInfo}>
-            <div style={{width: "20%"}}>Your nationality<span style={{color:"red"}}>*</span>:</div>
+            <div className={styles.leftText}>Your nationality<span style={{color:"red"}}>*</span>:</div>
             <input
                 value={nationality}
                 onChange={handleNationalityChange}
@@ -452,7 +446,7 @@ const MakeBookingScreen = () => {
           </div>
 
           <div className={styles.horizontalInfo}>
-            <div style={{width: "20%"}}>Your address<span style={{color:"red"}}>*</span>:</div>
+            <div className={styles.leftText}>Your address<span style={{color:"red"}}>*</span>:</div>
             <input
                 value={address}
                 onChange={handleAddressChange}
