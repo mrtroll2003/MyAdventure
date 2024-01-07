@@ -2763,6 +2763,7 @@
   dependencies:
     "@types/react" "*"
 
+
 "@types/react@*", "@types/react@^16.8.0 || ^17.0.0 || ^18.0.0":
   "integrity" "sha512-24xqse6+VByVLIr+xWaQ9muX1B4bXJKXBbjszbld/UEDslGLY53+ZucF44HCmLbMPejTzGG9XgR+3m2/Wqu1kw=="
   "resolved" "https://registry.npmjs.org/@types/react/-/react-18.2.25.tgz"
@@ -4326,7 +4327,6 @@
   "integrity" "sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg=="
   "resolved" "https://registry.npmjs.org/clsx/-/clsx-2.1.0.tgz"
   "version" "2.1.0"
-
 "co@^4.6.0":
   "integrity" "sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ=="
   "resolved" "https://registry.npmjs.org/co/-/co-4.6.0.tgz"
@@ -6411,6 +6411,7 @@
     "call-bind" "^1.0.2"
     "get-intrinsic" "^1.1.1"
 
+
 "get-user-locale@^2.2.1":
   "integrity" "sha512-VEvcsqKYx7zhZYC1CjecrDC5ziPSpl1gSm0qFFJhHSGDrSC+x4+p1KojWC/83QX//j476gFhkVXP/kNUc9q+bQ=="
   "resolved" "https://registry.npmjs.org/get-user-locale/-/get-user-locale-2.3.1.tgz"
@@ -6418,7 +6419,6 @@
   dependencies:
     "@types/lodash.memoize" "^4.1.7"
     "lodash.memoize" "^4.1.1"
-
 "get-value@^2.0.3", "get-value@^2.0.6":
   "integrity" "sha512-Ln0UQDlxH1BapMu3GPtf7CuYNwRZf2gwCuPqbyG6pB8WfmFpzqcy4xtAaAMUhnNqjMKTiCPZG2oMT3YSx8U2NA=="
   "resolved" "https://registry.npmjs.org/get-value/-/get-value-2.0.6.tgz"
@@ -8366,6 +8366,7 @@
   "version" "4.0.8"
 
 "lodash.memoize@^4.1.1", "lodash.memoize@^4.1.2":
+
   "integrity" "sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag=="
   "resolved" "https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz"
   "version" "4.1.2"
@@ -10751,7 +10752,7 @@
     "get-user-locale" "^2.2.1"
     "prop-types" "^15.6.0"
     "tiny-warning" "^1.0.0"
-
+    
 "react-chartjs-2@^5.2.0":
   "integrity" "sha512-98iN5aguJyVSxp5U3CblRLH67J8gkfyGNbiK3c+l1QI/G4irHMPQw44aEPmjVag+YKTyQ260NcF82GTQ3bdscA=="
   "resolved" "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-5.2.0.tgz"
@@ -10815,6 +10816,7 @@
   dependencies:
     "shell-quote" "^1.6.1"
     "ws" "^7"
+
 
 "react-dom@*", "react-dom@^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18", "react-dom@^15.5.x || ^16.x || ^17.x || ^18.x", "react-dom@^16.3.3 || ^17.0.0 || ^18.0.0", "react-dom@^16.8.0 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.9.0 || ^17 || ^18", "react-dom@^18.0.0", "react-dom@^18.2.0", "react-dom@>= 16.3.0", "react-dom@>=16.0.0", "react-dom@>=16.11.0", "react-dom@>=16.8", "react-dom@>=16.9.0", "react-dom@>=18.0.0":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
