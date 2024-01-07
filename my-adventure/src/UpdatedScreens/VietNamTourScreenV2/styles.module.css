@@ -41,6 +41,14 @@
     align-items: center;
     justify-content: center;
 }
+.filterDate {
+    font-size: 1.2vw; 
+    font-weight: 500;
+}
+.filterImage {
+    height: 1.2vw;
+    margin-left: 1vw;
+}
 .filterBox {
     border: 1.5px solid black;
     border-radius: 10px;
@@ -53,6 +61,11 @@
     margin-right: 10%;
     margin-top: 0.7vw;
     padding-left: 1vw;
+}
+.buttonInfo {
+    padding: 0 5vw;
+    margin: 0.8vw 0;
+    font-size: 1.2vw;
 }
 .button {
     margin-left: 5vw;
@@ -71,6 +84,7 @@
     margin-top: 2.5%;
     font-size: 1.2vw,
 }
+
 
 .highlight {
     color:blue;
@@ -97,3 +111,74 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     z-index: 9999;
   }
+
+@media screen and (max-width: 915px) {
+    .vnTourIntroText {
+        font-size: 5.5vh;
+    }
+    .tourContainer {
+        margin-left: 3%;
+        grid-template-columns: repeat(2, 1fr); /* Set the number of columns */
+    }
+    .filterBox {
+        width: 15%;
+        height: 8%;
+        font-size: 2vw;
+        font-weight: 500;
+        min-width: 25vh;
+        margin-right: 10%;
+        margin-top: 0.7vw;
+        padding-left: 1vw;
+    }
+    .filterDate {
+        margin-left: 25px;
+        font-size: 2vw; 
+    }
+    .filterImage {
+        height: 1.75vw;
+    }
+    .buttonInfo {
+        font-size: 1.75vw;
+    }
+    .button {
+        width: fit-content  ;
+        font-size: 2.4vw;
+    }
+}
+@media screen and (max-width: 540px) {
+    .vnTourIntroBackground {
+        margin-top: 30px;
+        height: 35vh;
+    }
+    .vnTourIntroText {
+        font-size: 30px;
+    }
+    .tourContainer {
+        margin-left: 10%;
+        grid-template-columns: repeat(1, 1fr); /* Set the number of columns */
+    }
+    .filterBox {
+        width: 10%;
+        height: 5%;
+        font-size: 2.8vw;
+        font-weight: 500;
+        min-width: 15vh;
+    }
+    .filterDate {
+        font-size: 2.3vw; 
+    }
+    .filterImage {
+        height: 2.3vw;
+    }
+    .buttonInfo {
+        font-size: 2.3vw;
+    }
+    .button {
+        width: fit-content  ;
+        font-size: 2.8vw;
+    }
+    .comboboxContainer {
+        font-size: 2vw;
+    }
+}
+

@@ -25,8 +25,8 @@
     margin-left: 5%;
     align-self: center;
     box-shadow: 2px 3px gray ;
-    display: flex;
-    flex-direction: column;
+    display: inline-grid;
+    grid-template-columns: auto auto;
 }
 
 .timeContainer {
@@ -34,8 +34,8 @@
     flex-direction: row;
     font-family: "NunitoSans";
     font-weight: bold;
-    margin-top: 3vh;
-    font-size: 20px;
+    margin-top: 7.5%;
+    font-size: 1.4vw;
 }
 
 .timeContainer::before {
@@ -43,13 +43,19 @@
     margin-left: 3%;
     margin-right: 2%;
 }
+.time {
+    font-weight: normal;
+    font-size: 1.4vw;
+    margin-top:7%;
+}
+
 
 .spaceContainer {
     display: flex;
     flex-direction: row;
     font-family: "NunitoSans";
     font-weight: bold;
-    margin-top: 3vh;
+    margin-top: 7%;
     font-size: 1.4vw;
 }
 
@@ -64,7 +70,7 @@
     margin-right: auto;
     width: 70vw;
     height: 15vh;
-    margin-top: 5vh;
+    margin-top: 2vh;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -104,7 +110,10 @@
     margin-top: 2vh;
     height: auto;
 }
-
+.notif {
+    margin-left:2vw; 
+    font-size: 2.1vw;
+}
 .heading1 {
     font-size: 1.5vw;
     margin-top: 3vh;
@@ -113,11 +122,14 @@
 }
 
 .redStar {
+    margin-top: 20px;
     color: red;
-    font-size: 22px;
+    font-size: 17px;
     font-weight: bold;
 }
-
+.leftText {
+    width: 30%;
+}
 .horizontalInfo {
     display: flex;
     flex-direction: row;
@@ -194,7 +206,7 @@ p.verticalInfoStyling::after {
     margin-top: 5vh;
     border: 0.2vh solid black;
     font-family: "NunitoSans";
-    font-size: 1.2vw;
+    font-size: 1.4vw;
     padding: 2vh 2vw;
     margin-bottom: 5vh;
 }
@@ -211,4 +223,152 @@ p.verticalInfoStyling::after {
     background-color: #5CD6C0;
     border-radius: 10px;
     box-shadow: 1px 1px gray;
+}
+@media screen and (max-width: 1195px) {
+    .title {
+        margin-top: 8vh;
+        font-size: 4.2vw;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .globe {
+        visibility:hidden;
+        width: 0;
+    }
+    .timeAndPlaceContainer {
+        width: 70vw;
+        height: 18vh;
+    }
+    .timeContainer {
+        display: flex;
+        flex-direction: row;
+        font-family: "NunitoSans";
+        font-weight: bold;
+        margin-top: 5%;
+        font-size: 1.6vw;
+    }
+    .spaceContainer {
+        display: flex;
+        flex-direction: row;
+        font-family: "NunitoSans";
+        font-weight: bold;
+        margin-top: 5%;
+        font-size: 1.6vw;
+    }
+    .time {
+        font-weight: normal;
+        font-size: 1.6vw;
+        margin-top:5%;
+    }
+    .note {
+        width: 70vw;
+        height: 6vh;
+        border: 0.2vh solid black;
+        border-radius: 2vh;
+        align-items: center;
+    }
+    .notif {
+        font-size: 1.9vh;
+    }
+    .heading1 {
+        font-size: 1.9vw;
+    }
+    .leftText {
+        font-size: 1.7vh;
+    }
+    .inputStyle {
+        font-size: 1.6vh;
+        padding: 0.5vh 1vw;
+    }
+    .addButton {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3vh;
+        width:6%;
+    }
+    .notionSectionContainer {
+        font-family: "NunitoSans";
+        font-size: 1.9vh;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        height: 30vh;
+    }
+    .textBox {
+        font-size: 1.6vh;
+    }
+    .submitButton {
+        font-size: 1.8vw;
+    }
+}
+@media screen and (max-width: 690px) {
+    .title {
+        margin-top: 18%;
+        font-size: 4.2vw;
+    }
+    .timeAndPlaceContainer {
+        width: 70vw;
+        height: 18vh;
+    }
+    .timeContainer {
+        display: flex;
+        flex-direction: row;
+        font-family: "NunitoSans";
+        font-weight: bold;
+        margin-top: 5%;
+        font-size: 1.9vw;
+    }
+    .spaceContainer {
+        display: flex;
+        flex-direction: row;
+        font-family: "NunitoSans";
+        font-weight: bold;
+        margin-top: 5%;
+        font-size: 1.9vw;
+    }
+    .time {
+        font-weight: normal;
+        font-size: 1.9vw;
+        margin-top:5%;
+    }
+    .accountBox {
+        height: 10vh;
+        margin-top: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: 0.2vh solid black;
+    }
+    .note {
+        width: 70vw;
+        height: 6vh;
+        border: 0.2vh solid black;
+        border-radius: 2vh;
+        align-items: center;
+    }
+    .notif {
+        font-size: 1.9vh;
+    }
+    .heading1 {
+        font-size: 2.2vw;
+    }
+    .leftText {
+        width: 48%;
+    }
+    .inputStyle {
+        font-size: 1.6vh;
+        padding: 0.5vh 1vw;
+    }
+    .addButton {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3vh;
+        width:6%;
+    }
+    .textBox {
+        font-size: 1.9vh;
+    }
+    .submitButton {
+        font-size: 1.8vw;
+    }
 }

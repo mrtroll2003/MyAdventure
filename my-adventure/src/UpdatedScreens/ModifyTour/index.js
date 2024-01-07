@@ -175,7 +175,7 @@ const ModifyTour = (props) => {
   return (
     <>
       <>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div className={styles.introBackground}>
         {/* Left background */}
         <div
           className={styles.halfIntroBackground}
@@ -203,22 +203,19 @@ const ModifyTour = (props) => {
         }}
       >
         <h1
-          className={styles.titleText}
-          style={{ fontSize: "3.5vw", marginTop: "2.5%", fontWeight: "800" }}
+          className={styles.titleMainText}
         >
           Tour details
         </h1>
         <h2
-          className={styles.titleText}
-          style={{ fontSize: "2vw", margin: "0px", fontWeight: "600" }}
+          className={styles.titleTourText}
         >
           {tour.departure}
           {" - "}
           {tour.destination}
         </h2>
         <h3
-          className={styles.titleText}
-          style={{ fontSize: "1.5vw", margin: "0px", fontWeight: "400" }}
+          className={styles.titleTimeText}
         >
           {formatDate(tour.departureDate)}
           {" - "}
