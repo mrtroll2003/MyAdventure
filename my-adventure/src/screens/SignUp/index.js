@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import Header from '../../component/Header'
-import Tabbar from '../../component/Tabbar/Tabbar'
 import GlobeImg from '../../assets/images/globe.png'
-import GoogleIcon from '../../assets/icons/google.png'
 import styles from './styles.module.css'
 import {motion} from "framer-motion"
 import { useNavigate } from 'react-router-dom'
@@ -61,9 +58,6 @@ const SignUp = () => {
       setShowMessage(true);
       return;
     }
-    
-
-  
     const data = {
       email: email,
       password: password,
