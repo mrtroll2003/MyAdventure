@@ -167,9 +167,9 @@ const  InternationalTourScreenCompany = () =>{
               whileTap={{ scale: 0.9 }}
               onClick={handleSortOrderChange}
             >
-              <div style={{ fontSize: "1.2vw", fontWeight: "500"}}>Filter Date</div>
+              <div className={styles.filterDate}>Filter Date</div>
               <img
-                style={{ height: "1.2vw", marginLeft: "1vw" }}
+                className={styles.filterImage}
                 src={FilterIC}
                 alt="tick"
               />
@@ -192,11 +192,7 @@ const  InternationalTourScreenCompany = () =>{
           </div>
       
         <div
-        style={{
-          padding: "0 5vw",
-          margin: "0.8vw 0",
-          fontSize: "1.2vw",
-        }}
+        className={styles.buttonInfo}
       >
         If you want to make a new tour in the future please click below button!
       </div>
