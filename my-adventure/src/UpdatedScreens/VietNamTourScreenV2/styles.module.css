@@ -84,6 +84,34 @@
     margin-top: 2.5%;
     font-size: 1.2vw,
 }
+
+
+.highlight {
+    color:blue;
+    font-weight: bold;
+    
+ }
+
+ .calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+ 
+  .popup {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+  }
+
 @media screen and (max-width: 915px) {
     .vnTourIntroText {
         font-size: 5.5vh;
@@ -153,3 +181,4 @@
         font-size: 2vw;
     }
 }
+

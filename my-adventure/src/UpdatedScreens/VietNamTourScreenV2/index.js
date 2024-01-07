@@ -2,12 +2,13 @@ import React, { useState, useEffect} from "react";
 import { motion } from "framer-motion";
 import Footer from "../../component/Footer/Footer";
 import FilterIC from "../../assets/icons/filter.png";
-
-
 import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
 import RecommendedTripCard from "../../component/RecommendedTripCard/RecommendedTripCard";
 import { formatDate } from "../../constant/formatDate";
+import 'react-calendar/dist/Calendar.css';
+import Calendar from 'react-calendar';
+import moment from 'moment'
 
 const  VietNamTourScreenCompany = () =>{
 
@@ -21,6 +22,22 @@ const  VietNamTourScreenCompany = () =>{
   const [selectedDeparture, setSelectedDeparture] = useState("all departure");
   const [sortOrder, setSortOrder] = useState('asc');
   const [type, setType] = useState("On Progress");
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [dates, setDates] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [hoveredDate, setHoveredDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
+  const handleDateHover = (date) => {
+    setHoveredDate(date);
+  };
+
+  useEffect (() => {
+    console.log("date hovered  ", hoveredDate)
+  }, [hoveredDate])
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,13 +55,15 @@ const  VietNamTourScreenCompany = () =>{
       .catch(error => console.log('error', error));
   }, [tours]);
 
+  useEffect(() => {
+    console.log("datesvsvbaivwav" + dates)
+  }, [dates])
 
   useEffect(() => {
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
-
     fetch("http://localhost:3001/tour/vietnam-tours/departures", requestOptions)
     .then(response => response.json())
     .then(result => setDepartures(result))
@@ -87,7 +106,6 @@ const  VietNamTourScreenCompany = () =>{
       .catch(error => console.log('error', error));
   }, [ratings]);
 
-
   const renderImage = (trip) => {
     const image = images.find(image => image.name === trip.destination);
     if (image && image.images && image.images.length > 0) {
@@ -110,7 +128,6 @@ const  VietNamTourScreenCompany = () =>{
     const url = `/tour-detail?id=${encodeURIComponent(id)}`;
     navigate(url);
   };
-
 
   const handleSortOrderChange = () => {
     const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
@@ -162,6 +179,33 @@ const  VietNamTourScreenCompany = () =>{
       navigate('/company/create-vietnam-tours')
     }
 
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+  
+    fetch("http://localhost:3001/tour/vietnam-tours/date", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setDates(result);
+        setLoading(false);
+      })
+      .catch(error => console.log('error', error));
+  }, []);
+  
+  const tileClassName = ({ date }) => {
+    if (loading) {
+      return '';
+    }
+  
+    const formattedDate = moment(date).startOf('day').toDate();
+  
+    if (dates.some((tourDate) => moment(tourDate).startOf('day').toDate().getTime() === formattedDate.getTime())) {
+      return styles.highlight;
+    }
+  };
+
     return (
       <div style={{flexDirection: "column", display: "flex"}}>
         {/* Viet Nam Tour Intro */}
@@ -170,9 +214,6 @@ const  VietNamTourScreenCompany = () =>{
             <h1 className={styles.vnTourIntroText}>OUR VIETNAM TOURS</h1>
           </div>
         </div>
-
-
-
         <div style={{display:"flex",flexDirection:"row", alignItems: "center", justifyContent: "space-between", padding: "2vw 5vw"}}>
           <div className={styles.displayHorizon}>
           <div className={styles.comboboxContainer}>
@@ -247,6 +288,17 @@ const  VietNamTourScreenCompany = () =>{
           + Create a new tour
       </motion.button>
 
+      <div className = {styles.calendar}>
+      <Calendar
+          style={{ height: 500 }}
+          onChange={handleDateChange}
+          value={selectedDate}
+          tileClassName={tileClassName}
+          onMouseEnter={(date) => handleDateHover(date)}
+          onMouseLeave={() => handleDateHover(null)}
+        >
+      </Calendar>
+    </div>
 
       <div className={styles.tourContainer}>
         {sortedTours
