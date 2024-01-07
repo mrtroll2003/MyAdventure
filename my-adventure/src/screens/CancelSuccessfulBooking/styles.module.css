@@ -40,11 +40,23 @@
     padding: 2% 10%;
 }
 
-.title {
+.title1 {
     text-transform: uppercase;
     text-align: center;
     font-weight: bolder;
     font-size: 5vh;
+}
+.title2 {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 4vh;
+}
+.title3 {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 3vh;
 }
 .statusContainer {
     align-self: center;
@@ -106,4 +118,164 @@
     margin-bottom: 2vw;
     color: red;
     font-weight: bold;
+}
+
+/* Tablet: width >= 740px && width <= 1025px */
+@media screen and (max-width: 1025px) and (min-width: 740px) {
+    .hi {
+        font-size: 3vh;
+        color: black;
+        font-weight: bold;
+    }
+    .welcome {
+        font-size: 2vh;
+        margin-top: 2vh;
+        margin-left: 5%;
+    } 
+    .title1 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 2.5vh;
+    }
+    .title2 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 2vh;
+    }
+    .title3 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 1.75vh;
+    }
+    .statusContainer {
+        align-self: center;
+        text-align: center;
+        width: 40%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        font-size: 2vh;
+        margin-top: 2vh;
+    }
+    .warnings {
+        text-transform: capitalize;
+        text-align: left;
+        font-weight: bold;
+        color:red;
+        font-size: 2.5vh;
+        padding: 20px 0px;
+    }
+    .caution {
+        text-align: left;
+        font-size: 1.5vh;
+        margin-bottom: 20px;
+    }
+    .message {
+        font-size: 1.5vh;
+        margin-bottom: 2vw;
+        color: red;
+        font-weight: bold;
+    }
+    .infoBox {
+        font-size: 2vh;
+        font-weight:bold;
+        text-transform:capitalize;
+        margin-bottom: 20px;
+    }
+    .box {
+        border: 1px solid black;
+        width: 50vw;
+        height: 3vh;
+        border-radius: 0.5vw;
+        font-size: 1.75vh;
+        padding-left: 1vw;
+        float:right;
+    }
+    .button {
+        font-size: 2vh;
+        color: white;
+        font-weight: bold;
+    }
+}
+
+/* Mobile: width < 740px */
+@media screen and (max-width: 739px) { 
+    .hi {
+        font-size: 3vh;
+        color: black;
+        font-weight: bold;
+    }
+    .welcome {
+        font-size: 2vh;
+        margin-top: 2vh;
+        margin-left: 5%;
+    } 
+    .title1 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 2.5vh;
+    }
+    .title2 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 2vh;
+    }
+    .title3 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 1.75vh;
+    }
+    .statusContainer {
+        align-self: center;
+        text-align: center;
+        width: 40%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        font-size: 2vh;
+        margin-top: 2vh;
+    }
+    .warnings {
+        text-transform: capitalize;
+        text-align: left;
+        font-weight: bold;
+        color:red;
+        font-size: 2.5vh;
+        padding: 20px 0px;
+    }
+    .caution {
+        text-align: left;
+        font-size: 1.5vh;
+        margin-bottom: 20px;
+    }
+    .message {
+        font-size: 1.5vh;
+        margin-bottom: 2vw;
+        color: red;
+        font-weight: bold;
+    }
+    .infoBox {
+        font-size: 2vh;
+        font-weight:bold;
+        text-transform:capitalize;
+        margin-bottom: 20px;
+    }
+    .box {
+        border: 1px solid black;
+        width: 50vw;
+        height: 3vh;
+        border-radius: 0.5vw;
+        font-size: 1.75vh;
+        padding-left: 1vw;
+        float:right;
+    }
+    .button {
+        font-size: 2vh;
+        color: white;
+        font-weight: bold;
+    }
 }
