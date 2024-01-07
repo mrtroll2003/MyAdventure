@@ -147,8 +147,8 @@ const DestinationDetail = () => {
         </div>
       </div>
       {/* Some text */}
-      <div style={{ marginLeft: "5%", marginTop: "2.5%", fontSize: "22px" }}>
-        We introduce you all tours that have the destination is {destination}!
+      <div className={styles.introLine}>
+        We introduce you all tours that have the destination in  {destination}!
       </div>
       {/* Filter section */}
       <div
@@ -183,9 +183,9 @@ const DestinationDetail = () => {
           whileTap={{ scale: 0.9 }}
           onChange={handleSortOrderChange}
         >
-          <div style={{ fontSize: "20px" }}>Filter Date</div>
+          <div className={styles.filterDate}>Filter Date</div>
           <img
-            style={{ height: "3vh", marginLeft: "1vw" }}
+            className={styles.filterImage}
             src={FilterIC}
             alt="tick"
           />
