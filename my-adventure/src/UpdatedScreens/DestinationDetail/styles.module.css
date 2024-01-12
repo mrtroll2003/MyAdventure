@@ -28,6 +28,11 @@
     font-weight: bold;
     text-transform: uppercase;
 }
+.introLine {
+    margin-left:5%;
+    margin-top:2.5%; 
+    font-size: 22px;
+}
 .displayHorizon {
     display: flex;
     flex-direction: row;
@@ -43,7 +48,14 @@
     font-weight: 600;
     text-indent: 5%;
 }
-
+.filterDate {
+    font-size: 20px; 
+    font-weight: 500;
+}
+.filterImage {
+    height: 3vh;
+    margin-left: 1vw;
+}
 .tourContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Set the number of columns */
@@ -56,3 +68,58 @@
     flex: 0 0 auto;
     margin-top: 2vw;
   }
+@media screen and (max-width: 915px) {
+    .introBackgroundText {
+        font-size: 60px;
+    }
+    .introBackground {
+        margin-top: 6%;
+        height: 40vh;
+    }
+    .introLine {
+        margin-left:5%;
+        margin-top:2.5%; 
+        font-size: 20px;
+    }
+    .filterBox {
+        width: 27.5%;
+        height: 8%;
+        font-size: 18px;
+    }
+    .filterDate {
+        font-size: 17px; 
+        font-weight: 500;
+    }
+    .filterImage {
+        height: 2.4vh;
+        margin-left: 1vw;
+    }
+    .tourContainer {
+        margin-left: 3%;
+        grid-template-columns: repeat(2, 1fr); /* Set the number of columns */
+    }
+}
+@media screen and (max-width: 600px) {
+    .introBackground {
+        margin-top: 10%;
+        height: 30vh;
+    }
+    .introBackgroundText {
+        font-size: 44px;
+    }
+    .filterBox {
+        width: 35%;
+    }
+    .filterDate {
+        font-size: 15px; 
+        font-weight: 500;
+    }
+    .filterImage {
+        height: 2vh;
+        margin-left: 1vw;
+    }
+    .tourContainer {
+        margin-left: 10%;
+        grid-template-columns: repeat(1, 1fr); /* Set the number of columns */
+    }
+}

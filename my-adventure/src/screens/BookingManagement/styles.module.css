@@ -44,71 +44,11 @@
 }
 
 #bookingManagementBoldStatement {
-    margin-top: 9%;
+    margin-top: 8%;
     text-align: center;
     font-family: 'NunitoSans';
     font-size: 2.5vw;
     font-weight: bolder;
-}
-
-.bookingManagementFilterContainer {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    border: 2px solid red;
-    align-items: center;
-    justify-items: center;
-}
-
-.bookingManagementNormalFont {
-    width: 150px;
-    font-family: 'NunitoSans';
-    font-weight: bolder;
-    font-size: 20px;
-}
-
-.bookingManagementDropDownContainer {
-    display: flex;
-    font-family: 'NunitoSans';
-    font-weight: bolder;
-    font-size: 20px;
-    border: 2px solid black;
-    width: 30%;
-    border-radius: 50px;
-    padding: 0.5%;
-    text-align: left;
-    padding-left: 3%;
-    margin-left: 10%;
-    margin-top: 5%;
-}
-
-#bookingManagementDropDownIcon {
-    position: relative;
-    padding-top: 5px;
-    width: 20px;
-    height: 25px;
-    float: right;
-    left: 55%;
-    top: 0%;
-}
-
-.bookingManagementDropDownMenu {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 10px;
-    margin-top: 40px;
-    left: -33%;
-}
-
-.bookingManagementDropDownMenu li{
-    border: 2px solid black;
-
-}
-
-.bookingManagementUpDownIcon {
-    width: 10%;
-    height: 10px;
 }
 
 .box {
@@ -124,6 +64,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 0 8vw;
+    justify-content: space-between;
+    margin-top: 7vh;
+    margin-bottom: 7vh;
 }
 
 .filterText {
@@ -133,4 +77,76 @@
 .icon {
     height: 3vh;
     margin-left: 1vw;
+}
+
+@media screen and (max-width: 1025px) and (min-width: 740px) {
+    .myadventure {
+        font-size: 3vh;
+        margin-top: 0;
+    }
+    .welcome {
+        font-size: 1.75vh;
+        margin-top: 1vh;
+    }
+    .booking {
+        font-size: 1.75vh;
+    }
+    .content {
+        margin-top: 6vh;
+        width: 100%;
+    }
+    #bookingManagementBoldStatement {
+        font-size: 3vh;
+    }
+    .horizon {
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        padding: 0 5vw;
+    }
+    .box {
+        font-size: 2vh;
+        width: 30vw;
+    }
+    .filterText {
+        font-size: 2vh;
+    }
+    .icon {
+        height: 2.5vh;
+    }
+}
+
+@media screen and (max-width: 739px) and (min-width: 0px) {
+    .myadventure {
+        font-size: 4vh;
+        margin-top: 0;
+    }
+    .welcome {
+        font-size: 2vh;
+        margin-top: 0vh;
+    }
+    .booking {
+        font-size: 2vh;
+    }
+    .content {
+        width: 100%;
+        margin-top: 5vh;
+    }
+    #bookingManagementBoldStatement {
+        font-size: 3vh;
+    }
+    .horizon {
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        padding: 0 5vw;
+    }
+    .box {
+        font-size: 2vh;
+        width: 30vww;
+    }
+    .filterText {
+        font-size: 2vh;
+    }
+    .icon {
+        height: 2.5vh;
+    }
 }

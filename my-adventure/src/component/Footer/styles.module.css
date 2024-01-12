@@ -67,6 +67,24 @@
         margin-right: 5%;
         justify-content: center;
     }
+    #footerBoldText {
+        color: white;
+        font-family: "NunitoSans";
+        font-weight: bolder;
+        font-size: 2vh;
+    }
+    #footerNormalText {
+        color: white;
+        font-size: 1.5vh;
+        margin-top: 5%;
+    }
+    .footerIconAndText {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 2vh;
+    }
 }
 /* Mobile */
 @media screen and (max-width: 739px) {
@@ -87,5 +105,23 @@
         margin-top: 5%;
         margin-right: 5%;
         justify-content: center;
+    }
+    #footerBoldText {
+        color: white;
+        font-family: "NunitoSans";
+        font-weight: bolder;
+        font-size: 2vh;
+    }
+    #footerNormalText {
+        color: white;
+        font-size: 1.5vh;
+        margin-top: 5%;
+    }
+    .footerIconAndText {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 2vh;
     }
 }
