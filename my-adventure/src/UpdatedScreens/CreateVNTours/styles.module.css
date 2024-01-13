@@ -246,3 +246,108 @@
     width: 30vw;
   }
 
+  .priceInputStyle {
+    padding: 0.2vw 1vw;
+    margin-left: 1vw;
+    width: 20vw;
+    border: 0.2vw solid black;
+    border-radius: 0.5vw;
+  }
+
+  @media screen and (max-width: 1025px) and (min-width: 740px) {
+    .vnTourIntroBackground {
+        margin-top: 6vh;
+        height: 25vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .vnTourIntroText {
+        font-size: 45px;
+    }
+    .leftText {
+        font-size: 1.5vh;
+    }
+    .filterBox {
+        font-size: 1.5vh;
+        width: 40vw;
+    }
+    .text {
+        font-size: 2.5vh;
+    }
+    .inputStyle {
+        font-size: 1.5vh;
+        width: 40vw;
+    }
+    .datePicker {
+        font-size: 1.5vh;
+        width: 40vw;
+    }
+    .textareaStyle {
+        margin-left: 10%;
+        width: 80vw;
+        font-size: 1.5vh;
+        height: 30vh;
+    }
+    .price {
+        font-size: 2vh;
+    }
+    .priceInputStyle {
+        padding: 0.2vh 1vw;
+        font-size: 1.5vh;
+    }
+    .submitBtn {
+        font-size: 2vh;
+        margin-top: 2vh;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 739px) and (min-width: 0px) {
+    .vnTourIntroBackground {
+        margin-top: 6vh;
+        height: 25vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .vnTourIntroText {
+        font-size: 30px;
+    }
+    .leftText {
+        font-size: 1.5vh;
+    }
+    .filterBox {
+        font-size: 1.5vh;
+        width: 40vw;
+    }
+    .text {
+        font-size: 2vh;
+    }
+
+    .inputStyle {
+        font-size: 1.5vh;
+        width: 40vw;
+    }
+    .datePicker {
+        font-size: 1.5vh;
+        width: 40vw;
+    }
+    .textareaStyle {
+        margin-left: 10%;
+        width: 80vw;
+        font-size: 1.5vh;
+        height: 25vh;
+    }
+    .price {
+        font-size: 2vh;
+    }
+    .priceInputStyle {
+        padding: 0.2vh 1vw;
+        font-size: 1.5vh;
+    }
+    .submitBtn {
+        font-size: 2vh;
+        margin-top: 1vh;
+        margin-bottom: 0;
+    }
+}

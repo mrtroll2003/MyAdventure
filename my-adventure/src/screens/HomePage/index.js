@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import RecommendedTripCard from "../../component/RecommendedTripCard/RecommendedTripCard";
 import HolidayTypeCircle from "../../component/HolidayTypeCircle/HolidayTypeCircle";
 import Footer from "../../component/Footer/Footer";
@@ -41,15 +41,17 @@ const HomePage = () => {
     setHoveredDate(date);
   };
 
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
     var requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
+      method: "GET",
+      redirect: "follow",
     };
+
   
     fetch("http://localhost:3001/tour/date", requestOptions)
       .then(response => response.json())
@@ -65,55 +67,54 @@ const HomePage = () => {
       method: 'GET',
       redirect: 'follow'
     };
-  
+
     fetch("http://localhost:3001/image", requestOptions)
-      .then(response => response.json())
-      .then(data => {
-        setImages(data)
+      .then((response) => response.json())
+      .then((data) => {
+        setImages(data);
       })
-      .catch(error => console.log('error', error));
-  
+      .catch((error) => console.log("error", error));
+
     fetch("http://localhost:3001/rating", requestOptions)
-      .then(response => response.json())
-      .then(data => {
-        setRatings(data)
+      .then((response) => response.json())
+      .then((data) => {
+        setRatings(data);
       })
-      .catch(error => console.log('error', error));
-  
+      .catch((error) => console.log("error", error));
+
     fetch("http://localhost:3001/tour", requestOptions)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         setTours(data);
       })
-      .catch(error => console.log('error', error));
+      .catch((error) => console.log("error", error));
   }, []);
-  
+
   useEffect(() => {
     const sortedData = tours.sort((a, b) => getRating(b) - getRating(a));
     const top3Trips = sortedData.slice(0, 3);
     setData(top3Trips);
   }, [tours]);
-  
+
   const renderImage = (trip) => {
-    const image = images.find(image => image.name === trip.destination);
+    const image = images.find((image) => image.name === trip.destination);
     if (image && image.images && image.images.length > 0) {
       const imageLink = image.images[0];
       return imageLink;
     }
-    return null; 
+    return null;
   };
-  
+
   const getRating = (trip) => {
-    const rating = ratings.find(rating => rating.name === trip.destination);
+    const rating = ratings.find((rating) => rating.name === trip.destination);
     if (rating) {
       return rating.rating;
     }
     return 0;
   };
 
-
   const handleClick = (id) => {
-    console.log('Clicked:', id);
+    console.log("Clicked:", id);
     const url = `/tour-detail?id=${encodeURIComponent(id)}`;
     navigate(url);
   };
@@ -151,10 +152,20 @@ const HomePage = () => {
     <div>
       <div className={styles.content}>
         <div className={styles.title}>
-          <h2 className={styles.welcome}><mark className={styles.highlight}>Welcome To Our</mark></h2>
-          <h2 className={styles.myadventure}><mark className={styles.highlight}>My Adventure</mark></h2>
-          <h2 className={styles.booking}><mark className={styles.highlight}>Enjoy your dream vacation, discover amazing places at exclusive details</mark></h2>
+          <h2 className={styles.welcome}>
+            <mark className={styles.highlight}>Welcome To Our</mark>
+          </h2>
+          <h2 className={styles.myadventure}>
+            <mark className={styles.highlight}>My Adventure</mark>
+          </h2>
+          <h2 className={styles.booking}>
+            <mark className={styles.highlight}>
+              Enjoy your dream vacation, discover amazing places at exclusive
+              details
+            </mark>
+          </h2>
         </div>
+
         <div style={{marginTop: "20vh"}}>
           {
             localStorage.getItem("isAdmin") === "false" && (
@@ -221,8 +232,10 @@ const HomePage = () => {
           }
           <div className={styles.packageBackground}>
             <div className={styles.packageView}>
-              <div style={{width: "80%"}}>
-                <h1 id={styles.packageIntroduction}>Summer Vacation Packages</h1>
+              <div style={{ width: "80%" }}>
+                <h1 id={styles.packageIntroduction}>
+                  Summer Vacation Packages
+                </h1>
                 <div
                   style={{
                     display: "flex",
@@ -231,13 +244,11 @@ const HomePage = () => {
                   }}
                 >
                   <p id={styles.packageMainText}>
-                    Video provides a powerful way to help you prove your point. When
-                    you click Online Video, you can paste
-                    in the embed code for the video you want to add. You can also
-                    type a keyword to search online for the
-                    video that best fits your document.
+                    Video provides a powerful way to help you prove your point.
+                    When you click Online Video, you can paste in the embed code
+                    for the video you want to add. You can also type a keyword
+                    to search online for the video that best fits your document.
                   </p>
-
                 </div>
                 <h1 id={styles.packagePriceView}>
                   <span id={styles.packagePriceText01}>From Only </span>
@@ -248,12 +259,12 @@ const HomePage = () => {
             </div>
           </div>
           {/*  */}
-          <div style={{marginTop: "10vh"}}>
-            <div className= {styles.boldStatement}>POPULAR TRIP</div>
+          <div className={styles.popularSection}>
+            <div className={styles.boldStatement}>POPULAR TRIP</div>
             <div className={styles.normalText}>
-              Video provides a powerful way to help you prove your point. When you
-              click Online Video, you
-              can paste in the embed code for the video you want to add.
+              Video provides a powerful way to help you prove your point. When
+              you click Online Video, you can paste in the embed code for the
+              video you want to add.
             </div>
             <div className={styles.titleRowView}>
               <p
@@ -267,54 +278,48 @@ const HomePage = () => {
                 Explore unique{" "}
                 <span style={{ color: "#5CD6C0" }}>places to stay</span>
               </p>
-                <motion.button style={{display: "flex", flexDirection: 'row'}} whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }} onClick={() => navigate('/vietnam-tours')}>
-                  <p
-                    style={{
-                      fontSize: "18px",
-                      fontFamily: "NunitoSans",
-                      color: "#A1B0CC",
-                    }}
-                  >
-                    All
-                  </p>
-                  <motion.img
-                    src={ArrowRight}
-                    alt="arrow right"
-                    style={{ alignSelf: "center", width: '1.5vw' }}
-
-                  />
+              <motion.button
+                style={{ display: "flex", flexDirection: "row" }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => navigate("/vietnam-tours")}
+              >
+                <p
+                  style={{
+                    fontSize: "18px",
+                    fontFamily: "NunitoSans",
+                    color: "#A1B0CC",
+                  }}
+                >
+                  All
+                </p>
+                <motion.img
+                  src={ArrowRight}
+                  alt="arrow right"
+                  style={{ alignSelf: "center", width: "1.5vw" }}
+                />
               </motion.button>
             </div>
             {rows.map((row, rowIndex) => (
               <>
-              <div
-                key={rowIndex}
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-evenly",
-                  marginTop: "2%",
-                }}
-              >
-                {row.map((item) => (
-                  <>
-                  <RecommendedTripCard
-                    key={item._id}
-                    image={renderImage(item)}
-                    departure={item.departure}
-                    destination={item.destination}
-                    departure_date={formatDate(item.departureDate)}
-                    return_date={formatDate(item.departureDate)}
-                    rating={getRating(item)}
-                    price={item.price}
-                    onClick={() => handleClick(item._id)}
-                  />
-                  </>
-                ))}
-              </div>
+                <div className={styles.cardTripView} key={rowIndex}>
+                  {row.map((item) => (
+                    <>
+                      <RecommendedTripCard
+                        key={item._id}
+                        image={renderImage(item)}
+                        departure={item.departure}
+                        destination={item.destination}
+                        departure_date={formatDate(item.departureDate)}
+                        return_date={formatDate(item.departureDate)}
+                        rating={getRating(item)}
+                        price={item.price}
+                        onClick={() => handleClick(item._id)}
+                      />
+                    </>
+                  ))}
+                </div>
               </>
-
             ))}
           </div>
           {/* Happy Customer */}
@@ -323,42 +328,45 @@ const HomePage = () => {
               <img
                 src={HappyCustomer01}
                 alt="happy customer 01"
-                style={{ marginLeft: "5%", alignSelf: "flex-end" }}
+                className={styles.happyCustomer01}
               />
               <img
                 src={HappyCustomer02}
                 alt="happy customer 02"
-                style={{ marginLeft: "-5%", alignSelf: "flex-end" }}
+                className={styles.happyCustomer02}
               />
               <div className={styles.happyCustomerContentView}>
                 <h1 id={styles.whiteBoldStatement}>HAPPY CUSTOMERS</h1>
                 <p id={styles.whiteNormalText}>
-                  Video provides a powerful way to help you prove your point. When
-                  you click Online Video, you can paste in the embed code for the
-                  video you want to add. You can also type a keyword to search
-                  online for the video that best fits your document.
+                  Video provides a powerful way to help you prove your point.
+                  When you click Online Video, you can paste in the embed code
+                  for the video you want to add. You can also type a keyword to
+                  search online for the video that best fits your document.
                   <br />
                   <br />
-                  Video provides a powerful way to help you prove your point. When
-                  you click Online Video, you can paste in the embed code for the
-                  video you want to add.
+                  Video provides a powerful way to help you prove your point.
+                  When you click Online Video, you can paste in the embed code
+                  for the video you want to add.
                 </p>
               </div>
             </div>
           </div>
           {/* Holiday Types */}
-          <div style={{marginTop: "10vh"}}>
+          <div className={styles.holidaySection}>
             <div className={styles.boldStatement}>HOLIDAY TYPES</div>
             <div className={styles.normalText}>
-              Video provides a powerful way to help you prove your point. When you
-              click Online Video, you
+              Video provides a powerful way to help you prove your point. When
+              you click Online Video, you
               <br />
               can paste in the embed code for the video you want to add.
             </div>
             {/*  */}
             <div className={styles.holidayTypeView}>
               <HolidayTypeCircle image={CityIcon} holidayTypeName={"City"} />
-              <HolidayTypeCircle image={SafariIcon} holidayTypeName={"Safari"} />
+              <HolidayTypeCircle
+                image={SafariIcon}
+                holidayTypeName={"Safari"}
+              />
               <HolidayTypeCircle image={BeachIcon} holidayTypeName={"Beach"} />
               <HolidayTypeCircle
                 image={AdventureIcon}
@@ -374,7 +382,6 @@ const HomePage = () => {
           <Footer />
         </div>
       </div>
-
     </div>
   );
 };

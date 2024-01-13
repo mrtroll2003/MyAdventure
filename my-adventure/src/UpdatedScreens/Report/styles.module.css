@@ -2,6 +2,11 @@
     font-family: "NunitoSans";
     src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf") format("truetype");
 }
+.mainContent {
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-bottom: 5vw;
+}
 .halfIntroBackground {
     flex: 1;
     height: 50vh;
@@ -28,6 +33,7 @@
     font-family: "NunitoSans";
     text-transform: uppercase;
     text-align: center;
+    font-size: 2.5vw;
 }
 
   .overlay {
@@ -137,9 +143,9 @@
   border-radius: 5px;
   width: 20%;
   height: 10%;
-  font-size: 1.2vw;
+  font-size: 3vh;
   font-weight: 400;
-  min-width: 35vh;
+  min-width: 35vw;
   min-height: 5vh;
   margin-right: 10%;
   padding-left: 1vw;
@@ -162,4 +168,82 @@
   font-size: 1vw;
   margin-left: 1.2vw;
   font-weight: 500;
+}
+/* Tablet: width >= 740px && width <= 1025px */
+@media screen and (max-width: 1025px) and (min-width: 740px) {
+  .mainContent {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: 0vw;
+    margin-top: 10vh;
+  }
+  .titleText {
+    font-family: "NunitoSans";
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 4.5vh;
+  }
+  .sub {
+    font-size: 2vh;
+    margin-left: 1.2vw;
+    font-weight: 500;
+  }
+  .filterBox {
+    border: 1.5px solid black;
+    border-radius: 5px;
+    width: 20%;
+    height: 10%;
+    font-size: 1.5vh;
+    font-weight: 400;
+    min-width: 35vw;
+    min-height: 3vh;
+    margin-right: 10%;
+    padding-left: 1vw;
+  }
+  .title {
+    font-size: 2vh;
+    text-align: center;
+    margin-top: 2vw;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}
+/* Mobile: width < 740px */
+@media screen and (max-width: 739px) {
+  .mainContent {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: 5vw;
+    margin-top: 10vh;
+  }
+  .titleText {
+    font-family: "NunitoSans";
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 5vh;
+  }
+  .sub {
+    font-size: 2vh;
+    margin-left: 1.2vw;
+    font-weight: 500;
+  }
+  .filterBox {
+    border: 1.5px solid black;
+    border-radius: 5px;
+    width: 20%;
+    height: 10%;
+    font-size: 1.5vh;
+    font-weight: 400;
+    min-width: 35vw;
+    min-height: 3vh;
+    margin-right: 10%;
+    padding-left: 1vw;
+  }
+  .title {
+    font-size: 2vh;
+    text-align: center;
+    margin-top: 2vw;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
 }

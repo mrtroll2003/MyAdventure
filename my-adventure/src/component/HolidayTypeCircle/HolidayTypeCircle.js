@@ -18,9 +18,7 @@ class HolidayTypeCircle extends React.Component {
         <div id="circleView">
           <img src={this.props.image} alt="holiday type img" id="circleImage" />
         </div>
-        <h2 style={{ fontFamily: "NunitoSans", fontSize: "3vh", marginTop: "2vh" }}>
-          {this.props.holidayTypeName}
-        </h2>
+        <h2 className="textStyles">{this.props.holidayTypeName}</h2>
       </div>
     );
   }

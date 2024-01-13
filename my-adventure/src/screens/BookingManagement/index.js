@@ -1,136 +1,147 @@
-import React, { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import styles from "./styles.module.css";
-import TourContainerCompany from '../../component/TourContainerCompany'
-import { useLocation, useNavigate } from 'react-router-dom';
+import TourContainer from "../../component/YourBookingContainer";
+import TourContainerCompany from "../../component/TourContainerCompany";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const BookingManagement = () => {
-    const navigate = useNavigate()
-    const [bookings, setBookings] = useState([])
-    const [loading, setLoading] = useState(true);
-    const [adultList, setAdultList] = useState([])
-    const [childList, setChildList] = useState([])
-    const [tours, setTours] = useState([]);
-    const [sortOrder, setSortOrder] = useState('asc');
-    const [selectedStatus , setSelectedStatus] = useState("all bookings")
+  const navigate = useNavigate();
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [adultList, setAdultList] = useState([]);
+  const [childList, setChildList] = useState([]);
+  const [tours, setTours] = useState([]);
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [selectedStatus, setSelectedStatus] = useState("all bookings");
 
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-    useEffect(() => {
-        var requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-          };
-          
-          fetch("http://localhost:3001/booking", requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                setBookings(result)
-                setLoading(false);
-            })
-            .catch(error => console.log('error', error));
-    }, [])
+  useEffect(() => {
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
 
-    useEffect(() => {
-        const fetchAdultLists = async () => {
-          try {
-            const requestOptions = {
-              method: 'GET',
-              redirect: 'follow'
-            };
-    
-            const fetchedAdultLists = [];
-    
-            for (const booking of bookings) {
-              const response = await fetch(`http://localhost:3001/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`, requestOptions);
-              const result = await response.json();
-              fetchedAdultLists.push(result);
-            }
-    
-            setAdultList(fetchedAdultLists);
-          } catch (error) {
-            console.log('Error:', error);
-            setAdultList([]);
-          }
-        };
-    
-        const fetchChildrenLists = async () => {
-          try {
-            const requestOptions = {
-              method: 'GET',
-              redirect: 'follow'
-            };
-    
-            const fetchedChildrenLists = [];
-    
-            for (const booking of bookings) {
-              const response = await fetch(`http://localhost:3001/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`, requestOptions);
-              const result = await response.json();
-              fetchedChildrenLists.push(result);
-            }
-    
-            setChildList(fetchedChildrenLists);
-            console.log('Children Lists:', adultList);
-          } catch (error) {
-            console.log('Error:', error);
-            setChildList([]);
-          }
+    fetch("http://localhost:3001/booking", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        setBookings(result);
+        setLoading(false);
+      })
+      .catch((error) => console.log("error", error));
+  }, []);
+
+  useEffect(() => {
+    const fetchAdultLists = async () => {
+      try {
+        const requestOptions = {
+          method: "GET",
+          redirect: "follow",
         };
 
-        const fetchTourList = async () => {
-            try {
-              const requestOptions = {
-                method: 'GET',
-                redirect: 'follow'
-              };
-      
-              const fetchedTourLists = [];
-      
-              for (const booking of bookings) {
-                const response = await fetch(`http://localhost:3001/tour/place?id=${booking.tourID}`, requestOptions)
-                const result = await response.json();
-                fetchedTourLists.push(result);
-              }
-      
-              setTours(fetchedTourLists);
-              console.log('Tours Lists:', tours);
-            } catch (error) {
-              console.log('Error:', error);
-              setTours([]);
-            }
-          };
-    
-        fetchAdultLists();
-        fetchChildrenLists();
-        fetchTourList();
-      }, [bookings]);
+        const fetchedAdultLists = [];
 
-      const handleSortOrderChange = () => {
-        const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
-        setSortOrder(newSortOrder);
-      };
-
-
-      const filterBookings = bookings
-      .filter((item) => selectedStatus === 'all bookings' || item.status === selectedStatus)
-      .sort((a, b) => {
-        if (sortOrder === 'asc') {
-          return a.date.localeCompare(b.date);
-        } else {
-          return b.date.localeCompare(a.date);
+        for (const booking of bookings) {
+          const response = await fetch(
+            `http://localhost:3001/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
+            requestOptions
+          );
+          const result = await response.json();
+          fetchedAdultLists.push(result);
         }
-      });
 
+        setAdultList(fetchedAdultLists);
+      } catch (error) {
+        console.log("Error:", error);
+        setAdultList([]);
+      }
+    };
 
-    if(loading) {
-        return <div>Loading...</div>
-    }
+    const fetchChildrenLists = async () => {
+      try {
+        const requestOptions = {
+          method: "GET",
+          redirect: "follow",
+        };
+
+        const fetchedChildrenLists = [];
+
+        for (const booking of bookings) {
+          const response = await fetch(
+            `http://localhost:3001/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
+            requestOptions
+          );
+          const result = await response.json();
+          fetchedChildrenLists.push(result);
+        }
+
+        setChildList(fetchedChildrenLists);
+        console.log("Children Lists:", adultList);
+      } catch (error) {
+        console.log("Error:", error);
+        setChildList([]);
+      }
+    };
+
+    const fetchTourList = async () => {
+      try {
+        const requestOptions = {
+          method: "GET",
+          redirect: "follow",
+        };
+
+        const fetchedTourLists = [];
+
+        for (const booking of bookings) {
+          const response = await fetch(
+            `http://localhost:3001/tour/place?id=${booking.tourID}`,
+            requestOptions
+          );
+          const result = await response.json();
+          fetchedTourLists.push(result);
+        }
+
+        setTours(fetchedTourLists);
+        console.log("Tours Lists:", tours);
+      } catch (error) {
+        console.log("Error:", error);
+        setTours([]);
+      }
+    };
+
+    fetchAdultLists();
+    fetchChildrenLists();
+    fetchTourList();
+  }, [bookings]);
+
+  const handleSortOrderChange = () => {
+    const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
+    setSortOrder(newSortOrder);
+  };
+
+  const filterBookings = bookings
+    .filter(
+      (item) =>
+        selectedStatus === "all bookings" || item.status === selectedStatus
+    )
+    .sort((a, b) => {
+      if (sortOrder === "asc") {
+        return a.date.localeCompare(b.date);
+      } else {
+        return b.date.localeCompare(a.date);
+      }
+    });
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
-    <div className={styles.content}>
+      <div className={styles.content}>
         <div className={styles.title}>
             <h2 className={styles.welcome}><mark className={styles.highlight}>Welcome To Our</mark></h2>
             <h2 className={styles.myadventure}><mark className={styles.highlight}>My Adventure</mark></h2>
@@ -181,7 +192,7 @@ const BookingManagement = () => {
         </div>
     </div>
     </>
-  )
-}
+  );
+};
 
-export default BookingManagement
+export default BookingManagement;
