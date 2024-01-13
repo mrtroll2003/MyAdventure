@@ -254,6 +254,7 @@
     font-size: 2vw;
     text-align: center;
     font-weight: 600;
+}
 
 @media screen and (max-width: 1025px) and (min-width: 740px) {
     .myadventure {
