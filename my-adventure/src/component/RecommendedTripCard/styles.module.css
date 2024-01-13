@@ -20,7 +20,6 @@
 .recTCTitleRow {
     margin-left: 5%;
     font-size: 18px;
-    font-family: "NunitoSans";
     font-weight: bold;
     color: black;
     margin-top: 3vh;
@@ -28,7 +27,6 @@
 .recTCContentText {
     margin-left: 5%;
     margin-right: 5%;
-    font-family: "NunitoSans";
     color: rgb(124, 141, 176);
     font-size: 14px;
     font-weight: normal;

@@ -320,6 +320,9 @@ const CreateVietNamTourScreen = (props) => {
       >
         Submit
       </motion.button>
+      <div className= {styles.submitContainer}>
+        <motion.button className={styles.submitBtn} whileHover={{scale: "0.98"}} onClick={handleSubmit}>Submit</motion.button>
+      </div>
 
       {/* Footer */}
       <Footer />

@@ -172,15 +172,22 @@
 }
 
 .submitBtn {
-    width: 83vw;
-    margin-left: 10%;
-    margin-top: 1vw;
+    width: 20vw;
+    margin-top: 4vw;
     height: fit-content;
     padding: 0.8vw;
     font-size: 1.2vw;
     background-color: #5CD6C0;
     font-weight: 600;
     box-shadow: 1px 2px 2px rgb(0, 0, 0, 0.5);
+}
+
+.submitContainer {
+    width: 84%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .textareaStyle {

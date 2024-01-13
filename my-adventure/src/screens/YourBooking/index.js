@@ -177,7 +177,7 @@ const YourBooking = () => {
               </motion.option>
               <motion.option value="Confirmed">Confirmed</motion.option>
               <motion.option value="Paid">Paid</motion.option>
-              <motion.option value="Successful">Successful</motion.option>
+              <motion.option value="Finish">Finish</motion.option>
               <motion.option value="Cancelled">Cancelled</motion.option>
             </motion.select>
 

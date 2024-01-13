@@ -4,7 +4,6 @@ import ModifyBookingScreen from "./screens/ModifyBookingScreen";
 import MainTabbar from "./component/MainTabbar/MainTabbar";
 import InternationalTourScreen from "./screens/InternationalTourScreen";
 import YourBooking from "./screens/YourBooking";
-import ConfirmedDetailBookingScreen from "./screens/ConfirmedDetailBooking/index.js";
 import Contacts from "./screens/Contacts";
 import CancelSuccessfulBooking from "./screens/CancelSuccessfulBooking";
 import VietNamTourScreenCompany from "./UpdatedScreens/VietNamTourScreenV2";
@@ -15,7 +14,6 @@ import CreateInternationalTourScreen from "./UpdatedScreens/CreateINTours";
 import CreateVietNamTourScreen from "./UpdatedScreens/CreateVNTours";
 import BookingStatusScreen from "./UpdatedScreens/BookingStatusScreen/BookingStatusScreen";
 import MakeBookingScreen from "./UpdatedScreens/MakeBooking/index.js";
-import VietNamTourCustomer from "./UpdatedScreens/VietNamTourCustomer/index.js";
 import Header from "./component/Header";
 import { BrowserRouter, Routes, Route, ScrollRestoration } from "react-router-dom";
 import SignIn from "./screens/SignIn/index.js";
@@ -40,6 +38,7 @@ import Chatbot from "./assets/images/chatbot.jpg"
 
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
+import DateTourManagement from "./UpdatedScreens/DateTourManagement/index.js";
 
 const chatbotSteps = [
   {
@@ -204,6 +203,7 @@ export default function App() {
           <Route path="company/detail-booking" element={<BookingDetail />} />
           <Route path="company/booking-detail-modify" element={<BookingDetailModify />} />
           <Route path="company/report" element={<Report/>} />
+          <Route path="company/date-tour-management" element={<DateTourManagement/>} />
 
 
 

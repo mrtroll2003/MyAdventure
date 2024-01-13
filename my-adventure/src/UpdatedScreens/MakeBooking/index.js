@@ -490,9 +490,7 @@ const MakeBookingScreen = () => {
             <textarea value={note} onChange={(e) => setNote(e.target.value)} className={styles.textBox}></textarea>
           </div>
         </div>
-      </div>
-
-      {
+        {
         isShow ? (
           <div style={{marginTop:"2vw",color: "red", marginLeft: "15%", fontSize: "1.5vw"}}>Please fill in essential information in your form!</div>
         ) : null
@@ -501,8 +499,9 @@ const MakeBookingScreen = () => {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "right",
           alignItems: "center",
+          width: "70vw",
         }}
       >
         <motion.button
@@ -514,6 +513,9 @@ const MakeBookingScreen = () => {
           Submit
         </motion.button>
       </div>
+      </div>
+
+
       <Footer/>
     </div>
   );

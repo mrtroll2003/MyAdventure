@@ -153,13 +153,18 @@ const CreateVietNamTourScreen = (props) => {
       </div>
       {/* Title */}
       <>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1
+          className={styles.titleText}
+          style={{ fontSize: "3.5vw", marginTop: "2.5%", fontWeight: "bold" }}
+
         >
           <h1
             className={styles.titleText}
@@ -229,12 +234,13 @@ const CreateVietNamTourScreen = (props) => {
       </>
       {/* Transportation */}
       <>
-        <div
-          className={styles.text}
-          style={{ marginLeft: "5%", marginTop: "5.5%" }}
-        >
-          Transportation:
-        </div>
+      <div
+        className={styles.text}
+        style={{ marginLeft: "5%", marginTop: "2vw" }}
+      >
+        Transportation:
+      </div>
+
       </>
       <>
         <div>
@@ -273,21 +279,18 @@ const CreateVietNamTourScreen = (props) => {
       </>
       {/* Accommodation */}
       <>
-        <div
-          className={styles.text}
-          style={{ marginLeft: "5%", marginTop: "5.5%" }}
-        >
-          Accommodation:
-        </div>
-        <>
-          <div>
-            <div className={styles.horizontal}>
-              <p className={styles.leftText}>Accommodation's name: </p>
-              <input
-                value={accomodation}
-                onChange={handleAccomodationChange}
-                type="text"
-                className={styles.inputStyle}
+      <div
+        className={styles.text}
+        style={{ marginLeft: "5%", marginTop: "2vw" }}
+      >
+        Accommodation:
+      </div>
+      <>
+      <div>
+          <div className={styles.horizontal}>
+            <p className={styles.leftText}>Accommodation's name: </p>
+            <input value={accomodation} onChange={handleAccomodationChange} type="text" className={styles.inputStyle}
+
               />
             </div>
 
@@ -318,12 +321,14 @@ const CreateVietNamTourScreen = (props) => {
       {/* Schedule Details */}
       <>
         <div
-          className={styles.text}
-          style={{ marginLeft: "5%", marginTop: "1.5%" }}
-        >
-          Schedule Details:
-        </div>
-      </>
+
+        className={styles.text}
+        style={{ marginLeft: "5%", marginTop: "2vw" }}
+      >
+        Schedule Details:
+      </div>
+        </>
+
 
       <textarea
         value={details}
@@ -352,6 +357,11 @@ const CreateVietNamTourScreen = (props) => {
       >
         Submit
       </motion.button>
+
+
+      <div className= {styles.submitContainer}>
+        <motion.button className={styles.submitBtn} whileHover={{scale: "0.98"}} onClick={handleSubmit}>Submit</motion.button>
+      </div>
 
       {/* Footer */}
       <Footer />

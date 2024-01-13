@@ -22,22 +22,8 @@ const  VietNamTourScreenCompany = () =>{
   const [selectedDeparture, setSelectedDeparture] = useState("all departure");
   const [sortOrder, setSortOrder] = useState('asc');
   const [type, setType] = useState("On Progress");
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [dates, setDates] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [hoveredDate, setHoveredDate] = useState(null);
+  const [searchText, setSearchText] = useState("")
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
-
-  const handleDateHover = (date) => {
-    setHoveredDate(date);
-  };
-
-  useEffect (() => {
-    console.log("date hovered  ", hoveredDate)
-  }, [hoveredDate])
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -55,9 +41,6 @@ const  VietNamTourScreenCompany = () =>{
       .catch(error => console.log('error', error));
   }, [tours]);
 
-  useEffect(() => {
-    console.log("datesvsvbaivwav" + dates)
-  }, [dates])
 
   useEffect(() => {
     var requestOptions = {
@@ -173,38 +156,14 @@ const  VietNamTourScreenCompany = () =>{
       } else {
         return b.departureDate.localeCompare(a.departureDate);
       }
+    })
+    .filter((item) => {
+      return item && item.destination && item.destination.toLowerCase().includes(searchText.toLowerCase());
     });
 
     const hanleCreateClick = () => {
       navigate('/company/create-vietnam-tours')
     }
-
-  useEffect(() => {
-    var requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-  
-    fetch("http://localhost:3001/tour/vietnam-tours/date", requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        setDates(result);
-        setLoading(false);
-      })
-      .catch(error => console.log('error', error));
-  }, []);
-  
-  const tileClassName = ({ date }) => {
-    if (loading) {
-      return '';
-    }
-  
-    const formattedDate = moment(date).startOf('day').toDate();
-  
-    if (dates.some((tourDate) => moment(tourDate).startOf('day').toDate().getTime() === formattedDate.getTime())) {
-      return styles.highlight;
-    }
-  };
 
     return (
       <div style={{flexDirection: "column", display: "flex"}}>
@@ -214,7 +173,7 @@ const  VietNamTourScreenCompany = () =>{
             <h1 className={styles.vnTourIntroText}>OUR VIETNAM TOURS</h1>
           </div>
         </div>
-        <div style={{display:"flex",flexDirection:"row", alignItems: "center", justifyContent: "space-between", padding: "2vw 5vw"}}>
+        <div style={{display:"flex",flexDirection:"row", alignItems: "center", justifyContent: "space-between", padding: "0 5vw", marginTop: "1.5vw"}}>
           <div className={styles.displayHorizon}>
           <div className={styles.comboboxContainer}>
             <div>Departure</div>
@@ -231,7 +190,7 @@ const  VietNamTourScreenCompany = () =>{
             </motion.select>
           </div>
 
-          <div className={styles.comboboxContainer}>
+          <div className={styles.comboboxContainer} style={{marginLeft: "3vw"}}>
             <div>Destination</div>
             <motion.select
               className={styles.filterBox}
@@ -260,9 +219,12 @@ const  VietNamTourScreenCompany = () =>{
               />
             </motion.button>
         </div>
+        
 
 
-        <div className={styles.comboboxContainer} style={{marginTop: "0.2vw"}}>
+        <div style={{display:"flex",flexDirection:"row", alignItems: "center", justifyContent: "space-between", padding: "0 5.5vw", marginTop: "1vw"}}>
+          <div className={styles.displayHorizon}>
+          <div className={styles.comboboxContainer}>
             <div>The status of tours</div>
             <motion.select
               className={styles.filterBox}
@@ -275,9 +237,12 @@ const  VietNamTourScreenCompany = () =>{
               <motion.option key="Finished" value="Finished">Finished</motion.option>
               <motion.option key="Waiting for departuring" value="Waiting for departuring">Waiting for departuring</motion.option>
             </motion.select>
+          </div>  
+
+
           </div>
-        
-      
+        </div>
+
         <div
         className={styles.buttonInfo}
       >
@@ -288,17 +253,6 @@ const  VietNamTourScreenCompany = () =>{
           + Create a new tour
       </motion.button>
 
-      <div className = {styles.calendar}>
-      <Calendar
-          style={{ height: 500 }}
-          onChange={handleDateChange}
-          value={selectedDate}
-          tileClassName={tileClassName}
-          onMouseEnter={(date) => handleDateHover(date)}
-          onMouseLeave={() => handleDateHover(null)}
-        >
-      </Calendar>
-    </div>
 
       <div className={styles.tourContainer}>
         {sortedTours

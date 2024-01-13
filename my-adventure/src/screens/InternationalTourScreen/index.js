@@ -8,12 +8,11 @@ const InternationalTourScreen = () => {
   const [asiaDestinations, setAsiaDestinations] = useState()
   const [europeDestinations, setEuropeDestinations] = useState()
   const [australiaDestinations, setAustraliaDestinations] = useState()
-
   const [resultData, setResultData] = useState([])
-
   const [asiaDestinationsImage, setAsiaDestinationsImage] = useState()
   const [europeDestinationsImage, setEuropeDestinationsImage] = useState()
   const [australiaDestinationsImage, setAustraliaDestinationsImage] = useState()
+  const [searchText, setSearchText] = useState("")
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -144,10 +143,26 @@ const InternationalTourScreen = () => {
         setAustraliaDestinationsImage([]);
       }
     }
-
-
     fetchImage()
   }, [australiaDestinations])
+
+  const filterAustraliaDestinations = australiaDestinationsImage
+  ? australiaDestinationsImage.filter((destination) => {
+      return destination.name.toLowerCase().includes(searchText.toLowerCase());
+    })
+  : [];
+
+  const filterEuropeDestinations = europeDestinationsImage
+  ? europeDestinationsImage.filter((destination) => {
+      return destination.name.toLowerCase().includes(searchText.toLowerCase());
+    })
+  : [];
+
+  const filterAsiaDestinaitons = asiaDestinationsImage
+  ? asiaDestinationsImage.filter((destination) => {
+      return destination.name.toLowerCase().includes(searchText.toLowerCase());
+    })
+  : [];
 
     return (
       <div>
@@ -157,12 +172,20 @@ const InternationalTourScreen = () => {
             <h1 className={styles.vnTourIntroText}>INTERNATIONAL TOURS</h1>
           </div>
         </div>
+
+        
+        <input
+          type="text"
+          placeholder="Search for destination..."
+          onChange={(e) => setSearchText(e.target.value)}
+          className={styles.searchBox}
+        />
         {/* DESTINATIONS IN ASIA VIETNAM */}
         <DestinationSection
           text={
             "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Asia."
           }
-          img={asiaDestinationsImage}
+          img={filterAsiaDestinaitons}
         >
           {"DESTINATIONS IN ASIA"}
         </DestinationSection>
@@ -171,7 +194,7 @@ const InternationalTourScreen = () => {
           text={
             "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Europe."
           }
-          img={europeDestinationsImage}
+          img={filterEuropeDestinations}
         >
           {"DESTINATIONS IN EUROPE"}
         </DestinationSection>
@@ -180,7 +203,7 @@ const InternationalTourScreen = () => {
           text={
             "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Australia."
           }
-          img={australiaDestinationsImage}
+          img={filterAustraliaDestinations}
         >
           {"DESTINATIONS IN AUSTRALIA"}
         </DestinationSection>

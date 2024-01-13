@@ -11,6 +11,7 @@ const VietNamTourScreen = () => {
   const [northDestinationsImage, setNorthDestinationsImage] = useState()
   const [southDestinationsImage, setSouthDestinationsImage] = useState()
   const [centerDestinationsImage, setCenterDestinationsImage] = useState()
+  const [searchText, setSearchText] = useState("")
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -113,6 +114,8 @@ const VietNamTourScreen = () => {
 
     fetchImage()
   }, [southDestinations])
+  
+
 
 
   useEffect(() => {
@@ -143,6 +146,29 @@ const VietNamTourScreen = () => {
     fetchImage()
   }, [centerDestinations])
 
+  useEffect (() => {
+    console.log ("North Destination Image:", northDestinationsImage)
+  }, [northDestinationsImage])
+
+  const filterNorthDestinations = northDestinationsImage
+    ? northDestinationsImage.filter((destination) => {
+        return destination.name.toLowerCase().includes(searchText.toLowerCase());
+      })
+    : [];
+
+    const filterCenterDestinations = centerDestinationsImage
+    ? centerDestinationsImage.filter((destination) => {
+        return destination.name.toLowerCase().includes(searchText.toLowerCase());
+      })
+    : [];
+
+    const filterSouthDestinations = southDestinationsImage
+    ? southDestinationsImage.filter((destination) => {
+        return destination.name.toLowerCase().includes(searchText.toLowerCase());
+      })
+    : [];
+
+
     return (
       <div>
         {/* Viet Nam Tour Intro */}
@@ -151,12 +177,19 @@ const VietNamTourScreen = () => {
             <h1 className={styles.vnTourIntroText}>OUR VIETNAM TOURS</h1>
           </div>
         </div>
+
+        <input
+          type="text"
+          placeholder="Search for destination..."
+          onChange={(e) => setSearchText(e.target.value)}
+          className={styles.searchBox}
+        />
         {/* DESTINATIONS IN NORTHERN VIETNAM */}
         <DestinationSection
           text={
             "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Northern Vietnam."
           }
-          img={northDestinationsImage}
+          img={filterNorthDestinations}
         >
           {"DESTINATIONS IN NORTHERN VIETNAM"}
         </DestinationSection>
@@ -165,7 +198,7 @@ const VietNamTourScreen = () => {
           text={
             "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Northern Vietnam."
           }
-          img={centerDestinationsImage}
+          img={filterCenterDestinations}
         >
           {"DESTINATIONS IN CENTRAL VIETNAM"}
         </DestinationSection>
@@ -174,7 +207,7 @@ const VietNamTourScreen = () => {
           text={
             "Awe-inspiring landscapes characterised by limestone mountains and vibrant green rice paddies, diverse local cultures and exhilarating adventures; this is Northern Vietnam."
           }
-          img={southDestinationsImage}
+          img={filterSouthDestinations}
         >
           {"DESTINATIONS IN SOUTH VIETNAM"}
         </DestinationSection>

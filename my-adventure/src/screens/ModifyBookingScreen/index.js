@@ -463,6 +463,7 @@ const ModifyBookingScreen = (props) => {
                   type="children"
                   sex={child.sex}
                   dob={formatDate(child.dob)}
+                  birthCert = {child.birthCert}
                   onSave={(data) => handleChildrenDataChange(index, data)}
                 />
               </>

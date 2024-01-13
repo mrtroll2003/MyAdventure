@@ -17,13 +17,30 @@ import { motion } from "framer-motion";
 import styles from "./styles.module.css";
 import { formatDate } from "../../constant/formatDate";
 import { useNavigate } from "react-router-dom";
+import 'react-calendar/dist/Calendar.css';
+import Calendar from 'react-calendar';
+import moment from 'moment'
 
 const HomePage = () => {
-  const navigate = useNavigate();
-  const [data, setData] = useState([]);
-  const [tours, setTours] = useState([]);
-  const [images, setImages] = useState([]);
-  const [ratings, setRatings] = useState([]);
+  const navigate = useNavigate()
+  const [data, setData] = useState([])
+  const [tours, setTours] = useState([])
+  const [images, setImages] = useState([])
+  const [ratings, setRatings] = useState([])
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [dates, setDates] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [hoveredDate, setHoveredDate] = useState(null);
+  const [searchText, setSearchText] = useState("")
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
+  const handleDateHover = (date) => {
+    setHoveredDate(date);
+  };
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,6 +50,22 @@ const HomePage = () => {
     var requestOptions = {
       method: "GET",
       redirect: "follow",
+    };
+
+  
+    fetch("http://localhost:3001/tour/date", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setDates(result);
+        setLoading(false);
+      })
+      .catch(error => console.log('error', error));
+  }, []);
+
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
     };
 
     fetch("http://localhost:3001/image", requestOptions)
@@ -90,6 +123,31 @@ const HomePage = () => {
     data.slice(index * 3, (index + 1) * 3)
   );
 
+  const tileClassName = ({ date }) => {
+    if (loading) {
+      return '';
+    }
+  
+    const formattedDate = moment(date).startOf('day').toDate();
+  
+    if (dates.some((tourDate) => moment(tourDate).startOf('day').toDate().getTime() === formattedDate.getTime())) {
+      return styles.highlight;
+    }
+  };
+
+  const handleDayClick = (date) => {
+    const formattedDate = date.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    });
+
+    console.log("formattedDate", formattedDate)
+  
+    const url = `/company/date-tour-management?date=${encodeURIComponent(formattedDate)}`;
+    navigate(url);
+  }
+
   return (
     <div>
       <div className={styles.content}>
@@ -107,46 +165,71 @@ const HomePage = () => {
             </mark>
           </h2>
         </div>
-        <div className={styles.reasonSection}>
-          <div className={styles.boldStatement}>WHY WE ARE THE BEST?</div>
-          <div className={styles.normalText}>
-            Video provides a powerful way to help you prove your point. When you
-            click Online Video, you can paste in the embed code for the video
-            you want to add.
-          </div>
-          <div className={styles.subContentView}>
-            <div className={styles.subContent}>
-              <img src={GreenGlobe} alt="Green Globe" className={styles.icon} />
-              <div className={styles.subContentText}>Amazing Travel</div>
-              <div className={styles.subContentMainText}>
-                When you click Online Video, you can paste in the embed code for
-                the video you want to add.
+
+        <div style={{marginTop: "20vh"}}>
+          {
+            localStorage.getItem("isAdmin") === "false" && (
+              <div>
+                <div className={styles.boldStatement}>WHY WE ARE THE BEST?</div>
+                <div className={styles.normalText}>
+                  Video provides a powerful way to help you prove your point. When you
+                  click Online Video, you can paste in the embed code for the video you want to add.
+                </div>
+                <div className={styles.subContentView}>
+                  <div className={styles.subContent}>
+                    <img src={GreenGlobe} alt="Green Globe" className={styles.icon} />
+                    <div className={styles.subContentText}>Amazing Travel</div>
+                    <div className={styles.subContentMainText}>
+                      When you click Online Video, you can
+                      paste in the embed code for the
+                      video you want to add.
+                    </div>
+                  </div>
+                  {/*  */}
+                  <div className={styles.subContent}>
+                    <img src={Flag} alt="Flag" className={styles.icon}/>
+                    <div className={styles.subContentText}>Book Your Trip</div>
+                    <div className={styles.subContentMainText}>
+                      When you click Online Video, you can
+                      paste in the embed code for the
+                      video you want to add.
+                    </div>
+                  </div>
+                  {/*  */}
+                  <div className={styles.subContent}>
+                    <img src={MessageBubble} alt="Message Bubble" className={styles.icon} />
+                    <div className={styles.subContentText}>Nice Support</div>
+                    <div className={styles.subContentMainText}>
+                      When you click Online Video, you can
+                      paste in the embed code for the
+                      video you want to add.
+                    </div>
+                  </div>
+                  {/*  */}
+                </div>
               </div>
-            </div>
-            {/*  */}
-            <div className={styles.subContent}>
-              <img src={Flag} alt="Flag" className={styles.icon} />
-              <div className={styles.subContentText}>Book Your Trip</div>
-              <div className={styles.subContentMainText}>
-                When you click Online Video, you can paste in the embed code for
-                the video you want to add.
+            )
+          }
+
+          {
+            localStorage.getItem("isAdmin") === "true" && (
+              <div className={styles.displayHorizonal}>
+                <div className={styles.check}>Check the schedule to not miss any tours! </div>
+                <div className = {styles.calendar}>
+                  <Calendar
+                      style={{ height: 500 }}
+                      onChange={handleDateChange}
+                      value={selectedDate}
+                      tileClassName={tileClassName}
+                      onMouseEnter={(date) => handleDateHover(date)}
+                      onMouseLeave={() => handleDateHover(null)}
+                      onClickDay={(date) => handleDayClick(date)}
+                    >
+                  </Calendar>
+                </div>
               </div>
-            </div>
-            {/*  */}
-            <div className={styles.subContent}>
-              <img
-                src={MessageBubble}
-                alt="Message Bubble"
-                className={styles.icon}
-              />
-              <div className={styles.subContentText}>Nice Support</div>
-              <div className={styles.subContentMainText}>
-                When you click Online Video, you can paste in the embed code for
-                the video you want to add.
-              </div>
-            </div>
-            {/*  */}
-          </div>
+            )
+          }
           <div className={styles.packageBackground}>
             <div className={styles.packageView}>
               <div style={{ width: "80%" }}>
@@ -173,14 +256,6 @@ const HomePage = () => {
                   <span id={styles.packagePriceText02}> per person</span>
                 </h1>
               </div>
-              {/* 
-              <motion.button
-                  id={styles.detailsBtn}
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  DETAILS
-                </motion.button> */}
             </div>
           </div>
           {/*  */}

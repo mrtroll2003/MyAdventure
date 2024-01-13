@@ -5,7 +5,12 @@ import styles from "./styles.module.css";
 import DiHetVN from "../../assets/images/about_us_1.png";
 import CompanyOverviewIllus from "../../assets/images/about_us_2.png";
 import Avatar from "./images/avatar.png";
-
+import Staff1 from "./images/staff1.jpg";
+import Staff2 from "./images/staff2.jpg";
+import Staff3 from "./images/staff3.jpg";
+import Staff4 from "./images/staff4.jpg";
+import Staff5 from "./images/staff5.jpg";
+import Staff6 from "./images/staff6.jpg";
 import IntroBackground from "../../component/IntroBackground/IntroBackground";
 import Footer from "../../component/Footer/Footer";
 import CompanyCard from "./components/CompanyCard/CompanyCard";
@@ -14,7 +19,14 @@ import { useState } from "react";
 
 const AboutUsScreen = () => {
   let CompanyInfo = {
-    avatar: Avatar,
+    avatar: [
+      Staff1,
+      Staff2,
+      Staff5,
+      Staff4,
+      Staff2,
+      Staff6,
+    ],
     name: [
       "Anna Nguyen",
       "Lena Dang",
@@ -169,7 +181,7 @@ const AboutUsScreen = () => {
         {CompanyInfo.name.map((name, index) => (
           <CompanyCard
             key={index}
-            avatar={CompanyInfo.avatar}
+            avatar={CompanyInfo.avatar[index]}
             name={name}
             role={CompanyInfo.role[index]}
             details={CompanyInfo.details}

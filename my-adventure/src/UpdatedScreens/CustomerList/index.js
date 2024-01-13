@@ -3,11 +3,13 @@ import { motion } from 'framer-motion'
 import styles from "./styles.module.css";
 import TourContainerCompany from '../../component/TourContainerCompany'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { formatDate } from '../../constant/formatDate';
 
 const CustomerList = () => {
     const location  = useLocation()
     const searchParams = new URLSearchParams(location.search);
     const tourID = searchParams.get('tourID');
+    const [tour, setTour] = useState([])
     const [bookings, setBookings] = useState([])
     const [loading, setLoading] = useState(true);
     const [adultList, setAdultList] = useState([])
@@ -31,6 +33,12 @@ const CustomerList = () => {
                 setBookings(result)
                 setLoading(false);
             })
+            .catch(error => console.log('error', error));
+
+
+            fetch(`http://localhost:3001/tour/id?id=${tourID}`, requestOptions)
+            .then(response => response.json())
+            .then(result => setTour(result))
             .catch(error => console.log('error', error));
     }, [tourID])
 
@@ -113,30 +121,40 @@ const CustomerList = () => {
             <h2 className={styles.myadventure}><mark className={styles.highlight}>My Adventure</mark></h2>
             <h2 className={styles.booking}><mark className={styles.highlight}>Enjoy your dream vacation, discover amazing places at exclusive details</mark></h2>
         </div>
-        <div id={styles.bookingManagementBoldStatement}>
-            BOOKING MANAGEMENT
+      <div className={styles.content1}>
+      <div id={styles.bookingManagementBoldStatement}>
+            CUSTOMER LIST
         </div>
-        <div className={styles.horizon} style={{padding: "0 10vw", justifyContent:'space-between', marginTop: "7vh", marginBottom: "7vh"}}>
+
+        <div className={styles.place}>
+            {tour.departure} - {tour.destination}
+        </div>
+
+        <div className={styles.time}>
+            {formatDate(tour.departureDate)} - {formatDate(tour.returnDate)}
+        </div>
+        <div className={styles.horizon} style={{justifyContent:'space-between', marginTop: "7vh", marginBottom: "7vh"}}>
             <motion.select id="depart" name="depart" className={styles.box} onChange={(e) => setSelectedStatus(e.target.value)}>
                 <motion.option value="all bookings" selected>All Booking</motion.option>
                 <motion.option value="Waiting for handling">Waiting for handling</motion.option>
                 <motion.option value="Waiting for checking">Waiting for checking</motion.option>
                 <motion.option value="Confirmed">Confirmed</motion.option>
                 <motion.option value="Paid">Paid</motion.option>
-                <motion.option value="Successful">Successful</motion.option>
+                <motion.option value="Finish">Finish</motion.option>
                 <motion.option value="Cancelled">Cancelled</motion.option>
             </motion.select>
 
-            <motion.button className={styles.horizon} whileTap={{scale: 0.8}} onClick={handleSortOrderChange}>
-                <div className={styles.filterText}>Filter Date</div>
-                <img className={styles.icon} src={require("../../assets/icons/filter.png")} alt='tick'/>
-            </motion.button>
+            <motion.button className={styles.horizon1} whileTap={{scale: 0.8}} onClick={handleSortOrderChange}>
+                  <div className={styles.filterText}>Filter Date</div>
+                  <img className={styles.icon} src={require("../../assets/icons/filter.png")} alt='tick'/>
+              </motion.button>
         </div>
 
-        {filterBookings.map((booking, index) => (
+      <div style={{paddingBottom: "5vw"}}>
+      {filterBookings.map((booking, index) => (
             <TourContainerCompany
             key={booking._id}
-            _id={booking._id}
+            id={booking._id}
             destination={booking.destination}
             departure={booking.departure}
             fullName = {booking.name}
@@ -148,6 +166,8 @@ const CustomerList = () => {
             color={index % 2 === 1 ? 'white' : 'rgba(135, 244, 224, 0.8)'}
             />
             ))}
+      </div>
+      </div>
     </div>
     </>
   )
