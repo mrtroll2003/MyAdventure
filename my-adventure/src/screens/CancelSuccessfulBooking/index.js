@@ -246,13 +246,15 @@ const CancelSuccessfulBooking = () => {
         handle this refund.
       </div>
       {/* //re-navigation needed */}
-      <motion.button
-        className={styles.buttonContainer}
-        whileTap={{ scale: 0.8 }}
-        onClick={handleSubmitClick}
-      >
-        <div className={styles.button}>Submit</div>
-      </motion.button>
+        <div className={styles.alignCenter}>
+          <motion.button
+          className={styles.buttonContainer}
+          whileTap={{ scale: 0.8 }}
+          onClick={handleSubmitClick}
+        >
+          <div className={styles.button}>Submit</div>
+        </motion.button>
+        </div>
     </div>
   );
 };

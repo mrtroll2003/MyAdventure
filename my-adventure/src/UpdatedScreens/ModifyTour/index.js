@@ -259,7 +259,7 @@ const ModifyTour = (props) => {
       <>
       <div
         className={styles.text}
-        style={{ marginLeft: "5%", marginTop: "5.5%" }}
+        style={{ marginLeft: "5%", marginTop: "2vw" }}
       >
         Accommodation:
       </div>
@@ -289,7 +289,7 @@ const ModifyTour = (props) => {
         <>
         <div
         className={styles.text}
-        style={{ marginLeft: "5%", marginTop: "1.5%" }}
+        style={{ marginLeft: "5%", marginTop: "2vw" }}
       >
         Schedule Details:
       </div>
@@ -315,7 +315,9 @@ const ModifyTour = (props) => {
         ) : null
       }
 
-      <motion.button className={styles.submitBtn} whileHover={{scale: "0.98"}} onClick={handleSubmit}>Submit</motion.button>
+      <div className= {styles.submitContainer}>
+        <motion.button className={styles.submitBtn} whileHover={{scale: "0.98"}} onClick={handleSubmit}>Save</motion.button>
+      </div>
       
       {/* Footer */}
       <Footer />

@@ -176,7 +176,7 @@ const  InternationalTourScreenCompany = () =>{
             </motion.button>
         </div>
 
-        <div className={styles.comboboxContainer} style={{marginTop: "0.2vw"}}>
+        <div className={styles.comboboxContainer} style={{marginTop: "0.1vw", marginLeft: "5.5vw"}}>
             <div>The status of tours</div>
             <motion.select
               className={styles.filterBox}

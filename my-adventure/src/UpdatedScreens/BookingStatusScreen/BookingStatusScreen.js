@@ -1,10 +1,6 @@
 import React, { useDebugValue, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
-// import { FaStar } from "react-icons/fa";
 import { motion } from "framer-motion";
-
-import BirthCert from "../../assets/images/birthcert.png";
-
 import CustomerTextBox from "../../components/CustomerTextBox";
 import { useLocation, useNavigate } from "react-router-dom";
 import { formatDate } from "../../constant/formatDate";
@@ -24,8 +20,6 @@ const BookingStatusScreen = (props) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const bookingID = searchParams.get("bookingID");
-  console.log(bookingID);
-
   const [booking, setBooking] = useState();
   const [tour, setTour] = useState();
   const [loading, setLoading] = useState(true);
@@ -41,6 +35,14 @@ const BookingStatusScreen = (props) => {
   const [file, setFile] = useState(null);
   const fileInputRef = useRef(null);
   const [bank, setBank] = useState();
+  const [zoom1, setZoom1] = useState(false);
+  const [link, setLink] = useState("")
+
+  
+  const handleZoom1 = (image) => {
+    setLink(image)
+    setZoom1(!zoom1);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -51,7 +53,6 @@ const BookingStatusScreen = (props) => {
       method: "GET",
       redirect: "follow",
     };
-
     fetch(`http://localhost:3001/booking/id?id=${bookingID}`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
@@ -210,22 +211,21 @@ const BookingStatusScreen = (props) => {
 
   const setBg = (status) => {
     var backgroundColor = "#FFED8C";
-    if (status === "Successful") {
-      backgroundColor = "#30E742";
+    if (status === "Finish") {
+      backgroundColor = "#22EAAA";
     } else if (status === "Waiting for handling") {
       backgroundColor = "#FFED8C";
     } else if (status === "Waiting for checking") {
       backgroundColor = "#F5AE45";
     } else if (status === "Confirmed") {
-      backgroundColor = "#E4F61A";
+      backgroundColor = "#99FFCD";
     } else if (status === "Paid") {
       backgroundColor = "#2CF594";
     } else if (status === "Cancelled") {
-      backgroundColor = "red";
+      backgroundColor = "#FF4A4A";
     }
     return backgroundColor;
   };
-
   const handleDetailClick = (id) => {
     console.log("Clicked:", id);
     const url = `/tour-detail?id=${encodeURIComponent(id)}`;
@@ -568,6 +568,7 @@ const BookingStatusScreen = (props) => {
                   sex={child.sex}
                   dob={formatDate(child.dob)}
                   birthCert={child.birthCert}
+                  onClick = {() => handleZoom1(child.birthCert)}
                 />
               </>
             ))}
@@ -693,7 +694,7 @@ const BookingStatusScreen = (props) => {
           </div>
         )}
 
-        {booking.status === "Successful" ? (
+        {booking.status === "Finish" ? (
           <>
             <div className={styles.text} style={{ fontStyle: "italic" }}>
               Let’s evaluate for this booking!
@@ -744,16 +745,18 @@ const BookingStatusScreen = (props) => {
         ) : null}
       </div>
 
-      {(booking.status === "Waiting for checking" ||
-        booking.status === "Paid") && (
-        <motion.button
-          className={styles.cancelButton}
-          whileHover={{ scale: 0.9 }}
-          onClick={handleCancelClick}
-        >
-          Cancel this booking
-        </motion.button>
-      )}
+      <div className={styles.alignCenter}>
+        {(booking.status === "Waiting for checking" ||
+          booking.status === "Paid") && (
+            <motion.button
+            className={styles.cancelButton}
+            whileHover={{ scale: 0.9 }}
+            onClick={handleCancelClick}
+          >
+            Cancel this booking
+          </motion.button>
+        )}
+      </div>
       {booking.status === "Waiting for handling" && (
         <div
           className={styles.horizon}
@@ -772,7 +775,7 @@ const BookingStatusScreen = (props) => {
             </div>
             <motion.button
               className={styles.smallButton}
-              style={{ backgroundColor: "#66F235" }}
+              style={{ backgroundColor: "#5CD6C0" }}
               whileTap={{ scale: 0.9 }}
               onClick={() => handleModifyClick(booking._id)}
             >
@@ -814,7 +817,7 @@ const BookingStatusScreen = (props) => {
             </div>
             <motion.button
               className={styles.smallButton}
-              style={{ backgroundColor: "#32C841" }}
+              style={{ backgroundColor: "#5CD6C0" }}
               whileTap={{ scale: 0.9 }}
               onClick={handlePaymentClick}
             >
@@ -853,6 +856,15 @@ const BookingStatusScreen = (props) => {
           <ImageZoom imageUrl={booking.payment} onClick={handleZoom} />
         </div>
       )}
+      {zoom1 && (
+          <div
+            className={styles.overlay}
+            style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
+          >
+          {/* {console.log("Image URLLLLL: ", link)} */}
+            <ImageZoom imageUrl={link} onClick={handleZoom1} />
+          </div>
+        )}
     </div>
   );
 };

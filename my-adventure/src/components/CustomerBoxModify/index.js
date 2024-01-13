@@ -3,21 +3,25 @@ import styles from "./styles.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
+import { createClient } from '@supabase/supabase-js'
+import { v4 as uuidv4 } from 'uuid';
+
+const supabaseUrl = "https://nkaxnoxocaglizzrfhjw.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rYXhub3hvY2FnbGl6enJmaGp3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMDEyMDI2NCwiZXhwIjoyMDE1Njk2MjY0fQ.6ZNDz2LY3uTglFR2sqJvyPirr00voeSv9BNBRDU_F08";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const CustomerBoxModify = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sex, setSex] = useState(props.sex);
-
   const [fullName, setFullName] = useState(props.name);
   const [email, setEmail] = useState(props.email);
   const [citizenID, setCitizenID] = useState(props.ID);
   const [phone, setPhone] = useState(props.phone);
   const [birthDate, setBirthDate] =  useState(moment(props.dob, 'DD-MM-YYYY').toDate())
-  const [selectedFile, setSelectedFile] = useState(props.file);
-
+  const [birthCert, setBirthCert] = useState(null);
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    setBirthCert(event.target.files[0]);
   };
 
   const handleChange = (event) => {
@@ -44,31 +48,57 @@ const CustomerBoxModify = (props) => {
     setIsOpen(!isOpen);
   };
 
-  useEffect(() => {
-    if (props.type === 'adult') {
-      const data = {
-        id : props.id,
-        name: fullName,
-        email: email,
-        sex: sex,
-        ID: citizenID,
-        phone: phone,
-        dob: birthDate,
-      };
-      props.onSave(data);
+  async function uploadImage(file) {
+    console.log("file " + file);
+    const key = `BirthCert/${uuidv4()}`;
+    const { data, error } = await supabase.storage.from('myadventure').upload(key, file, {
+      cacheControl: 'max-age=31536000',
+      upsert: false,
+      contentType: 'image/jpeg',
+    });
+    if (error) {
+      console.error('Error uploading image:', error.message);
       return;
     }
+    console.log('Image uploaded successfully:', key);
+  
+    const supabaseUrl = 'https://nkaxnoxocaglizzrfhjw.supabase.co/storage/v1/object/public';
+    const imageUrl = `${supabaseUrl}/myadventure/${key}`;
+    console.log('Image URL:', imageUrl);
+    return imageUrl;
+  }
 
-    const data = {
-      id: props.id,
-      name: fullName,
-      sex: sex,
-      dob: birthDate,
-      birthCert: selectedFile,
-    };
 
-    props.onSave(data);
-  }, [fullName, email, sex, citizenID, phone, birthDate, selectedFile]);
+
+  useEffect(() => {
+    async function saveData() {
+      if (props.type === 'adult') {
+        const data = {
+          id: props.id,
+          name: fullName,
+          email: email,
+          sex: sex,
+          ID: citizenID,
+          phone: phone,
+          dob: birthDate,
+        };
+        props.onSave(data);
+        return;
+      }
+  
+      const data = {
+        id: props.id,
+        name: fullName,
+        sex: sex,
+        dob: birthDate,
+        birthCert: birthCert ? await uploadImage(birthCert) : props.birthCert,
+      };
+  
+      props.onSave(data);
+    }
+  
+    saveData();
+  }, [fullName, email, sex, citizenID, phone, birthDate, birthCert]);
 
   return (
     <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>

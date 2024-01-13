@@ -19,7 +19,6 @@ const BookingDetailModify = (props) => {
   const [tour, setTour] = useState();
   const [adult, setAdult] = useState([]);
   const [children, setChildren] = useState([]);
-
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [nationality, setNationality] = useState("");
@@ -144,11 +143,12 @@ const BookingDetailModify = (props) => {
     const updatedChildList = [...children];
     updatedChildList[index] = { ...updatedChildList[index], ...data };
     setChildren(updatedChildList);
+    console.log("UpdatedChildrenList", children)
   };
 
   const setBg = (status) => {
     var backgroundColor = "#FFED8C";
-    if (status === "Successful") {
+    if (status === "Finish") {
       backgroundColor = "#30E742";
     } else if (status === "Waiting for handling") {
       backgroundColor = "#FFED8C";
@@ -413,6 +413,7 @@ const BookingDetailModify = (props) => {
               type="children"
               sex={child.sex}
               dob={formatDate(child.dob)}
+              birthCert={child.birthCert}
               onSave={(data) => handleChildrenDataChange(index, data)}
             />
           </>

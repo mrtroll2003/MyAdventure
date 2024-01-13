@@ -136,44 +136,49 @@ const BookingManagement = () => {
             <h2 className={styles.myadventure}><mark className={styles.highlight}>My Adventure</mark></h2>
             <h2 className={styles.booking}><mark className={styles.highlight}>Enjoy your dream vacation, discover amazing places at exclusive details</mark></h2>
         </div>
-        <div id={styles.bookingManagementBoldStatement}>
-            BOOKING MANAGEMENT
-        </div>
-        <div className={styles.horizon} style={{padding: "0 10vw", justifyContent:'space-between', marginTop: "7vh", marginBottom: "7vh"}}>
-            <motion.select id="depart" name="depart" className={styles.box} onChange={(e) => setSelectedStatus(e.target.value)}>
-                <motion.option value="all bookings" selected>All Booking</motion.option>
-                <motion.option value="Waiting for handling">Waiting for handling</motion.option>
-                <motion.option value="Waiting for checking">Waiting for checking</motion.option>
-                <motion.option value="Confirmed">Confirmed</motion.option>
-                <motion.option value="Paid">Paid</motion.option>
-                <motion.option value="Successful">Successful</motion.option>
-                <motion.option value="Cancelled">Cancelled</motion.option>
-            </motion.select>
+        
+        <div className={styles.content1}>
+          <div id={styles.bookingManagementBoldStatement}>
+              BOOKING MANAGEMENT
+          </div>
+          <div className={styles.horizon} style={{ marginTop: "7vh", marginBottom: "7vh"}}>
+              <motion.select id="depart" name="depart" className={styles.box} onChange={(e) => setSelectedStatus(e.target.value)}>
+                  <motion.option value="all bookings" selected>All Booking</motion.option>
+                  <motion.option value="Waiting for handling">Waiting for handling</motion.option>
+                  <motion.option value="Waiting for checking">Waiting for checking</motion.option>
+                  <motion.option value="Confirmed">Confirmed</motion.option>
+                  <motion.option value="Paid">Paid</motion.option>
+                  <motion.option value="Finish">Finish</motion.option>
+                  <motion.option value="Cancelled">Cancelled</motion.option>
+              </motion.select>
 
-            <motion.button className={styles.horizon} whileTap={{scale: 0.8}} onClick={handleSortOrderChange}>
-                <div className={styles.filterText}>Filter Date</div>
-                <img className={styles.icon} src={require("../../assets/icons/filter.png")} alt='tick'/>
-            </motion.button>
-        </div>
+              <motion.button className={styles.horizon1} whileTap={{scale: 0.8}} onClick={handleSortOrderChange}>
+                  <div className={styles.filterText}>Filter Date</div>
+                  <img className={styles.icon} src={require("../../assets/icons/filter.png")} alt='tick'/>
+              </motion.button>
+          </div>
 
-        {filterBookings.map((booking, index) => (
-            <TourContainerCompany
-            id = {booking._id}
-            key={booking._id}
-            type="booking"
-            destination={tours[index]?.destination}
-            departure={tours[index]?.departure}
-            departureDate={tours[index]?.departureDate}
-            returnDate={tours[index]?.returnDate}
-            fullName = {booking.name}
-            phone = {booking.phone}
-            numAdult={adultList[index]?.length || 0}
-            numChild={childList[index]?.length || 0}
-            tourStatus={booking.status}
-            bookingDate = {booking.date}
-            color={index % 2 === 1 ? 'white' : 'rgba(135, 244, 224, 0.8)'}
-            />
-            ))}
+          <div style={{display: "flex", alignContent: "center", flexDirection: "column", paddingBottom: "5vw"}}>
+          {filterBookings.map((booking, index) => (
+              <TourContainerCompany
+              id = {booking._id}
+              key={booking._id}
+              type="booking"
+              destination={tours[index]?.destination}
+              departure={tours[index]?.departure}
+              departureDate={tours[index]?.departureDate}
+              returnDate={tours[index]?.returnDate}
+              fullName = {booking.name}
+              phone = {booking.phone}
+              numAdult={adultList[index]?.length || 0}
+              numChild={childList[index]?.length || 0}
+              tourStatus={booking.status}
+              bookingDate = {booking.date}
+              color={index % 2 === 1 ? 'white' : 'rgba(135, 244, 224, 0.8)'}
+              />
+              ))}
+          </div>
+        </div>
     </div>
     </>
   )

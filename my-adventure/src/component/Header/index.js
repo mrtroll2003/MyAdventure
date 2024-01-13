@@ -9,36 +9,44 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 export default class Header extends Component {
   render() {
+    const handleMailTo = () => {
+      window.location.href = 'mailto:myadvanture@gmail.com';
+    }
+
+    const handlePhoneClick = () => {
+      window.location.href = 'tel:+89123456789';
+    }
+
+    const handleFacebookClick = () => {
+      window.location.href = 'https://www.facebook.com/ltbhang';
+    };
     return (
       <div className={styles.header}>
-        <div className={styles.container}>
+        <motion.div className={styles.container}  whileHover={{ color: "blue" }}>
           <motion.img
             src={PhoneIcon}
             className={styles.phoneIcon}
             alt="PhoneIcon.png"
-            whileHover={{ scale: 1.5 }}
-            whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }}
           />
           <motion.p
             className={styles.text}
-            whileHover={{ color: "blue" }}
             whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }}
+            onClick={handlePhoneClick}
           >
             (+89) 123456789
           </motion.p>
-        </div>
+        </motion.div>
         <div className={styles.container}>
           <motion.img
             src={MailIcon}
             className={styles.mailIcon}
             alt="MailIcon.png"
-            whileHover={{ scale: 1.5 }}
-            whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }}
           />
           <motion.p
             className={styles.text}
             whileHover={{ color: "blue" }}
             whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }}
+            onClick={handleMailTo}
           >
             myadvanture@gmail.com
           </motion.p>
@@ -52,8 +60,6 @@ export default class Header extends Component {
             src={AboutUsIcon}
             className={styles.aboutUsIcon}
             alt="AboutUsIcon.png"
-            whileHover={{ scale: 1.5 }}
-            whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }}
           />
           <motion.p
             className={styles.text}
@@ -63,20 +69,26 @@ export default class Header extends Component {
             Get to know us
           </motion.p>
         </Link>
-        <motion.img
-          src={FacebookIcon}
-          className={styles.facebookIcon}
-          alt="FacebookIcon.png"
-          whileHover={{ scale: 1.5 }}
-          whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }}
-        />
-        <motion.img
-          src={InstagramIcon}
-          className={styles.instagramIcon}
-          alt="InstagramIcon.png"
-          whileHover={{ scale: 1.5 }}
-          whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }}
-        />
+        <a href="https://www.facebook.com/ltbhang" target="_blank" rel="noopener noreferrer">
+          <motion.img
+            src={FacebookIcon}
+            className={styles.facebookIcon}
+            alt="FacebookIcon.png"
+            whileHover={{ scale: 1.5 }}
+            whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }}
+            style={{ cursor: 'pointer' }}
+          />
+        </a>
+        <a href="https://www.instagram.com/beolee123/" target="_blank" rel="noopener noreferrer">
+          <motion.img
+            src={InstagramIcon}
+            className={styles.instagramIcon}
+            alt="InstagramIcon.png"
+            whileHover={{ scale: 1.5 }}
+            whileTap={{ opacity: 0.5, transition: { duration: 0.1 } }}
+            style={{ cursor: 'pointer' }}
+          />
+        </a>
       </div>
     );
   }

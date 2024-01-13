@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { motion } from "framer-motion";
+import ImagePopUp from "../../component/ImagePopUp";
 
 const CustomerTextBox = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -114,14 +116,16 @@ const CustomerTextBox = (props) => {
             <div style={{ fontSize: "1.2vw", width: "18.5%" }}>
               Birth Certificate:
             </div>
-            <img
-              src={props.birthCert}
-              alt="birthcert"
-              style={{ width: "5vw", height: "auto", marginLeft: "7vw" }}
-            ></img>
-            <span style={{ marginLeft: "2vw", fontSize: "1.2vw" }}>
+            <motion.button onClick={props.onClick}>
+              <img
+                src={props.birthCert}
+                alt="birthcert"
+                style={{ width: "5vw", height: "auto", marginLeft: "7vw" }}
+              ></img>
+            </motion.button>
+            {/* <span style={{ marginLeft: "2vw", fontSize: "1.2vw" }}>
               birthcert.png
-            </span>
+            </span> */}
           </div>
         )}
 
@@ -154,6 +158,7 @@ const CustomerTextBox = (props) => {
             </div>
           </div>
         )}
+
       </div>
     </div>
   );

@@ -36,3 +36,13 @@
     }
 } 
 
+
+.searchBox {
+    font-size: 1.2vw;
+    padding: 0.5vw 1vw;
+    width: 20vw;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 4vw;
+    margin-left: 5vw;
+}

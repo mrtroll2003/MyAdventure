@@ -151,7 +151,7 @@ const CreateVietNamTourScreen = (props) => {
       >
         <h1
           className={styles.titleText}
-          style={{ fontSize: "3.5vw", marginTop: "2.5%", fontWeight: "800" }}
+          style={{ fontSize: "3.5vw", marginTop: "2.5%", fontWeight: "bold" }}
         >
           CREATE A NEW TOUR
         </h1>
@@ -208,7 +208,7 @@ const CreateVietNamTourScreen = (props) => {
       <>
       <div
         className={styles.text}
-        style={{ marginLeft: "5%", marginTop: "5.5%" }}
+        style={{ marginLeft: "5%", marginTop: "2vw" }}
       >
         Transportation:
       </div>
@@ -240,7 +240,7 @@ const CreateVietNamTourScreen = (props) => {
       <>
       <div
         className={styles.text}
-        style={{ marginLeft: "5%", marginTop: "5.5%" }}
+        style={{ marginLeft: "5%", marginTop: "2vw" }}
       >
         Accommodation:
       </div>
@@ -270,7 +270,7 @@ const CreateVietNamTourScreen = (props) => {
         <>
         <div
         className={styles.text}
-        style={{ marginLeft: "5%", marginTop: "1.5%" }}
+        style={{ marginLeft: "5%", marginTop: "2vw" }}
       >
         Schedule Details:
       </div>
@@ -296,7 +296,9 @@ const CreateVietNamTourScreen = (props) => {
         ) : null
       }
 
-      <motion.button className={styles.submitBtn} whileHover={{scale: "0.98"}} onClick={handleSubmit}>Submit</motion.button>
+      <div className= {styles.submitContainer}>
+        <motion.button className={styles.submitBtn} whileHover={{scale: "0.98"}} onClick={handleSubmit}>Submit</motion.button>
+      </div>
       
       {/* Footer */}
       <Footer />

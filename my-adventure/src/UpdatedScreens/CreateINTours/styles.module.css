@@ -19,7 +19,6 @@
 }
 .vnTourIntroText {
     color: white;
-    font-family: "NunitoSans";
     font-size: 80px;
     font-weight: bolder;
 }
@@ -38,7 +37,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: "NunitoSans";
     font-weight: 800;
     font-size: 3.5vw;
     text-transform: uppercase;
@@ -46,36 +44,30 @@
     background-color: rgba(0, 0, 0, 0.3);
 }
 .titleText {
-    font-family: "NunitoSans";
     text-transform: uppercase;
 }
 .text {
-    font-family: "NunitoSans";
     font-weight: bold;
     font-style: italic;
     font-size: 1.5vw; 
 }
 
 .text1 {
-    font-family: "NunitoSans";
     font-weight: 600;
     font-size: 1.2vw; 
 }
 .leftText {
-    font-family: "NunitoSans";
     font-weight: 600;
     font-size: 1.2vw;
     margin-top: 1.5vh;
     width: 17vw;
 }
 .rightText {
-    font-family: "NunitoSans";
     font-weight: 400;
     font-size: 1.2vw;
 }
 
 .inputStyle {
-    font-family: "NunitoSans";
     font-weight: 400;
     font-size: 1.2vw;
     margin-left: 10vw;
@@ -106,7 +98,6 @@
     /* border: 1px solid green; */
 }
 .detailsText {
-    font-family: "NunitoSans";
     font-weight: 600;
     font-size: 1.5vw; 
 }
@@ -123,15 +114,13 @@
 }
 .price {
     font-size: 1.8vw;
-    font-family: "NunitoSans";
-    font-weight: 900;
+    font-weight: bold;
     text-transform: uppercase;
 }
 .bookTourBtn {
     padding: 1% 1%;
     display: flex;
     color: white;
-    font-family: "NunitoSans";
     font-weight: 600;
     font-size: 1.2vw;
     justify-content: center;
@@ -168,9 +157,8 @@
 }
 
 .submitBtn {
-    width: 83vw;
-    margin-left: 10%;
-    margin-top: 1vw;
+    width: 20vw;
+    margin-top: 4vw;
     height: fit-content;
     padding: 0.8vw;
     font-size: 1.2vw;
@@ -179,8 +167,15 @@
     box-shadow: 1px 2px 2px rgb(0, 0, 0, 0.5);
 }
 
+.submitContainer {
+    width: 84%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
 .textareaStyle {
-    font-family: "NunitoSans";
     font-weight: 400;
     font-size: 1.2vw;
     margin-left: 10vw;
@@ -193,7 +188,6 @@
 }
 
 .datePicker {
-    font-family: "NunitoSans";
     font-weight: 400;
     font-size: 1.2vw;
     margin-left: 10vw;
@@ -243,7 +237,6 @@
   }
 
   .filterBox {
-    font-family: "NunitoSans";
     font-weight: 400;
     font-size: 1.2vw;
     margin-left: 10vw;

@@ -133,12 +133,9 @@ const TourDetail = (props) => {
 
   }
 
-
-
   const handleCancelClick = () => {
       setIsShowCancel(!isShowCancel)
     }
-
 
   if (loading) {
     return <p>Loading...</p>;
@@ -205,7 +202,6 @@ const TourDetail = (props) => {
       </div>
       </>
 
-
       <>
       <div className={styles.horizontal}>
         <div className={styles.firstHalf}>
@@ -260,8 +256,6 @@ const TourDetail = (props) => {
         Schedule Details:
       </div>
         </>
-
-
         <>
         <div style={{ marginLeft: "7.8%", marginTop: "1%", marginRight: "6%", width: "85vw" }}>
           <div className={styles.tourDetailBox}>
@@ -270,15 +264,12 @@ const TourDetail = (props) => {
         </div>
         </>
    
-      {/* Price */}
-        <>
         <div
         className={styles.price}
-        style={{ marginTop: "2.5%", marginLeft: "6%" }}
+        style={{ marginTop: "2.5%", padding: "1vw 5vw"}}
       >
         Price: ${tour.price}
       </div>
-        </>
 
 
       {/* Number of customers */}
@@ -302,7 +293,7 @@ const TourDetail = (props) => {
           <>
           <div className={styles.displayHorizon}> 
             <motion.button className={styles.companyBtn} whileHover={{scale: 0.9}} onClick={handleModifyClick}>Modify</motion.button>
-            <motion.button className={styles.companyBtn} style={{backgroundColor: "#FF8139"}}  whileHover={{scale: 0.9}} onClick={handleCancelClick}>Cancel</motion.button>
+            <motion.button className={styles.companyBtn} style={{backgroundColor: "#FF9551"}}  whileHover={{scale: 0.9}} onClick={handleCancelClick}>Cancel</motion.button>
           </div>
           </>
         ) : (

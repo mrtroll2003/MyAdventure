@@ -16,19 +16,21 @@ const BookingDetail = (props) => {
   const id = searchParams.get("id");
   const [loading, setLoading] = useState(true);
   const [loading1, setLoading1] = useState(true);
-
   const [booking, setBooking] = useState();
   const [tour, setTour] = useState();
   const [adult, setAdult] = useState([]);
   const [children, setChildren] = useState([]);
-  const [bookings, setBookings] = useState([]);
-  const [isShowCancel, setIsShowCancel] = useState(false);
   const [showCancelBox, setShowCancelBox] = useState(false);
   const [zoom, setZoom] = useState(false);
   const [bank, setBank] = useState();
-
+  const [zoom1, setZoom1] = useState(false);
+  const [link, setLink] = useState("")
   const handleZoom = () => {
     setZoom(!zoom);
+  };
+  const handleZoom1 = (image) => {
+    setLink(image)
+    setZoom1(!zoom1);
   };
 
   useEffect(() => {
@@ -117,18 +119,18 @@ const BookingDetail = (props) => {
 
   const setBg = (status) => {
     var backgroundColor = "#FFED8C";
-    if (status === "Successful") {
-      backgroundColor = "#30E742";
+    if (status === "Finish") {
+      backgroundColor = "#22EAAA";
     } else if (status === "Waiting for handling") {
       backgroundColor = "#FFED8C";
     } else if (status === "Waiting for checking") {
       backgroundColor = "#F5AE45";
     } else if (status === "Confirmed") {
-      backgroundColor = "#E4F61A";
+      backgroundColor = "#99FFCD";
     } else if (status === "Paid") {
       backgroundColor = "#2CF594";
     } else if (status === "Cancelled") {
-      backgroundColor = "red";
+      backgroundColor = "#FF4A4A";
     }
     return backgroundColor;
   };
@@ -320,6 +322,8 @@ const BookingDetail = (props) => {
               type="children"
               sex={child.sex}
               dob={formatDate(child.dob)}
+              birthCert = {child.birthCert}
+              onClick={() => handleZoom1(child.birthCert)}
             />
           </>
         ))}
@@ -395,7 +399,7 @@ const BookingDetail = (props) => {
         )}
 
         {booking.status === "Waiting for checking" && (
-          <div className={styles.horizontal} style={{}}>
+          <div className={styles.horizontal1} style={{}}>
             <motion.button
               className={styles.changeBtn}
               whileHover={{ scale: 0.95 }}
@@ -408,7 +412,7 @@ const BookingDetail = (props) => {
               whileHover={{ scale: 0.95 }}
               onClick={handleConfirmPaymentClick}
             >
-              Confirmed payment
+              Confirmed
             </motion.button>
             <motion.button
               className={styles.cancelBtn}
@@ -459,6 +463,16 @@ const BookingDetail = (props) => {
             style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
           >
             <ImagePopUp imageUrl={booking.payment} onClick={handleZoom} />
+          </div>
+        )}
+
+        {zoom1 && (
+          <div
+            className={styles.overlay}
+            style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
+          >
+          {/* {console.log("Image URLLLLL: ", link)} */}
+            <ImagePopUp imageUrl={link} onClick={handleZoom1} />
           </div>
         )}
       </div>

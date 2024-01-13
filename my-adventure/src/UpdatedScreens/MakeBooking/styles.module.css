@@ -212,8 +212,7 @@ p.verticalInfoStyling::after {
 }
 
 .submitButton {
-    width: 70vw;
-    height: 6vh;
+    padding: 0.5vw 3vw;
     margin-top: 5vh;
     text-align: center;
     color: white;

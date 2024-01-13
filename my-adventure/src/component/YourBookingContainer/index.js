@@ -22,36 +22,12 @@ function TourContainer(props) {
     tourStatus,
   } = props;
   const BUTTON_STATUS = {
-    "Waiting for handling": (
-      <div className={styles.button} style={{ backgroundColor: "#FFED8C" }}>
-        <div className={styles.buttonText}>Waiting for handling</div>
-      </div>
-    ),
-    "Waiting for checking": (
-      <div className={styles.button} style={{ backgroundColor: "#F5AE45" }}>
-        <div className={styles.buttonText}>Waiting for checking</div>
-      </div>
-    ),
-    Confirmed: (
-      <div className={styles.button} style={{ backgroundColor: "#E4F61A" }}>
-        <div className={styles.buttonText}>Confirmed</div>
-      </div>
-    ),
-    Paid: (
-      <div className={styles.button} style={{ backgroundColor: "#2CF594" }}>
-        <div className={styles.buttonText}>Paid</div>
-      </div>
-    ),
-    Successful: (
-      <div className={styles.button} style={{ backgroundColor: "#30E742" }}>
-        <div className={styles.buttonText}>Successful</div>
-      </div>
-    ),
-    Cancelled: (
-      <div className={styles.button} style={{ backgroundColor: "red" }}>
-        <div className={styles.buttonText}>Cancelled</div>
-      </div>
-    ),
+    "Waiting for handling": <div className={styles.button} style={{backgroundColor:'#FFED8C',}}><div className={styles.buttonText}>Waiting for handling</div></div>,
+    "Waiting for checking": <div className={styles.button} style={{backgroundColor:"#F5AE45",}}><div className={styles.buttonText}>Waiting for checking</div></div>,
+    "Confirmed": <div className={styles.button} style={{backgroundColor:"#99FFCD",}}><div className={styles.buttonText}>Confirmed</div></div>,
+    "Paid": <div className={styles.button} style={{backgroundColor:"#2CF594",}}><div className={styles.buttonText}>Paid</div></div>,
+    "Finish": <div className={styles.button} style={{backgroundColor:"#22EAAA",}}><div className={styles.buttonText}>Finish</div></div>,
+    "Cancelled": <div className={styles.button} style={{backgroundColor:"#FF4A4A",}}><div className={styles.buttonText}>Cancelled</div></div>,
     // "Waiting for cancel": <div className={styles.button} style={{backgroundColor:"#F31E38",}}><div className={styles.buttonText}>Waiting for cancel</div></div>,
   };
   var AdultList = nameA?.map((adult) => <li>{adult.name}</li>);

@@ -51,7 +51,7 @@ const RecommendedTripCard = (props) => {
         {props.return_date}
       </p>
       <p className={styles.recTCTitleRow} style={{ marginTop: "1vh" }}>
-        {props.price}$
+        ${props.price}
       </p>
     </motion.div>
   );

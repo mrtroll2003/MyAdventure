@@ -216,3 +216,17 @@
     justify-content: space-evenly;
     margin-top: 5%;
 }
+
+ .calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2vw;
+  }
+
+
+.check {
+    font-size: 2vw;
+    text-align: center;
+    font-weight: 600;
+}

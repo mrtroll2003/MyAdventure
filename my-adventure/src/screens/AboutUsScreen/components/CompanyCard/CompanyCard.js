@@ -1,7 +1,5 @@
 import React from "react";
 import "./styles.css";
-
-import Avatar from "../../images/avatar.png";
 import { motion } from "framer-motion";
 
 const CompanyCard = ({ avatar, name, role, details }) => {
@@ -16,7 +14,7 @@ const CompanyCard = ({ avatar, name, role, details }) => {
           marginTop: "5vh",
         }}
       >
-        <img src={avatar} alt="employee-avatar" style={{ width: "30%" }} />
+        <img src={avatar} alt="employee-avatar" style={{ width: "9vw", height: "9vw", border: "1px solid transparent", borderRadius: "200",  }} />
         <h1 className="companyCardName" style={{ marginTop: "2.5vh" }}>
           {name}
         </h1>

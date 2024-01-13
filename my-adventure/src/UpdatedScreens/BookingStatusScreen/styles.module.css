@@ -159,9 +159,6 @@
     align-items: center;
 }
 
-/* input[type=radio] {
-    display: none;
-} */
 .star {
     cursor: pointer ;
 }
@@ -184,13 +181,11 @@
     font-family: "NunitoSans";
  }
 .smallButton {
-    width: 100%;
     font-size: 3vh;
-    height: 7vh;
     box-shadow: 4px 4px rgba(0, 0, 0, 0.25), 
                 4px 4px rgba(0, 0, 0, 0.25);
 }
-/* Confirmed status only */
+
 .changeButton { 
     font-family: "NunitoSans";
     font-size: 1.2vw;
@@ -201,18 +196,16 @@
     height: 6vh;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.5);
 }
-/* Confirm status only */
+
 .cancelButton {
-    padding: 1vw;
     margin-top: 3vw;
     color: black;
     font-family: "NunitoSans";
     font-size: 1.2vw;
     font-weight: bold;
     background-color: #FF8139;
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 90%;
+    padding: 0.5vw 3vw;
+    width: 20vw;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
                 0 4px 8px rgba(0, 0, 0, 0.25); 
 }
@@ -247,6 +240,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+
+  .alignCenter {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-right: 5%;
+    align-items:flex-end;
   }
 
 /* Tablet: width >= 740px && width <= 1025px */
@@ -336,6 +337,7 @@
  }
  
 }
+
 
 /* Mobile: width < 740px */
 @media screen and (max-width: 739px) { 
