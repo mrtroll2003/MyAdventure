@@ -172,6 +172,7 @@ const CreateVietNamTourScreen = (props) => {
           >
             CREATE A NEW TOUR
           </h1>
+        </h1>
         </div>
 
         <div className={styles.horizontal}>
