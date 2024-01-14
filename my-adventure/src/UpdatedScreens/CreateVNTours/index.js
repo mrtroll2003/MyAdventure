@@ -92,6 +92,7 @@ const CreateVietNamTourScreen = (props) => {
       checkin: checkinDate,
       checkout: checkoutDate,
       details: details,
+      isCancel: false,
     });
 
     var requestOptions = {

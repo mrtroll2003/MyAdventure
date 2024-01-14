@@ -162,17 +162,23 @@ const VietNamTourScreen = () => {
 
   const filterNorthDestinations = northDestinationsImage
     ? northDestinationsImage.filter((destination) => {
-        return destination.name
+        if(destination) {
+          return destination.name
           .toLowerCase()
           .includes(searchText.toLowerCase());
+        }
+        else return null;
       })
     : [];
 
   const filterCenterDestinations = centerDestinationsImage
     ? centerDestinationsImage.filter((destination) => {
+      if(destination) {
         return destination.name
-          .toLowerCase()
-          .includes(searchText.toLowerCase());
+        .toLowerCase()
+        .includes(searchText.toLowerCase());
+      }
+      else return null;
       })
     : [];
 

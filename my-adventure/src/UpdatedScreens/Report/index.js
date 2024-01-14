@@ -44,9 +44,9 @@ const Report = (props) => {
       .catch((error) => console.log("error", error));
   }, []);
 
-  const RevenueInMonth = (month, year, bookings) => {
+  const RevenueInMonth = (month, year) => {
     let sum = 0;
-    bookings.forEach((booking) => {
+    bookings?.forEach((booking) => {
       const date = new Date(booking.date);
       if (
         date.getMonth() === month &&
@@ -55,17 +55,15 @@ const Report = (props) => {
         booking.price !== undefined
       ) {
         sum = sum + booking.price;
-        console.log("booking.price", booking.price);
       }
     });
-
     return sum;
   };
 
   const RevenueInYear = (year) => {
     const revenues = [];
     for (let month = 0; month <= 11; month++) {
-      const count = RevenueInMonth(month, year, bookings);
+      const count = RevenueInMonth(month, year);
       revenues.push(count);
     }
     return revenues;
@@ -73,6 +71,7 @@ const Report = (props) => {
 
   const RevenueInQuater = (year) => {
     const revenues = [];
+
     for (let i = 0; i < 4; i++) {
       let count = 0;
       for (let month = i * 3; month < (i + 1) * 3; month++) {
@@ -85,7 +84,7 @@ const Report = (props) => {
 
   const CancelInMonth = (month, year) => {
     let count = 0;
-    bookings.forEach((booking) => {
+    bookings?.forEach((booking) => {
       const date = new Date(booking.date);
       if (
         date.getMonth() === month &&
@@ -112,7 +111,7 @@ const Report = (props) => {
     for (let i = 0; i < 4; i++) {
       let count = 0;
       for (let month = i * 3; month < (i + 1) * 3; month++) {
-        count += RevenueInMonth(month, year);
+        count += CancelInMonth(month, year);
       }
       CancelCounts.push(count);
     }
@@ -120,7 +119,7 @@ const Report = (props) => {
   };
   const CustomerCountInMonth = (month, year) => {
     let count = 0;
-    bookings.forEach((booking) => {
+    bookings?.forEach((booking) => {
       const date = new Date(booking.date);
       if (
         date.getMonth() === month &&
@@ -208,8 +207,6 @@ const Report = (props) => {
 
   if (option === "Customer Count") {
     const customerCounts = CustomerCountInYear(year);
-    const customerCounts1 = CustomerCountInQuater(year);
-    console.log("customerCounts1", customerCounts1);
     chartOptions.series[0].data = customerCounts;
     chartOptions.series[0].name = "Customer Count (people)";
   } else if (option === "Revenue") {
@@ -219,7 +216,7 @@ const Report = (props) => {
   } else if (option === "Cancelled Booking Count") {
     const cancelCounts = CancelInYear(year);
     chartOptions.series[0].data = cancelCounts;
-    chartOptions.series[0].name = "Cancel Booking Count";
+    chartOptions.series[0].name = "Cancelled Booking Count";
   }
 
   const chartOptions1 = {

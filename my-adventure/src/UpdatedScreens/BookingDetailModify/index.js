@@ -93,17 +93,14 @@ const BookingDetailModify = (props) => {
   }, [booking]);
 
   useEffect(() => {
-    console.log("tour", tour);
-    if (tour && tour._id) {
+    if (booking && booking._id) {
       var requestOptions = {
         method: "GET",
         redirect: "follow",
       };
 
       fetch(
-        `https://my-adventure-backend.onrender.com/children/tour?tourID=${encodeURIComponent(
-          tour._id
-        )}`,
+        `https://my-adventure-backend.onrender.com/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -111,16 +108,14 @@ const BookingDetailModify = (props) => {
         .catch((error) => console.log("error", error));
 
       fetch(
-        `https://my-adventure-backend.onrender.com/adult/tour?tourID=${encodeURIComponent(
-          tour._id
-        )}`,
+        `https://my-adventure-backend.onrender.com/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
         requestOptions
       )
         .then((response) => response.json())
         .then((result) => setAdult(result))
         .catch((error) => console.log("error", error));
     }
-  }, [tour]);
+  }, [booking]);
 
   useEffect(() => {
     if (booking) {
