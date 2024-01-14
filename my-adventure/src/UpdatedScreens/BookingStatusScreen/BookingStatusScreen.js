@@ -495,7 +495,7 @@ const BookingStatusScreen = (props) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              marginTop: "4vh",
+              marginTop: "2vh",
             }}
           >
             <div className={styles.heading2}>Your good name: </div>
@@ -507,7 +507,7 @@ const BookingStatusScreen = (props) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              marginTop: "4vh",
+              marginTop: "2vh",
             }}
           >
             <div className={styles.heading2}>Phone Number: </div>
@@ -519,7 +519,7 @@ const BookingStatusScreen = (props) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              marginTop: "4vh",
+              marginTop: "2vh",
             }}
           >
             <div className={styles.heading2}>Your Nationality: </div>
@@ -531,7 +531,7 @@ const BookingStatusScreen = (props) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              marginTop: "4vh",
+              marginTop: "2vh",
             }}
           >
             <div className={styles.heading2}>Your Address: </div>

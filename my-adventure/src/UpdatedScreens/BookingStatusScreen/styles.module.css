@@ -4,7 +4,11 @@
     background-attachment: fixed;
     background-size: cover;
     width: 100%;
-    padding: 10vh;
+    padding-top: 10vh;
+    padding-left: 10vh;
+    padding-right: 10vh;
+    padding-bottom: 10vh;
+    /* padding: 10vh; */
 }
 
 .hi {
@@ -252,6 +256,15 @@
 
 /* Tablet: width >= 740px && width <= 1025px */
 @media screen and (max-width: 1025px) and (min-width: 740px) {
+    .container {
+        background-image: url(../../assets/images/YourBookingBg.png);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        width: 100%;
+        padding-left: 0vh;
+        padding-right: 0vh;
+    }
     .mainContentContainer {
         margin-top: 0vw;
         width: 100vw;
@@ -269,10 +282,12 @@
     font-size: 3vh;
     color: black;
     font-weight: bold;
+    margin-left: 10vh;
  }
  .welcome {
     font-size: 2vh;
     margin-top: 3vh;
+    margin-left: 10vh;
  }
  .title1 {
     text-transform: uppercase;
@@ -354,9 +369,18 @@
 
 /* Mobile: width < 740px */
 @media screen and (max-width: 739px) { 
+    .container {
+        background-image: url(../../assets/images/YourBookingBg.png);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        width: 100%;
+        padding-left: 0vh;
+        padding-right: 0vh;
+    }
     .mainContentContainer {
         margin-top: 0vh;
-        width: 90vw;
+        width: 100vw;
         margin-left: 0vw;
         margin-right: 0vw;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
@@ -371,10 +395,12 @@
         font-size: 3vh;
         color: black;
         font-weight: bold;
+        margin-left: 10vh;
      }
      .welcome {
         font-size: 2vh;
         margin-top: 3vh;
+        margin-left: 10vh;
      }
      .title1 {
         text-transform: uppercase;
