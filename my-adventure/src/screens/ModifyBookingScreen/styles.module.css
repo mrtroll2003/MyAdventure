@@ -280,99 +280,133 @@
   }
 
 /* Tablet: width >= 740px && width <= 1025px */
-@media screen and (max-width: 1025px) and (min-width: 740px) {
+@media screen and (max-width: 1025px) {
+    .container {
+        background-image: url(../../assets/images/YourBookingBg.png);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        width: 100%;
+        padding-left: 0vh;
+        padding-right: 0vh;
+    }
+    .mainContentContainer {
+        margin-top: 0vw;
+        width: 100vw;
+        margin-left: 0vw;
+        margin-right: 0vw;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
+                    0 4px 8px rgba(0, 0, 0, 0.25); 
+    
+        background-color: rgba(135, 244, 224, 0.8);;
+        display: flex;
+        flex-direction: column; 
+        padding: 2% 10%;
+    }
     .hi {
-        font-size: 3vh;
+        font-size: 3vw;
         color: black;
         font-weight: bold;
-    }
-    .welcome {
-        font-size: 1.5vh;
-        margin-top: 3vh;
-    }
+        margin-left: 5vw;
+     }
+     .welcome {
+        font-size: 2vw;
+        margin-top: 3vw;
+        margin-left: 5vw;
+     }
     .title1 {
         text-transform: uppercase;
         text-align: center;
         font-weight: bolder;
-        font-size: 2.5vh;
-    }
-    .title2 {
+        font-size: 4vw;
+     }
+     .title2 {
         text-transform: uppercase;
         text-align: center;
         font-weight: bolder;
-        font-size: 2.25vh;
-    }
-    .title3 {
+        font-size: 3.25vw;
+     }
+     .title3 {
         text-transform: uppercase;
         text-align: center;
         font-weight: bolder;
-        font-size: 2vh;
-    }
-    .statusContainer {
+        font-size: 2.5vw;
+     }
+     .signIn {
+        display: flex;
+        flex-direction: column;
+        margin-left: 3vw;
+        font-size: 2.25vw;
+        margin-top: 0px ;
+     }
+     .statusContainer {
         align-self: center;
         text-align: center;
-        width: 40%;
+        width: 30%;
         padding-top: 1%;
         padding-bottom: 1%;
-        font-size: 1.75vh;
-        margin-top: 2vh;
-    }
-    .text {
-        font-size: 1.5vh;
+        font-size: 2.25vw;
+        margin-top: 2vw;
+     }
+     .text {
+        font-size: 2vw;
         font-weight: 400;
-        margin-top: 0vh;
+        margin-top: 2vw;
         font-family: "NunitoSans";
-    }
+     }
     .accountBox {
         width: 100%;
         background-color: white;
-        margin-top: 3vh;
+        margin-top: 2vw;
         display: flex;
         flex-direction: row;
         align-self: center;
         align-items: center;
+        justify-content: left;
         border: 0.2vh solid black;
-        padding: 1vh 0;
+        padding-bottom:  2vw;
     }
     .inputTextAccountBox {
         width: 30vw;
         height: 3vh;
         border-radius: 0.5vw;
-        font-size: 1.5vh;
+        font-size: 1.5vw;
         padding-left: 2vw;
         border: 0.2vh solid black;
         margin-top: 2vh;
     }
     .yourDetailBooking {
-        font-size: 2.5vh;
+        font-size: 2.5vw;
         font-weight: bold;
-        margin-top: 5vh;
-    }
+        margin-top: 5vw;
+     }
     .noteText {
-        font-size: 1.75vh;
-    }
+        margin-left: 2vw;
+        font-size: 1.75vw;
+     }
     .heading1 {
-        font-size: 2vh;
-        margin-top: 3vh;
+        font-size: 3vw;
+        margin-top: 3vw;
         font-weight: 500;
     }
     .heading2 {
-        font-size: 1.5vh;
+        font-size: 2.5vw;
+        margin-left: 3vw;
         font-weight: 500;
-        width: 30%;
-    }
+        width: 40%;
+     }
     .formLine {
         display: flex;
         flex-direction: column;
         align-items: start;
         margin-top: 4vh;
-        font-size: 3vh;
+        font-size: 3vw;
     }
     .inputTextBox {
         width: 50vw;
-        height: 3vh;
+        height: 4vw;
         border-radius: 0.5vw,;
-        font-size: 1.5vh;
+        font-size: 2vw;
         padding-left: 2vw;
         border: 0.2vh solid black;
         margin-top: 2vh;
@@ -382,123 +416,12 @@
         background-color: #32C841;
         color: white;
         font-weight: bold;
-        font-size: 1.5vh;
-        margin-left: 5%;
-        margin-right: 5%;
+        font-size: 3vw;
+        margin-left: 10%;
+        margin-right: 10%;
         margin-top: 5%;
-        padding: 0.5vw 0;
-        width: 66.5vw;
+        width: 80vw;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
     }
-}
-
-/* Phone: width <= 739 */
-@media screen and (max-width: 739px) {
-    .hi {
-        font-size: 3vh;
-        color: black;
-        font-weight: bold;
-    }
-    .welcome {
-        font-size: 1.5vh;
-        margin-top: 3vh;
-    }
-    .title1 {
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bolder;
-        font-size: 2.5vh;
-    }
-    .title2 {
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bolder;
-        font-size: 2.25vh;
-    }
-    .title3 {
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bolder;
-        font-size: 2vh;
-    }
-    .statusContainer {
-        align-self: center;
-        text-align: center;
-        width: 40%;
-        padding-top: 1%;
-        padding-bottom: 1%;
-        font-size: 1.75vh;
-        margin-top: 2vh;
-    }
-    .text {
-        font-size: 1.5vh;
-        font-weight: 400;
-        margin-top: 0vh;
-        font-family: "NunitoSans";
-    }
-    .accountBox {
-        width: 100%;
-        background-color: white;
-        margin-top: 3vh;
-        display: flex;
-        flex-direction: row;
-        align-self: center;
-        align-items: center;
-        border: 0.2vh solid black;
-        padding: 1vh 0;
-    }
-    .inputTextAccountBox {
-        width: 30vw;
-        height: 3vh;
-        border-radius: 0.5vw;
-        font-size: 1.5vh;
-        padding-left: 2vw;
-        border: 0.2vh solid black;
-        margin-top: 2vh;
-    }
-    .yourDetailBooking {
-        font-size: 2.5vh;
-        font-weight: bold;
-        margin-top: 5vh;
-    }
-    .noteText {
-        font-size: 1.75vh;
-    }
-    .heading1 {
-        font-size: 2vh;
-        margin-top: 3vh;
-        font-weight: 500;
-    }
-    .heading2 {
-        font-size: 1.5vh;
-        font-weight: 500;
-        width: 30%;
-    }
-    .formLine {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        margin-top: 4vh;
-        font-size: 3vh;
-    }
-    .inputTextBox {
-        width: 50vw;
-        height: 3vh;
-        border-radius: 0.5vw,;
-        font-size: 1.5vh;
-        padding-left: 2vw;
-        border: 0.2vh solid black;
-        margin-top: 2vh;
-        margin-left: 3vw;
-    }  
-    .saveBtn {
-        background-color: #32C841;
-        color: white;
-        font-weight: bold;
-        font-size: 1.5vh;
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 5%;
-        padding: 0.5vw 0;
-        width: 66.5vw;
-    }  
 }
