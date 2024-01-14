@@ -36,11 +36,10 @@ const BookingStatusScreen = (props) => {
   const fileInputRef = useRef(null);
   const [bank, setBank] = useState();
   const [zoom1, setZoom1] = useState(false);
-  const [link, setLink] = useState("")
+  const [link, setLink] = useState("");
 
-  
   const handleZoom1 = (image) => {
-    setLink(image)
+    setLink(image);
     setZoom1(!zoom1);
   };
 
@@ -568,7 +567,7 @@ const BookingStatusScreen = (props) => {
                   sex={child.sex}
                   dob={formatDate(child.dob)}
                   birthCert={child.birthCert}
-                  onClick = {() => handleZoom1(child.birthCert)}
+                  onClick={() => handleZoom1(child.birthCert)}
                 />
               </>
             ))}
@@ -748,7 +747,7 @@ const BookingStatusScreen = (props) => {
       <div className={styles.alignCenter}>
         {(booking.status === "Waiting for checking" ||
           booking.status === "Paid") && (
-            <motion.button
+          <motion.button
             className={styles.cancelButton}
             whileHover={{ scale: 0.9 }}
             onClick={handleCancelClick}
@@ -857,14 +856,14 @@ const BookingStatusScreen = (props) => {
         </div>
       )}
       {zoom1 && (
-          <div
-            className={styles.overlay}
-            style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
-          >
+        <div
+          className={styles.overlay}
+          style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
+        >
           {/* {console.log("Image URLLLLL: ", link)} */}
-            <ImageZoom imageUrl={link} onClick={handleZoom1} />
-          </div>
-        )}
+          <ImageZoom imageUrl={link} onClick={handleZoom1} />
+        </div>
+      )}
     </div>
   );
 };
