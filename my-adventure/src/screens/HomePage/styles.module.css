@@ -51,7 +51,7 @@
 }
 
 .reasonSection {
-    margin-top: 20vh;
+    margin-top: 15vh;
 }
 .boldStatement {
     text-align: center;
@@ -99,6 +99,9 @@
     font-weight: normal;
 }
 /* Package */
+.packageSection {
+    margin-top: 15vh;
+}
 .packageBackground {
     margin-top: 10vh;
     height: fit-content;
