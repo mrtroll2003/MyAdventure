@@ -264,7 +264,7 @@ const Report = (props) => {
       >
         <h1
           className={styles.titleText}
-          style={{ fontSize: "2.5vw", fontWeight: "800", marginTop: "3%" }}
+          style={{ fontSize: "3.25vw", fontWeight: "800", marginTop: "3%" }}
         >
           REPORT
         </h1>
