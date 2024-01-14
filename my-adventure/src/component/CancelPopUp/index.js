@@ -32,7 +32,8 @@ function CancelPopUp(props) {
        return;
     }
     else {
-      navigate(`/yourbooking`)
+      window.location.href = `/booking-status?bookingID=${encodeURIComponent(props.bookingID)}`;
+      window.location.reload();
       return;
     }
   }

@@ -12,7 +12,7 @@ const YourBooking = () => {
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("all bookings");
-  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortOrder, setSortOrder] = useState("desc");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

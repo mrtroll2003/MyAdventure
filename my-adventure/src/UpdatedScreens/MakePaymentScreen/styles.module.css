@@ -61,8 +61,12 @@
 }
 .button {
     font-size: 1.2vw;
-    color: white;
-    font-weight: bold;
+    color: black;
+    font-weight: 600;
+    background-color: #5CD6C0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
+                0 4px 8px rgba(0, 0, 0, 0.25); 
+    padding: 0.8vw 4vw;
 }
 
 .buttonContainer {
@@ -71,9 +75,9 @@
     margin-right: 5%;
     margin-top: 2vw;
     padding: 1vw 1vw;
-    background-color: #32C841;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
-                0 4px 8px rgba(0, 0, 0, 0.25); 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .file {
