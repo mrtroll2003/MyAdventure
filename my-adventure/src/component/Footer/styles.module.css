@@ -51,7 +51,7 @@
 @media screen and (max-width: 1025px) and (min-width: 740px) {
     .footerView {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
     }
     .footerLogoView {
@@ -90,7 +90,7 @@
 @media screen and (max-width: 739px) {
     .footerView {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
     }
     .footerLogoView {
