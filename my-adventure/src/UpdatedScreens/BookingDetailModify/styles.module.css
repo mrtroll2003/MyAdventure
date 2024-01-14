@@ -144,69 +144,95 @@
 /* Tablet: width >= 740px && width <= 1025px */
 @media screen and (max-width: 1025px) and (min-width: 740px) {
   .mainContent {
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
     margin-bottom: 5vw;
   }
   .titleText {
     margin-top: 10vh;
     text-transform: uppercase;
     text-align: center;
-    font-size: 4vh; 
+    font-size: 4vw; 
     font-weight: 800;
   }
   .titleText2 {
-    font-size: 2.5vh;
+    font-size: 3vw;
     margin: 0px;
     font-weight: 500;
     margin-top: 0.5vw;
   }
   .text1 {
-    font-size: 1.5vh;
+    font-size: 2vw;
     font-weight: 500;
     width: 25vw;
   }
   .text2 {
-    font-size: 1.5vh;
+    font-size: 2vw;
     width: 30vw;
+  }
+  .submitBtn {
+    background-color: #5CD6C0;
+    padding: 0.5vw 30vw;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+    margin-top: 3.5vw;
+    align-items: center;
+    margin-left: 15vw;
   }
   .inputStyle {
     font-weight: 400;
-    font-size: 1.5vh;
+    font-size: 2vw;
     border-radius: 5px;
     border: 0.2vh solid black;
     padding: 0.5vw 1vw;
-    width: 35vw;
+    width: 45vw;
   }
 }
 
 /* Mobile: width < 740px */
 @media screen and (max-width: 739px) {
   .mainContent {
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin-left: 0vw;
+    margin-right: 0vw;
     margin-bottom: 5vw;
   }
   .titleText {
     margin-top: 10vh;
     text-transform: uppercase;
     text-align: center;
-    font-size: 4vh; 
+    font-size: 5vw; 
     font-weight: 800;
   }
   .titleText2 {
-    font-size: 2.5vh;
+    font-size: 4vw;
     margin: 0px;
     font-weight: 500;
     margin-top: 0.5vw;
   }
   .text1 {
-    font-size: 1.5vh;
+    font-size: 2.5vw;
     font-weight: 500;
-    width: 25vw;
+    width: 30vw;
   }
   .text2 {
-    font-size: 1.5vh;
+    font-size: 2.5vw;
     width: 30vw;
+  }
+  .submitBtn {
+    background-color: #5CD6C0;
+    padding: 0.5vw 30vw;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+    margin-top: 3.5vw;
+    align-items: center;
+    margin-left: 15vw;
+  }
+  .inputStyle {
+    font-weight: 400;
+    font-size: 2vw;
+    border-radius: 5px;
+    border: 0.2vh solid black;
+    padding: 0.5vw 1vw;
+    width: 45vw;
   }
 }

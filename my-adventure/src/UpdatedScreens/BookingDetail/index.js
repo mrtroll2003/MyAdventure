@@ -22,12 +22,12 @@ const BookingDetail = (props) => {
   const [zoom, setZoom] = useState(false);
   const [bank, setBank] = useState();
   const [zoom1, setZoom1] = useState(false);
-  const [link, setLink] = useState("")
+  const [link, setLink] = useState("");
   const handleZoom = () => {
     setZoom(!zoom);
   };
   const handleZoom1 = (image) => {
-    setLink(image)
+    setLink(image);
     setZoom1(!zoom1);
   };
 
@@ -315,7 +315,7 @@ const BookingDetail = (props) => {
               type="children"
               sex={child.sex}
               dob={formatDate(child.dob)}
-              birthCert = {child.birthCert}
+              birthCert={child.birthCert}
               onClick={() => handleZoom1(child.birthCert)}
             />
           </>
@@ -464,7 +464,7 @@ const BookingDetail = (props) => {
             className={styles.overlay}
             style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
           >
-          {/* {console.log("Image URLLLLL: ", link)} */}
+            {/* {console.log("Image URLLLLL: ", link)} */}
             <ImagePopUp imageUrl={link} onClick={handleZoom1} />
           </div>
         )}

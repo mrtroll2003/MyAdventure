@@ -175,16 +175,16 @@
     margin-left: 10vw;
     margin-right: 10vw;
     margin-bottom: 0vw;
-    margin-top: 10vh;
+    margin-top: 10vw;
   }
   .titleText {
     font-family: "NunitoSans";
     text-transform: uppercase;
     text-align: center;
-    font-size: 4.5vh;
+    font-size: 4.5vw;
   }
   .sub {
-    font-size: 2vh;
+    font-size: 2vw;
     margin-left: 1.2vw;
     font-weight: 500;
   }
@@ -193,7 +193,7 @@
     border-radius: 5px;
     width: 20%;
     height: 10%;
-    font-size: 1.5vh;
+    font-size: 1.5vw;
     font-weight: 400;
     min-width: 35vw;
     min-height: 3vh;
@@ -201,7 +201,7 @@
     padding-left: 1vw;
   }
   .title {
-    font-size: 2vh;
+    font-size: 2vw;
     text-align: center;
     margin-top: 2vw;
     text-transform: uppercase;

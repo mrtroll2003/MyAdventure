@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 7%;
 }
 
 .title {
@@ -50,10 +51,9 @@
 }
 
 #bookingManagementBoldStatement {
-    margin-top: 8%;
     text-align: center;
     font-family: 'NunitoSans';
-    font-size: 2.5vw;
+    font-size: 3vw;
     font-weight: bolder;
 }
 
@@ -90,74 +90,41 @@
     margin-left: 1vw;
 }
 
-@media screen and (max-width: 1025px) and (min-width: 740px) {
+@media screen and (max-width: 1025px) {
     .myadventure {
-        font-size: 3vh;
+        font-size: 5vw;
         margin-top: 0;
     }
     .welcome {
-        font-size: 1.75vh;
-        margin-top: 1vh;
+        font-size: 2vw;
+        margin-top: 1vw;
     }
     .booking {
-        font-size: 1.75vh;
+        font-size: 2vw;
     }
     .content {
-        margin-top: 6vh;
+        margin-top: 9vw;
         width: 100%;
     }
-    #bookingManagementBoldStatement {
-        font-size: 3vh;
+    .boldStatement {
+        font-size: 5vw;
     }
-    .horizon {
-        margin-top: 2vh;
-        margin-bottom: 2vh;
-        padding: 0 5vw;
-    }
-    .box {
-        font-size: 2vh;
-        width: 30vw;
-    }
-    .filterText {
-        font-size: 2vh;
-    }
-    .icon {
-        height: 2.5vh;
-    }
-}
-
-@media screen and (max-width: 739px) and (min-width: 0px) {
-    .myadventure {
-        font-size: 4vh;
-        margin-top: 0;
-    }
-    .welcome {
-        font-size: 2vh;
-        margin-top: 0vh;
-    }
-    .booking {
-        font-size: 2vh;
-    }
-    .content {
-        width: 100%;
-        margin-top: 5vh;
+    .normalText {
+        font-size: 2vw;
     }
     #bookingManagementBoldStatement {
-        font-size: 3vh;
-    }
-    .horizon {
-        margin-top: 2vh;
-        margin-bottom: 2vh;
-        padding: 0 5vw;
+        font-size: 3.5vw;
     }
     .box {
-        font-size: 2vh;
-        width: 30vww;
+        font-size: 2vw;
     }
     .filterText {
-        font-size: 2vh;
+        font-size: 2.5vw;
     }
     .icon {
-        height: 2.5vh;
+        height: 2.5vw;
+    }
+    .horizon {
+        width: 80vw;
     }
 }
