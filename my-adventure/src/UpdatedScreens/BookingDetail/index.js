@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import { motion } from "framer-motion";
-import Footer from "../../component/Footer/Footer";
 import { useLocation, useNavigate } from "react-router-dom";
 import { formatDate, formatHour } from "../../constant/formatDate";
-import CancelBooking from "../../component/CacelBookingPopUp";
 import CustomerTextBox from "../../components/CustomerTextBox";
 import CancelPopUp from "../../component/CancelPopUp";
 import ImagePopUp from "../../component/ImagePopUp";
@@ -88,17 +86,14 @@ const BookingDetail = (props) => {
   }, [booking]);
 
   useEffect(() => {
-    console.log("tour", tour);
-    if (tour && tour._id) {
+    if (booking && booking._id) {
       var requestOptions = {
         method: "GET",
         redirect: "follow",
       };
 
       fetch(
-        `http://localhost:3001/children/tour?tourID=${encodeURIComponent(
-          tour._id
-        )}`,
+        `http://localhost:3001/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -106,16 +101,14 @@ const BookingDetail = (props) => {
         .catch((error) => console.log("error", error));
 
       fetch(
-        `http://localhost:3001/adult/tour?tourID=${encodeURIComponent(
-          tour._id
-        )}`,
+        `http://localhost:3001/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
         requestOptions
       )
         .then((response) => response.json())
         .then((result) => setAdult(result))
         .catch((error) => console.log("error", error));
     }
-  }, [tour]);
+  }, [booking]);
 
   const setBg = (status) => {
     var backgroundColor = "#FFED8C";
@@ -227,7 +220,7 @@ const BookingDetail = (props) => {
           alignItems: "center",
         }}
       >
-        <h1 className={styles.titleText}>BOOKING DETAIL</h1>
+        <div className={styles.titleText}>BOOKING DETAIL</div>
 
         <div
           className={styles.statusContainer}

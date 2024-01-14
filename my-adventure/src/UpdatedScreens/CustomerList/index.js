@@ -4,7 +4,6 @@ import styles from "./styles.module.css";
 import TourContainerCompany from "../../component/TourContainerCompany";
 import { useLocation, useNavigate } from "react-router-dom";
 import { formatDate } from "../../constant/formatDate";
-import TourContainer from "../../component/YourBookingContainer";
 
 const CustomerList = () => {
   const location = useLocation();
@@ -15,7 +14,7 @@ const CustomerList = () => {
   const [loading, setLoading] = useState(true);
   const [adultList, setAdultList] = useState([]);
   const [childList, setChildList] = useState([]);
-  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortOrder, setSortOrder] = useState("desc");
   const [selectedStatus, setSelectedStatus] = useState("all bookings");
 
   useEffect(() => {
