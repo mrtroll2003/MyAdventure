@@ -23,22 +23,22 @@ const Report = (props) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/booking", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/booking", requestOptions)
       .then((response) => response.json())
       .then((result) => setBookings(result))
       .catch((error) => console.log("error", error));
 
-    fetch("http://localhost:3001/adult", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/adult", requestOptions)
       .then((response) => response.json())
       .then((result) => setAdults(result))
       .catch((error) => console.log("error", error));
 
-    fetch("http://localhost:3001/children", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/children", requestOptions)
       .then((response) => response.json())
       .then((result) => setChildren(result))
       .catch((error) => console.log("error", error));
 
-    fetch("http://localhost:3001/booking/booking-year", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/booking/booking-year", requestOptions)
       .then((response) => response.json())
       .then((result) => setYears(result))
       .catch((error) => console.log("error", error));

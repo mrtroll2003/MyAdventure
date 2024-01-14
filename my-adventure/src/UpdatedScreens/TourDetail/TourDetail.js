@@ -31,14 +31,14 @@ const TourDetail = (props) => {
       redirect: "follow",
     };
 
-    fetch(`http://localhost:3001/image`, requestOptions)
+    fetch(`https://my-adventure-backend.onrender.com/image`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setImages(data);
       })
       .catch((error) => console.log("error", error));
 
-    fetch(`http://localhost:3001/booking`, requestOptions)
+    fetch(`https://my-adventure-backend.onrender.com/booking`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setBookings(data);
@@ -46,7 +46,7 @@ const TourDetail = (props) => {
       .catch((error) => console.log("error", error));
 
     fetch(
-      `http://localhost:3001/tour/place?id=${encodeURIComponent(id)}`,
+      `https://my-adventure-backend.onrender.com/tour/place?id=${encodeURIComponent(id)}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -68,7 +68,7 @@ const TourDetail = (props) => {
       };
 
       fetch(
-        `http://localhost:3001/children/tour?tourID=${encodeURIComponent(
+        `https://my-adventure-backend.onrender.com/children/tour?tourID=${encodeURIComponent(
           tour._id
         )}`,
         requestOptions
@@ -78,7 +78,7 @@ const TourDetail = (props) => {
         .catch((error) => console.log("error", error));
 
       fetch(
-        `http://localhost:3001/adult/tour?tourID=${encodeURIComponent(
+        `https://my-adventure-backend.onrender.com/adult/tour?tourID=${encodeURIComponent(
           tour._id
         )}`,
         requestOptions

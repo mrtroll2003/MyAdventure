@@ -29,7 +29,7 @@ const ForgotPassword = () => {
 
   const forgotPwUser = async (data) => {
     try {
-      const response = await fetch('http://localhost:3001/auth/forgot_password', {
+      const response = await fetch('https://my-adventure-backend.onrender.com/auth/forgot_password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

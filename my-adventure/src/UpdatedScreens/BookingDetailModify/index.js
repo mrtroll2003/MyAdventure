@@ -59,7 +59,7 @@ const BookingDetailModify = (props) => {
     };
 
     fetch(
-      `http://localhost:3001/booking/id?id=${encodeURIComponent(id)}`,
+      `https://my-adventure-backend.onrender.com/booking/id?id=${encodeURIComponent(id)}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -78,7 +78,7 @@ const BookingDetailModify = (props) => {
       };
 
       fetch(
-        `http://localhost:3001/tour/id?id=${encodeURIComponent(
+        `https://my-adventure-backend.onrender.com/tour/id?id=${encodeURIComponent(
           booking.tourID
         )}`,
         requestOptions
@@ -101,7 +101,7 @@ const BookingDetailModify = (props) => {
       };
 
       fetch(
-        `http://localhost:3001/children/tour?tourID=${encodeURIComponent(
+        `https://my-adventure-backend.onrender.com/children/tour?tourID=${encodeURIComponent(
           tour._id
         )}`,
         requestOptions
@@ -111,7 +111,7 @@ const BookingDetailModify = (props) => {
         .catch((error) => console.log("error", error));
 
       fetch(
-        `http://localhost:3001/adult/tour?tourID=${encodeURIComponent(
+        `https://my-adventure-backend.onrender.com/adult/tour?tourID=${encodeURIComponent(
           tour._id
         )}`,
         requestOptions
@@ -166,7 +166,7 @@ const BookingDetailModify = (props) => {
 
   const SaveBooking = async (data) => {
     try {
-      const response = await fetch("http://localhost:3001/booking/update", {
+      const response = await fetch("https://my-adventure-backend.onrender.com/booking/update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -184,7 +184,7 @@ const BookingDetailModify = (props) => {
 
   const SaveAdult = async (data) => {
     try {
-      const response = await fetch("http://localhost:3001/adult/update", {
+      const response = await fetch("https://my-adventure-backend.onrender.com/adult/update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -202,7 +202,7 @@ const BookingDetailModify = (props) => {
 
   const SaveChildren = async (data) => {
     try {
-      const response = await fetch("http://localhost:3001/children/update", {
+      const response = await fetch("https://my-adventure-backend.onrender.com/children/update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

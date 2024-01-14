@@ -35,7 +35,7 @@ const  DateTourManagement = () =>{
       redirect: 'follow'
     };
 
-    fetch(`http://localhost:3001/tour/find-date?date=${date}`, requestOptions)
+    fetch(`https://my-adventure-backend.onrender.com/tour/find-date?date=${date}`, requestOptions)
       .then(response => response.json())
       .then(result => setTours(result))
       .catch(error => console.log('error', error));
@@ -47,7 +47,7 @@ const  DateTourManagement = () =>{
       method: 'GET',
       redirect: 'follow'
     };
-    fetch("http://localhost:3001/tour/vietnam-tours/departures", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour/vietnam-tours/departures", requestOptions)
     .then(response => response.json())
     .then(result => setDepartures(result))
     .catch(error => console.log('error', error));
@@ -59,7 +59,7 @@ const  DateTourManagement = () =>{
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/tour/vietnam-tours/destinations", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour/vietnam-tours/destinations", requestOptions)
     .then(response => response.json())
     .then(result => setDestinations(result))
     .catch(error => console.log('error', error));
@@ -71,7 +71,7 @@ const  DateTourManagement = () =>{
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/image", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/image", requestOptions)
       .then(response => response.json())
       .then(result => setImages(result))
       .catch(error => console.log('error', error));
@@ -83,7 +83,7 @@ const  DateTourManagement = () =>{
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/rating", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/rating", requestOptions)
       .then(response => response.json())
       .then(result => setRatings(result))
       .catch(error => console.log('error', error));

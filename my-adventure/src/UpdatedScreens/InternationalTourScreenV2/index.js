@@ -29,7 +29,7 @@ const  InternationalTourScreenCompany = () =>{
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/tour/international-tours", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour/international-tours", requestOptions)
       .then(response => response.json())
       .then(result => setTours(result))
       .catch(error => console.log('error', error));
@@ -41,7 +41,7 @@ const  InternationalTourScreenCompany = () =>{
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/tour/international-tours/destinations", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour/international-tours/destinations", requestOptions)
     .then(response => response.json())
     .then(result => setDestinations(result))
     .catch(error => console.log('error', error));
@@ -53,7 +53,7 @@ const  InternationalTourScreenCompany = () =>{
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/image", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/image", requestOptions)
       .then(response => response.json())
       .then(result => setImages(result))
       .catch(error => console.log('error', error));
@@ -65,7 +65,7 @@ const  InternationalTourScreenCompany = () =>{
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/rating", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/rating", requestOptions)
       .then(response => response.json())
       .then(result => setRatings(result))
       .catch(error => console.log('error', error));

@@ -52,7 +52,7 @@ const BookingStatusScreen = (props) => {
       method: "GET",
       redirect: "follow",
     };
-    fetch(`http://localhost:3001/booking/id?id=${bookingID}`, requestOptions)
+    fetch(`https://my-adventure-backend.onrender.com/booking/id?id=${bookingID}`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setBooking(result);
@@ -76,7 +76,7 @@ const BookingStatusScreen = (props) => {
         };
 
         const response = await fetch(
-          `http://localhost:3001/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
+          `https://my-adventure-backend.onrender.com/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
           requestOptions
         );
         const result = await response.json();
@@ -97,7 +97,7 @@ const BookingStatusScreen = (props) => {
         };
 
         const response = await fetch(
-          `http://localhost:3001/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
+          `https://my-adventure-backend.onrender.com/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
           requestOptions
         );
         const result = await response.json();
@@ -118,7 +118,7 @@ const BookingStatusScreen = (props) => {
         };
 
         const response = await fetch(
-          `http://localhost:3001/tour/place?id=${booking.tourID}`,
+          `https://my-adventure-backend.onrender.com/tour/place?id=${booking.tourID}`,
           requestOptions
         );
         const result = await response.json();
@@ -139,7 +139,7 @@ const BookingStatusScreen = (props) => {
         };
 
         const response = await fetch(
-          `http://localhost:3001/booking`,
+          `https://my-adventure-backend.onrender.com/booking`,
           requestOptions
         );
         const result = await response.json();
@@ -158,7 +158,7 @@ const BookingStatusScreen = (props) => {
         };
 
         const response = await fetch(
-          `http://localhost:3001/tour`,
+          `https://my-adventure-backend.onrender.com/tour`,
           requestOptions
         );
         const result = await response.json();
@@ -177,7 +177,7 @@ const BookingStatusScreen = (props) => {
         };
 
         const response = await fetch(
-          `http://localhost:3001/banking-account/booking?bookingID=${booking._id}`,
+          `https://my-adventure-backend.onrender.com/banking-account/booking?bookingID=${booking._id}`,
           requestOptions
         );
         const result = await response.json();
@@ -245,7 +245,7 @@ const BookingStatusScreen = (props) => {
   const UpdateRating = async (data) => {
     try {
       const response = await fetch(
-        "http://localhost:3001/booking/update-rating",
+        "https://my-adventure-backend.onrender.com/booking/update-rating",
         {
           method: "POST",
           headers: {
@@ -265,7 +265,7 @@ const BookingStatusScreen = (props) => {
 
   const UpdateRatingTotal = async (data) => {
     try {
-      const response = await fetch("http://localhost:3001/rating/update", {
+      const response = await fetch("https://my-adventure-backend.onrender.com/rating/update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -385,7 +385,7 @@ const BookingStatusScreen = (props) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/booking/update-payment", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/booking/update-payment", requestOptions)
       .then((response) => response.json())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
