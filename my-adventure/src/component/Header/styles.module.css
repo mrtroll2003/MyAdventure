@@ -1,0 +1,77 @@
+.header {
+    display: flex;
+    background-color: #49DEC3 ;
+    height: 8vh;
+    align-items: center;
+    padding-left: 8vw;
+    padding-right: 8vw;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 15vw;
+    height: auto;
+    padding: 0;
+}
+
+.phoneIcon {
+    width: 1.5vw;
+}
+.text {
+    font-family: sans-serif;
+    font-weight: semibold;
+    margin-left: 3%;
+    font-size: 2.5vh;
+}
+
+.mailIcon {
+    width: 1.5vw;
+}
+
+.aboutUsIcon {
+    width: 1.5vw;
+}
+
+.facebookIcon {
+    width: 1.5vw;
+    margin-left: 15vw;
+}
+
+.instagramIcon {
+    width: 1.5vw;
+    margin-left: 2vw;
+}
+/* Tablet */
+@media screen and (max-width: 1025px) {
+    .header {
+        display: flex;
+        background-color: #49DEC3 ;
+        height: 8vh;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 8vw;
+        padding-right: 8vw;
+    }
+    
+    .text {
+        display: none;
+    }
+    .phoneIcon {
+        width: 2.5vw;
+    }
+    .mailIcon {
+        width: 2.5vw;
+    }
+    .aboutUsIcon {
+        width: 2.5vw;
+    }
+    .facebookIcon {
+        width: 2.5vw;
+        margin-left: 5vw;
+    }
+    .instagramIcon {
+        width: 2.5vw;
+    }
+}

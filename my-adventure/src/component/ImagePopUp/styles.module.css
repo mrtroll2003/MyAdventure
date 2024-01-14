@@ -1,0 +1,51 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf");
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .image {
+    height: 80%;
+    width: auto;
+    max-width: 100%;
+  }
+
+.content {
+    display: 'flex';
+    justify-content: 'center';
+    align-items: 'center';
+    top: '0';
+    left: '0';
+    right: '0';
+    bottom: '0';
+    background-color: 'rgba(0, 0, 0, 0.9)';
+    border: 'none';
+    padding: '0';
+}
+
+.overlay {
+    z-index: '9999'
+}
+
+.birthCert {
+    cursor: 'pointer';
+    max-width: '100%';
+    height: 'auto';
+  }
+
+.zoomedBirthCert {
+    max-width: '100%';
+    height: 'auto',
+  }
+
+  .closeIc {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+  }

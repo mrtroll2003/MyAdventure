@@ -1,0 +1,164 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url('../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf') format('truetype');
+}
+.destinationSectionView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5vh;
+    width: 100%;
+}
+.destinationSectionText {
+    /* font-family: "NunitoSans"; */
+    font-size: 3.1vh;
+    font-weight: 100;
+    text-align: center;
+}
+.destinationSectionTitle {
+    /* font-family: "NunitoSans"; */
+    font-weight: 600;
+    font-size: 5vh;
+}
+.carouselContainer {
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 25vw;
+    width: 100%;
+}
+
+.illustContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.illustOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0;
+    /* font-family:"NunitoSans"; */
+    font-size: 2.5vw;
+    font-weight: 300;
+    text-align: center;
+    color: beige;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+/* .illustContainer:hover {
+    width: 120%;
+    height: 100%;
+} */
+
+.illustContainer:hover .illustOverlay {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: beige;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.illustOverlayText {
+    margin-top: 35%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.illustOverlayButton {
+    margin-top: 5%;
+    font-size: 1.2vw;
+    padding: 0.5vw 1vw;
+    border: 1px solid;
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+.illustOverlayButton:hover {
+    margin-top: 5%;
+    font-size: 1.2vw;
+    padding: 0.5vw 1vw;
+    border: 1px solid;
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 1000px) { 
+    .destinationSectionTitle {
+        font-weight: 500;
+        font-size: 3vh;
+    }
+    .destinationSectionText {
+        margin-top: 1vh;
+        margin-left: 7%;
+        margin-right: 7%;
+        font-size: 2.3vh;
+        font-weight: 100;
+        text-align: center;
+    }
+    .illustrationView {
+        height: 200%;
+        display: inline-grid;
+        grid-template-columns: auto auto;
+        transition: height 2s, width 4s;
+    }
+    #illusImage {
+        height: 100px;
+        width: 50%;
+    }
+    .illustOverlayText {
+        margin-top: 15%;
+    }
+    .illustContainer:hover .illustOverlay {
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        color: beige;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+} 
+@media screen and (max-width: 600px) { 
+    .destinationSectionTitle {
+        font-weight: 450;
+        text-align: center;
+        font-size: 2vh;
+    }
+    .destinationSectionText {
+        margin-top: 1vh;
+        margin-left: 6%;
+        margin-right: 6%;
+        font-size: 2vh;
+        font-weight: 100;
+        text-align: center;
+    }
+    .illustrationView {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        width:100%;
+        transition: height 2s, width 4s;
+    }
+    #illusImage {
+        height: 30px;
+        width: 100%;
+    }
+    .illustContainer:hover .illustOverlay {
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        color: beige;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+} 

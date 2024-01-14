@@ -1,0 +1,288 @@
+.container {
+    background-image: url(../../assets/images/YourBookingBg.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    padding: 10vh;
+}
+
+.hi {
+    font-size: 5vh;
+    color: black;
+    font-weight: bold;
+}
+
+.mark {
+    color: #5CD6C0;
+}
+
+.welcome {
+    font-size: 3vh;
+    margin-top: 6vh;
+    margin-left: 5%;
+}
+
+@font-face {
+    font-family: 'NunitoSans';
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf") format("truetype");
+}
+.mainContentContainer {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
+                0 4px 8px rgba(0, 0, 0, 0.25); 
+
+    background-color: rgba(135, 244, 224, 0.8);;
+    display: flex;
+    flex-direction: column; 
+    padding: 2% 10%;
+}
+
+.title1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 5vh;
+}
+.title2 {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 4vh;
+}
+.title3 {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 3vh;
+}
+.statusContainer {
+    align-self: center;
+    text-align: center;
+    width: 20%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 2.5vh;
+    margin-top: 2vh;
+}
+.warnings {
+    text-transform: capitalize;
+    text-align: left;
+    font-weight: bold;
+    color:red;
+    font-size: 40px;
+    padding:20px 0px;
+}
+.caution {
+    text-align: left;
+    font-size:1.25em;
+    margin-bottom: 20px;
+}
+.infoBox {
+    font-size:1.25em;
+    font-weight:bold;
+    text-transform:capitalize;
+    margin-bottom: 20px;
+}
+.box {
+    border: 1px solid black;
+    width: 35vw;
+    height: 6vh;
+    border-radius: 0.5vw;
+    font-size: 2.3vh;
+    padding-left: 1vw;
+    float:right;
+}
+
+.button {
+    font-size: 1.5vw;
+    color: white;
+    font-weight: bold;
+}
+
+.buttonContainer {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1vw;
+    font-size: 1.2vw;
+    font-weight: 500;
+    padding: 0.5vw 3vw;
+    background-color: #5CD6C0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
+                0 4px 8px rgba(0, 0, 0, 0.25); 
+}
+
+.alignCenter {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+  }
+
+.message {
+    font-size: 1.2vw;
+    margin-bottom: 2vw;
+    color: red;
+    font-weight: bold;
+}
+
+/* Tablet: width >= 740px && width <= 1025px */
+@media screen and (max-width: 1025px) and (min-width: 740px) {
+    .hi {
+        font-size: 3vh;
+        color: black;
+        font-weight: bold;
+    }
+    .welcome {
+        font-size: 2vh;
+        margin-top: 2vh;
+        margin-left: 5%;
+    } 
+    .title1 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 2.5vh;
+    }
+    .title2 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 2vh;
+    }
+    .title3 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 1.75vh;
+    }
+    .statusContainer {
+        align-self: center;
+        text-align: center;
+        width: 40%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        font-size: 2vh;
+        margin-top: 2vh;
+    }
+    .warnings {
+        text-transform: capitalize;
+        text-align: left;
+        font-weight: bold;
+        color:red;
+        font-size: 2.5vh;
+        padding: 20px 0px;
+    }
+    .caution {
+        text-align: left;
+        font-size: 1.5vh;
+        margin-bottom: 20px;
+    }
+    .message {
+        font-size: 1.5vh;
+        margin-bottom: 2vw;
+        color: red;
+        font-weight: bold;
+    }
+    .infoBox {
+        font-size: 2vh;
+        font-weight:bold;
+        text-transform:capitalize;
+        margin-bottom: 20px;
+    }
+    .box {
+        border: 1px solid black;
+        width: 50vw;
+        height: 3vh;
+        border-radius: 0.5vw;
+        font-size: 1.75vh;
+        padding-left: 1vw;
+        float:right;
+    }
+    .button {
+        font-size: 2vh;
+        color: white;
+        font-weight: bold;
+    }
+}
+
+/* Mobile: width < 740px */
+@media screen and (max-width: 739px) { 
+    .hi {
+        font-size: 3vh;
+        color: black;
+        font-weight: bold;
+    }
+    .welcome {
+        font-size: 2vh;
+        margin-top: 2vh;
+        margin-left: 5%;
+    } 
+    .title1 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 2.5vh;
+    }
+    .title2 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 2vh;
+    }
+    .title3 {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 1.75vh;
+    }
+    .statusContainer {
+        align-self: center;
+        text-align: center;
+        width: 40%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        font-size: 2vh;
+        margin-top: 2vh;
+    }
+    .warnings {
+        text-transform: capitalize;
+        text-align: left;
+        font-weight: bold;
+        color:red;
+        font-size: 2.5vh;
+        padding: 20px 0px;
+    }
+    .caution {
+        text-align: left;
+        font-size: 1.5vh;
+        margin-bottom: 20px;
+    }
+    .message {
+        font-size: 1.5vh;
+        margin-bottom: 2vw;
+        color: red;
+        font-weight: bold;
+    }
+    .infoBox {
+        font-size: 2vh;
+        font-weight:bold;
+        text-transform:capitalize;
+        margin-bottom: 20px;
+    }
+    .box {
+        border: 1px solid black;
+        width: 50vw;
+        height: 3vh;
+        border-radius: 0.5vw;
+        font-size: 1.75vh;
+        padding-left: 1vw;
+        float:right;
+    }
+    .button {
+        font-size: 2vh;
+        color: white;
+        font-weight: bold;
+    }
+}

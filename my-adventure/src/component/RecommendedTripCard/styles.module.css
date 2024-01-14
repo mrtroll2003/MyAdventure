@@ -1,0 +1,40 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url('../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf') format('truetype');
+}
+
+.recTCView {
+    border: 2px solid white;
+    border-radius: 12px;
+    width: 22em;
+    height: 35em;
+    box-shadow: 5px 10px 20px gray;
+    background-color: white;
+    margin-bottom: 5vw;
+}
+.recTCImage {
+    width: 100%;
+    height: 70%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.recTCTitleRow {
+    margin-left: 5%;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-top: 3vh;
+}
+.recTCContentText {
+    margin-left: 5%;
+    margin-right: 5%;
+    color: rgb(124, 141, 176);
+    font-size: 14px;
+    font-weight: normal;
+}
+
+@media screen and (max-width: 1025px) {
+    .recTCView {
+        margin-bottom: 5vw;
+    }
+}

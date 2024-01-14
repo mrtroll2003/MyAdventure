@@ -1,0 +1,112 @@
+.container {
+    background-image: url(../../assets/images/YourBookingBg.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    padding: 10vh;
+}
+
+.hi {
+    font-size: 5vh;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+}
+
+.mark {
+    color: #5CD6C0;
+}
+
+.welcome {
+    font-size: 3vh;
+    margin-top: 3vh;
+    text-align: left;
+}
+
+.searchBox {
+    font-size: 1.2vw;
+    padding: 0.5vw 1vw;
+    width: 20vw;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.horizon {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    width: 70vw;
+}
+
+.filterText {
+    font-size: 1.2vw;
+    font-weight: 600;
+    
+}
+
+.icon {
+    height: 3vh;
+    margin-left: 1vw;
+}
+
+/* Tablet: width >= 740px && width <= 1025px */
+@media screen and (max-width: 1025px) and (min-width: 740px) {
+    .hi {
+        font-size: 3vh;
+        color: black;
+        font-weight: bold;
+        text-align: left;
+    }
+    .welcome {
+        font-size: 2vh;
+        margin-top: 3vh;
+        text-align: left;
+    }
+    .searchBox {
+        font-size: 1.5vh;
+        padding: 0.5vw 1vw;
+        width: 100vw;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    .filterText {
+        font-size: 1.35vh;
+        font-weight: 600;
+    }
+    .icon {
+        height: 1.5vh;
+        margin-left: 1vw;
+    }
+}
+
+/* Mobile: width < 740px */
+@media screen and (max-width: 739px) { 
+    .hi {
+        font-size: 3vh;
+        color: black;
+        font-weight: bold;
+        text-align: left;
+    }
+    .welcome {
+        font-size: 2vh;
+        margin-top: 3vh;
+        text-align: left;
+    }
+    .searchBox {
+        font-size: 1.5vh;
+        padding: 0.5vw 1vw;
+        width: 100vw;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    .filterText {
+        font-size: 1.25vh;
+        font-weight: 600;
+    }
+    .icon {
+        height: 1.2vh;
+        margin-left: 1vw;
+    }
+}

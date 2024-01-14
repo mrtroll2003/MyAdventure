@@ -1,0 +1,181 @@
+@font-face {
+    font-family: "Nunito sans";
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf");
+}
+
+.mainView {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.globe {
+    float: right;
+    width: 38%;
+}
+
+.companyName {
+    font-size: 3.5vh;
+    font-weight: 800;
+    text-align: center;
+    font-family: "Nunito sans", sans-serif;
+}
+
+.accountOption {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 7vh;
+    text-align: center;
+    color: turquoise;
+}
+
+.googleOption {
+    background-color: white;
+    box-shadow: 0px 0.5vh 0.5vh rgba(27, 59, 119, 0.3);
+    width: 50%;
+    height: 8vh;
+    text-align: center;
+    display: flex;  
+    align-items: center;
+}
+
+.googleIcon {
+    margin-left: 10%;
+}
+
+.googleOptionFont {
+    position: relative;
+    font-family: "Nunito sans", sans-serif;
+    font-size: 2.5vh;
+    font-weight: 800;
+    margin-left: 15%;
+}
+
+.alternateText {
+    color: grey;
+    text-align: center;
+    font-size: 2vh;
+    font-family: "Nunito sans", sans-serif;
+    font-weight: bold;
+    margin-top: 3vh;
+}
+
+.subTitle {
+    font-family: "Nunito sans",sans-serif;
+    font-weight: bold;
+    font-size: 2.5vh;
+    margin-left: 10%;
+    margin-top: 3vh;
+}
+
+.enterInput {
+    margin-left: 10%;
+    width: 75%;
+    height: 7vh;
+    font-weight: normal;
+    font-size: 2.5vh;
+    margin-top: 1vh;
+    border: 1px solid black;
+
+}
+
+.enterInput:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+}
+.enterInput::placeholder {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: normal;
+    font-size: 2.5vh;
+}
+
+.enterInput[type='text'] {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: normal;
+    font-size: 2.5vh;
+    padding-left: 5%;
+}
+
+.signInButton {
+    width: 50%;
+    height: 8vh;
+    background-color:  #5CD6C0;
+    font-family: 'Nunito sans',sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+    margin-top: 6vh;
+}
+
+.smallText {
+    font-family: 'Nunito sans', sans-serif;
+    font-weight: 800;
+    font-size: 2vh;
+    margin-top: 2vh;
+}
+
+.forgotText {
+    margin-left: 50%;
+    margin-top: 2vh;
+    font-size: 2vh;
+    color:#5CD6C0;
+    font-weight: 500;
+}
+
+.errorText {
+    color: red;
+    font-size: 14px;
+    margin-left: 10%;
+  }
+
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .loader {
+    border: 4px solid #f3f3f3; /* Light gray border */
+    border-top: 4px solid #3498db; /* Blue border for the loading animation */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media screen and (max-width: 1025px) {
+    .globe {
+        display: none;
+    }
+    .mainView {
+        margin-top: 25%;
+        width: 100%;
+        height: 30%;
+        margin-bottom: 5%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .signInButton {
+        margin-top: 5vh;
+    }
+  }

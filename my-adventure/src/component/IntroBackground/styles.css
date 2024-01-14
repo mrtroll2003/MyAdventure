@@ -1,0 +1,28 @@
+.view {
+    height: 80vh;
+    background-size: cover;
+    background-image: url('../../assets/images/Main_Background.png');
+    background-position: center;
+    border: 1px solid white;
+}
+div.introContentView {
+    width: fit-content;
+    height: fit-content;
+    padding: 0.3em;
+    margin-left: 20vw;
+    background-color: rgba(92, 214, 192, 0.7);
+    color: white;
+}
+#welcome {
+    margin-top: 5em;
+    font-size: 28px;
+}
+#companyName {
+    margin-top: 0.2em;
+    font-size: 45px;
+    font-weight: bold;
+}
+#introStatement {
+    margin-top: 0.5em;
+    font-size: 24px;
+}

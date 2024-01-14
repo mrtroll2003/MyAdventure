@@ -1,0 +1,110 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf");
+}
+
+.content {
+    background-image: url('../../assets/images/BookingBackground.png');
+    width: 100%;
+    height: 100vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 8%;
+    padding-left: 10%;
+}
+
+.welcome {
+    font-size: 5vh;
+    margin: 0;
+    font-weight: 300;
+}
+
+.myadventure {
+    font-size: 10vh;
+    margin-top: 0.7vh;
+    margin-bottom: 0;
+}
+
+.booking {
+    font-size: 3.5vh;
+    margin-top: 0.7vh;
+    font-weight: 300;
+}
+
+.highlight {
+    background-color: rgba(92,214,192,0.7);
+    color: white;
+}
+
+.aboutUsGreenText{
+    font-family: "NunitoSans";
+    font-size: 50px;
+    color: #22C3A6;
+    font-weight: 900;
+    text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    margin-left: 10vw;
+}
+
+.normalText{
+    font-family: "NunitoSans";
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.icon{
+    height: 2vw;
+    margin-left:10vw;
+    margin-right:10px;
+    display:inline-block;
+    margin-bottom: 20px;
+}
+.horizon {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vw;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media screen and (max-width: 1025px) {
+    .myadventure {
+        font-size: 5vw;
+        margin-top: 0;
+    }
+    .welcome {
+        font-size: 2vw;
+        margin-top: 1vw;
+
+    }
+    .booking {
+        font-size: 2vw;
+    }
+    .content {
+        margin-top: 9vw;
+        width: 100%;
+    }
+    .boldStatement {
+        font-size: 4vw;
+    }
+    .normalText {
+        font-size: 2vw;
+    }
+    .aboutUsGreenText {
+        font-size: 6vw;
+    }
+    .icon {
+        height: 3.5vw;
+    }
+    .horizon {
+        margin-top: 0.5vw;
+        margin-bottom: 0px;
+    }
+}

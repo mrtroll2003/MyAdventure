@@ -1,0 +1,373 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url(../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf);
+}
+
+.title {
+    margin-top: 2vh;
+    font-family: "NunitoSans";
+    font-size: 3.5vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+.globe {
+    position: relative;
+    width: 20vw;
+    height: auto;
+}
+
+.timeAndPlaceContainer {
+    width: 60%;
+    height: 20vh;
+    background-color: #5CD6C0;
+    position: relative;
+    margin-left: 5%;
+    align-self: center;
+    box-shadow: 2px 3px gray ;
+    display: inline-grid;
+    grid-template-columns: auto auto;
+}
+
+.timeContainer {
+    display: flex;
+    flex-direction: row;
+    font-family: "NunitoSans";
+    font-weight: bold;
+    margin-top: 7.5%;
+    font-size: 1.4vw;
+}
+
+.timeContainer::before {
+    content: url(../../assets/icons/fly.png);
+    margin-left: 3%;
+    margin-right: 2%;
+}
+.time {
+    font-weight: normal;
+    font-size: 1.4vw;
+    margin-top:7%;
+}
+
+
+.spaceContainer {
+    display: flex;
+    flex-direction: row;
+    font-family: "NunitoSans";
+    font-weight: bold;
+    margin-top: 7%;
+    font-size: 1.4vw;
+}
+
+.spaceContainer::before {
+    content: url(../../assets/icons/location.png);
+    margin-left: 3%;
+    margin-right: 2%;
+}
+
+.accountBox {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70vw;
+    height: 15vh;
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 0.2vh solid black;
+}
+
+.signIn {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3vw;
+    font-size: 2.5vh;
+}
+
+.text1 {
+    width: 70vw;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.note {
+    background-color: rgba(124,141,176,0.2);
+    display:flex;
+    flex-direction: row;
+    width: 50vw;
+    height: 8vh;
+    border: 0.2vh solid black;
+    border-radius: 2vh;
+    margin-top: 2vh;
+    align-items: center;
+}
+
+.bookingForm {
+    width: 70vw;
+    border: 0.2vh solid black;
+    height: 200vh;
+    margin-top: 2vh;
+    height: auto;
+}
+.notif {
+    margin-left:2vw; 
+    font-size: 2.1vw;
+}
+.heading1 {
+    font-size: 1.5vw;
+    margin-top: 3vh;
+    margin-left: 3vw;
+    font-weight: 500;
+}
+
+.redStar {
+    margin-top: 20px;
+    color: red;
+    font-size: 17px;
+    font-weight: bold;
+}
+.leftText {
+    width: 30%;
+}
+.horizontalInfo {
+    display: flex;
+    flex-direction: row;
+    margin: 0 5vw;
+    font-size: 1.2vw;
+    padding: 1vw 0;
+    align-items: center;
+}
+
+.inputStyle {
+    width: 40vw;
+    height: auto;
+    border-radius: 5px;
+    border: 0.2vh solid black;
+    padding: 1vh 1vw;
+}
+
+.verticalInfoTitle {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    font-family: "NunitoSans";
+    font-size: 1.2vw;
+    font-weight: bold;
+}
+
+p.verticalInfoStyling {
+    margin-top: 2.5vh;
+}
+p.verticalInfoStyling::after {
+    content: " * ";
+    color: red;
+    font-size: 2vh;
+    font-weight: bold;
+}
+
+.verticalInfoInput {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+.datePicker {
+    border: 0.2vh solid #000;
+    padding: 10px;
+    border-radius: 10vh;
+    width: 20vw;
+    height: 6vh;
+    font-size: 3vh;
+    padding-left: 2vw;
+  }
+
+.addButton {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3vh;
+    width:4%;
+}
+
+.notionSectionContainer {
+    font-family: "NunitoSans";
+    font-size: 1.2vw;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    margin-top: 12vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.textBox {
+    height: 30vh;
+    border-radius: 10px;
+    margin-top: 5vh;
+    border: 0.2vh solid black;
+    font-family: "NunitoSans";
+    font-size: 1.4vw;
+    padding: 2vh 2vw;
+    margin-bottom: 5vh;
+}
+
+.submitButton {
+    padding: 0.5vw 3vw;
+    margin-top: 5vh;
+    text-align: center;
+    color: white;
+    font-family: "NunitoSans";
+    font-weight: bold;
+    font-size: 1.2vw;
+    background-color: #5CD6C0;
+    border-radius: 10px;
+    box-shadow: 1px 1px gray;
+}
+@media screen and (max-width: 1195px) {
+    .title {
+        margin-top: 8vh;
+        font-size: 4.2vw;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .globe {
+        visibility:hidden;
+        width: 0;
+    }
+    .timeAndPlaceContainer {
+        width: 70vw;
+        height: 18vh;
+    }
+    .timeContainer {
+        display: flex;
+        flex-direction: row;
+        font-family: "NunitoSans";
+        font-weight: bold;
+        margin-top: 5%;
+        font-size: 1.6vw;
+    }
+    .spaceContainer {
+        display: flex;
+        flex-direction: row;
+        font-family: "NunitoSans";
+        font-weight: bold;
+        margin-top: 5%;
+        font-size: 1.6vw;
+    }
+    .time {
+        font-weight: normal;
+        font-size: 1.6vw;
+        margin-top:5%;
+    }
+    .note {
+        width: 70vw;
+        height: 6vh;
+        border: 0.2vh solid black;
+        border-radius: 2vh;
+        align-items: center;
+    }
+    .notif {
+        font-size: 1.9vh;
+    }
+    .heading1 {
+        font-size: 1.9vw;
+    }
+    .leftText {
+        font-size: 1.7vh;
+    }
+    .inputStyle {
+        font-size: 1.6vh;
+        padding: 0.5vh 1vw;
+    }
+    .addButton {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3vh;
+        width:6%;
+    }
+    .notionSectionContainer {
+        font-family: "NunitoSans";
+        font-size: 1.9vh;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        height: 30vh;
+    }
+    .textBox {
+        font-size: 1.6vh;
+    }
+    .submitButton {
+        font-size: 1.8vw;
+    }
+}
+@media screen and (max-width: 690px) {
+    .title {
+        margin-top: 18%;
+        font-size: 4.2vw;
+    }
+    .timeAndPlaceContainer {
+        width: 70vw;
+        height: 18vh;
+    }
+    .timeContainer {
+        display: flex;
+        flex-direction: row;
+        font-family: "NunitoSans";
+        font-weight: bold;
+        margin-top: 5%;
+        font-size: 1.9vw;
+    }
+    .spaceContainer {
+        display: flex;
+        flex-direction: row;
+        font-family: "NunitoSans";
+        font-weight: bold;
+        margin-top: 5%;
+        font-size: 1.9vw;
+    }
+    .time {
+        font-weight: normal;
+        font-size: 1.9vw;
+        margin-top:5%;
+    }
+    .accountBox {
+        height: 10vh;
+        margin-top: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: 0.2vh solid black;
+    }
+    .note {
+        width: 70vw;
+        height: 6vh;
+        border: 0.2vh solid black;
+        border-radius: 2vh;
+        align-items: center;
+    }
+    .notif {
+        font-size: 1.9vh;
+    }
+    .heading1 {
+        font-size: 2.2vw;
+    }
+    .leftText {
+        width: 48%;
+    }
+    .inputStyle {
+        font-size: 1.6vh;
+        padding: 0.5vh 1vw;
+    }
+    .addButton {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3vh;
+        width:6%;
+    }
+    .textBox {
+        font-size: 1.9vh;
+    }
+    .submitButton {
+        font-size: 1.8vw;
+    }
+}

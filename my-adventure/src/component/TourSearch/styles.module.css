@@ -1,0 +1,52 @@
+.contentView {
+    background-color: white;
+    width: 80vw;
+    height: fit-content;
+    flex-direction: row;
+    border-bottom: 3px solid #5CD6C0;
+    padding: 2vh;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #5CD6C0;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+  }
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+.signUp {
+    margin-left: 2em;
+    color: white;
+    padding: 0.5em;
+    background-color: #49DEC3;
+    border-radius: 1.5em;
+    height: fit-content;
+}
+.box {
+    border: 1px solid black;
+    width: 15vw;
+    height: 6vh;
+    border-radius: 20px;
+    font-size: 2.3vh;
+    padding-left: 1vw;
+}
+.box:focus {
+    background-color: #49DEC3;
+}

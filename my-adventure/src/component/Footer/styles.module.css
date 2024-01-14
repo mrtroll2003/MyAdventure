@@ -1,0 +1,127 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf") format("truetype");
+}
+.footerView {
+    margin-top: 10vh;
+    padding-top: 2vh;
+    display: flex;
+    background-color: rgb(51, 51, 51);
+    padding-bottom: 20vh;
+    justify-content: space-evenly;
+}
+.footerLogoView {
+    margin-top: 10%;
+}
+.footerOtherView {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    width: 20%;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+#footerBoldText {
+    color: white;
+    font-family: "NunitoSans";
+    font-weight: bolder;
+    font-size: 3vh;
+}
+#footerNormalText {
+    color: white;
+    font-size: 2.5vh;
+    margin-top: 5%;
+}
+
+.footerIconAndText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 2vh;
+}
+.footerIconView {
+    width: 1.5vw;
+    height: 1.5vw;
+    margin-top: 5%;
+    margin-right: 5%;
+    justify-content: center;
+}
+/* Tablet */
+@media screen and (max-width: 1025px) and (min-width: 740px) {
+    .footerView {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .footerLogoView {
+        display: none;
+    }
+    .footerOtherView {
+        width: 100%;
+    }
+    .footerIconView {
+        width: 4vw;
+        height: 4vw;
+        margin-top: 5%;
+        margin-right: 5%;
+        justify-content: center;
+    }
+    #footerBoldText {
+        color: white;
+        font-family: "NunitoSans";
+        font-weight: bolder;
+        font-size: 2vh;
+    }
+    #footerNormalText {
+        color: white;
+        font-size: 1.5vh;
+        margin-top: 5%;
+    }
+    .footerIconAndText {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 2vh;
+    }
+}
+/* Mobile */
+@media screen and (max-width: 739px) {
+    .footerView {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .footerLogoView {
+        display: none;
+    }
+    .footerOtherView {
+        width: 100%;
+    }
+    .footerIconView {
+        width: 4vw;
+        height: 4vw;
+        margin-top: 5%;
+        margin-right: 5%;
+        justify-content: center;
+    }
+    #footerBoldText {
+        color: white;
+        font-family: "NunitoSans";
+        font-weight: bolder;
+        font-size: 2vh;
+    }
+    #footerNormalText {
+        color: white;
+        font-size: 1.5vh;
+        margin-top: 5%;
+    }
+    .footerIconAndText {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 2vh;
+    }
+}

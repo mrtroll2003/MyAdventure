@@ -1,0 +1,125 @@
+@font-face {
+    font-family: "NunitoSans";
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf") format("truetype");
+}
+.screenFont {
+    font-family: "NunitoSans";
+}
+.introBackground {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 50vh;
+}
+.introBackgroundLayer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+}
+.introBackgroundText {
+    color: white;
+    font-size: 80px;
+    font-family: "NunitoSans";
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.introLine {
+    margin-left:5%;
+    margin-top:2.5%; 
+    font-size: 22px;
+}
+.displayHorizon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 3vw;
+}
+.filterBox {
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 20%;
+    height: 10%;
+    font-size: 21px;
+    font-weight: 600;
+    text-indent: 5%;
+}
+.filterDate {
+    font-size: 20px; 
+    font-weight: 500;
+}
+.filterImage {
+    height: 3vh;
+    margin-left: 1vw;
+}
+.tourContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Set the number of columns */
+    grid-gap: 5vw; /* Adjust the gap between items */
+    padding: 0 5vw;
+    margin-top: 10vh;
+  }
+  
+.tourContainer .tourCard {
+    flex: 0 0 auto;
+    margin-top: 2vw;
+  }
+@media screen and (max-width: 915px) {
+    .introBackgroundText {
+        font-size: 60px;
+    }
+    .introBackground {
+        margin-top: 6%;
+        height: 40vh;
+    }
+    .introLine {
+        margin-left:5%;
+        margin-top:2.5%; 
+        font-size: 20px;
+    }
+    .filterBox {
+        width: 27.5%;
+        height: 8%;
+        font-size: 18px;
+    }
+    .filterDate {
+        font-size: 17px; 
+        font-weight: 500;
+    }
+    .filterImage {
+        height: 2.4vh;
+        margin-left: 1vw;
+    }
+    .tourContainer {
+        margin-left: 3%;
+        grid-template-columns: repeat(2, 1fr); /* Set the number of columns */
+    }
+}
+@media screen and (max-width: 600px) {
+    .introBackground {
+        margin-top: 10%;
+        height: 30vh;
+    }
+    .introBackgroundText {
+        font-size: 44px;
+    }
+    .filterBox {
+        width: 35%;
+    }
+    .filterDate {
+        font-size: 15px; 
+        font-weight: 500;
+    }
+    .filterImage {
+        height: 2vh;
+        margin-left: 1vw;
+    }
+    .tourContainer {
+        margin-left: 10%;
+        grid-template-columns: repeat(1, 1fr); /* Set the number of columns */
+    }
+}

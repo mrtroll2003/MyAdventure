@@ -1,0 +1,122 @@
+.container {
+    background-image: url(../../assets/images/YourBookingBg.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    padding: 10vh;
+}
+
+.hi {
+    font-size: 5vh;
+    color: black;
+    font-weight: bold;
+}
+
+.mark {
+    color: #5CD6C0;
+}
+
+.welcome {
+    font-size: 3vh;
+    margin-top: 3vh;
+}
+
+@font-face {
+    font-family: 'NunitoSans';
+    src: url("../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf") format("truetype");
+}
+
+.text {
+    font-size: 3vh;
+    font-weight: 400;
+    margin-top: 5vh;
+    font-family: "NunitoSans";
+}
+
+.mainContentContainer {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
+                0 4px 8px rgba(0, 0, 0, 0.25); 
+
+    background-color: rgba(135, 244, 224, 0.8);;
+    display: flex;
+    flex-direction: column; 
+    padding: 2% 10%;
+}
+.title {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 5vh;
+}
+.statusContainer {
+    align-self: center;
+    text-align: center;
+    width: 20%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 2.5vh;
+    margin-top: 2vh;
+}
+.accountBox {
+    width: 100%;
+    background-color: white;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    border: 0.2vh solid black;
+    padding: 2vh 0;
+}
+.signIn {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3vw;
+    font-size: 2.5vh;
+}
+.optionBtn {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 
+                0 4px 8px rgba(0, 0, 0, 0.25);
+    width: 8%;
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+    margin-right: 5%;
+    font-size: 2.5vh;
+}
+.note {
+    display: flex;
+    font-weight: 500;
+    flex-direction: row;
+    width: 100%;
+    height: 8vh;
+    border: 0.2vh solid black;
+    border-radius: 2vh;
+    margin-top: 2vh;
+    align-items: center;
+    background-color: #C1C4C8;
+}
+.bookingForm {
+    width: 100%;
+    margin-top: 2vh;
+    height: auto;
+}
+.heading1 {
+    font-size: 4vh;
+    margin-top: 3vh;
+    margin-left: 3vw;
+    font-weight: 500;
+}
+
+.heading2 {
+    font-size: 3vh;
+    margin-left: 6vw;
+    font-weight: 500;
+    width: 30%;
+}
+
+.infoTag {
+}

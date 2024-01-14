@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'NunitoSans';
+    src: url('../../constant/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf') format('truetype');
+    /* Add additional src lines if you have multiple font formats */
+    /* src: url('./fonts/YourFontFile.woff') format('woff'); */
+    /* src: url('./fonts/YourFontFile.woff2') format('woff2'); */
+  }
+
+#circleView {   
+    display: flex;
+    width: 7vw;
+    height: 7vw;
+    background-image: url('../../assets/icons/circle.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+}
+#circleImage {
+    width: 70%;
+    justify-self: center;
+    align-self: center;
+}
+.textStyles {
+    font-family: "NunitoSans";
+    font-size: 3vh;
+    margin-top: 2vh;
+}
+
+
+@media screen and (max-width: 1025px) and (min-width: 740px) {
+    .textStyles {
+        font-size: 1.5vh;
+    }
+}
+
+@media screen and (max-width: 739px) and (min-width: 0px) {
+    .textStyles {
+        font-size: 1.5vh;
+    }
+}
