@@ -274,7 +274,7 @@ const Report = (props) => {
         <div className={styles.sub}>Duration:</div>
         <motion.select
           className={styles.filterBox}
-          name="option"
+          name="type"
           value={type}
           onChange={(e) => setType(e.target.value)}
         >
