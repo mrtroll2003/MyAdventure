@@ -92,7 +92,7 @@ const MakeBookingScreen = () => {
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/booking/add", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/booking/add", requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -122,7 +122,7 @@ const MakeBookingScreen = () => {
         redirect: 'follow'
       };
 
-      fetch("http://localhost:3001/adult/add", requestOptions)
+      fetch("https://my-adventure-backend.onrender.com/adult/add", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
@@ -147,7 +147,7 @@ const MakeBookingScreen = () => {
     console.log("id" + id)
     console.log("url" + url)
     
-    fetch(`http://localhost:3001/children/update-imageURL?_id=${id}&birthCert=${url}`, requestOptions)
+    fetch(`https://my-adventure-backend.onrender.com/children/update-imageURL?_id=${id}&birthCert=${url}`, requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -175,7 +175,7 @@ const MakeBookingScreen = () => {
         redirect: "follow",
       };
   
-      const response = await fetch("http://localhost:3001/children/add", requestOptions);
+      const response = await fetch("https://my-adventure-backend.onrender.com/children/add", requestOptions);
       const result = await response.json();
   
       if (response.ok) {
@@ -302,7 +302,7 @@ const MakeBookingScreen = () => {
       redirect: 'follow'
     };
   
-    fetch(`http://localhost:3001/tour/place?id=${encodeURIComponent(id)}`, requestOptions)
+    fetch(`https://my-adventure-backend.onrender.com/tour/place?id=${encodeURIComponent(id)}`, requestOptions)
     .then(response => response.json())
     .then(data => {
       setTour(data);

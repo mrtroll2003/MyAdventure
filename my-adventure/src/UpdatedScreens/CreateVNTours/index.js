@@ -54,7 +54,7 @@ const CreateVietNamTourScreen = (props) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/tour/vietnam-tours/departures", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour/vietnam-tours/departures", requestOptions)
       .then((response) => response.json())
       .then((result) => setDepartures(result))
       .catch((error) => console.log("error", error));
@@ -67,7 +67,7 @@ const CreateVietNamTourScreen = (props) => {
     };
 
     fetch(
-      "http://localhost:3001/tour/vietnam-tours/destinations",
+      "https://my-adventure-backend.onrender.com/tour/vietnam-tours/destinations",
       requestOptions
     )
       .then((response) => response.json())
@@ -101,7 +101,7 @@ const CreateVietNamTourScreen = (props) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/tour/add", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour/add", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);

@@ -61,7 +61,7 @@ const CreateVietNamTourScreen = (props) => {
     };
 
     fetch(
-      "http://localhost:3001/tour/international-tours/destinations",
+      "https://my-adventure-backend.onrender.com/tour/international-tours/destinations",
       requestOptions
     )
       .then((response) => response.json())
@@ -95,7 +95,7 @@ const CreateVietNamTourScreen = (props) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/tour/add", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour/add", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);

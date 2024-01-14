@@ -23,7 +23,7 @@ const SignIn = ({ onLogin }) => {
 
   const loginUser = async (data) => {
     try {
-      const response = await fetch("http://localhost:3001/auth/sign_in", {
+      const response = await fetch("https://my-adventure-backend.onrender.com/auth/sign_in", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -42,7 +42,7 @@ const BookingDetail = (props) => {
     };
 
     fetch(
-      `http://localhost:3001/booking/id?id=${encodeURIComponent(id)}`,
+      `https://my-adventure-backend.onrender.com/booking/id?id=${encodeURIComponent(id)}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -61,7 +61,7 @@ const BookingDetail = (props) => {
       };
 
       fetch(
-        `http://localhost:3001/tour/id?id=${encodeURIComponent(
+        `https://my-adventure-backend.onrender.com/tour/id?id=${encodeURIComponent(
           booking.tourID
         )}`,
         requestOptions
@@ -74,7 +74,7 @@ const BookingDetail = (props) => {
         .catch((error) => console.log("error", error));
 
       fetch(
-        `http://localhost:3001/banking-account/booking?bookingID=${booking._id}`,
+        `https://my-adventure-backend.onrender.com/banking-account/booking?bookingID=${booking._id}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -93,7 +93,7 @@ const BookingDetail = (props) => {
       };
 
       fetch(
-        `http://localhost:3001/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
+        `https://my-adventure-backend.onrender.com/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -101,7 +101,7 @@ const BookingDetail = (props) => {
         .catch((error) => console.log("error", error));
 
       fetch(
-        `http://localhost:3001/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
+        `https://my-adventure-backend.onrender.com/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -141,7 +141,7 @@ const BookingDetail = (props) => {
   const UpdateStatus = async (data) => {
     try {
       const response = await fetch(
-        "http://localhost:3001/booking/update-status",
+        "https://my-adventure-backend.onrender.com/booking/update-status",
         {
           method: "POST",
           headers: {

@@ -24,7 +24,7 @@ const VietNamTourScreen = () => {
     };
 
     fetch(
-      "http://localhost:3001/tour/vietnam-tours/north-destinations",
+      "https://my-adventure-backend.onrender.com/tour/vietnam-tours/north-destinations",
       requestOptions
     )
       .then((response) => response.json())
@@ -39,7 +39,7 @@ const VietNamTourScreen = () => {
     };
 
     fetch(
-      "http://localhost:3001/tour/vietnam-tours/south-destinations",
+      "https://my-adventure-backend.onrender.com/tour/vietnam-tours/south-destinations",
       requestOptions
     )
       .then((response) => response.json())
@@ -54,7 +54,7 @@ const VietNamTourScreen = () => {
     };
 
     fetch(
-      "http://localhost:3001/tour/vietnam-tours/center-destinations",
+      "https://my-adventure-backend.onrender.com/tour/vietnam-tours/center-destinations",
       requestOptions
     )
       .then((response) => response.json())
@@ -77,7 +77,7 @@ const VietNamTourScreen = () => {
 
         for (const destination of northDestinations) {
           const response = await fetch(
-            `http://localhost:3001/image/place?name=${destination}`,
+            `https://my-adventure-backend.onrender.com/image/place?name=${destination}`,
             requestOptions
           );
           const result = await response.json();
@@ -108,7 +108,7 @@ const VietNamTourScreen = () => {
 
         for (const destination of southDestinations) {
           const response = await fetch(
-            `http://localhost:3001/image/place?name=${destination}`,
+            `https://my-adventure-backend.onrender.com/image/place?name=${destination}`,
             requestOptions
           );
           const result = await response.json();
@@ -138,7 +138,7 @@ const VietNamTourScreen = () => {
 
         for (const destination of centerDestinations) {
           const response = await fetch(
-            `http://localhost:3001/image/place?name=${destination}`,
+            `https://my-adventure-backend.onrender.com/image/place?name=${destination}`,
             requestOptions
           );
           const result = await response.json();

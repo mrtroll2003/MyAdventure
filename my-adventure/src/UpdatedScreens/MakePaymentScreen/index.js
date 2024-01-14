@@ -37,7 +37,7 @@ const MakePaymentScreen = () => {
           redirect: 'follow'
         };
         
-        fetch(`http://localhost:3001/booking/id?id=${bookingID}`, requestOptions)
+        fetch(`https://my-adventure-backend.onrender.com/booking/id?id=${bookingID}`, requestOptions)
           .then(response => response.json())
           .then(result => {
             setBooking(result)
@@ -73,7 +73,7 @@ const MakePaymentScreen = () => {
               redirect: 'follow'
             };
     
-            const response = await fetch(`http://localhost:3001/tour/place?id=${booking.tourID}`, requestOptions)
+            const response = await fetch(`https://my-adventure-backend.onrender.com/tour/place?id=${booking.tourID}`, requestOptions)
             const result = await response.json();
             setTour(result);
             setLoading1(false)
@@ -89,7 +89,7 @@ const MakePaymentScreen = () => {
 
       const UpdateStatus = async (data) => {
         try {
-          const response = await fetch("http://localhost:3001/booking/update-status", {
+          const response = await fetch("https://my-adventure-backend.onrender.com/booking/update-status", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -141,7 +141,7 @@ const MakePaymentScreen = () => {
           redirect: 'follow'
         };
         
-        fetch("http://localhost:3001/booking/update-payment", requestOptions)
+        fetch("https://my-adventure-backend.onrender.com/booking/update-payment", requestOptions)
           .then(response => response.json())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));

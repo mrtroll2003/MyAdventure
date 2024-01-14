@@ -24,7 +24,7 @@ const InternationalTourScreen = () => {
       redirect: 'follow'
     };
     
-    fetch("http://localhost:3001/tour/international-tours/asia-destinations", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour/international-tours/asia-destinations", requestOptions)
       .then(response => response.json())
       .then(result => setAsiaDestinations(result))
       .catch(error => console.log('error', error));
@@ -37,7 +37,7 @@ const InternationalTourScreen = () => {
       redirect: 'follow'
     };
     
-    fetch("http://localhost:3001/tour/international-tours/europe-destinations", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour/international-tours/europe-destinations", requestOptions)
       .then(response => response.json())
       .then(result => setEuropeDestinations(result))
       .catch(error => console.log('error', error));
@@ -49,7 +49,7 @@ const InternationalTourScreen = () => {
       redirect: 'follow'
     };
     
-    fetch("http://localhost:3001/tour/international-tours/australia-destinations", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour/international-tours/australia-destinations", requestOptions)
       .then(response => response.json())
       .then(result => {
         setAustraliaDestinations(result)
@@ -75,7 +75,7 @@ const InternationalTourScreen = () => {
         const fetchedImageList = [];
   
         for (const destination of asiaDestinations) {
-          const response = await fetch(`http://localhost:3001/image/place?name=${destination}`, requestOptions)
+          const response = await fetch(`https://my-adventure-backend.onrender.com/image/place?name=${destination}`, requestOptions)
           const result = await response.json();
           fetchedImageList.push(result);
         }
@@ -104,7 +104,7 @@ const InternationalTourScreen = () => {
         const fetchedImageList = [];
   
         for (const destination of europeDestinations) {
-          const response = await fetch(`http://localhost:3001/image/place?name=${destination}`, requestOptions)
+          const response = await fetch(`https://my-adventure-backend.onrender.com/image/place?name=${destination}`, requestOptions)
           const result = await response.json();
           fetchedImageList.push(result);
         }
@@ -132,7 +132,7 @@ const InternationalTourScreen = () => {
         const fetchedImageList = [];
   
         for (const destination of australiaDestinations) {
-          const response = await fetch(`http://localhost:3001/image/place?name=${destination}`, requestOptions)
+          const response = await fetch(`https://my-adventure-backend.onrender.com/image/place?name=${destination}`, requestOptions)
           const result = await response.json();
           fetchedImageList.push(result);
         }

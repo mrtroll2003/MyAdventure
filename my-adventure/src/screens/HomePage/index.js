@@ -51,7 +51,7 @@ const HomePage = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/tour/date", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour/date", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setDates(result);
@@ -66,21 +66,21 @@ const HomePage = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/image", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/image", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setImages(data);
       })
       .catch((error) => console.log("error", error));
 
-    fetch("http://localhost:3001/rating", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/rating", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setRatings(data);
       })
       .catch((error) => console.log("error", error));
 
-    fetch("http://localhost:3001/tour", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setTours(data);

@@ -23,7 +23,7 @@ const YourBooking = () => {
       redirect: "follow",
     };
 
-    fetch(`http://localhost:3001/booking/email?email=${email}`, requestOptions)
+    fetch(`https://my-adventure-backend.onrender.com/booking/email?email=${email}`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setBooking(data);
@@ -44,7 +44,7 @@ const YourBooking = () => {
 
         for (const booking of bookings) {
           const response = await fetch(
-            `http://localhost:3001/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
+            `https://my-adventure-backend.onrender.com/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
             requestOptions
           );
           const result = await response.json();
@@ -70,7 +70,7 @@ const YourBooking = () => {
 
         for (const booking of bookings) {
           const response = await fetch(
-            `http://localhost:3001/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
+            `https://my-adventure-backend.onrender.com/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
             requestOptions
           );
           const result = await response.json();
@@ -96,7 +96,7 @@ const YourBooking = () => {
 
         for (const booking of bookings) {
           const response = await fetch(
-            `http://localhost:3001/tour/place?id=${booking.tourID}`,
+            `https://my-adventure-backend.onrender.com/tour/place?id=${booking.tourID}`,
             requestOptions
           );
           const result = await response.json();
