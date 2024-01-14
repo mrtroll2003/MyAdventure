@@ -44,7 +44,7 @@
     margin-left: 2vw;
 }
 /* Tablet */
-@media screen and (max-width: 1025px) and (min-width: 740px) {
+@media screen and (max-width: 1025px) {
     .header {
         display: flex;
         background-color: #49DEC3 ;
@@ -59,51 +59,19 @@
         display: none;
     }
     .phoneIcon {
-        width: 4vw;
+        width: 2.5vw;
     }
     .mailIcon {
-        width: 4vw;
+        width: 2.5vw;
     }
     .aboutUsIcon {
-        width: 4vw;
+        width: 2.5vw;
     }
     .facebookIcon {
-        width: 4vw;
-        margin-left: -5vw;
+        width: 2.5vw;
+        margin-left: 5vw;
     }
     .instagramIcon {
-        width: 4vw;
-    }
-}
-/* Mobile */
-@media screen and (max-width: 739px) {
-    .header {
-        display: flex;
-        background-color: #49DEC3 ;
-        height: 8vh;
-        align-items: center;
-        justify-content: space-between;
-        padding-left: 8vw;
-        padding-right: 8vw;
-    }
-    
-    .text {
-        display: none;
-    }
-    .phoneIcon {
-        width: 4vw;
-    }
-    .mailIcon {
-        width: 4vw;
-    }
-    .aboutUsIcon {
-        width: 4vw;
-    }
-    .facebookIcon {
-        width: 4vw;
-        margin-left: -5vw;
-    }
-    .instagramIcon {
-        width: 4vw;
+        width: 2.5vw;
     }
 }
