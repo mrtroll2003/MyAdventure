@@ -25,7 +25,7 @@ const BookingManagement = () => {
       redirect: "follow",
     };
 
-    fetch("https://my-adventure-backend.onrender.com/booking", requestOptions)
+    fetch("http://localhost:3001/booking", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setBookings(result);
@@ -46,7 +46,7 @@ const BookingManagement = () => {
 
         for (const booking of bookings) {
           const response = await fetch(
-            `https://my-adventure-backend.onrender.com/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
+            `http://localhost:3001/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
             requestOptions
           );
           const result = await response.json();
@@ -71,7 +71,7 @@ const BookingManagement = () => {
 
         for (const booking of bookings) {
           const response = await fetch(
-            `https://my-adventure-backend.onrender.com/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
+            `http://localhost:3001/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
             requestOptions
           );
           const result = await response.json();
@@ -97,7 +97,7 @@ const BookingManagement = () => {
 
         for (const booking of bookings) {
           const response = await fetch(
-            `https://my-adventure-backend.onrender.com/tour/place?id=${booking.tourID}`,
+            `http://localhost:3001/tour/place?id=${booking.tourID}`,
             requestOptions
           );
           const result = await response.json();
@@ -143,54 +143,92 @@ const BookingManagement = () => {
     <>
       <div className={styles.content}>
         <div className={styles.title}>
-            <h2 className={styles.welcome}><mark className={styles.highlight}>Welcome To Our</mark></h2>
-            <h2 className={styles.myadventure}><mark className={styles.highlight}>My Adventure</mark></h2>
-            <h2 className={styles.booking}><mark className={styles.highlight}>Enjoy your dream vacation, discover amazing places at exclusive details</mark></h2>
+          <h2 className={styles.welcome}>
+            <mark className={styles.highlight}>Welcome To Our</mark>
+          </h2>
+          <h2 className={styles.myadventure}>
+            <mark className={styles.highlight}>My Adventure</mark>
+          </h2>
+          <h2 className={styles.booking}>
+            <mark className={styles.highlight}>
+              Enjoy your dream vacation, discover amazing places at exclusive
+              details
+            </mark>
+          </h2>
         </div>
-        
+
         <div className={styles.content1}>
           <div id={styles.bookingManagementBoldStatement}>
-              BOOKING MANAGEMENT
+            BOOKING MANAGEMENT
           </div>
-          <div className={styles.horizon} style={{ marginTop: "7vh", marginBottom: "7vh"}}>
-              <motion.select id="depart" name="depart" className={styles.box} onChange={(e) => setSelectedStatus(e.target.value)}>
-                  <motion.option value="all bookings" selected>All Booking</motion.option>
-                  <motion.option value="Waiting for handling">Waiting for handling</motion.option>
-                  <motion.option value="Waiting for checking">Waiting for checking</motion.option>
-                  <motion.option value="Confirmed">Confirmed</motion.option>
-                  <motion.option value="Paid">Paid</motion.option>
-                  <motion.option value="Finish">Finish</motion.option>
-                  <motion.option value="Cancelled">Cancelled</motion.option>
-              </motion.select>
+          <div
+            className={styles.horizon}
+            style={{ marginTop: "7vh", marginBottom: "7vh" }}
+          >
+            <motion.select
+              id="depart"
+              name="depart"
+              className={styles.box}
+              onChange={(e) => setSelectedStatus(e.target.value)}
+            >
+              <motion.option value="all bookings" selected>
+                All Booking
+              </motion.option>
+              <motion.option value="Waiting for handling">
+                Waiting for handling
+              </motion.option>
+              <motion.option value="Waiting for checking">
+                Waiting for checking
+              </motion.option>
+              <motion.option value="Confirmed">Confirmed</motion.option>
+              <motion.option value="Paid">Paid</motion.option>
+              <motion.option value="Finish">Finish</motion.option>
+              <motion.option value="Cancelled">Cancelled</motion.option>
+            </motion.select>
 
-              <motion.button className={styles.horizon1} whileTap={{scale: 0.8}} onClick={handleSortOrderChange}>
-                  <div className={styles.filterText}>Filter Date</div>
-                  <img className={styles.icon} src={require("../../assets/icons/filter.png")} alt='tick'/>
-              </motion.button>
-          </div>
-
-          <div style={{display: "flex", alignContent: "center", flexDirection: "column", paddingBottom: "5vw"}}>
-          {filterBookings.map((booking, index) => (
-              <TourContainerCompany
-              id = {booking._id}
-              key={booking._id}
-              type="booking"
-              destination={tours[index]?.destination}
-              departure={tours[index]?.departure}
-              departureDate={tours[index]?.departureDate}
-              returnDate={tours[index]?.returnDate}
-              fullName = {booking.name}
-              phone = {booking.phone}
-              numAdult={adultList[index]?.length || 0}
-              numChild={childList[index]?.length || 0}
-              tourStatus={booking.status}
-              bookingDate = {booking.date}
-              color={index % 2 === 1 ? 'white' : 'rgba(135, 244, 224, 0.8)'}
+            <motion.button
+              className={styles.horizon1}
+              whileTap={{ scale: 0.8 }}
+              onClick={handleSortOrderChange}
+            >
+              <div className={styles.filterText}>Filter Date</div>
+              <img
+                className={styles.icon}
+                src={require("../../assets/icons/filter.png")}
+                alt="tick"
               />
-              ))}
+            </motion.button>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              alignContent: "center",
+              flexDirection: "column",
+              paddingBottom: "3vw",
+            }}
+          >
+            {filterBookings.map((booking, index) => (
+              <TourContainerCompany
+                id={booking._id}
+                key={booking._id}
+                type="booking"
+                destination={tours[index]?.destination}
+                departure={tours[index]?.departure}
+                departureDate={tours[index]?.departureDate}
+                returnDate={tours[index]?.returnDate}
+                fullName={booking.name}
+                phone={booking.phone}
+                numAdult={adultList[index]?.length || 0}
+                numChild={childList[index]?.length || 0}
+                tourStatus={booking.status}
+                bookingDate={booking.date}
+                color={index % 2 === 1 ? "white" : "rgba(135, 244, 224, 0.8)"}
+              />
+            ))}
           </div>
         </div>
-    </div>
+      </div>
     </>
   );
 };

@@ -84,55 +84,30 @@
       font-size: 3vh;
     }
 
-    @media screen and (max-width: 1025px) and (min-width: 740px) {
+    @media screen and (max-width: 1025px) {
       .mainView {
-        padding: 3vw;
-        min-height: 30vh;
+        padding: 4vw;
+        min-height: 30vw;
+        width: 90vw;
       }
       .label {
-        font-size: 1.3vh;
+        font-size: 2vw;
       }
       .content {
-        font-size: 1.5vh;
+        font-size: 2vw;
       }
       .bookingDate {
-        font-size: 1.5vh;
+        font-size: 2vw;
       }
       .img {
-        height: 2vh;
+        height: 2vw;
       }
       .button {
         width: 12vw;
-        height: 8vw;
+        height: 6vh;
       }
       .buttonText {
-        font-size: 1.5vh;
+        font-size: 1.5vw;
       }
 
-    }
-
-    @media screen and (max-width: 739px) and (min-width: 0px) {
-      .mainView {
-        padding: 3vw;
-        min-height: 30vh;
-      }
-      .label {
-        font-size: 1.3vh;
-      }
-      .content {
-        font-size: 1.5vh;
-      }
-      .bookingDate {
-        font-size: 1.5vh;
-      }
-      .img {
-        height: 2vh;
-      }
-      .button {
-        width: 12vw;
-        height: 8vw;
-      }
-      .buttonText {
-        font-size: 1.5vh;
-      }
     }

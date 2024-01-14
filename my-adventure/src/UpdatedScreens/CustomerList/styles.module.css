@@ -101,102 +101,53 @@
     font-weight: 400;
 }
 #filterSection {
-    margin-top: 7vh;
-    margin-bottom: 7vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
     justify-content: space-between;
 }
 
 
-@media screen and (max-width: 1025px) and (min-width: 740px) {
+@media screen and (max-width: 1025px) {
     .myadventure {
-        font-size: 3vh;
+        font-size: 5vw;
         margin-top: 0;
     }
     .welcome {
-        font-size: 1.75vh;
-        margin-top: 1vh;
+        font-size: 2vw;
+        margin-top: 1vw;
     }
     .booking {
-        font-size: 1.75vh;
+        font-size: 2vw;
     }
     .content {
-        margin-top: 6vh;
+        margin-top: 9vw;
         width: 100%;
     }
-    #bookingManagementBoldStatement {
-        font-size: 3vh;
+    .boldStatement {
+        font-size: 5vw;
     }
-    .horizon {
-        margin-top: 2vh;
-        margin-bottom: 2vh;
-        padding: 0 5vw;
+    .normalText {
+        font-size: 2vw;
+    }
+    #bookingManagementBoldStatement {
+        font-size: 3.5vw;
     }
     .box {
-        font-size: 2vh;
-        width: 30vw;
+        font-size: 2vw;
     }
     .filterText {
-        font-size: 2vh;
+        font-size: 2.5vw;
     }
     .icon {
-        height: 2.5vh;
+        height: 2.5vw;
     }
-    #filterSection {
-        margin-bottom: 2vh;
-        margin-bottom: 2vh;
+    .horizon {
+        width: 80vw;
     }
     .place {
         font-size: 2vw;
-        margin-top: 0;
     }
     .time {
-        font-size: 1.7vw;
-    }
-}
-
-@media screen and (max-width: 739px) and (min-width: 0px) {
-    .myadventure {
-        font-size: 4vh;
-        margin-top: 0;
-    }
-    .welcome {
-        font-size: 2vh;
-        margin-top: 0vh;
-    }
-    .booking {
-        font-size: 2vh;
-    }
-    .content {
-        width: 100%;
-        margin-top: 5vh;
-    }
-    #bookingManagementBoldStatement {
-        font-size: 3vh;
-    }
-    .horizon {
-        margin-top: 2vh;
-        margin-bottom: 2vh;
-        padding: 0 5vw;
-    }
-    .box {
-        font-size: 2vh;
-        width: 30vww;
-    }
-    .filterText {
-        font-size: 2vh;
-    }
-    .icon {
-        height: 2.5vh;
-    }
-    #filterSection {
-        margin-bottom: 2vh;
-        margin-bottom: 2vh;
-    }
-    .place {
-        font-size: 2vw;
-        margin-top: 0px;
-    }
-    .time {
-        font-size: 1.7vw;
+        font-size: 1.5vw;
     }
 }
