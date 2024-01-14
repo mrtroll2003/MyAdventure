@@ -28,7 +28,7 @@ const CancelSuccessfulBooking = () => {
       redirect: "follow",
     };
 
-    fetch(`http://localhost:3001/booking/id?id=${bookingID}`, requestOptions)
+    fetch(`https://my-adventure-backend.onrender.com/booking/id?id=${bookingID}`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setBooking(result);
@@ -64,7 +64,7 @@ const CancelSuccessfulBooking = () => {
         };
 
         const response = await fetch(
-          `http://localhost:3001/tour/place?id=${booking.tourID}`,
+          `https://my-adventure-backend.onrender.com/tour/place?id=${booking.tourID}`,
           requestOptions
         );
         const result = await response.json();
@@ -99,7 +99,7 @@ const CancelSuccessfulBooking = () => {
 
     console.log("raw" + raw);
 
-    fetch("http://localhost:3001/banking-account/add", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/banking-account/add", requestOptions)
       .then((response) => response.json())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
@@ -108,7 +108,7 @@ const CancelSuccessfulBooking = () => {
   const UpdateStatus = async (data) => {
     try {
       const response = await fetch(
-        "http://localhost:3001/booking/update-status",
+        "https://my-adventure-backend.onrender.com/booking/update-status",
         {
           method: "POST",
           headers: {

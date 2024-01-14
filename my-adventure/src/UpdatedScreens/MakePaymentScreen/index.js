@@ -160,10 +160,8 @@ const MakePaymentScreen = () => {
         const image = await uploadImage(file)
         console.log ("imageUrl   ", image)
         updatePayment(image)
-        // const url = `/booking-status?bookingID=${encodeURIComponent(bookingID)}`;
-        // navigate(url);
-        window.location.href = `/booking-status?bookingID=${encodeURIComponent(bookingID)}`;
-        window.location.reload();
+        const url = `/booking-status?bookingID=${encodeURIComponent(bookingID)}`;
+        navigate(url);
       }
     
     const handleFileChange = (event) => {
@@ -221,5 +219,6 @@ const MakePaymentScreen = () => {
         </div>
     );
 };
+
 
 export default MakePaymentScreen;
