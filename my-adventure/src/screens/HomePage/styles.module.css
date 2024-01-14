@@ -261,16 +261,16 @@
 
 @media screen and (max-width: 1025px) {
     .myadventure {
-        font-size: 3vw;
+        font-size: 5vw;
         margin-top: 0;
     }
     .welcome {
-        font-size: 1.75vw;
+        font-size: 2vw;
         margin-top: 1vw;
 
     }
     .booking {
-        font-size: 1.75vw;
+        font-size: 2vw;
     }
     .content {
         margin-top: 9vw;
@@ -280,10 +280,10 @@
         margin-top: 10vw;
     }
     .boldStatement {
-        font-size: 3vw;
+        font-size: 4vw;
     }
     .normalText {
-        font-size: 1.5vw;
+        font-size: 2vw;
     }
     .subContentView {
         flex-direction: column;
@@ -304,7 +304,7 @@
         height: 5vw;
     }
     .packageSection {
-        margin-top: 0;
+        margin-top: 5vw;
     }
     .packageBackground {
         margin-top: 0vw;

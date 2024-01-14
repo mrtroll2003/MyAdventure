@@ -59,10 +59,52 @@
 }
 
 .icon{
-    width:30px;
-    height:30px;
+    height: 2vw;
     margin-left:10vw;
     margin-right:10px;
     display:inline-block;
     margin-bottom: 20px;
+}
+.horizon {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vw;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media screen and (max-width: 1025px) {
+    .myadventure {
+        font-size: 5vw;
+        margin-top: 0;
+    }
+    .welcome {
+        font-size: 2vw;
+        margin-top: 1vw;
+
+    }
+    .booking {
+        font-size: 2vw;
+    }
+    .content {
+        margin-top: 9vw;
+        width: 100%;
+    }
+    .boldStatement {
+        font-size: 4vw;
+    }
+    .normalText {
+        font-size: 2vw;
+    }
+    .aboutUsGreenText {
+        font-size: 6vw;
+    }
+    .icon {
+        height: 3.5vw;
+    }
+    .horizon {
+        margin-top: 0.5vw;
+        margin-bottom: 0px;
+    }
 }
