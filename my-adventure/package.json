@@ -37,11 +37,7 @@
     "web-vitals": "^2.1.4"
   },
   "engines": {
-<<<<<<< HEAD
-    "node": "16.15.1"
-=======
     "node": "18.x"
->>>>>>> ec9f5e10bee7bfa7b327d4191fd08e641e192ceb
   },
   "scripts": {
     "start": "react-scripts start",
