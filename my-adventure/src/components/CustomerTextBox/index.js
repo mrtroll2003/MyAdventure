@@ -34,7 +34,7 @@ const CustomerTextBox = (props) => {
             alt="adult2"
             style={{ width: "1.5vw", height: "1.5vw" }}
           ></img>
-          <div style={{ marginLeft: "2vw", fontSize: "1.2vw" }}>
+          <div className={styles.commonText} style={{ marginLeft: "2vw" }}>
             {props.name}
           </div>
         </div>
@@ -55,36 +55,36 @@ const CustomerTextBox = (props) => {
       </div>
       <div className={styles.details}>
         <div
+          className={styles.commonText}
           style={{
             marginTop: "2vh",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            fontSize: "1.2vw",
           }}
         >
           <div style={{ width: "30%" }}>Full Name:</div>
           <div>{props.name}</div>
         </div>
         <div
+          className={styles.commonText}
           style={{
             marginTop: "2vh",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            fontSize: "1.2vw",
           }}
         >
           <div style={{ width: "30%" }}>Sex:</div>
           <div>{props.sex}</div>
         </div>
         <div
+          className={styles.commonText}
           style={{
             marginTop: "2vh",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            fontSize: "1.2vw",
           }}
         >
           <div style={{ width: "30%" }}>Date of Birthday:</div>
@@ -93,12 +93,12 @@ const CustomerTextBox = (props) => {
 
         {props.type === "adult" ? (
           <div
+            className={styles.commonText}
             style={{
               marginTop: "2vh",
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              fontSize: "1.2vw",
             }}
           >
             <div style={{ width: "30%" }}>Citizen ID:</div>
@@ -113,7 +113,7 @@ const CustomerTextBox = (props) => {
               justifyContent: "flex-start",
             }}
           >
-            <div style={{ fontSize: "1.2vw", width: "18.5%" }}>
+            <div className={styles.commonText} style={{ width: "30%" }}>
               Birth Certificate:
             </div>
             <motion.button onClick={props.onClick}>
@@ -132,12 +132,12 @@ const CustomerTextBox = (props) => {
         {props.type === "adult" && (
           <div>
             <div
+              className={styles.commonText}
               style={{
                 marginTop: "2vh",
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                fontSize: "1.2vw",
               }}
             >
               <div style={{ width: "30%" }}>Phone Number:</div>
@@ -145,12 +145,12 @@ const CustomerTextBox = (props) => {
             </div>
 
             <div
+              className={styles.commonText}
               style={{
                 marginTop: "2vh",
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                fontSize: "1.2vw",
               }}
             >
               <div style={{ width: "30%" }}>Email:</div>
@@ -158,7 +158,6 @@ const CustomerTextBox = (props) => {
             </div>
           </div>
         )}
-
       </div>
     </div>
   );

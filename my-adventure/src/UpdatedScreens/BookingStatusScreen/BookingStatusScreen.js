@@ -575,15 +575,25 @@ const BookingStatusScreen = (props) => {
         </div>
 
         <div
-          className={styles.heading1}
-          style={{ fontWeight: "600", marginTop: "2.5vw", fontSize: "1.5vw" }}
+          className={styles.heading2}
+          style={{
+            width: "100%",
+            marginLeft: "3vw",
+            fontWeight: "600",
+            marginTop: "2.5vw",
+          }}
         >
           Your additional notion: {booking.note}
         </div>
 
         <div
-          className={styles.heading1}
-          style={{ fontSize: "1.5vw", fontStyle: "italic", marginTop: "2.5vw" }}
+          className={styles.heading2}
+          style={{
+            width: "100%",
+            marginLeft: "3vw",
+            fontStyle: "italic",
+            marginTop: "2.5vw",
+          }}
         >
           Details for this trip:{" "}
           <motion.button
@@ -611,10 +621,7 @@ const BookingStatusScreen = (props) => {
 
         {booking.payment && booking.payment !== "test" ? (
           <div className={styles.horizon}>
-            <div
-              className={styles.heading1}
-              style={{ fontWeight: "600", fontSize: "1.5vw" }}
-            >
+            <div className={styles.heading2}>
               Evidence of your payment for this tour:
             </div>
             <div className={styles.horizon1}>
@@ -659,11 +666,11 @@ const BookingStatusScreen = (props) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                marginTop: "4vh",
+                marginTop: "2vh",
               }}
             >
               <div className={styles.heading2}>Bank name: </div>
-              <div style={{ fontSize: "3vh" }}>{bank.bankName}</div>
+              <div className={styles.commonText}>{bank.bankName}</div>
             </div>
 
             <div
@@ -671,11 +678,11 @@ const BookingStatusScreen = (props) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                marginTop: "4vh",
+                marginTop: "2vh",
               }}
             >
               <div className={styles.heading2}>Bank account: </div>
-              <div style={{ fontSize: "3vh" }}>{bank.bankAccount}</div>
+              <div className={styles.commonText}>{bank.bankAccount}</div>
             </div>
 
             <div
@@ -683,12 +690,12 @@ const BookingStatusScreen = (props) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                marginTop: "4vh",
+                marginTop: "2vh",
                 paddingBottom: "4vw",
               }}
             >
               <div className={styles.heading2}>Bank holder: </div>
-              <div style={{ fontSize: "3vh" }}>{bank.bankHolder}</div>
+              <div className={styles.commonText}>{bank.bankHolder}</div>
             </div>
           </div>
         )}
