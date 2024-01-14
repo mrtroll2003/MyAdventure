@@ -12,7 +12,7 @@ const BookingManagement = () => {
   const [adultList, setAdultList] = useState([]);
   const [childList, setChildList] = useState([]);
   const [tours, setTours] = useState([]);
-  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortOrder, setSortOrder] = useState("desc");
   const [selectedStatus, setSelectedStatus] = useState("all bookings");
 
   useEffect(() => {
