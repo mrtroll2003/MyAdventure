@@ -44,24 +44,24 @@ const MakePaymentScreen = () => {
             setLoading(false)})
           .catch(error => console.log('error', error));
       }, [bookingID])
-
-      const setBg =  (status) => {
-        var backgroundColor = "#FFED8C"
-        if (status === "Successful") {
-          backgroundColor = "#30E742"
+      
+      const setBg = (status) => {
+        var backgroundColor = "#FFED8C";
+        if (status === "Finish") {
+          backgroundColor = "#22EAAA";
         } else if (status === "Waiting for handling") {
-          backgroundColor = "#FFED8C"
+          backgroundColor = "#FFED8C";
         } else if (status === "Waiting for checking") {
-          backgroundColor = "#F5AE45"
+          backgroundColor = "#F5AE45";
         } else if (status === "Confirmed") {
-          backgroundColor = "#E4F61A"
+          backgroundColor = "#99FFCD";
         } else if (status === "Paid") {
-          backgroundColor = "#2CF594"
-        }else if (status === "Cancelled") {
-          backgroundColor = "red"
+          backgroundColor = "#2CF594";
+        } else if (status === "Cancelled") {
+          backgroundColor = "#FF4A4A";
         }
         return backgroundColor;
-      }
+      };
 
 
       useEffect(() => {
@@ -160,8 +160,9 @@ const MakePaymentScreen = () => {
         const image = await uploadImage(file)
         console.log ("imageUrl   ", image)
         updatePayment(image)
-        const url = `/booking-status?bookingID=${encodeURIComponent(bookingID)}`;
-        navigate(url);
+        // const url = `/booking-status?bookingID=${encodeURIComponent(bookingID)}`;
+        // navigate(url);
+        window.location.href = `/booking-status?bookingID=${encodeURIComponent(bookingID)}`;
         window.location.reload();
       }
     

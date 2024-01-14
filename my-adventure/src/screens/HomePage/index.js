@@ -243,31 +243,34 @@ const HomePage = () => {
               </div>
             </div>
           )}
-          <div className={styles.packageBackground}>
-            <div className={styles.packageView}>
-              <div style={{ width: "80%" }}>
-                <h1 id={styles.packageIntroduction}>
-                  Summer Vacation Packages
-                </h1>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  <p id={styles.packageMainText}>
-                    Video provides a powerful way to help you prove your point.
-                    When you click Online Video, you can paste in the embed code
-                    for the video you want to add. You can also type a keyword
-                    to search online for the video that best fits your document.
-                  </p>
+          <div className={styles.packageSection}>
+            <div className={styles.packageBackground}>
+              <div className={styles.packageView}>
+                <div style={{ width: "80%" }}>
+                  <h1 id={styles.packageIntroduction}>
+                    Summer Vacation Packages
+                  </h1>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p id={styles.packageMainText}>
+                      Video provides a powerful way to help you prove your
+                      point. When you click Online Video, you can paste in the
+                      embed code for the video you want to add. You can also
+                      type a keyword to search online for the video that best
+                      fits your document.
+                    </p>
+                  </div>
+                  <h1 id={styles.packagePriceView}>
+                    <span id={styles.packagePriceText01}>From Only </span>
+                    <span id={styles.packagePrice}>$159.00</span>
+                    <span id={styles.packagePriceText02}> per person</span>
+                  </h1>
                 </div>
-                <h1 id={styles.packagePriceView}>
-                  <span id={styles.packagePriceText01}>From Only </span>
-                  <span id={styles.packagePrice}>$159.00</span>
-                  <span id={styles.packagePriceText02}> per person</span>
-                </h1>
               </div>
             </div>
           </div>
@@ -317,19 +320,21 @@ const HomePage = () => {
               <>
                 <div className={styles.cardTripView} key={rowIndex}>
                   {row.map((item) => (
-                    <>
-                      <RecommendedTripCard
-                        key={item._id}
-                        image={renderImage(item)}
-                        departure={item.departure}
-                        destination={item.destination}
-                        departure_date={formatDate(item.departureDate)}
-                        return_date={formatDate(item.departureDate)}
-                        rating={getRating(item)}
-                        price={item.price}
-                        onClick={() => handleClick(item._id)}
-                      />
-                    </>
+                    <div>
+                      <>
+                        <RecommendedTripCard
+                          key={item._id}
+                          image={renderImage(item)}
+                          departure={item.departure}
+                          destination={item.destination}
+                          departure_date={formatDate(item.departureDate)}
+                          return_date={formatDate(item.departureDate)}
+                          rating={getRating(item)}
+                          price={item.price}
+                          onClick={() => handleClick(item._id)}
+                        />
+                      </>
+                    </div>
                   ))}
                 </div>
               </>

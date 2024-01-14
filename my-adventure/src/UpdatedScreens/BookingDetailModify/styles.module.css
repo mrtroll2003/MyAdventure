@@ -22,7 +22,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: "NunitoSans";
     font-weight: 800;
     font-size: 3.5vw;
     text-transform: uppercase;
@@ -30,9 +29,9 @@
     background-color: rgba(0, 0, 0, 0.3);
 }
 .titleText {
-    font-family: "NunitoSans";
     text-transform: uppercase;
     text-align: center;
+    font-size: 2.5vw;
 }
 
 .errorText {
@@ -134,7 +133,6 @@
 
 
 .inputStyle {
-  font-family: "NunitoSans";
   font-weight: 400;
   font-size: 1.2vw;
   border-radius: 5px;
@@ -152,7 +150,6 @@
   }
   .titleText {
     margin-top: 10vh;
-    font-family: "NunitoSans";
     text-transform: uppercase;
     text-align: center;
     font-size: 4vh; 
@@ -174,7 +171,6 @@
     width: 30vw;
   }
   .inputStyle {
-    font-family: "NunitoSans";
     font-weight: 400;
     font-size: 1.5vh;
     border-radius: 5px;
@@ -193,7 +189,6 @@
   }
   .titleText {
     margin-top: 10vh;
-    font-family: "NunitoSans";
     text-transform: uppercase;
     text-align: center;
     font-size: 4vh; 
