@@ -69,24 +69,12 @@
   padding-left: 2vw;
 }
 
-/* Tablet: width >= 740px && width <= 1025px */
-@media screen and (max-width: 1025px) and (min-width: 740px) {
-  .customerBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: 0.5vh 0.5vh 1vh rgba(0,0,0,0.3);
-    padding-left: 2vw;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    width: 45vw;
-    margin-top: 2vh;
-    background-color: white;
- }
+.commonText {
+  font-size: 1.25vw;
 }
 
-/* Mobile: width < 740px */
-@media screen and (max-width: 739px) { 
+/* Tablet: width >= 740px && width <= 1025px */
+@media screen and (max-width: 1025px) {
   .customerBox {
     display: flex;
     flex-direction: column;
@@ -95,8 +83,11 @@
     padding-left: 2vw;
     padding-top: 2vh;
     padding-bottom: 2vh;
-    width: 40vw;
+    width: 70vw;
     margin-top: 2vh;
     background-color: white;
  }
+ .commonText {
+  font-size: 2vw;
+}
 }
