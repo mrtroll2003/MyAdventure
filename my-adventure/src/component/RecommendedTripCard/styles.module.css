@@ -10,6 +10,7 @@
     height: 35em;
     box-shadow: 5px 10px 20px gray;
     background-color: white;
+    margin-bottom: 5vw;
 }
 .recTCImage {
     width: 100%;
@@ -30,4 +31,10 @@
     color: rgb(124, 141, 176);
     font-size: 14px;
     font-weight: normal;
+}
+
+@media screen and (max-width: 1025px) {
+    .recTCView {
+        margin-bottom: 5vw;
+    }
 }
