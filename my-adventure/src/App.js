@@ -15,7 +15,12 @@ import CreateVietNamTourScreen from "./UpdatedScreens/CreateVNTours";
 import BookingStatusScreen from "./UpdatedScreens/BookingStatusScreen/BookingStatusScreen";
 import MakeBookingScreen from "./UpdatedScreens/MakeBooking/index.js";
 import Header from "./component/Header";
-import { BrowserRouter, Routes, Route, ScrollRestoration } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  ScrollRestoration,
+} from "react-router-dom";
 import SignIn from "./screens/SignIn/index.js";
 import SignUp from "./screens/SignUp/index.js";
 import ForgotPassword from "./screens/ForgotPassword/index.js";
@@ -34,10 +39,10 @@ import ModifyTour from "./UpdatedScreens/ModifyTour/index.js";
 import BookingDetail from "./UpdatedScreens/BookingDetail/index.js";
 import BookingDetailModify from "./UpdatedScreens/BookingDetailModify/index.js";
 import Report from "./UpdatedScreens/Report/index.js";
-import Chatbot from "./assets/images/chatbot.jpg"
+import Chatbot from "./assets/images/chatbot.jpg";
 
-import ChatBot from 'react-simple-chatbot';
-import { ThemeProvider } from 'styled-components';
+import ChatBot from "react-simple-chatbot";
+import { ThemeProvider } from "styled-components";
 import DateTourManagement from "./UpdatedScreens/DateTourManagement/index.js";
 
 const chatbotSteps = [
@@ -83,7 +88,8 @@ const chatbotSteps = [
   },
   {
     id: "internationalTours",
-    message: "You selected International Tours. Navigating to International Tours...",
+    message:
+      "You selected International Tours. Navigating to International Tours...",
     trigger: "6",
   },
   {
@@ -128,12 +134,10 @@ const chatbotTheme = {
   userFontColor: "white",
 };
 
-
 const config = {
   botAvatar: Chatbot,
   floating: true,
 };
-
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -190,45 +194,59 @@ export default function App() {
           <Route path="destination-detail" element={<DestinationDetail />} />
           <Route path="cancel" element={<CancelSuccessfulBooking />} />
           <Route path="make-payment" element={<MakePaymentScreen />} />
-          <Route path="detail-booking-modify" element={<ModifyBookingScreen />}/>
+          <Route
+            path="detail-booking-modify"
+            element={<ModifyBookingScreen />}
+          />
 
           <Route path="company/home" element={<HomePage />} />
-          <Route path="company/vietnam-tours" element={<VietNamTourScreenCompany />}/>
-          <Route path="company/international-tours" element={<InternationalTourScreenCompany />}/>
-          <Route path="company/create-vietnam-tours" element={<CreateVietNamTourScreen />}/>
-          <Route path="company/create-intl-tours" element={<CreateInternationalTourScreen />}/>
-          <Route path="company/customer-list" element={<CustomerList />}/>
-          <Route path="company/booking-management" element={<BookingManagement />} />
+          <Route
+            path="company/vietnam-tours"
+            element={<VietNamTourScreenCompany />}
+          />
+          <Route
+            path="company/international-tours"
+            element={<InternationalTourScreenCompany />}
+          />
+          <Route
+            path="company/create-vietnam-tours"
+            element={<CreateVietNamTourScreen />}
+          />
+          <Route
+            path="company/create-intl-tours"
+            element={<CreateInternationalTourScreen />}
+          />
+          <Route path="company/customer-list" element={<CustomerList />} />
+          <Route
+            path="company/booking-management"
+            element={<BookingManagement />}
+          />
           <Route path="company/modify-tour" element={<ModifyTour />} />
           <Route path="company/detail-booking" element={<BookingDetail />} />
-          <Route path="company/booking-detail-modify" element={<BookingDetailModify />} />
-          <Route path="company/report" element={<Report/>} />
-          <Route path="company/date-tour-management" element={<DateTourManagement/>} />
-
-
-
+          <Route
+            path="company/booking-detail-modify"
+            element={<BookingDetailModify />}
+          />
+          <Route path="company/report" element={<Report />} />
+          <Route
+            path="company/date-tour-management"
+            element={<DateTourManagement />}
+          />
 
           <Route
             path="international-tours"
             element={<InternationalTourScreen />}
           />
-
-          
-
-
         </Route>
       </Routes>
 
       <ThemeProvider theme={chatbotTheme}>
-                <ChatBot
-                    headerTitle="MyAdventure Chatbot"
-                    steps={chatbotSteps}
-                    {...config}
- 
-                />
-            </ThemeProvider>
+        <ChatBot
+          headerTitle="MyAdventure Chatbot"
+          steps={chatbotSteps}
+          {...config}
+        />
+      </ThemeProvider>
     </BrowserRouter>
   );
 }
-
-

@@ -261,11 +261,11 @@
 
 @media screen and (max-width: 1025px) and (min-width: 740px) {
     .myadventure {
-        font-size: 3vh;
+        font-size: 5vw;
         margin-top: 0;
     }
     .welcome {
-        font-size: 1.75vh;
+        font-size: 3vw;
         margin-top: 1vh;
     }
     .booking {
