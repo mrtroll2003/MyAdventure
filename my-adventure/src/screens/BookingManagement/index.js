@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import styles from "./styles.module.css";
 import TourContainer from "../../component/YourBookingContainer";
 import TourContainerCompany from "../../component/TourContainerCompany";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const BookingManagement = () => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const BookingManagement = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/booking", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/booking", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         setBookings(result);
@@ -46,7 +46,7 @@ const BookingManagement = () => {
 
         for (const booking of bookings) {
           const response = await fetch(
-            `http://localhost:3001/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
+            `https://my-adventure-backend.onrender.com/adult/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
             requestOptions
           );
           const result = await response.json();
@@ -71,7 +71,7 @@ const BookingManagement = () => {
 
         for (const booking of bookings) {
           const response = await fetch(
-            `http://localhost:3001/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
+            `https://my-adventure-backend.onrender.com/children/booking?bookingEmail=${booking.email}&bookingDate=${booking.date}`,
             requestOptions
           );
           const result = await response.json();
@@ -97,7 +97,7 @@ const BookingManagement = () => {
 
         for (const booking of bookings) {
           const response = await fetch(
-            `http://localhost:3001/tour/place?id=${booking.tourID}`,
+            `https://my-adventure-backend.onrender.com/tour/place?id=${booking.tourID}`,
             requestOptions
           );
           const result = await response.json();

@@ -22,7 +22,7 @@ function CancelBooking(props) {
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/tour/update-status", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/tour/update-status", requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -43,7 +43,7 @@ function CancelBooking(props) {
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/booking/cancel-booking", requestOptions)
+    fetch("https://my-adventure-backend.onrender.com/booking/cancel-booking", requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));

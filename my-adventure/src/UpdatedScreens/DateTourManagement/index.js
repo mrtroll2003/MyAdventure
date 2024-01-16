@@ -41,6 +41,10 @@ const  DateTourManagement = () =>{
       .catch(error => console.log('error', error));
   }, [tours]);
 
+  useEffect(() => {
+    console.log("tours", tours)
+  }, [tours])
+
 
   useEffect(() => {
     var requestOptions = {
