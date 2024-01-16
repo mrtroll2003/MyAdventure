@@ -8,7 +8,7 @@ function CancelPopUp(props) {
 
   const UpdateStatus = async (data) => {
     try {
-      const response = await fetch("http://localhost:3001/booking/update-status", {
+      const response = await fetch("https://my-adventure-backend.onrender.com/booking/update-status", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
